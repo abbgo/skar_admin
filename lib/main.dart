@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skar_admin/pages/start.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/theme/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance(); // shared preferences
   SystemChrome.setPreferredOrientations([
     // APP ONLY DISPLAY PORTRAIT
     DeviceOrientation.portraitUp,
