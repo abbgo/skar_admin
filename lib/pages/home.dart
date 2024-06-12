@@ -10,10 +10,8 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     String token = ref.read(tokenProvider);
 
-    return Scaffold(
-      body: token.isEmpty
-          ? const LoginPage()
-          : const Center(child: Text('Home Page')),
-    );
+    return token.isEmpty
+        ? const LoginPage()
+        : const Center(child: Text('Home Page'));
   }
 }
