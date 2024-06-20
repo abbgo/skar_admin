@@ -8,17 +8,25 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LoginField(),
-            SizedBox(height: 20),
-            PasswordField(),
-            SizedBox(height: 20),
-            LoginButton(),
+            Expanded(child: Image.asset("assets/images/logo.jpg")),
+            const Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  LoginField(),
+                  SizedBox(height: 20),
+                  PasswordField(),
+                  SizedBox(height: 20),
+                  LoginButton(),
+                ],
+              ),
+            ),
           ],
         ),
       ),
