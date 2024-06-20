@@ -11,8 +11,8 @@ class LoginField extends StatelessWidget {
     var lang = AppLocalizations.of(context)!;
 
     return TextField(
+      keyboardType: TextInputType.text,
       autofocus: true,
-      textInputAction: TextInputAction.search,
       textAlignVertical: TextAlignVertical.center,
       cursorColor: elevatedButtonColor,
       decoration: InputDecoration(

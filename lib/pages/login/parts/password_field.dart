@@ -11,8 +11,7 @@ class PasswordField extends StatelessWidget {
     var lang = AppLocalizations.of(context)!;
 
     return TextField(
-      autofocus: true,
-      textInputAction: TextInputAction.search,
+      keyboardType: TextInputType.text,
       textAlignVertical: TextAlignVertical.center,
       cursorColor: elevatedButtonColor,
       decoration: InputDecoration(

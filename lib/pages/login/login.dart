@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/login/parts/login_button.dart';
 import 'package:skar_admin/pages/login/parts/login_field.dart';
 import 'package:skar_admin/pages/login/parts/password_field.dart';
 
@@ -17,6 +18,7 @@ class LoginPage extends StatelessWidget {
             LoginField(),
             SizedBox(height: 20),
             PasswordField(),
+            LoginButton(),
           ],
         ),
       ),
