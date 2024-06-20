@@ -15,6 +15,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LoginField(),
+            SizedBox(height: 20),
             PasswordField(),
           ],
         ),

@@ -18,7 +18,7 @@ class PasswordField extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: inputBorder(),
         border: inputBorder(),
-        hintText: lang.username,
+        hintText: lang.password,
       ),
     );
   }
