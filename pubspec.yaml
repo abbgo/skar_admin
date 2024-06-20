@@ -41,6 +41,9 @@ dependencies:
   shared_preferences: ^2.2.3
   shared_preferences_riverpod: ^0.3.0
   equatable: ^2.0.5
+  intl: 0.19.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +61,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

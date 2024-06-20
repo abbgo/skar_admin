@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skar_admin/pages/start.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/theme/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,10 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
       home: const StartPage(),
       themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
+      locale: const Locale('en'),
     );
   }
 }
