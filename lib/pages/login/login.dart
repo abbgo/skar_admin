@@ -9,7 +9,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 50),
         child: Column(
@@ -18,6 +17,7 @@ class LoginPage extends StatelessWidget {
             LoginField(),
             SizedBox(height: 20),
             PasswordField(),
+            SizedBox(height: 20),
             LoginButton(),
           ],
         ),

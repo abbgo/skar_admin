@@ -7,8 +7,8 @@ class AppInputTheme {
   static InputDecorationTheme lightInputTheme = InputDecorationTheme(
     fillColor: Colors.white,
     filled: true,
-    contentPadding: const EdgeInsets.only(top: 0, left: 20),
     enabledBorder: outlinedInputBorder(),
+    labelStyle: TextStyle(color: elevatedButtonColor),
   );
 }
 

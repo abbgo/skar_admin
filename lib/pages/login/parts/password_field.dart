@@ -15,10 +15,13 @@ class PasswordField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       cursorColor: elevatedButtonColor,
       decoration: InputDecoration(
-        focusedBorder: inputBorder(),
-        border: inputBorder(),
-        hintText: lang.password,
-      ),
+          suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.visibility),
+          ),
+          focusedBorder: inputBorder(),
+          border: inputBorder(),
+          labelText: ' ${lang.password} '),
     );
   }
 }

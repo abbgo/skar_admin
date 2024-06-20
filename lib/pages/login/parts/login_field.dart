@@ -18,7 +18,7 @@ class LoginField extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: inputBorder(),
         border: inputBorder(),
-        hintText: lang.username,
+        labelText: ' ${lang.username} ',
       ),
     );
   }
