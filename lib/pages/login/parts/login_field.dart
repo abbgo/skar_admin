@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/parts/input.dart';
-import 'package:skar_admin/providers/pages/login.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -11,7 +10,6 @@ class LoginField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
-    bool hasErr = ref.watch(hasErrProvider);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -22,8 +20,6 @@ class LoginField extends ConsumerWidget {
         textAlignVertical: TextAlignVertical.center,
         cursorColor: elevatedButtonColor,
         decoration: InputDecoration(
-          labelStyle:
-              TextStyle(color: hasErr ? Colors.red : elevatedButtonColor),
           prefixText: '+993 ',
           focusedBorder: inputBorder(),
           border: inputBorder(),

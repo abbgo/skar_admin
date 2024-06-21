@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skar_admin/providers/pages/login.dart';
 
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key, required this.formKey});
@@ -15,7 +14,6 @@ class LoginButton extends ConsumerWidget {
           print('hemme zat gowy');
           return;
         }
-        ref.read(hasErrProvider.notifier).state = true;
       },
       child: const Text('Ulgama gir'),
     );

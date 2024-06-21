@@ -14,4 +14,3 @@ var passwordVisibleProvider =
 );
 
 var phoneNumberProvider = StateProvider.autoDispose<String>((ref) => '');
-var hasErrProvider = StateProvider.autoDispose<bool>((ref) => false);

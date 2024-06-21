@@ -12,7 +12,6 @@ class PasswordField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
     bool passwordVisible = ref.watch(passwordVisibleProvider);
-    bool hasErr = ref.watch(hasErrProvider);
 
     return ConstrainedBox(
       constraints: const BoxConstraints(maxHeight: 100.0, minHeight: 100.0),
@@ -31,8 +30,6 @@ class PasswordField extends ConsumerWidget {
           focusedBorder: inputBorder(),
           border: inputBorder(),
           labelText: ' ${lang.password} ',
-          labelStyle:
-              TextStyle(color: hasErr ? Colors.red : elevatedButtonColor),
         ),
         validator: (validator) {
           var l = validator.toString().length;
