@@ -1,4 +1,6 @@
 {
     "phoneNumber":"Номер телефона",
-    "password":"Пароль"
+    "password":"Пароль",
+    "enterYourCorrectPhoneNumber":"Пожалуйста, введите правильный номер телефона",
+    "enterYourPassword":"Введите ваш пароль"
 }

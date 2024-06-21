@@ -1,4 +1,6 @@
 {
     "phoneNumber":"Phone number",
-    "password":"Password"
+    "password":"Password",
+    "enterYourCorrectPhoneNumber":"Please enter your correct phone number",
+    "enterYourPassword":"Enter your password"
 }

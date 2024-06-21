@@ -27,7 +27,7 @@ class LoginField extends ConsumerWidget {
         ),
         validator: (validator) {
           var l = validator.toString().length;
-          if (l != 8) return 'Telefon belgini dogryny girizin';
+          if (l != 8) return lang.enterYourCorrectPhoneNumber;
           return null;
         },
       ),

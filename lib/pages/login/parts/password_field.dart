@@ -33,7 +33,7 @@ class PasswordField extends ConsumerWidget {
         ),
         validator: (validator) {
           var l = validator.toString().length;
-          if (l < 1) return 'Acar sozuni girizin';
+          if (l < 1) return lang.enterYourPassword;
           return null;
         },
       ),
