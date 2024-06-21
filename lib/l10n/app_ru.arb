@@ -3,5 +3,6 @@
     "password":"Пароль",
     "enterYourCorrectPhoneNumber":"Пожалуйста, введите правильный номер телефона",
     "enterYourPassword":"Введите ваш пароль",
-    "login":"Логин"
+    "login":"Логин",
+    "noIntConn":"Нет соединения с интернетом !"
 }

@@ -3,5 +3,6 @@
     "password":"Password",
     "enterYourCorrectPhoneNumber":"Please enter your correct phone number",
     "enterYourPassword":"Enter your password",
-    "login":"Login"
+    "login":"Login",
+    "noIntConn":"No internet connection !"
 }
