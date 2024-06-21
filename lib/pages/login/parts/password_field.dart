@@ -13,20 +13,24 @@ class PasswordField extends ConsumerWidget {
     var lang = AppLocalizations.of(context)!;
     bool passwordVisible = ref.watch(passwordVisibleProvider);
 
-    return TextField(
-      keyboardType: TextInputType.text,
-      textAlignVertical: TextAlignVertical.center,
-      cursorColor: elevatedButtonColor,
-      obscureText: !passwordVisible,
-      decoration: InputDecoration(
-        suffixIcon: IconButton(
-          onPressed: () =>
-              ref.read(passwordVisibleProvider.notifier).changeVisibility(),
-          icon: Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        textAlignVertical: TextAlignVertical.center,
+        cursorColor: elevatedButtonColor,
+        obscureText: !passwordVisible,
+        decoration: InputDecoration(
+          suffixIcon: IconButton(
+            onPressed: () =>
+                ref.read(passwordVisibleProvider.notifier).changeVisibility(),
+            icon:
+                Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
+          ),
+          focusedBorder: inputBorder(),
+          border: inputBorder(),
+          labelText: ' ${lang.password} ',
         ),
-        focusedBorder: inputBorder(),
-        border: inputBorder(),
-        labelText: ' ${lang.password} ',
       ),
     );
   }

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       home: const StartPage(),
       themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
-      locale: const Locale('en'),
+      locale: const Locale('tr'),
     );
   }
 }

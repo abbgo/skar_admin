@@ -12,3 +12,6 @@ var passwordVisibleProvider =
     StateNotifierProvider.autoDispose<PasswordVisibleNotifier, bool>(
   (ref) => PasswordVisibleNotifier(),
 );
+
+var phoneNumberProvider = StateProvider.autoDispose<String>((ref) => '');
+var hasErrProvider = StateProvider.autoDispose<bool>((ref) => false);

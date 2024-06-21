@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/parts/input.dart';
+import 'package:skar_admin/providers/pages/login.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginField extends StatelessWidget {
+class LoginField extends ConsumerWidget {
   const LoginField({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
+    bool hasErr = ref.watch(hasErrProvider);
 
-    return TextField(
-      keyboardType: TextInputType.text,
-      autofocus: true,
-      textAlignVertical: TextAlignVertical.center,
-      cursorColor: elevatedButtonColor,
-      decoration: InputDecoration(
-        focusedBorder: inputBorder(),
-        border: inputBorder(),
-        labelText: ' ${lang.username} ',
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        maxLength: 8,
+        keyboardType: TextInputType.phone,
+        autofocus: true,
+        textAlignVertical: TextAlignVertical.center,
+        cursorColor: elevatedButtonColor,
+        decoration: InputDecoration(
+          labelStyle:
+              TextStyle(color: hasErr ? Colors.red : elevatedButtonColor),
+          prefixText: '+993 ',
+          focusedBorder: inputBorder(),
+          border: inputBorder(),
+          labelText: ' ${lang.phoneNumber} ',
+        ),
+        validator: (validator) {
+          var l = validator.toString().length;
+          if (l != 8) return 'Telefon belgini dogryny girizin';
+          return null;
+        },
       ),
     );
   }
