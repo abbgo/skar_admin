@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class ShopOwner {
   final String fullName;
   final String phoneNumber;
@@ -14,4 +16,30 @@ class ShopOwner {
   factory ShopOwner.defaultShopOwner() {
     return ShopOwner(fullName: '', phoneNumber: '');
   }
+}
+
+class ResultLoginShopOwner extends Equatable {
+  final ShopOwner shopOwner;
+  final String accessToken;
+  final String refreshToken;
+  final String error;
+
+  const ResultLoginShopOwner({
+    required this.shopOwner,
+    required this.accessToken,
+    required this.refreshToken,
+    required this.error,
+  });
+
+  factory ResultLoginShopOwner.defaultResult() {
+    return ResultLoginShopOwner(
+      shopOwner: ShopOwner.defaultShopOwner(),
+      accessToken: '',
+      refreshToken: '',
+      error: '',
+    );
+  }
+
+  @override
+  List<Object?> get props => [shopOwner, accessToken, refreshToken, error];
 }
