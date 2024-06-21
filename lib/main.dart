@@ -11,7 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance(); // shared preferences
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     // APP ONLY DISPLAY PORTRAIT
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
