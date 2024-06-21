@@ -12,10 +12,11 @@ class PasswordField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
     bool passwordVisible = ref.watch(passwordVisibleProvider);
+    bool hasErr = ref.watch(hasErrProvider);
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: TextField(
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 100.0, minHeight: 100.0),
+      child: TextFormField(
         keyboardType: TextInputType.text,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: elevatedButtonColor,
@@ -30,7 +31,14 @@ class PasswordField extends ConsumerWidget {
           focusedBorder: inputBorder(),
           border: inputBorder(),
           labelText: ' ${lang.password} ',
+          labelStyle:
+              TextStyle(color: hasErr ? Colors.red : elevatedButtonColor),
         ),
+        validator: (validator) {
+          var l = validator.toString().length;
+          if (l < 1) return 'Acar sozuni girizin';
+          return null;
+        },
       ),
     );
   }
