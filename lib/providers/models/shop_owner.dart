@@ -3,4 +3,7 @@ import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/services/api/shop_owner.dart';
 
 var loginShopOwnerProvider = FutureProvider.autoDispose
-    .family<ShopOwner, LoginShopOwnerParams>(_createFn);
+    .family<ResultLoginShopOwner, LoginShopOwnerParams>((ref, params) async {
+  ResultLoginShopOwner result = ResultLoginShopOwner.defaultResult();
+  return result;
+});
