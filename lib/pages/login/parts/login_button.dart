@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key, required this.formKey});
@@ -8,6 +9,8 @@ class LoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
+
     return ElevatedButton(
       onPressed: () {
         if (formKey.currentState?.validate() == true) {
@@ -15,7 +18,7 @@ class LoginButton extends ConsumerWidget {
           return;
         }
       },
-      child: const Text('Ulgama gir'),
+      child: Text(lang.login),
     );
   }
 }
