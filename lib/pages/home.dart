@@ -21,6 +21,8 @@ class HomePage extends ConsumerWidget {
       },
     );
 
-    return token.isEmpty ? LoginPage() : const Center(child: Text('Home Page'));
+    return token.isEmpty
+        ? const LoginPage()
+        : const Center(child: Text('Home Page'));
   }
 }

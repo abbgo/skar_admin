@@ -12,3 +12,5 @@ var passwordVisibleProvider =
     StateNotifierProvider.autoDispose<PasswordVisibleNotifier, bool>(
   (ref) => PasswordVisibleNotifier(),
 );
+
+var buttonPressProvider = StateProvider.autoDispose<bool>((ref) => false);
