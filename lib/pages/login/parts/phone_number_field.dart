@@ -4,8 +4,10 @@ import 'package:skar_admin/helpers/methods/parts/input.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginField extends ConsumerWidget {
-  const LoginField({super.key});
+class PhoneNumberField extends ConsumerWidget {
+  const PhoneNumberField({super.key, required this.phoneNumberCtrl});
+
+  final TextEditingController phoneNumberCtrl;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,6 +16,7 @@ class LoginField extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
+        controller: phoneNumberCtrl,
         maxLength: 8,
         keyboardType: TextInputType.phone,
         autofocus: true,
