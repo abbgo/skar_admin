@@ -12,13 +12,13 @@ Future<void> createShopOwner(ShopOwner shopOwner) async {
   }
 }
 
-Future<void> deleteShopOwner(ShopOwner shopOwner) async {
+Future<void> deleteShopOwner() async {
   if (db.isOpen) {
     await db.rawDelete('DELETE FROM shop_owners');
   }
 }
 
-Future<bool> hasShopOwners(String id, int type) async {
+Future<bool> hasShopOwner() async {
   if (db.isOpen) {
     List<Map<String, dynamic>>? maps = await db.rawQuery(
       "SELECT COUNT(id) as count FROM shop_owners",

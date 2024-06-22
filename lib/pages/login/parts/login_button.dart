@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/database/functions/shop_owner.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop_owner.dart';
+import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/models/shop_owner.dart';
 import 'package:skar_admin/providers/pages/login.dart';
@@ -56,6 +58,13 @@ class LoginButton extends ConsumerWidget {
             await ref
                 .read(refreshTokenProvider.notifier)
                 .update(result.responseLoginShopOwner!.refreshToken);
+
+            bool hasShopOwner = await ref.read(hasShopOwnerProvider.future);
+            if (hasShopOwner) {
+              await deleteShopOwner();
+            }
+
+            await createShopOwner(result.responseLoginShopOwner!.shopOwner);
           }
 
           ref.read(buttonPressProvider.notifier).state = false;
