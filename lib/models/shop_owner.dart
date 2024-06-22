@@ -38,7 +38,7 @@ class ResultLoginShopOwner extends Equatable {
   List<Object?> get props => [responseLoginShopOwner, error];
 }
 
-class ResponseLoginShopOwner extends Equatable {
+class ResponseLoginShopOwner {
   final ShopOwner shopOwner;
   final String accessToken;
   final String refreshToken;
@@ -57,6 +57,11 @@ class ResponseLoginShopOwner extends Equatable {
     );
   }
 
-  @override
-  List<Object?> get props => [shopOwner, accessToken, refreshToken];
+  factory ResponseLoginShopOwner.fromJson(Map<String, dynamic> json) {
+    return ResponseLoginShopOwner(
+      shopOwner: json['shop_owner'],
+      accessToken: json['access_token'],
+      refreshToken: json['refresh_token'],
+    );
+  }
 }
