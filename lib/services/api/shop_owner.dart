@@ -6,7 +6,8 @@ import 'package:skar_admin/models/shop_owner.dart';
 import 'package:http/http.dart' as http;
 
 class ShopOwnerApiService {
-  Future<ShopOwner> loginShopOwner(String phoneNumber, String password) async {
+  Future<ResponseLoginShopOwner> loginShopOwner(
+      String phoneNumber, String password) async {
     Uri uri = Uri.parse('$apiUrl/shop-owners/login');
 
     try {
@@ -22,7 +23,7 @@ class ShopOwnerApiService {
       print(e.toString());
     }
 
-    return ShopOwner.defaultShopOwner();
+    return ResponseLoginShopOwner.defaultResponse();
   }
 }
 

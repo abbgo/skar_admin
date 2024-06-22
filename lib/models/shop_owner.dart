@@ -19,27 +19,44 @@ class ShopOwner {
 }
 
 class ResultLoginShopOwner extends Equatable {
-  final ShopOwner shopOwner;
-  final String accessToken;
-  final String refreshToken;
+  final ResponseLoginShopOwner? responseLoginShopOwner;
   final String error;
 
   const ResultLoginShopOwner({
-    required this.shopOwner,
-    required this.accessToken,
-    required this.refreshToken,
+    this.responseLoginShopOwner,
     required this.error,
   });
 
   factory ResultLoginShopOwner.defaultResult() {
     return ResultLoginShopOwner(
-      shopOwner: ShopOwner.defaultShopOwner(),
-      accessToken: '',
-      refreshToken: '',
+      responseLoginShopOwner: ResponseLoginShopOwner.defaultResponse(),
       error: '',
     );
   }
 
   @override
-  List<Object?> get props => [shopOwner, accessToken, refreshToken, error];
+  List<Object?> get props => [responseLoginShopOwner, error];
+}
+
+class ResponseLoginShopOwner extends Equatable {
+  final ShopOwner shopOwner;
+  final String accessToken;
+  final String refreshToken;
+
+  const ResponseLoginShopOwner({
+    required this.shopOwner,
+    required this.accessToken,
+    required this.refreshToken,
+  });
+
+  factory ResponseLoginShopOwner.defaultResponse() {
+    return ResponseLoginShopOwner(
+      shopOwner: ShopOwner.defaultShopOwner(),
+      accessToken: '',
+      refreshToken: '',
+    );
+  }
+
+  @override
+  List<Object?> get props => [shopOwner, accessToken, refreshToken];
 }
