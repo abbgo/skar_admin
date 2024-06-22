@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
+import 'package:skar_admin/pages/shops/shops.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -12,11 +13,14 @@ class BottomNavigationPart extends ConsumerWidget {
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
 
     List<Widget> pages = [
-      // const MapPage(),
+      const ShopsPage(),
       // const FavoritesPage(),
       // const SearchProductPage(),
       // const ProfilePage(),
     ];
+    // magazynlar
+    // harytlar
+    // settings
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
