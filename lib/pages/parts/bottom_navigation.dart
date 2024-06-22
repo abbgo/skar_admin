@@ -5,7 +5,6 @@ import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
-import 'package:skar_admin/styles/colors.dart';
 
 class BottomNavigationPart extends ConsumerWidget {
   const BottomNavigationPart({super.key});
@@ -26,42 +25,27 @@ class BottomNavigationPart extends ConsumerWidget {
         index: selectedIndex,
         children: pages,
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [
-      //     bottomNavigationBarItemMethod(
-      //       lang.map,
-      //       const Icon(Icons.travel_explore, size: 24),
-      //       isLightBrightness ? Colors.white : scaffoldColorDarkTheme,
-      //     ),
-      //     bottomNavigationBarItemMethod(
-      //       lang.myFavorites,
-      //       const Icon(Icons.favorite_border, size: 24),
-      //       isLightBrightness ? Colors.white : scaffoldColorDarkTheme,
-      //     ),
-      //     bottomNavigationBarItemMethod(
-      //       lang.search,
-      //       Image.asset(
-      //         "assets/icons/search.png",
-      //         color: isLightBrightness ? elevatedButtonColor : Colors.white,
-      //         height: 24,
-      //       ),
-      //       isLightBrightness ? Colors.white : scaffoldColorDarkTheme,
-      //     ),
-      //     bottomNavigationBarItemMethod(
-      //       lang.settings,
-      //       Image.asset(
-      //         "assets/icons/setting.png",
-      //         color: isLightBrightness ? elevatedButtonColor : Colors.white,
-      //         height: 22,
-      //       ),
-      //       isLightBrightness ? Colors.white : scaffoldColorDarkTheme,
-      //     ),
-      //   ],
-      //   currentIndex: selectedIndex,
-      //   onTap: (value) {
-      //     ref.read(selectedBottomIndexProvider.notifier).state = value;
-      //   },
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        items: [
+          bottomNavigationBarItemMethod(
+            'Dukanlarym',
+            const Icon(Icons.storefront_sharp, size: 24),
+          ),
+          bottomNavigationBarItemMethod(
+            'Harytlarym',
+            const Icon(Icons.favorite_border, size: 24),
+          ),
+          bottomNavigationBarItemMethod(
+            'Profile',
+            const Icon(Icons.person, size: 24),
+          ),
+        ],
+        currentIndex: selectedIndex,
+        onTap: (value) {
+          ref.read(selectedBottomIndexProvider.notifier).state = value;
+        },
+      ),
     );
   }
 }
