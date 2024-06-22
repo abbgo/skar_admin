@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skar_admin/database/config.dart';
 import 'package:skar_admin/pages/start.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/theme/theme.dart';
@@ -16,6 +17,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  await createDB(); // create database
   await dotenv.load(fileName: ".env"); // LOAD .ENV FILE
   runApp(const ProviderScope(child: MyApp()));
 }
