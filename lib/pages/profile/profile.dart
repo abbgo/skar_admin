@@ -1,10 +1,19 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/profile/parts/shop_owner_info.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Profile page'));
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: const [
+          ShopOwnerInfo(),
+        ],
+      ),
+    );
   }
 }
