@@ -5,12 +5,14 @@ import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavigationPart extends ConsumerWidget {
   const BottomNavigationPart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
 
     List<Widget> pages = [
@@ -29,15 +31,15 @@ class BottomNavigationPart extends ConsumerWidget {
         backgroundColor: Colors.white,
         items: [
           bottomNavigationBarItemMethod(
-            'Dukanlarym',
+            lang.myShops,
             const Icon(Icons.storefront_sharp, size: 24),
           ),
           bottomNavigationBarItemMethod(
-            'Harytlarym',
+            lang.myProducts,
             const Icon(Icons.favorite_border, size: 24),
           ),
           bottomNavigationBarItemMethod(
-            'Profile',
+            lang.profile,
             const Icon(Icons.person, size: 24),
           ),
         ],

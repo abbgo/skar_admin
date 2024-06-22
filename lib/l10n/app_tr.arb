@@ -6,5 +6,8 @@
     "login":"Ulgama gir",
     "noIntConn":"Internet baglanyşygy ýok !",
     "someErrorOccurred":"Käbir ýalňyşlyk ýüze çykdy",
-    "userNotFound":"Ulanyjy tapylmady"
+    "userNotFound":"Ulanyjy tapylmady",
+    "myShops":"Dükanlarym",
+    "myProducts":"Harytlarym",
+    "profile":"Profile"
 }
