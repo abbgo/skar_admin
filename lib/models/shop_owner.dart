@@ -1,20 +1,23 @@
 import 'package:equatable/equatable.dart';
 
 class ShopOwner {
+  final String id;
   final String fullName;
   final String phoneNumber;
 
-  ShopOwner({required this.fullName, required this.phoneNumber});
+  ShopOwner(
+      {required this.id, required this.fullName, required this.phoneNumber});
 
   factory ShopOwner.fromJson(Map<String, dynamic> json) {
     return ShopOwner(
+      id: json['id'],
       fullName: json['full_name'],
       phoneNumber: json['phone_number'],
     );
   }
 
   factory ShopOwner.defaultShopOwner() {
-    return ShopOwner(fullName: '', phoneNumber: '');
+    return ShopOwner(id: '', fullName: '', phoneNumber: '');
   }
 }
 
