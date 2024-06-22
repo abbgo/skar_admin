@@ -43,12 +43,6 @@ class LoginButton extends ConsumerWidget {
             return;
           }
 
-          print('============= ${result.responseLoginShopOwner == null}');
-          print(result.responseLoginShopOwner!.accessToken);
-          print(result.responseLoginShopOwner!.refreshToken);
-          print(result.responseLoginShopOwner!.shopOwner.fullName);
-          print(result.responseLoginShopOwner!.shopOwner.phoneNumber);
-
           if (result.responseLoginShopOwner != null) {
             if (result.responseLoginShopOwner!.accessToken == '') {
               if (context.mounted) showUserNotFound(context);
