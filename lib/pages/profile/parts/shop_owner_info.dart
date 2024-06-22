@@ -33,6 +33,17 @@ class ShopOwnerInfo extends ConsumerWidget {
                 ),
               ),
             ),
+            title: Text(
+              data.fullName,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              data.phoneNumber,
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         );
       },
