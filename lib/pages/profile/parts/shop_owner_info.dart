@@ -10,17 +10,23 @@ class ShopOwnerInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<ShopOwner> shopOwner = ref.read(getShopOwnerProvider);
+    AsyncValue<ShopOwner> shopOwner = ref.watch(getShopOwnerProvider);
 
     return shopOwner.when(
+      skipLoadingOnRefresh: true,
+      skipLoadingOnReload: true,
       data: (data) {
+        if (data.fullName == '') {
+          return const SizedBox.shrink();
+        }
+
         return Card(
           color: elevatedButtonColor,
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.white,
               child: Text(
-                'AB',
+                data.fullName[0],
                 style: TextStyle(
                   color: elevatedButtonColor,
                   fontWeight: FontWeight.bold,
@@ -31,7 +37,7 @@ class ShopOwnerInfo extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => errorMethod(error),
-      loading: () => loadWidget,
+      loading: () => const SizedBox.shrink(),
     );
   }
 }

@@ -31,7 +31,7 @@ Future<bool> hasShopOwner() async {
 Future<ShopOwner> getShopOwner() async {
   if (db.isOpen) {
     List<Map<String, dynamic>>? maps = await db.rawQuery(
-      "SELECT full_name,phone_number FROM shop_owners LIMIT 1",
+      "SELECT * FROM shop_owners",
     );
 
     if (maps.isEmpty) return ShopOwner.defaultShopOwner();

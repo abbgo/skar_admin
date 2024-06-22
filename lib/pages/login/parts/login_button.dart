@@ -51,24 +51,23 @@ class LoginButton extends ConsumerWidget {
               ref.read(buttonPressProvider.notifier).state = false;
               return;
             }
-            await ref
-                .read(accessTokenProvider.notifier)
-                .update(result.responseLoginShopOwner!.accessToken);
+
+            ref.read(buttonPressProvider.notifier).state = false;
+
+            bool hasShopOwner = await ref.watch(hasShopOwnerProvider.future);
+            if (hasShopOwner) {
+              await deleteShopOwner();
+            }
+            await createShopOwner(result.responseLoginShopOwner!.shopOwner);
 
             await ref
                 .read(refreshTokenProvider.notifier)
                 .update(result.responseLoginShopOwner!.refreshToken);
 
-            bool hasShopOwner = await ref.read(hasShopOwnerProvider.future);
-            if (hasShopOwner) {
-              await deleteShopOwner();
-            }
-
-            await createShopOwner(result.responseLoginShopOwner!.shopOwner);
+            await ref
+                .read(accessTokenProvider.notifier)
+                .update(result.responseLoginShopOwner!.accessToken);
           }
-
-          ref.read(buttonPressProvider.notifier).state = false;
-          return;
         }
       },
       child: buttonPress
