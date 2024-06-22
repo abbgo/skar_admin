@@ -9,21 +9,25 @@ class ShopOwnerApiService {
   Future<ResponseLoginShopOwner> loginShopOwner(
       String phoneNumber, String password) async {
     Uri uri = Uri.parse('$apiUrl/shop-owners/login');
+    Map<String, dynamic> data = {
+      'phone_number': phoneNumber,
+      'password': password,
+    };
 
     try {
       http.Response response = await http.post(
         uri,
-        body: {'phone_number': phoneNumber, 'password': password},
+        body: json.encode(data),
       );
       dynamic jsonData = json.decode(response.body);
-      print('------------------');
-      print(jsonData);
-    } catch (e) {
-      print('-------------------');
-      print(e.toString());
-    }
 
-    return ResponseLoginShopOwner.defaultResponse();
+      if (response.statusCode == 200 && jsonData['status']) {
+        return ResponseLoginShopOwner.fromJson(jsonData);
+      }
+      return ResponseLoginShopOwner.defaultResponse();
+    } catch (e) {
+      rethrow;
+    }
   }
 }
 

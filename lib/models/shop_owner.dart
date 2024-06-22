@@ -59,7 +59,7 @@ class ResponseLoginShopOwner {
 
   factory ResponseLoginShopOwner.fromJson(Map<String, dynamic> json) {
     return ResponseLoginShopOwner(
-      shopOwner: json['shop_owner'],
+      shopOwner: ShopOwner.fromJson(json['shop_owner']),
       accessToken: json['access_token'],
       refreshToken: json['refresh_token'],
     );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/models/shop_owner.dart';
+import 'package:skar_admin/providers/models/shop_owner.dart';
 import 'package:skar_admin/providers/pages/login.dart';
+import 'package:skar_admin/services/api/shop_owner.dart';
 
 class LoginButton extends ConsumerWidget {
   const LoginButton({
@@ -24,6 +27,16 @@ class LoginButton extends ConsumerWidget {
       onPressed: () async {
         if (formKey.currentState?.validate() == true) {
           ref.read(buttonPressProvider.notifier).state = true;
+
+          LoginShopOwnerParams params = LoginShopOwnerParams(
+            phoneNumber: '+993${phoneNumberCtrl.text}',
+            password: passwordCtrl.text,
+          );
+          ResultLoginShopOwner result =
+              await ref.read(loginShopOwnerProvider(params).future);
+
+          ref.read(buttonPressProvider.notifier).state = false;
+
           return;
         }
       },
