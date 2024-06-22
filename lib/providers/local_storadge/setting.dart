@@ -3,8 +3,14 @@ import 'package:shared_preferences_riverpod/shared_preferences_riverpod.dart';
 
 late SharedPreferences prefs;
 
-final tokenProvider = createPrefProvider<String>(
+final accessTokenProvider = createPrefProvider<String>(
   prefs: (_) => prefs,
-  prefKey: "token",
+  prefKey: "access_token",
+  defaultValue: '',
+);
+
+final refreshTokenProvider = createPrefProvider<String>(
+  prefs: (_) => prefs,
+  prefKey: "refresh_token",
   defaultValue: '',
 );

@@ -10,7 +10,7 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String token = ref.read(tokenProvider);
+    String accessToken = ref.watch(accessTokenProvider);
 
     ref.listen(
       connectivityStatusProviders,
@@ -21,7 +21,7 @@ class HomePage extends ConsumerWidget {
       },
     );
 
-    return token.isEmpty
+    return accessToken.isEmpty
         ? const LoginPage()
         : const Center(child: Text('Home Page'));
   }
