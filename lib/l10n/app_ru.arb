@@ -4,5 +4,7 @@
     "enterYourCorrectPhoneNumber":"Пожалуйста, введите правильный номер телефона",
     "enterYourPassword":"Введите ваш пароль",
     "login":"Логин",
-    "noIntConn":"Нет соединения с интернетом !"
+    "noIntConn":"Нет соединения с интернетом !",
+    "someErrorOccurred":"Произошла какая-то ошибка",
+    "userNotFound":"Пользователь не найден"
 }

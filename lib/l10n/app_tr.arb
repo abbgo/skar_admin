@@ -4,5 +4,7 @@
     "enterYourCorrectPhoneNumber":"Telefon belgiňizi dogry giriziň",
     "enterYourPassword":"Açar sözi giriziň",
     "login":"Ulgama gir",
-    "noIntConn":"Internet baglanyşygy ýok !"
+    "noIntConn":"Internet baglanyşygy ýok !",
+    "someErrorOccurred":"Käbir ýalňyşlyk ýüze çykdy",
+    "userNotFound":"Ulanyjy tapylmady"
 }

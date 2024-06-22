@@ -4,5 +4,7 @@
     "enterYourCorrectPhoneNumber":"Please enter your correct phone number",
     "enterYourPassword":"Enter your password",
     "login":"Login",
-    "noIntConn":"No internet connection !"
+    "noIntConn":"No internet connection !",
+    "someErrorOccurred":"Some error occurred",
+    "userNotFound":"User not found"
 }
