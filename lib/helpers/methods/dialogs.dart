@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
 
 Future<dynamic> showLogoutDialog(BuildContext context) {
   return showDialog(
@@ -11,13 +13,17 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
             onPressed: () => Navigator.pop(context),
             child: const Text('Yok'),
           ),
-          TextButton(
-            onPressed: () {
-              // Handle positive button click (e.g., perform action)
-              Navigator.pop(context);
-              // You can add your logic here
+          Consumer(
+            builder: (context, ref, child) {
+              return TextButton(
+                onPressed: () async {
+                  await ref.read(accessTokenProvider.notifier).update('');
+                  await ref.read(refreshTokenProvider.notifier).update('');
+                  if (context.mounted) Navigator.pop(context);
+                },
+                child: const Text('Hawa'),
+              );
             },
-            child: const Text('Hawa'),
           ),
         ],
       );
