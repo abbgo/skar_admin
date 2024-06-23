@@ -16,4 +16,10 @@ final refreshTokenProvider = createPrefProvider<String>(
   defaultValue: '',
 );
 
+final langProvider = createPrefProvider<String>(
+  prefs: (_) => prefs,
+  prefKey: "lang",
+  defaultValue: 'tr',
+);
+
 var selectedBottomIndexProvider = StateProvider.autoDispose<int>((ref) => 0);
