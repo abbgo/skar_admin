@@ -10,7 +10,8 @@ class ShopListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       height: cardHeight,
       child: Card(
         child: Row(
