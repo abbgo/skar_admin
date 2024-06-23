@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
 import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
@@ -28,7 +29,9 @@ class BottomNavigationPart extends ConsumerWidget {
             ? AppBar(
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showLogoutDialog(context);
+                    },
                     icon: const Icon(Icons.logout),
                   ),
                 ],
