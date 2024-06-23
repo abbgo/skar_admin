@@ -15,5 +15,7 @@
     "addNewShop":"Добавить новый магазин",
     "addNewProduct":"Добавить новый продукт",
     "addShopInformation":"Добавить информацию о магазине",
-    "addProductInformation":"Добавить информацию о продукте"
+    "addProductInformation":"Добавить информацию о продукте",
+    "nameTMRequired":"Требуется туркменское имя",
+    "nameRURequired":"Требуется русское имя"
 }

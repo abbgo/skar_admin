@@ -11,6 +11,15 @@ class AddShopPage extends StatefulWidget {
 
 class _AddShopPageState extends State<AddShopPage> {
   final GlobalKey<FormState> addShopformKey = GlobalKey<FormState>();
+  final TextEditingController nameTMCtrl = TextEditingController();
+  final TextEditingController nameRUCtrl = TextEditingController();
+
+  @override
+  void dispose() {
+    nameTMCtrl.dispose();
+    nameRUCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +35,8 @@ class _AddShopPageState extends State<AddShopPage> {
           key: addShopformKey,
           child: ListView(
             physics: const BouncingScrollPhysics(),
-            children: const [
-              ShopNameTmInput(),
+            children: [
+              ShopNameTmInput(nameTMCtrl: nameTMCtrl),
             ],
           ),
         ),
