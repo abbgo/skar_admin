@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/pages/add_shop/parts/shop_name_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
 
 class AddShopPage extends StatefulWidget {
@@ -37,6 +38,7 @@ class _AddShopPageState extends State<AddShopPage> {
             physics: const BouncingScrollPhysics(),
             children: [
               ShopNameTmInput(nameTMCtrl: nameTMCtrl),
+              ShopNameRuInput(nameRUCtrl: nameRUCtrl),
             ],
           ),
         ),
