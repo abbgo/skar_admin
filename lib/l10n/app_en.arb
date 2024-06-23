@@ -9,5 +9,7 @@
     "userNotFound":"User not found",
     "myShops":"my shops",
     "myProducts":"My products",
-    "profile":"Profile"
+    "profile":"Profile",
+    "no":"No",
+    "yes":"Yes"
 }

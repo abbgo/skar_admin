@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<dynamic> showLogoutDialog(BuildContext context) {
+  var lang = AppLocalizations.of(context)!;
+
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -11,7 +14,10 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Yok'),
+            child: Text(
+              lang.no,
+              style: const TextStyle(color: Colors.black, fontSize: 18),
+            ),
           ),
           Consumer(
             builder: (context, ref, child) {
@@ -21,7 +27,10 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
                   await ref.read(refreshTokenProvider.notifier).update('');
                   if (context.mounted) Navigator.pop(context);
                 },
-                child: const Text('Hawa'),
+                child: Text(
+                  lang.yes,
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
+                ),
               );
             },
           ),
