@@ -13,3 +13,5 @@ Center errorMethod(Object error) {
     child: Text(error.toString(), textAlign: TextAlign.center),
   );
 }
+
+Image errImage = Image.asset("assets/images/back_logo.jpg", fit: BoxFit.cover);
