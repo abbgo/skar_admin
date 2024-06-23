@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/pages/shops/parts/shop_list_tile_data.dart';
 import 'package:skar_admin/pages/shops/parts/shop_list_tile_image.dart';
 
 class ShopListTile extends StatelessWidget {
@@ -17,12 +18,7 @@ class ShopListTile extends StatelessWidget {
         child: Row(
           children: [
             ShopListTileImage(shop: shop, cardHeight: cardHeight),
-            // ShopListTileData(shop: shop, forFavorite: forFavorite),
-            // ShopListTileMapButton(
-            //   shop: shop,
-            //   mapPageContext: mapPageContext,
-            //   forFavorite: forFavorite,
-            // ),
+            ShopListTileData(shop: shop),
           ],
         ),
       ),
