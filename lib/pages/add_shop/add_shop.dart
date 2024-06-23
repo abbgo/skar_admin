@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
 
-class AddShopPage extends StatelessWidget {
+class AddShopPage extends StatefulWidget {
   const AddShopPage({super.key});
+
+  @override
+  State<AddShopPage> createState() => _AddShopPageState();
+}
+
+class _AddShopPageState extends State<AddShopPage> {
+  final GlobalKey<FormState> addShopformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +20,17 @@ class AddShopPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(lang.addShopInformation),
       ),
-      body: const Center(
-        child: Text('Add new shop page'),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Form(
+          key: addShopformKey,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: const [
+              ShopNameTmInput(),
+            ],
+          ),
+        ),
       ),
     );
   }
