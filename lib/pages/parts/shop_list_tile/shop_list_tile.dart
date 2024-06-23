@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/shop.dart';
-import 'package:skar_admin/pages/shops/parts/shop_list_tile_data.dart';
-import 'package:skar_admin/pages/shops/parts/shop_list_tile_image.dart';
+import 'package:skar_admin/pages/parts/shop_list_tile/parts/shop_list_tile_data.dart';
+import 'package:skar_admin/pages/parts/shop_list_tile/parts/shop_list_tile_image.dart';
 
 class ShopListTile extends StatelessWidget {
   const ShopListTile({super.key, required this.shop});

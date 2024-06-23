@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
-import 'package:skar_admin/pages/shops/parts/shop_list_tile.dart';
+import 'package:skar_admin/pages/parts/shop_list_tile/shop_list_tile.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
