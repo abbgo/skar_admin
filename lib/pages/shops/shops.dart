@@ -1,12 +1,16 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
+import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
-class ShopsPage extends StatelessWidget {
+class ShopsPage extends ConsumerWidget {
   const ShopsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
@@ -14,6 +18,28 @@ class ShopsPage extends StatelessWidget {
         final indexInPage = index % pageSize;
 
         ShopParams shopParams = ShopParams(page: page, isDeleted: false);
+        final AsyncValue<ResultShop> shops =
+            ref.watch(fetchShopsProvider(shopParams));
+
+        return shops.when(
+          skipLoadingOnRefresh: true,
+          skipLoadingOnReload: true,
+          skipError: true,
+          data: (response) {
+            if (response.error != '') {
+              return null;
+            }
+            if (indexInPage >= response.shops!.length) {
+              return null;
+            }
+            final shop = response.shops![indexInPage];
+            return Card(
+              child: Text(shop.nameTM),
+            );
+          },
+          error: (error, stackTrace) => errorMethod(error),
+          loading: () => null,
+        );
       },
     );
   }

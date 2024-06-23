@@ -6,7 +6,7 @@ import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
-import 'package:skar_admin/providers/models/shop_owner.dart';
+import 'package:skar_admin/providers/api/shop_owner.dart';
 import 'package:skar_admin/providers/pages/login.dart';
 import 'package:skar_admin/services/api/shop_owner.dart';
 

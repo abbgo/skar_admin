@@ -7,7 +7,8 @@ import 'package:skar_admin/models/shop.dart';
 
 class ShopApiService {
   // fetch shops -------------------------------------------------------
-  Future<List<Shop>> fetchShops({
+  Future<ResultShop> fetchShops({
+    required String accessToken,
     required int page,
     required String shopOwnerID,
     required bool isDeleted,
@@ -22,17 +23,26 @@ class ShopApiService {
     );
 
     try {
-      http.Response response = await http.get(uri);
+      http.Response response = await http.get(
+        uri,
+        headers: {'Authorization': 'Bearer $accessToken'},
+      );
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        if (jsonData['shops'] == null) return [];
+        if (jsonData['shops'] == null) {
+          return const ResultShop(shops: [], error: '');
+        }
+
         var shopsList = jsonData['shops'] as List;
-        return shopsList
-            .map<Shop>((propJson) => Shop.fromJson(propJson))
-            .toList();
+        return ResultShop(
+          shops: shopsList
+              .map<Shop>((propJson) => Shop.fromJson(propJson))
+              .toList(),
+          error: '',
+        );
       }
-      return [];
+      return const ResultShop(shops: [], error: 'auth error');
     } catch (e) {
       rethrow;
     }
@@ -40,14 +50,13 @@ class ShopApiService {
 }
 
 class ShopParams extends Equatable {
-  final String? shopOwnerID;
   final bool? isDeleted;
-  final int? page;
+  final int page;
 
-  const ShopParams({this.shopOwnerID, this.isDeleted, this.page});
+  const ShopParams({this.isDeleted, required this.page});
 
   @override
-  List<Object?> get props => [shopOwnerID, isDeleted, page];
+  List<Object?> get props => [isDeleted, page];
 
   // ShopParams copyWith({String? shopOwnerID, bool? isDeleted, int? page}) {
   //   return ShopParams(
