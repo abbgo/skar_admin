@@ -11,5 +11,7 @@
     "myProducts":"My products",
     "profile":"Profile",
     "no":"No",
-    "yes":"Yes"
+    "yes":"Yes",
+    "addNewShop":"Add new shop",
+    "addNewProduct":"Add new products"
 }
