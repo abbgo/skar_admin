@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/pages/shops/parts/shop_list_tile.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
@@ -32,10 +33,8 @@ class ShopsPage extends ConsumerWidget {
             if (indexInPage >= response.shops!.length) {
               return null;
             }
-            final shop = response.shops![indexInPage];
-            return Card(
-              child: Text(shop.nameTM),
-            );
+            Shop shop = response.shops![indexInPage];
+            return ShopListTile(shop: shop);
           },
           error: (error, stackTrace) => errorMethod(error),
           loading: () => null,
