@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
 
 class ShopListTile extends StatelessWidget {
   const ShopListTile({super.key, required this.shop});
@@ -9,7 +11,12 @@ class ShopListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Text(shop.nameTM),
+      child: Consumer(
+        builder: (context, ref, child) {
+          bool isTM = ref.watch(langProvider) == 'tr';
+          return Text(isTM ? shop.nameTM : shop.nameRU);
+        },
+      ),
     );
   }
 }
