@@ -1,10 +1,17 @@
 import 'package:flutter/widgets.dart';
+import 'package:skar_admin/datas/static.dart';
 
 class ShopsPage extends StatelessWidget {
   const ShopsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Shops Page'));
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        final page = index ~/ pageSize + 1;
+        final indexInPage = index % pageSize;
+      },
+    );
   }
 }

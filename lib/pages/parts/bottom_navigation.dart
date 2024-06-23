@@ -21,32 +21,34 @@ class BottomNavigationPart extends ConsumerWidget {
       const ProfilePage(),
     ];
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: IndexedStack(
-        index: selectedIndex,
-        children: pages,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: [
-          bottomNavigationBarItemMethod(
-            lang.myShops,
-            const Icon(Icons.storefront_sharp, size: 24),
-          ),
-          bottomNavigationBarItemMethod(
-            lang.myProducts,
-            const Icon(Icons.favorite_border, size: 24),
-          ),
-          bottomNavigationBarItemMethod(
-            lang.profile,
-            const Icon(Icons.person, size: 24),
-          ),
-        ],
-        currentIndex: selectedIndex,
-        onTap: (value) {
-          ref.read(selectedBottomIndexProvider.notifier).state = value;
-        },
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: IndexedStack(
+          index: selectedIndex,
+          children: pages,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          items: [
+            bottomNavigationBarItemMethod(
+              lang.myShops,
+              const Icon(Icons.storefront_rounded, size: 24),
+            ),
+            bottomNavigationBarItemMethod(
+              lang.myProducts,
+              const Icon(Icons.local_mall, size: 24),
+            ),
+            bottomNavigationBarItemMethod(
+              lang.profile,
+              const Icon(Icons.person, size: 24),
+            ),
+          ],
+          currentIndex: selectedIndex,
+          onTap: (value) {
+            ref.read(selectedBottomIndexProvider.notifier).state = value;
+          },
+        ),
       ),
     );
   }
