@@ -24,7 +24,6 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
               return TextButton(
                 onPressed: () async {
                   await ref.read(accessTokenProvider.notifier).update('');
-                  await ref.read(refreshTokenProvider.notifier).update('');
                   if (context.mounted) Navigator.pop(context);
                 },
                 child: Text(

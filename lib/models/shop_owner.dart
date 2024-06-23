@@ -48,19 +48,16 @@ class ResultLoginShopOwner extends Equatable {
 class ResponseLoginShopOwner {
   final ShopOwner shopOwner;
   final String accessToken;
-  final String refreshToken;
 
   const ResponseLoginShopOwner({
     required this.shopOwner,
     required this.accessToken,
-    required this.refreshToken,
   });
 
   factory ResponseLoginShopOwner.defaultResponse() {
     return ResponseLoginShopOwner(
       shopOwner: ShopOwner.defaultShopOwner(),
       accessToken: '',
-      refreshToken: '',
     );
   }
 
@@ -68,7 +65,6 @@ class ResponseLoginShopOwner {
     return ResponseLoginShopOwner(
       shopOwner: ShopOwner.fromJson(json['shop_owner']),
       accessToken: json['access_token'],
-      refreshToken: json['refresh_token'],
     );
   }
 }

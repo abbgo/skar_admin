@@ -10,12 +10,6 @@ final accessTokenProvider = createPrefProvider<String>(
   defaultValue: '',
 );
 
-final refreshTokenProvider = createPrefProvider<String>(
-  prefs: (_) => prefs,
-  prefKey: "refresh_token",
-  defaultValue: '',
-);
-
 final langProvider = createPrefProvider<String>(
   prefs: (_) => prefs,
   prefKey: "lang",

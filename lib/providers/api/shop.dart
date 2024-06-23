@@ -23,7 +23,6 @@ var fetchShopsProvider =
 
       if (resultShop.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
-        await ref.read(refreshTokenProvider.notifier).update('');
       }
       result = resultShop;
     } catch (e) {

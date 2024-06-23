@@ -61,10 +61,6 @@ class LoginButton extends ConsumerWidget {
             await createShopOwner(result.responseLoginShopOwner!.shopOwner);
 
             await ref
-                .read(refreshTokenProvider.notifier)
-                .update(result.responseLoginShopOwner!.refreshToken);
-
-            await ref
                 .read(accessTokenProvider.notifier)
                 .update(result.responseLoginShopOwner!.accessToken);
           }
