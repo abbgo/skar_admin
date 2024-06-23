@@ -24,6 +24,16 @@ class BottomNavigationPart extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        appBar: selectedIndex == 2
+            ? AppBar(
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.logout),
+                  ),
+                ],
+              )
+            : null,
         body: IndexedStack(
           index: selectedIndex,
           children: pages,

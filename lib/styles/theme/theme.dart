@@ -6,6 +6,7 @@ import 'package:skar_admin/styles/theme/parts/checkbox_theme.dart';
 import 'package:skar_admin/styles/theme/parts/elevated_button_theme.dart';
 import 'package:skar_admin/styles/theme/parts/floating_action_button_theme.dart';
 import 'package:skar_admin/styles/theme/parts/icon_button_theme.dart';
+import 'package:skar_admin/styles/theme/parts/icon_theme.dart';
 import 'package:skar_admin/styles/theme/parts/input_theme.dart';
 import 'package:skar_admin/styles/theme/parts/tab_bar_theme.dart';
 import 'package:skar_admin/styles/theme/parts/text_theme.dart';
@@ -31,5 +32,6 @@ class AppTheme {
     tabBarTheme: AppTabBarTheme.lightTabBarTheme,
     floatingActionButtonTheme:
         AppFloatingActionButtonTheme.lightFloatingActionButtonTheme,
+    iconTheme: AppIconTheme.lightIconTheme,
   );
 }
