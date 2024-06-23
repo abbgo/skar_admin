@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
+import 'package:skar_admin/pages/parts/add_shop_button.dart';
 import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
@@ -62,6 +63,7 @@ class BottomNavigationPart extends ConsumerWidget {
             ref.read(selectedBottomIndexProvider.notifier).state = value;
           },
         ),
+        floatingActionButton: selectedIndex == 0 ? const AddShopButton() : null,
       ),
     );
   }
