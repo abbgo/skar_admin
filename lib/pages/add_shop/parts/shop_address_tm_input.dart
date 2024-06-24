@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:skar_admin/pages/parts/input_part.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ShopNameRuInput extends StatelessWidget {
-  const ShopNameRuInput({super.key, required this.ctrl});
+class ShopAddressTmInput extends StatelessWidget {
+  const ShopAddressTmInput({super.key, required this.ctrl});
 
   final TextEditingController ctrl;
 
@@ -13,10 +13,10 @@ class ShopNameRuInput extends StatelessWidget {
 
     return InputPart(
       ctrl: ctrl,
-      label: 'Ady (ru)',
+      label: 'Salgysy (tm)',
       validatorFunc: (validator) {
         var l = validator.toString().length;
-        if (l < 1) return lang.nameRURequired;
+        if (l < 1) return lang.nameTMRequired;
         return null;
       },
     );
