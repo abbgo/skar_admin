@@ -18,20 +18,23 @@ class InputPhone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: ctrl,
-      maxLength: 8,
-      keyboardType: TextInputType.phone,
-      autofocus: autofocus ?? false,
-      textAlignVertical: TextAlignVertical.center,
-      cursorColor: elevatedButtonColor,
-      decoration: InputDecoration(
-        prefixText: '+993 ',
-        focusedBorder: inputBorder(),
-        border: inputBorder(),
-        labelText: ' $label ',
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 90.0, minHeight: 90.0),
+      child: TextFormField(
+        controller: ctrl,
+        maxLength: 8,
+        keyboardType: TextInputType.phone,
+        autofocus: autofocus ?? false,
+        textAlignVertical: TextAlignVertical.center,
+        cursorColor: elevatedButtonColor,
+        decoration: InputDecoration(
+          prefixText: '+993 ',
+          focusedBorder: inputBorder(),
+          border: inputBorder(),
+          labelText: ' $label ',
+        ),
+        validator: validatorFunc,
       ),
-      validator: validatorFunc,
     );
   }
 }

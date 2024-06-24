@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                 key: formKey,
                 child: Column(
                   children: [
-                    PhoneNumberField(phoneNumberCtrl: phoneNumberCtrl),
+                    PhoneNumberField(ctrl: phoneNumberCtrl),
                     PasswordField(passwordCtrl: passwordCtrl),
                     LoginButton(
                       formKey: formKey,
