@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/parts/input_part.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class ShopAddressRuInput extends StatelessWidget {
+  const ShopAddressRuInput({super.key, required this.ctrl});
+
+  final TextEditingController ctrl;
+
+  @override
+  Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+
+    return InputPart(
+      ctrl: ctrl,
+      label: 'Salgysy (ru)',
+      validatorFunc: (validator) {
+        var l = validator.toString().length;
+        if (l < 1) return lang.nameTMRequired;
+        return null;
+      },
+    );
+  }
+}
