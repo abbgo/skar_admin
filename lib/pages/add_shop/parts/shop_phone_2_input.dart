@@ -16,8 +16,10 @@ class ShopPhone2Input extends StatelessWidget {
       label: '${lang.phoneNumber} (2)',
       autofocus: true,
       validatorFunc: (validator) {
-        var l = validator.toString().length;
-        if (l != 8) return lang.enterYourCorrectPhoneNumber;
+        if (validator!.isNotEmpty || validator != '') {
+          var l = validator.toString().length;
+          if (l != 8) return lang.enterYourCorrectPhoneNumber;
+        }
         return null;
       },
     );
