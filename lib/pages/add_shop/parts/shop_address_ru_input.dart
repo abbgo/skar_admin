@@ -16,7 +16,7 @@ class ShopAddressRuInput extends StatelessWidget {
       label: 'Salgysy (ru)',
       validatorFunc: (validator) {
         var l = validator.toString().length;
-        if (l < 1) return lang.nameTMRequired;
+        if (l < 1) return lang.pleaseEnterThisInformation;
         return null;
       },
     );

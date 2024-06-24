@@ -16,7 +16,7 @@ class ShopNameRuInput extends StatelessWidget {
       label: 'Ady (ru)',
       validatorFunc: (validator) {
         var l = validator.toString().length;
-        if (l < 1) return lang.nameRURequired;
+        if (l < 1) return lang.pleaseEnterThisInformation;
         return null;
       },
     );

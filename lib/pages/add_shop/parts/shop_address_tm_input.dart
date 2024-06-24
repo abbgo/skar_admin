@@ -16,7 +16,7 @@ class ShopAddressTmInput extends StatelessWidget {
       label: 'Salgysy (tm)',
       validatorFunc: (validator) {
         var l = validator.toString().length;
-        if (l < 1) return lang.nameTMRequired;
+        if (l < 1) return lang.pleaseEnterThisInformation;
         return null;
       },
     );

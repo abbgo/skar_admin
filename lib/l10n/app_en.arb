@@ -16,6 +16,6 @@
     "addNewProduct":"Add new products",
     "addShopInformation":"Add shop information",
     "addProductInformation":"Add product information",
-    "nameTMRequired":"Turkmen name required",
-    "nameRURequired":"Russion name required"
+    "pleaseEnterThisInformation":"Please enter this information"
+
 }
