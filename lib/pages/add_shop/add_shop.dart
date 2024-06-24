@@ -4,6 +4,7 @@ import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
+import 'package:skar_admin/pages/add_shop/parts/shop_phone_2_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_phone_input.dart';
 
 class AddShopPage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _AddShopPageState extends State<AddShopPage> {
   final TextEditingController addressTMCtrl = TextEditingController();
   final TextEditingController addressRUCtrl = TextEditingController();
   final TextEditingController phoneCtrl = TextEditingController();
+  final TextEditingController phone2Ctrl = TextEditingController();
 
   @override
   void dispose() {
@@ -28,6 +30,7 @@ class _AddShopPageState extends State<AddShopPage> {
     addressTMCtrl.dispose();
     addressRUCtrl.dispose();
     phoneCtrl.dispose();
+    phone2Ctrl.dispose();
 
     super.dispose();
   }
@@ -51,17 +54,8 @@ class _AddShopPageState extends State<AddShopPage> {
               ShopNameRuInput(ctrl: nameRUCtrl),
               ShopAddressTmInput(ctrl: addressTMCtrl),
               ShopAddressRuInput(ctrl: addressRUCtrl),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: ShopPhoneInput(ctrl: phoneCtrl)),
-                  const SizedBox(width: 20),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Icon(Icons.add),
-                  ),
-                ],
-              ),
+              ShopPhoneInput(ctrl: phoneCtrl),
+              ShopPhone2Input(ctrl: phone2Ctrl),
             ],
           ),
         ),
