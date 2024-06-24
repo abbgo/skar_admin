@@ -32,11 +32,6 @@ class InputPart extends StatelessWidget {
           labelText: ' $label ',
         ),
         validator: validatorFunc,
-        // validator: (validator) {
-        //   var l = validator.toString().length;
-        //   if (l < 1) return lang.nameTMRequired;
-        //   return null;
-        // },
       ),
     );
   }
