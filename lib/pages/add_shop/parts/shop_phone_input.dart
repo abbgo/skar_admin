@@ -13,7 +13,7 @@ class ShopPhoneInput extends StatelessWidget {
 
     return InputPhone(
       ctrl: ctrl,
-      label: lang.phoneNumber,
+      label: '${lang.phoneNumber} *',
       autofocus: true,
       validatorFunc: (validator) {
         var l = validator.toString().length;

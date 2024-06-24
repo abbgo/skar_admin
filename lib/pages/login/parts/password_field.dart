@@ -32,7 +32,7 @@ class PasswordField extends ConsumerWidget {
           ),
           focusedBorder: inputBorder(),
           border: inputBorder(),
-          labelText: ' ${lang.password} ',
+          labelText: ' ${lang.password} *',
         ),
         validator: (validator) {
           var l = validator.toString().length;

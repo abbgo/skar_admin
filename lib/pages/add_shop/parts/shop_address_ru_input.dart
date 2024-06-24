@@ -13,7 +13,7 @@ class ShopAddressRuInput extends StatelessWidget {
 
     return InputPart(
       ctrl: ctrl,
-      label: 'Salgysy (ru)',
+      label: 'Salgysy (ru) *',
       validatorFunc: (validator) {
         var l = validator.toString().length;
         if (l < 1) return lang.pleaseEnterThisInformation;

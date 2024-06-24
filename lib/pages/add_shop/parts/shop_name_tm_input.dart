@@ -13,7 +13,7 @@ class ShopNameTmInput extends StatelessWidget {
 
     return InputPart(
       ctrl: ctrl,
-      label: 'Ady (tm)',
+      label: 'Ady (tm) *',
       validatorFunc: (validator) {
         var l = validator.toString().length;
         if (l < 1) return lang.pleaseEnterThisInformation;
