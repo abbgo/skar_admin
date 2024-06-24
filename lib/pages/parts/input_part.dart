@@ -3,10 +3,18 @@ import 'package:skar_admin/helpers/methods/parts/input.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class InputPart extends StatelessWidget {
-  const InputPart({super.key, required this.ctrl, this.validatorFunc});
+  const InputPart({
+    super.key,
+    required this.ctrl,
+    this.validatorFunc,
+    required this.label,
+    this.autofocus,
+  });
 
   final TextEditingController ctrl;
   final String? Function(String?)? validatorFunc;
+  final String label;
+  final bool? autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +23,13 @@ class InputPart extends StatelessWidget {
       child: TextFormField(
         controller: ctrl,
         keyboardType: TextInputType.text,
-        autofocus: true,
+        autofocus: autofocus ?? false,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: elevatedButtonColor,
         decoration: InputDecoration(
           focusedBorder: inputBorder(),
           border: inputBorder(),
-          labelText: ' Ady(tm) ',
+          labelText: ' $label ',
         ),
         validator: validatorFunc,
         // validator: (validator) {
