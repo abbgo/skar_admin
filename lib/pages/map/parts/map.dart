@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:skar_admin/helpers/functions/functions.dart';
 import 'package:skar_admin/providers/pages/map.dart';
 
 class Map extends StatefulWidget {
@@ -29,22 +30,35 @@ class _MapState extends State<Map> {
           },
         );
 
-        return GoogleMap(
-          markers: markers,
-          initialCameraPosition: cameraPosition,
-          mapType: MapType.hybrid,
-          myLocationButtonEnabled: false,
-          zoomControlsEnabled: false,
-          onMapCreated: (GoogleMapController controller) {
-            if (!_mapController.isCompleted) {
-              _mapController.complete(controller);
-            }
-          },
-          onTap: (argument) async {
-            await ref
-                .read(markersProvider.notifier)
-                .setMarker(argument.latitude, argument.longitude);
-          },
+        return Stack(
+          alignment: Alignment.topLeft,
+          children: [
+            GoogleMap(
+              markers: markers,
+              initialCameraPosition: cameraPosition,
+              mapType: MapType.hybrid,
+              myLocationButtonEnabled: false,
+              zoomControlsEnabled: false,
+              onMapCreated: (GoogleMapController controller) {
+                if (!_mapController.isCompleted) {
+                  _mapController.complete(controller);
+                }
+              },
+              onTap: (argument) async {
+                await ref
+                    .read(markersProvider.notifier)
+                    .setMarker(argument.latitude, argument.longitude);
+              },
+            ),
+            Positioned(
+              left: 5,
+              top: screenProperties(context).topSafeArea,
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(Icons.adaptive.arrow_back),
+              ),
+            ),
+          ],
         );
       },
     );

@@ -7,10 +7,11 @@ import 'package:skar_admin/providers/pages/map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 ScreenProperties screenProperties(BuildContext context) {
-  ScreenProperties screenProperties = ScreenProperties(0, 0);
+  ScreenProperties screenProperties = ScreenProperties(0, 0, 0);
 
   screenProperties.width = MediaQuery.of(context).size.width;
   screenProperties.height = MediaQuery.of(context).size.height;
+  screenProperties.topSafeArea = MediaQuery.of(context).viewPadding.top;
 
   return screenProperties;
 }
