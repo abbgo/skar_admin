@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/pages/add_shop/parts/coordinate_input.dart';
 import 'package:skar_admin/pages/map/map.dart';
 import 'package:skar_admin/providers/pages/map.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShopCoordinatesInput extends StatelessWidget {
   const ShopCoordinatesInput({
@@ -17,12 +18,14 @@ class ShopCoordinatesInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            const Text('Dukanyn kordinatalaryny girizin *'),
+            Text('${lang.enterTheCoordinatesOfTheShop} *'),
             IconButton(
               onPressed: () => goToPage(context, const MapPage(), false),
               icon: const Icon(Icons.travel_explore),

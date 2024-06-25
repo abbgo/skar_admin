@@ -18,5 +18,6 @@
     "addProductInformation":"Harydyň maglumatlaryny giriziň",
     "pleaseEnterThisInformation":"Bu maglumaty giriziň",
     "locationPermission":"Progarmmany ulanmak ucin lokasiya rugsat berin",
-    "allow":"Rugsat berin"
+    "allow":"Rugsat berin",
+    "enterTheCoordinatesOfTheShop":"Dükanyň koordinatlaryny giriziň"
 }

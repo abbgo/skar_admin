@@ -18,5 +18,7 @@
     "addProductInformation":"Добавить информацию о продукте",
     "pleaseEnterThisInformation":"Пожалуйста, введите эту информацию",
     "locationPermission":"Разрешить местоположению использовать приложение",
-    "allow":"Позволять"
+    "allow":"Позволять",
+    "enterTheCoordinatesOfTheShop":"Введите координаты магазина"
+
 }
