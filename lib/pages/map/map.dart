@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/functions.dart';
 import 'package:skar_admin/providers/pages/map.dart';
 import 'package:skar_admin/pages/map/parts/location_permission.dart'
     as permission;
@@ -9,6 +10,7 @@ class MapPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    permissionHandler(ref);
     bool hasPermission = ref.watch(locationPermissionProvider);
     bool isLoading = ref.watch(loadProvider);
 
