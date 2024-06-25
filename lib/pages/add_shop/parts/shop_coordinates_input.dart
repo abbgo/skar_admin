@@ -14,8 +14,6 @@ class ShopCoordinatesInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var lang = AppLocalizations.of(context)!;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,34 +21,37 @@ class ShopCoordinatesInput extends StatelessWidget {
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(
-              child: InputPart(
-                ctrl: latitudeCtrl,
-                label: 'Latitude *',
-                keyboardType: TextInputType.number,
-                validatorFunc: (validator) {
-                  var l = validator.toString().length;
-                  if (l < 1) return lang.pleaseEnterThisInformation;
-                  return null;
-                },
-              ),
-            ),
+            CoordinateInput(ctrl: latitudeCtrl, label: 'Latitude *'),
             const SizedBox(width: 20),
-            Expanded(
-              child: InputPart(
-                ctrl: longitudeCtrl,
-                label: 'Longitude *',
-                keyboardType: TextInputType.number,
-                validatorFunc: (validator) {
-                  var l = validator.toString().length;
-                  if (l < 1) return lang.pleaseEnterThisInformation;
-                  return null;
-                },
-              ),
-            ),
+            CoordinateInput(ctrl: longitudeCtrl, label: 'Longitude *'),
           ],
         ),
       ],
+    );
+  }
+}
+
+class CoordinateInput extends StatelessWidget {
+  const CoordinateInput({super.key, required this.ctrl, required this.label});
+
+  final TextEditingController ctrl;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+
+    return Expanded(
+      child: InputPart(
+        ctrl: ctrl,
+        label: label,
+        keyboardType: TextInputType.number,
+        validatorFunc: (validator) {
+          var l = validator.toString().length;
+          if (l < 1) return lang.pleaseEnterThisInformation;
+          return null;
+        },
+      ),
     );
   }
 }
