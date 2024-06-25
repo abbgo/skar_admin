@@ -16,8 +16,15 @@ class ShopCoordinatesInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Dukanyn kordinatalaryny girizin *'),
-        const SizedBox(height: 10),
+        Row(
+          children: [
+            const Text('Dukanyn kordinatalaryny girizin *'),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.travel_explore),
+            ),
+          ],
+        ),
         Row(
           children: [
             CoordinateInput(ctrl: latitudeCtrl, label: 'Latitude *'),
