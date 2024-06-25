@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:skar_admin/datas/screen.dart';
 import 'package:skar_admin/helpers/functions/permssion.dart';
 import 'package:skar_admin/providers/pages/map.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 ScreenProperties screenProperties(BuildContext context) {
   ScreenProperties screenProperties = ScreenProperties(0, 0);
@@ -42,14 +43,14 @@ Future<bool> checkAndGetCurrentLocation(WidgetRef ref) async {
 
       await ref.read(cameraPositionProvider.notifier).change(cameraPosition);
 
-      ShopParams shopParams =
-          ShopParams(latitude: value.latitude, longitude: value.longitude);
+      // ShopParams shopParams =
+      //     ShopParams(latitude: value.latitude, longitude: value.longitude);
 
       await ref
           .read(markersProvider.notifier)
           .setMarker(value.latitude, value.longitude);
 
-      await ref.read(shopParamProvider.notifier).changeForMap(shopParams);
+      // await ref.read(shopParamProvider.notifier).changeForMap(shopParams);
     });
   }
   return hasPermission;
