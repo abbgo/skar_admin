@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:skar_admin/datas/screen.dart';
+import 'package:skar_admin/helpers/functions/permssion.dart';
+import 'package:skar_admin/providers/pages/map.dart';
+
+ScreenProperties screenProperties(BuildContext context) {
+  ScreenProperties screenProperties = ScreenProperties(0, 0);
+
+  screenProperties.width = MediaQuery.of(context).size.width;
+  screenProperties.height = MediaQuery.of(context).size.height;
+
+  return screenProperties;
+}
+
+Future<Position> getCurrentLocation() async {
+  return await Geolocator.getCurrentPosition();
+}
+
+void permissionHandler(WidgetRef ref) async {
+  var loadNotifier = ref.read(loadProvider.notifier);
+  var locationPermissionNotifier =
+      ref.read(locationPermissionProvider.notifier);
+
+  bool hasPermission = await checkAndGetCurrentLocation(ref);
+  loadNotifier.state = false;
+  if (hasPermission) {
+    locationPermissionNotifier.state = true;
+  }
+}
+
+Future<bool> checkAndGetCurrentLocation(WidgetRef ref) async {
+  bool hasPermission = await hasLocationPermission();
+
+  if (hasPermission) {
+    getCurrentLocation().then((value) async {
+      CameraPosition cameraPosition = CameraPosition(
+        target: LatLng(value.latitude, value.longitude),
+        zoom: 15,
+      );
+
+      await ref.read(cameraPositionProvider.notifier).change(cameraPosition);
+
+      ShopParams shopParams =
+          ShopParams(latitude: value.latitude, longitude: value.longitude);
+
+      await ref
+          .read(markersProvider.notifier)
+          .setMarker(value.latitude, value.longitude);
+
+      await ref.read(shopParamProvider.notifier).changeForMap(shopParams);
+    });
+  }
+  return hasPermission;
+}

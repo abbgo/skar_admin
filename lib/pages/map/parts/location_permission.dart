@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:skar_admin/helpers/functions.dart';
+import 'package:skar_admin/helpers/functions/functions.dart';
 
 class LocationPermission extends StatelessWidget {
   const LocationPermission({super.key, required this.ref});
