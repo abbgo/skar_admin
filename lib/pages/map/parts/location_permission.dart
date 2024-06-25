@@ -45,7 +45,7 @@ class LocationPermission extends StatelessWidget {
                   }
                 });
 
-                // permissionHandler(ref);
+                permissionHandler(ref);
               },
               child: Padding(
                 padding: const EdgeInsets.all(8),

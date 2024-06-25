@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/functions/functions.dart';
 import 'package:skar_admin/providers/pages/map.dart';
 import 'package:skar_admin/pages/map/parts/location_permission.dart'
     as permission;
+import 'package:skar_admin/pages/map/parts/map.dart' as map;
 
 class MapPage extends ConsumerWidget {
   const MapPage({super.key});
@@ -20,7 +21,7 @@ class MapPage extends ConsumerWidget {
               child: Image.asset('assets/animated_icons/animated_map.gif'),
             )
           : hasPermission
-              ? const Center(child: Text('Map page'))
+              ? const map.Map()
               : permission.LocationPermission(ref: ref),
     );
   }
