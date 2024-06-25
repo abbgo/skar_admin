@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/pages/add_shop/parts/coordinate_input.dart';
 import 'package:skar_admin/pages/map/map.dart';
+import 'package:skar_admin/providers/pages/map.dart';
 
 class ShopCoordinatesInput extends StatelessWidget {
   const ShopCoordinatesInput({
@@ -27,12 +29,23 @@ class ShopCoordinatesInput extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          children: [
-            CoordinateInput(ctrl: latitudeCtrl, label: 'Latitude *'),
-            const SizedBox(width: 20),
-            CoordinateInput(ctrl: longitudeCtrl, label: 'Longitude *'),
-          ],
+        Consumer(
+          builder: (context, ref, child) {
+            String latLong = ref.watch(latLongProvider);
+            if (latLong.isNotEmpty || latLong != '') {
+              Future.delayed(const Duration(seconds: 1), () {
+                latitudeCtrl.text = latLong.split(' ')[0];
+                longitudeCtrl.text = latLong.split(' ')[1];
+              });
+            }
+            return Row(
+              children: [
+                CoordinateInput(ctrl: latitudeCtrl, label: 'Latitude *'),
+                const SizedBox(width: 20),
+                CoordinateInput(ctrl: longitudeCtrl, label: 'Longitude *'),
+              ],
+            );
+          },
         ),
       ],
     );

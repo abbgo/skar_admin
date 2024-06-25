@@ -46,7 +46,7 @@ Future<bool> checkAndGetCurrentLocation(WidgetRef ref) async {
 
       await ref
           .read(markersProvider.notifier)
-          .setMarker(value.latitude, value.longitude);
+          .setMarker(value.latitude, value.longitude, ref);
     });
   }
   return hasPermission;

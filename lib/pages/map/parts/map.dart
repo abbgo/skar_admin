@@ -47,7 +47,7 @@ class _MapState extends State<Map> {
               onTap: (argument) async {
                 await ref
                     .read(markersProvider.notifier)
-                    .setMarker(argument.latitude, argument.longitude);
+                    .setMarker(argument.latitude, argument.longitude, ref);
               },
             ),
             Positioned(

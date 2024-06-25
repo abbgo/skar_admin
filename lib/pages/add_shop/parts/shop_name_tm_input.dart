@@ -19,7 +19,6 @@ class ShopNameTmInput extends StatelessWidget {
         if (l < 1) return lang.pleaseEnterThisInformation;
         return null;
       },
-      autofocus: true,
     );
   }
 }
