@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
+import 'package:skar_admin/pages/add_shop/parts/shop_coordinates_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_phone_2_input.dart';
@@ -22,6 +23,8 @@ class _AddShopPageState extends State<AddShopPage> {
   final TextEditingController addressRUCtrl = TextEditingController();
   final TextEditingController phoneCtrl = TextEditingController();
   final TextEditingController phone2Ctrl = TextEditingController();
+  final TextEditingController latitudeCtrl = TextEditingController();
+  final TextEditingController longitudeCtrl = TextEditingController();
 
   @override
   void dispose() {
@@ -31,6 +34,8 @@ class _AddShopPageState extends State<AddShopPage> {
     addressRUCtrl.dispose();
     phoneCtrl.dispose();
     phone2Ctrl.dispose();
+    latitudeCtrl.dispose();
+    longitudeCtrl.dispose();
 
     super.dispose();
   }
@@ -56,6 +61,10 @@ class _AddShopPageState extends State<AddShopPage> {
               ShopAddressRuInput(ctrl: addressRUCtrl),
               ShopPhoneInput(ctrl: phoneCtrl),
               ShopPhone2Input(ctrl: phone2Ctrl),
+              ShopCoordinatesInput(
+                latitudeCtrl: latitudeCtrl,
+                longitudeCtrl: longitudeCtrl,
+              ),
             ],
           ),
         ),

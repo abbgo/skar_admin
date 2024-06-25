@@ -9,12 +9,14 @@ class InputPart extends StatelessWidget {
     this.validatorFunc,
     required this.label,
     this.autofocus,
+    this.keyboardType,
   });
 
   final TextEditingController ctrl;
   final String? Function(String?)? validatorFunc;
   final String label;
   final bool? autofocus;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class InputPart extends StatelessWidget {
       constraints: const BoxConstraints(maxHeight: 80.0, minHeight: 80.0),
       child: TextFormField(
         controller: ctrl,
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType ?? TextInputType.text,
         autofocus: autofocus ?? false,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: elevatedButtonColor,
