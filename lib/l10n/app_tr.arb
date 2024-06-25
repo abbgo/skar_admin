@@ -16,5 +16,7 @@
     "addNewProduct":"Täze haryt goş",
     "addShopInformation":"Dükanyň maglumatlaryny giriziň",
     "addProductInformation":"Harydyň maglumatlaryny giriziň",
-    "pleaseEnterThisInformation":"Bu maglumaty giriziň"
+    "pleaseEnterThisInformation":"Bu maglumaty giriziň",
+    "locationPermission":"Progarmmany ulanmak ucin lokasiya rugsat berin",
+    "allow":"Rugsat berin"
 }

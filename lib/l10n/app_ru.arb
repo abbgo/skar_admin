@@ -16,6 +16,7 @@
     "addNewProduct":"Добавить новый продукт",
     "addShopInformation":"Добавить информацию о магазине",
     "addProductInformation":"Добавить информацию о продукте",
-    "pleaseEnterThisInformation":"Пожалуйста, введите эту информацию"
-
+    "pleaseEnterThisInformation":"Пожалуйста, введите эту информацию",
+    "locationPermission":"Разрешить местоположению использовать приложение",
+    "allow":"Позволять"
 }

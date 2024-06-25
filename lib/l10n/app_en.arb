@@ -16,6 +16,7 @@
     "addNewProduct":"Add new products",
     "addShopInformation":"Add shop information",
     "addProductInformation":"Add product information",
-    "pleaseEnterThisInformation":"Please enter this information"
-
+    "pleaseEnterThisInformation":"Please enter this information",
+    "locationPermission":"Allow the location to use the app",
+    "allow":"Allow"
 }
