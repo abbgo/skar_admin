@@ -43,14 +43,9 @@ Future<bool> checkAndGetCurrentLocation(WidgetRef ref) async {
 
       await ref.read(cameraPositionProvider.notifier).change(cameraPosition);
 
-      // ShopParams shopParams =
-      //     ShopParams(latitude: value.latitude, longitude: value.longitude);
-
       await ref
           .read(markersProvider.notifier)
           .setMarker(value.latitude, value.longitude);
-
-      // await ref.read(shopParamProvider.notifier).changeForMap(shopParams);
     });
   }
   return hasPermission;

@@ -10,11 +10,16 @@ class MapPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasPermission = ref.watch(locationPermissionProvider);
+    bool isLoading = ref.watch(loadProvider);
 
     return Scaffold(
-      body: hasPermission
-          ? const Center(child: Text('Map Page'))
-          : permission.LocationPermission(ref: ref),
+      body: isLoading
+          ? Center(
+              child: Image.asset('assets/animated_icons/animated_map.gif'),
+            )
+          : hasPermission
+              ? const Center(child: Text('Map page'))
+              : permission.LocationPermission(ref: ref),
     );
   }
 }
