@@ -40,6 +40,11 @@ class _MapState extends State<Map> {
               _mapController.complete(controller);
             }
           },
+          onTap: (argument) async {
+            await ref
+                .read(markersProvider.notifier)
+                .setMarker(argument.latitude, argument.longitude);
+          },
         );
       },
     );

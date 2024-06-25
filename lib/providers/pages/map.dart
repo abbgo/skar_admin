@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -31,6 +32,10 @@ class MarkersNotifier extends StateNotifier<Set<Marker>> {
       markerId: const MarkerId('1'),
       position: LatLng(latitude, longitude),
       icon: BitmapDescriptor.defaultMarker,
+      onTap: () async {
+        String latLong = '$latitude $longitude';
+        await Clipboard.setData(ClipboardData(text: latLong.toString()));
+      },
     );
 
     state = {...state, marker};
