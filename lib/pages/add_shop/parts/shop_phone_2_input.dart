@@ -14,14 +14,6 @@ class ShopPhone2Input extends StatelessWidget {
     return InputPhone(
       ctrl: ctrl,
       label: '${lang.phoneNumber} (2)',
-      autofocus: true,
-      validatorFunc: (validator) {
-        if (validator!.isNotEmpty || validator != '') {
-          var l = validator.toString().length;
-          if (l != 8) return lang.enterYourCorrectPhoneNumber;
-        }
-        return null;
-      },
     );
   }
 }
