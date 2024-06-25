@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/pages/add_shop/parts/coordinate_input.dart';
+import 'package:skar_admin/pages/map/map.dart';
 
 class ShopCoordinatesInput extends StatelessWidget {
   const ShopCoordinatesInput({
@@ -20,7 +22,7 @@ class ShopCoordinatesInput extends StatelessWidget {
           children: [
             const Text('Dukanyn kordinatalaryny girizin *'),
             IconButton(
-              onPressed: () {},
+              onPressed: () => goToPage(context, const MapPage(), false),
               icon: const Icon(Icons.travel_explore),
             ),
           ],
