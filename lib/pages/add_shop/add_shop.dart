@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/pages/add_shop/parts/has_delivery_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_coordinates_input.dart';
@@ -65,6 +66,7 @@ class _AddShopPageState extends State<AddShopPage> {
                 latitudeCtrl: latitudeCtrl,
                 longitudeCtrl: longitudeCtrl,
               ),
+              const HasDeliveryInput(),
             ],
           ),
         ),
