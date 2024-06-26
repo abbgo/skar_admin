@@ -19,6 +19,6 @@
     "pleaseEnterThisInformation":"Пожалуйста, введите эту информацию",
     "locationPermission":"Разрешить местоположению использовать приложение",
     "allow":"Позволять",
-    "enterTheCoordinatesOfTheShop":"Введите координаты магазина"
-
+    "enterTheCoordinatesOfTheShop":"Введите координаты магазина",
+    "isThereDeliveryService":"Есть ли служба доставки ?"
 }

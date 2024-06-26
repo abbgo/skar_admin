@@ -19,5 +19,6 @@
     "pleaseEnterThisInformation":"Please enter this information",
     "locationPermission":"Allow the location to use the app",
     "allow":"Allow",
-    "enterTheCoordinatesOfTheShop":"Enter the coordinates of the shop"
+    "enterTheCoordinatesOfTheShop":"Enter the coordinates of the shop",
+    "isThereDeliveryService":"Is there a delivery service ?"
 }
