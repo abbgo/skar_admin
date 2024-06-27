@@ -72,13 +72,13 @@ class _AddShopPageState extends State<AddShopPage> {
               const HasDeliveryInput(),
               const ShopImageInput(),
               const Divider(),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CancelButton(),
-                    AddButton(),
+                    const CancelButton(),
+                    AddButton(formKey: addShopformKey),
                   ],
                 ),
               ),
