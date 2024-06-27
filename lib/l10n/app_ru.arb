@@ -25,7 +25,7 @@
     "camera":"Камера",
     "addImageOfTheShop":"Добавьте изображение магазина",
     "noImage":"Нет изображения",
-    "imageMustBeSpecifiedDimensions":"Фотография должна быть указанных размеров",
+    "imageMustBeSpecifiedDimensions":"Фотография должна быть добавлена ​​в указанных размерах",
     "cancel":"Отмена",
     "add":"Добавлять"
 }

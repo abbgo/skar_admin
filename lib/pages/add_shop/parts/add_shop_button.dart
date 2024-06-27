@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/parts/file_upload.dart';
 
-class AddShopButton extends StatelessWidget {
+class AddShopButton extends ConsumerWidget {
   const AddShopButton({
     super.key,
     required this.formKey,
@@ -26,14 +31,18 @@ class AddShopButton extends StatelessWidget {
   final TextEditingController longitudeCtrl;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
       onPressed: () async {
-        if (formKey.currentState?.validate() == true) {
-          print('hemme zat dogry');
+        File? selectedImage = ref.read(shopImageProvider);
+        if (selectedImage == null) {
+          ref.read(isTrueImageProvider.notifier).state = false;
+        }
+        if (formKey.currentState?.validate() == true && selectedImage != null) {
+          bool hasDelivery = ref.read(hasDeliveryProvider);
         }
       },
       child: Text(lang.add),

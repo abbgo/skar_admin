@@ -46,6 +46,18 @@ class Shop {
       phones: json['phones'] ?? [],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name_ru': nameRU,
+      'name_tm': nameTM,
+      'latitude': latitude,
+      'longitude': longitude,
+      'address_tm': addressTM,
+      'address_ru': addressRU,
+      'phones': phones,
+    };
+  }
 }
 
 class ResultShop extends Equatable {

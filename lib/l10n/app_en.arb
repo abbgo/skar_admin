@@ -25,7 +25,7 @@
     "camera":"Camera",
     "addImageOfTheShop":"Add a shop image",
     "noImage":"No image",
-    "imageMustBeSpecifiedDimensions":"The image must be of the specified dimensions",
+    "imageMustBeSpecifiedDimensions":"Image must be added in the specified dimensions",
     "cancel":"Cancel",
     "add":"Add"
 }
