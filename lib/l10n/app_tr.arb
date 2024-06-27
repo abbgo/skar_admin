@@ -26,5 +26,6 @@
     "addImageOfTheShop":"Dükanyň suratyny goşuň",
     "noImage":"Surat ýok",
     "imageMustBeSpecifiedDimensions":"Surat görkezilen ölçeglerde bolmaly",
-    "cancel":"Goýbolsun"
+    "cancel":"Goýbolsun",
+    "add":"Goş"
 }

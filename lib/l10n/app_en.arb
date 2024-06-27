@@ -26,5 +26,6 @@
     "addImageOfTheShop":"Add a shop image",
     "noImage":"No image",
     "imageMustBeSpecifiedDimensions":"The image must be of the specified dimensions",
-    "cancel":"Cancel"
+    "cancel":"Cancel",
+    "add":"Add"
 }

@@ -26,5 +26,6 @@
     "addImageOfTheShop":"Добавьте изображение магазина",
     "noImage":"Нет изображения",
     "imageMustBeSpecifiedDimensions":"Фотография должна быть указанных размеров",
-    "cancel":"Отмена"
+    "cancel":"Отмена",
+    "add":"Добавлять"
 }
