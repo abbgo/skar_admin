@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:equatable/equatable.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/models/image.dart';
@@ -9,13 +10,14 @@ class ImageApiService {
   Future<ResultImage> addOrUpdateImage(
     String imageType,
     String token,
-    File image,
+    File imageFile,
   ) async {
     Uri uri = Uri.parse('$apiUrl/back/image')
         .replace(queryParameters: {'image_type': imageType});
 
     var request = http.MultipartRequest('POST', uri);
-    request.files.add(await http.MultipartFile.fromPath('img', image.path));
+    request.files
+        .add(await http.MultipartFile.fromPath('image', imageFile.path));
 
     try {
       http.StreamedResponse response = await request.send();
@@ -34,4 +36,14 @@ class ImageApiService {
       rethrow;
     }
   }
+}
+
+class ImageParams extends Equatable {
+  final String imageType;
+  final File imageFile;
+
+  const ImageParams({required this.imageType, required this.imageFile});
+
+  @override
+  List<Object?> get props => [imageType, imageFile];
 }
