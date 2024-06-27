@@ -17,10 +17,10 @@ class ShopImageInput extends ConsumerWidget {
     bool isTrueImage = ref.watch(isTrueImageProvider);
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('${lang.addImageOfTheShop}: *'),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
               onPressed: () => showSelectedImageSheet(context, 'shop'),
@@ -35,13 +35,14 @@ class ShopImageInput extends ConsumerWidget {
               child: !isTrueImage
                   ? Text(
                       lang.imageMustBeSpecifiedDimensions,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                       ),
                     )
                   : selectedImage == null
-                      ? Text(lang.noImage)
+                      ? Text(lang.noImage, textAlign: TextAlign.center)
                       : Image(
                           image: FileImage(selectedImage),
                           height: 50,
