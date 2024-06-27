@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/file_upload.dart';
+import 'package:skar_admin/helpers/methods/pages/add_shop.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 
 class ShopImageInput extends ConsumerWidget {
@@ -19,9 +20,7 @@ class ShopImageInput extends ConsumerWidget {
         Row(
           children: [
             IconButton(
-              onPressed: () async {
-                await getImage(ref);
-              },
+              onPressed: () => showSelectedImageSheet(context),
               icon: const Icon(Icons.add_photo_alternate),
             ),
             selectedImage == null
