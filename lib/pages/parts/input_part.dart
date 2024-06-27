@@ -24,8 +24,8 @@ class InputPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: maxLines == null ? 80 : 130,
-        minHeight: maxLines == null ? 80 : 130,
+        maxHeight: maxLines == null ? 100 : 150,
+        minHeight: maxLines == null ? 100 : 150,
       ),
       child: TextFormField(
         maxLines: maxLines ?? 1,
