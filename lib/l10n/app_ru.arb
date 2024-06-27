@@ -20,5 +20,7 @@
     "locationPermission":"Разрешить местоположению использовать приложение",
     "allow":"Позволять",
     "enterTheCoordinatesOfTheShop":"Введите координаты магазина",
-    "isThereDeliveryService":"Есть ли служба доставки ?"
+    "isThereDeliveryService":"Есть ли служба доставки ?",
+    "galery":"Галерея",
+    "camera":"Камера"
 }

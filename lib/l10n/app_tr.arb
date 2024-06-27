@@ -20,5 +20,7 @@
     "locationPermission":"Progarmmany ulanmak ucin lokasiya rugsat berin",
     "allow":"Rugsat berin",
     "enterTheCoordinatesOfTheShop":"Dükanyň koordinatlaryny giriziň",
-    "isThereDeliveryService":"Eltip bermek hyzmaty barmy ?"
+    "isThereDeliveryService":"Eltip bermek hyzmaty barmy ?",
+    "galery":"Galereýa",
+    "camera":"Kamera"
 }
