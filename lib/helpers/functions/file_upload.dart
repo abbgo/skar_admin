@@ -7,7 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 
 Future<void> getImage(
-    WidgetRef ref, ImageSource imageSource, String imageType) async {
+  WidgetRef ref,
+  ImageSource imageSource,
+  String imageType,
+) async {
   XFile? pickedFile = await ImagePicker().pickImage(source: imageSource);
 
   if (pickedFile != null) {

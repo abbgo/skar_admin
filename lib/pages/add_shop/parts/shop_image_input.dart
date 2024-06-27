@@ -15,12 +15,17 @@ class ShopImageInput extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Dukanyn suratyny saylan *'),
+        const Text('Dukanyn suratyny saylan: *'),
         Row(
           children: [
             IconButton(
-              onPressed: () => showSelectedImageSheet(context),
-              icon: const Icon(Icons.add_photo_alternate),
+              onPressed: () => showSelectedImageSheet(context, 'shop'),
+              icon: const Column(
+                children: [
+                  Icon(Icons.add_photo_alternate, size: 100),
+                  Text('1800 x 4000'),
+                ],
+              ),
             ),
             selectedImage == null
                 ? const Text('Surat yok')
