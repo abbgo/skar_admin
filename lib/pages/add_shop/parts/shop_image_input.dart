@@ -1,18 +1,36 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class ShopImageInput extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/file_upload.dart';
+import 'package:skar_admin/providers/pages/add_shop.dart';
+
+class ShopImageInput extends ConsumerWidget {
   const ShopImageInput({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Column(
+  Widget build(BuildContext context, WidgetRef ref) {
+    File? selectedImage = ref.watch(shopImageProvider);
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Dukanyn suratyny saylan'),
+        const Text('Dukanyn suratyny saylan *'),
         Row(
           children: [
-            Text('Surat saylan'),
-            Text('Saylanan suraty gorkez'),
+            IconButton(
+              onPressed: () async {
+                await getImage(ref);
+              },
+              icon: const Icon(Icons.add_photo_alternate),
+            ),
+            selectedImage == null
+                ? const Text('Surat yok')
+                : Image(
+                    image: FileImage(selectedImage),
+                    height: 50,
+                    width: 50,
+                  ),
           ],
         ),
       ],
