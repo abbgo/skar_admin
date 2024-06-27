@@ -3,9 +3,10 @@ import 'dart:io';
 
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:http/http.dart' as http;
+import 'package:skar_admin/models/image.dart';
 
 class ImageApiService {
-  Future<String> addOrUpdateImage(
+  Future<ResultImage> addOrUpdateImage(
     String imageType,
     String token,
     File image,
@@ -23,12 +24,14 @@ class ImageApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['image'] == null) {
-          return '';
+          return const ResultImage(error: '');
         }
-        return jsonData['image'] as String;
+        return ResultImage(image: jsonData['image'] as String, error: '');
       }
-    } catch (e) {}
 
-    return '';
+      return const ResultImage(error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
   }
 }
