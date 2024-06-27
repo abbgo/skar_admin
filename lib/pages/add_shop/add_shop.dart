@@ -78,7 +78,17 @@ class _AddShopPageState extends State<AddShopPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const CancelButton(),
-                    AddShopButton(formKey: addShopformKey),
+                    AddShopButton(
+                      formKey: addShopformKey,
+                      nameTMCtrl: nameTMCtrl,
+                      nameRUCtrl: nameRUCtrl,
+                      addressTMCtrl: addressTMCtrl,
+                      addressRUCtrl: addressRUCtrl,
+                      phoneCtrl: phoneCtrl,
+                      phone2Ctrl: phone2Ctrl,
+                      latitudeCtrl: latitudeCtrl,
+                      longitudeCtrl: longitudeCtrl,
+                    ),
                   ],
                 ),
               ),
