@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
 import 'package:skar_admin/pages/add_shop/add_shop.dart';
-import 'package:skar_admin/pages/parts/floating_add_button.dart';
+import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
@@ -65,7 +65,7 @@ class BottomNavigationPart extends ConsumerWidget {
           },
         ),
         floatingActionButton: selectedIndex == 0
-            ? FloatingAddButton(
+            ? FloatingButton(
                 page: const AddShopPage(),
                 text: lang.addNewShop,
               )
