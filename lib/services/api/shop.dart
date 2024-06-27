@@ -57,12 +57,4 @@ class ShopParams extends Equatable {
 
   @override
   List<Object?> get props => [isDeleted, page];
-
-  // ShopParams copyWith({String? shopOwnerID, bool? isDeleted, int? page}) {
-  //   return ShopParams(
-  //     shopOwnerID: shopOwnerID ?? this.shopOwnerID,
-  //     isDeleted: isDeleted ?? this.isDeleted,
-  //     page: page ?? this.page,
-  //   );
-  // }
 }

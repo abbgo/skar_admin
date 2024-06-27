@@ -17,6 +17,7 @@ Future<void> getImage(
   if (pickedFile != null) {
     bool trueDimensions =
         await checkImageDimensions(File(pickedFile.path), imageType);
+
     if (trueDimensions) {
       ref.read(shopImageProvider.notifier).state = File(pickedFile.path);
       ref.read(isTrueImageProvider.notifier).state = true;

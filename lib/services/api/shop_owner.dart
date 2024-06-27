@@ -7,7 +7,9 @@ import 'package:http/http.dart' as http;
 
 class ShopOwnerApiService {
   Future<ResponseLoginShopOwner> loginShopOwner(
-      String phoneNumber, String password) async {
+    String phoneNumber,
+    String password,
+  ) async {
     Uri uri = Uri.parse('$apiUrl/shop-owners/login');
     Map<String, dynamic> data = {
       'phone_number': phoneNumber,
