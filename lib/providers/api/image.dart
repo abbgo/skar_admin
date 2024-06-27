@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/image.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/services/api/image.dart';
 
 final imageApiServiceProvider =
@@ -7,5 +8,25 @@ final imageApiServiceProvider =
 
 var addOrUpdateImageProvider =
     FutureProvider.autoDispose.family<ResultImage, ImageParams>(
-  (ref, arg) async {},
+  (ref, arg) async {
+    ResultImage result = ResultImage.defaultResult();
+
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+
+      ResultImage resultImage = await ref
+          .read(imageApiServiceProvider)
+          .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
+
+      if (result.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+      }
+
+      result = resultImage;
+    } catch (e) {
+      result = ResultImage(error: e.toString());
+    }
+
+    return result;
+  },
 );
