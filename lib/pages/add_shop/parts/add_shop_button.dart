@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AddButton extends StatelessWidget {
-  const AddButton({super.key, required this.formKey});
+class AddShopButton extends StatelessWidget {
+  const AddShopButton({super.key, required this.formKey});
 
   final GlobalKey<FormState> formKey;
 

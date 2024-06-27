@@ -9,7 +9,7 @@ import 'package:skar_admin/pages/add_shop/parts/shop_name_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_phone_2_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_phone_input.dart';
-import 'package:skar_admin/pages/parts/add_button.dart';
+import 'package:skar_admin/pages/add_shop/parts/add_shop_button.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
 
 class AddShopPage extends StatefulWidget {
@@ -78,7 +78,7 @@ class _AddShopPageState extends State<AddShopPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const CancelButton(),
-                    AddButton(formKey: addShopformKey),
+                    AddShopButton(formKey: addShopformKey),
                   ],
                 ),
               ),
