@@ -10,6 +10,7 @@ class InputPart extends StatelessWidget {
     required this.label,
     this.autofocus,
     this.keyboardType,
+    this.maxLines,
   });
 
   final TextEditingController ctrl;
@@ -17,12 +18,17 @@ class InputPart extends StatelessWidget {
   final String label;
   final bool? autofocus;
   final TextInputType? keyboardType;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 80.0, minHeight: 80.0),
+      constraints: BoxConstraints(
+        maxHeight: maxLines == null ? 80 : 130,
+        minHeight: maxLines == null ? 80 : 130,
+      ),
       child: TextFormField(
+        maxLines: maxLines ?? 1,
         controller: ctrl,
         keyboardType: keyboardType ?? TextInputType.text,
         autofocus: autofocus ?? false,

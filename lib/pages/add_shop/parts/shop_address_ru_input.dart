@@ -14,6 +14,7 @@ class ShopAddressRuInput extends StatelessWidget {
     return InputPart(
       ctrl: ctrl,
       label: 'Salgysy (ru) *',
+      maxLines: 3,
       validatorFunc: (validator) {
         var l = validator.toString().length;
         if (l < 1) return lang.pleaseEnterThisInformation;
