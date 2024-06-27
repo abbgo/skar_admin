@@ -17,6 +17,7 @@ class ShopImageInput extends ConsumerWidget {
     bool isTrueImage = ref.watch(isTrueImageProvider);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('${lang.addImageOfTheShop}: *'),
         Row(
@@ -45,8 +46,8 @@ class ShopImageInput extends ConsumerWidget {
                       ? Text(lang.noImage, textAlign: TextAlign.center)
                       : Image(
                           image: FileImage(selectedImage),
-                          height: 50,
-                          width: 50,
+                          height: 100,
+                          width: 100,
                         ),
             ),
           ],
