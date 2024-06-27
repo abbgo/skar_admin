@@ -22,5 +22,8 @@
     "enterTheCoordinatesOfTheShop":"Dükanyň koordinatlaryny giriziň",
     "isThereDeliveryService":"Eltip bermek hyzmaty barmy ?",
     "galery":"Galereýa",
-    "camera":"Kamera"
+    "camera":"Kamera",
+    "addImageOfTheShop":"Dükanyň suratyny goşuň",
+    "noImage":"Surat ýok",
+    "imageMustBeSpecifiedDimensions":"Surat görkezilen ölçeglerde bolmaly"
 }

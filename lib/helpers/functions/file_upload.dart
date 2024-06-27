@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/parts/file_upload.dart';
 
 Future<void> getImage(
   WidgetRef ref,
@@ -18,7 +19,11 @@ Future<void> getImage(
         await checkImageDimensions(File(pickedFile.path), imageType);
     if (trueDimensions) {
       ref.read(shopImageProvider.notifier).state = File(pickedFile.path);
+      ref.read(isTrueImageProvider.notifier).state = true;
+      return;
     }
+
+    ref.read(isTrueImageProvider.notifier).state = false;
   }
 
   // _uploadImage(_image, userID, type);

@@ -22,5 +22,8 @@
     "enterTheCoordinatesOfTheShop":"Введите координаты магазина",
     "isThereDeliveryService":"Есть ли служба доставки ?",
     "galery":"Галерея",
-    "camera":"Камера"
+    "camera":"Камера",
+    "addImageOfTheShop":"Добавьте изображение магазина",
+    "noImage":"Нет изображения",
+    "imageMustBeSpecifiedDimensions":"Фотография должна быть указанных размеров"
 }
