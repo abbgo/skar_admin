@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
-import 'package:skar_admin/providers/parts/file_upload.dart';
 
 class AddShopButton extends ConsumerWidget {
   const AddShopButton({
@@ -38,9 +37,6 @@ class AddShopButton extends ConsumerWidget {
       style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
       onPressed: () async {
         File? selectedImage = ref.read(shopImageProvider);
-        if (selectedImage == null) {
-          ref.read(isTrueImageProvider.notifier).state = false;
-        }
         if (formKey.currentState?.validate() == true && selectedImage != null) {
           bool hasDelivery = ref.read(hasDeliveryProvider);
         }

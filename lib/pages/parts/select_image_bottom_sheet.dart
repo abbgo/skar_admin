@@ -4,9 +4,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/functions/file_upload.dart';
 
 class SelectImageBottomSheet extends StatelessWidget {
-  const SelectImageBottomSheet({super.key, required this.imageType});
+  const SelectImageBottomSheet({
+    super.key,
+    required this.imageType,
+    required this.ratioX,
+    required this.ratioY,
+  });
 
   final String imageType;
+  final double ratioX;
+  final double ratioY;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +36,25 @@ class SelectImageBottomSheet extends StatelessWidget {
                     icon: Icons.image,
                     text: lang.galery,
                     imageType: imageType,
-                    getImageFunction: () =>
-                        getImageFromFolder(ref, imageType, context),
+                    getImageFunction: () => getImageFromFolder(
+                      ref,
+                      imageType,
+                      context,
+                      ratioX,
+                      ratioY,
+                    ),
                   ),
                   ImageSourcePart(
                     icon: Icons.camera,
                     text: lang.camera,
                     imageType: imageType,
-                    getImageFunction: () =>
-                        getImageFromCamera(ref, imageType, context),
+                    getImageFunction: () => getImageFromCamera(
+                      ref,
+                      imageType,
+                      context,
+                      ratioX,
+                      ratioY,
+                    ),
                   ),
                 ],
               );

@@ -15,7 +15,6 @@ class ShopImageInput extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
     File? selectedImage = ref.watch(shopImageProvider);
-    bool isTrueImage = ref.watch(isTrueImageProvider);
     bool loadSendImage = ref.watch(loadSendImageProvider);
 
     return Column(
@@ -26,32 +25,23 @@ class ShopImageInput extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: () => showSelectedImageSheet(context, 'shop'),
+              onPressed: () => showSelectedImageSheet(context, 'shop', 3, 2),
               icon: const Column(
                 children: [
                   Icon(Icons.add_photo_alternate, size: 100),
-                  Text('1800 x 4000'),
+                  Text('3 : 2'),
                 ],
               ),
             ),
             Expanded(
               child: !loadSendImage
-                  ? !isTrueImage
-                      ? Text(
-                          lang.imageMustBeSpecifiedDimensions,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  ? selectedImage == null
+                      ? Text(lang.noImage, textAlign: TextAlign.center)
+                      : Image(
+                          image: FileImage(selectedImage),
+                          height: 100,
+                          width: 100,
                         )
-                      : selectedImage == null
-                          ? Text(lang.noImage, textAlign: TextAlign.center)
-                          : Image(
-                              image: FileImage(selectedImage),
-                              height: 100,
-                              width: 100,
-                            )
                   : loadWidget,
             ),
           ],
