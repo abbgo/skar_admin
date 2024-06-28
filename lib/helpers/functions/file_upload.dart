@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,31 +10,60 @@ import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/services/api/image.dart';
 
-Future<void> getImage(
+Future<void> sendImage(WidgetRef ref, File file, BuildContext context) async {
+  ref.read(loadSendImageProvider.notifier).state = true;
+
+  ImageParams params = ImageParams(
+    imageType: 'shop',
+    imageFile: file,
+    context: context,
+  );
+  await ref.watch(addOrUpdateImageProvider(params).future);
+
+  ref.read(shopImageProvider.notifier).state = file;
+  ref.read(isTrueImageProvider.notifier).state = true;
+  ref.read(loadSendImageProvider.notifier).state = false;
+}
+
+Future<void> getImageFromCamera(
   WidgetRef ref,
-  ImageSource imageSource,
   String imageType,
   BuildContext context,
 ) async {
-  XFile? pickedFile = await ImagePicker().pickImage(source: imageSource);
+  XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
 
   if (pickedFile != null) {
-    bool trueDimensions =
-        await checkImageDimensions(File(pickedFile.path), imageType);
+    File file = File(pickedFile.path);
+
+    bool trueDimensions = await checkImageDimensions(file, imageType);
 
     if (trueDimensions && context.mounted) {
-      ref.read(loadSendImageProvider.notifier).state = true;
+      await sendImage(ref, file, context);
+      return;
+    }
 
-      ImageParams params = ImageParams(
-        imageType: 'shop',
-        imageFile: File(pickedFile.path),
-        context: context,
-      );
-      await ref.watch(addOrUpdateImageProvider(params).future);
+    ref.read(isTrueImageProvider.notifier).state = false;
+  }
+}
 
-      ref.read(shopImageProvider.notifier).state = File(pickedFile.path);
-      ref.read(isTrueImageProvider.notifier).state = true;
-      ref.read(loadSendImageProvider.notifier).state = false;
+Future<void> getImageFromFolder(
+  WidgetRef ref,
+  String imageType,
+  BuildContext context,
+) async {
+  FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
+    type: FileType.custom,
+    allowMultiple: false,
+    allowedExtensions: ['jpg'],
+  );
+
+  if (pickedFile != null) {
+    File file = File(pickedFile.files.single.path!);
+
+    bool trueDimensions = await checkImageDimensions(file, imageType);
+
+    if (trueDimensions && context.mounted) {
+      await sendImage(ref, file, context);
       return;
     }
 
