@@ -10,19 +10,31 @@ import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/services/api/image.dart';
 
-Future<void> sendImage(WidgetRef ref, File file, BuildContext context) async {
-  ref.read(loadSendImageProvider.notifier).state = true;
+Future<void> sendImage(
+  WidgetRef ref,
+  File file,
+  BuildContext context,
+  String imageType,
+) async {
+  bool trueDimensions = await checkImageDimensions(file, imageType);
 
-  ImageParams params = ImageParams(
-    imageType: 'shop',
-    imageFile: file,
-    context: context,
-  );
-  await ref.watch(addOrUpdateImageProvider(params).future);
+  if (trueDimensions && context.mounted) {
+    ref.read(loadSendImageProvider.notifier).state = true;
 
-  ref.read(shopImageProvider.notifier).state = file;
-  ref.read(isTrueImageProvider.notifier).state = true;
-  ref.read(loadSendImageProvider.notifier).state = false;
+    ImageParams params = ImageParams(
+      imageType: 'shop',
+      imageFile: file,
+      context: context,
+    );
+    await ref.watch(addOrUpdateImageProvider(params).future);
+
+    ref.read(shopImageProvider.notifier).state = file;
+    ref.read(isTrueImageProvider.notifier).state = true;
+    ref.read(loadSendImageProvider.notifier).state = false;
+    return;
+  }
+
+  ref.read(isTrueImageProvider.notifier).state = false;
 }
 
 Future<void> getImageFromCamera(
@@ -34,15 +46,7 @@ Future<void> getImageFromCamera(
 
   if (pickedFile != null) {
     File file = File(pickedFile.path);
-
-    bool trueDimensions = await checkImageDimensions(file, imageType);
-
-    if (trueDimensions && context.mounted) {
-      await sendImage(ref, file, context);
-      return;
-    }
-
-    ref.read(isTrueImageProvider.notifier).state = false;
+    if (context.mounted) await sendImage(ref, file, context, imageType);
   }
 }
 
@@ -59,15 +63,7 @@ Future<void> getImageFromFolder(
 
   if (pickedFile != null) {
     File file = File(pickedFile.files.single.path!);
-
-    bool trueDimensions = await checkImageDimensions(file, imageType);
-
-    if (trueDimensions && context.mounted) {
-      await sendImage(ref, file, context);
-      return;
-    }
-
-    ref.read(isTrueImageProvider.notifier).state = false;
+    if (context.mounted) await sendImage(ref, file, context, imageType);
   }
 }
 
