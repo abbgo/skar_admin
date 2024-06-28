@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
@@ -26,6 +27,10 @@ var addOrUpdateImageProvider =
         if (resultImage.error == 'auth error') {
           await ref.read(accessTokenProvider.notifier).update('');
           if (arg.context.mounted) Navigator.pop(arg.context);
+        }
+
+        if (resultImage.error == 'some error') {
+          if (arg.context.mounted) showSomeErr(arg.context);
         }
 
         result = resultImage;

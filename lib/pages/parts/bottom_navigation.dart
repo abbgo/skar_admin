@@ -24,53 +24,51 @@ class BottomNavigationPart extends ConsumerWidget {
       const ProfilePage(),
     ];
 
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: selectedIndex == 2
-            ? AppBar(
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      showLogoutDialog(context);
-                    },
-                    icon: const Icon(Icons.logout),
-                  ),
-                ],
-              )
-            : null,
-        body: IndexedStack(
-          index: selectedIndex,
-          children: pages,
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          items: [
-            bottomNavigationBarItemMethod(
-              lang.myShops,
-              const Icon(Icons.storefront_rounded, size: 24),
-            ),
-            bottomNavigationBarItemMethod(
-              lang.myProducts,
-              const Icon(Icons.local_mall, size: 24),
-            ),
-            bottomNavigationBarItemMethod(
-              lang.profile,
-              const Icon(Icons.person, size: 24),
-            ),
-          ],
-          currentIndex: selectedIndex,
-          onTap: (value) {
-            ref.read(selectedBottomIndexProvider.notifier).state = value;
-          },
-        ),
-        floatingActionButton: selectedIndex == 0
-            ? FloatingButton(
-                page: const AddShopPage(),
-                text: lang.addNewShop,
-              )
-            : null,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: selectedIndex == 2
+          ? AppBar(
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    showLogoutDialog(context);
+                  },
+                  icon: const Icon(Icons.logout),
+                ),
+              ],
+            )
+          : null,
+      body: IndexedStack(
+        index: selectedIndex,
+        children: pages,
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        items: [
+          bottomNavigationBarItemMethod(
+            lang.myShops,
+            const Icon(Icons.storefront_rounded, size: 24),
+          ),
+          bottomNavigationBarItemMethod(
+            lang.myProducts,
+            const Icon(Icons.local_mall, size: 24),
+          ),
+          bottomNavigationBarItemMethod(
+            lang.profile,
+            const Icon(Icons.person, size: 24),
+          ),
+        ],
+        currentIndex: selectedIndex,
+        onTap: (value) {
+          ref.read(selectedBottomIndexProvider.notifier).state = value;
+        },
+      ),
+      floatingActionButton: selectedIndex == 0
+          ? FloatingButton(
+              page: const AddShopPage(),
+              text: lang.addNewShop,
+            )
+          : null,
     );
   }
 }

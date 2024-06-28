@@ -36,6 +36,10 @@ class ImageApiService {
         return ResultImage(image: jsonData['image'] as String, error: '');
       }
 
+      if (response.statusCode == 400) {
+        return const ResultImage(error: 'some error');
+      }
+
       return const ResultImage(error: 'auth error');
     } catch (e) {
       rethrow;

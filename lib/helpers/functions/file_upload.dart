@@ -39,8 +39,6 @@ Future<void> getImage(
 
     ref.read(isTrueImageProvider.notifier).state = false;
   }
-
-  // _uploadImage(_image, userID, type);
 }
 
 Future<bool> checkImageDimensions(File imageFile, String imageType) async {
