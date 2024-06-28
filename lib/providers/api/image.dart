@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
@@ -23,8 +24,8 @@ var addOrUpdateImageProvider =
             .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
 
         if (resultImage.error == 'auth error') {
-          print('------------------ auth error berdi');
           await ref.read(accessTokenProvider.notifier).update('');
+          if (arg.context.mounted) Navigator.pop(arg.context);
         }
 
         result = resultImage;
