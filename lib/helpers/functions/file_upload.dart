@@ -4,13 +4,16 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skar_admin/providers/api/image.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
+import 'package:skar_admin/services/api/image.dart';
 
 Future<void> getImage(
   WidgetRef ref,
   ImageSource imageSource,
   String imageType,
+  BuildContext context,
 ) async {
   XFile? pickedFile = await ImagePicker().pickImage(source: imageSource);
 
@@ -18,7 +21,16 @@ Future<void> getImage(
     bool trueDimensions =
         await checkImageDimensions(File(pickedFile.path), imageType);
 
-    if (trueDimensions) {
+    if (trueDimensions && context.mounted) {
+      ref.read(loadSendImageProvider.notifier).state = true;
+
+      ImageParams params = ImageParams(
+        imageType: 'shop',
+        imageFile: File(pickedFile.path),
+        context: context,
+      );
+      await ref.watch(addOrUpdateImageProvider(params).future);
+
       ref.read(shopImageProvider.notifier).state = File(pickedFile.path);
       ref.read(isTrueImageProvider.notifier).state = true;
       return;

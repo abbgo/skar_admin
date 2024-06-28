@@ -64,7 +64,7 @@ class ImageSourcePart extends ConsumerWidget {
       children: [
         IconButton(
           onPressed: () async {
-            await getImage(ref, imageSource, imageType);
+            await getImage(ref, imageSource, imageType, context);
             if (context.mounted) Navigator.pop(context);
           },
           icon: Icon(icon, size: 50),
