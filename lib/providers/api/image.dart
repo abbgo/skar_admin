@@ -13,17 +13,21 @@ var addOrUpdateImageProvider =
     ResultImage result = ResultImage.defaultResult();
 
     try {
-      String accessToken = await ref.read(accessTokenProvider);
+      bool hasInternert =
+          await ref.read(checkInternetConnProvider(arg.context).future);
 
-      ResultImage resultImage = await ref
-          .read(imageApiServiceProvider)
-          .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
+      if (hasInternert) {
+        String accessToken = await ref.read(accessTokenProvider);
+        ResultImage resultImage = await ref
+            .read(imageApiServiceProvider)
+            .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
 
-      if (result.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
+        if (result.error == 'auth error') {
+          await ref.read(accessTokenProvider.notifier).update('');
+        }
+
+        result = resultImage;
       }
-
-      result = resultImage;
     } catch (e) {
       result = ResultImage(error: e.toString());
     }
