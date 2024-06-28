@@ -29,14 +29,14 @@ class SelectImageBottomSheet extends StatelessWidget {
                     icon: Icons.image,
                     text: lang.galery,
                     imageType: imageType,
-                    getImageFunction:
+                    getImageFunction: () =>
                         getImageFromFolder(ref, imageType, context),
                   ),
                   ImageSourcePart(
                     icon: Icons.camera,
                     text: lang.camera,
                     imageType: imageType,
-                    getImageFunction:
+                    getImageFunction: () =>
                         getImageFromCamera(ref, imageType, context),
                   ),
                 ],
@@ -61,7 +61,7 @@ class ImageSourcePart extends StatelessWidget {
   final IconData icon;
   final String text;
   final String imageType;
-  final Future<void> getImageFunction;
+  final Future<void> Function() getImageFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,7 @@ class ImageSourcePart extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () async {
-            // await getImage(ref, imageType, context);
-            await getImageFunction;
+            await getImageFunction();
             if (context.mounted) Navigator.pop(context);
           },
           icon: Icon(icon, size: 50),
