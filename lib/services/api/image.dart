@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/models/image.dart';
@@ -41,9 +42,14 @@ class ImageApiService {
 class ImageParams extends Equatable {
   final String imageType;
   final File imageFile;
+  final BuildContext context;
 
-  const ImageParams({required this.imageType, required this.imageFile});
+  const ImageParams({
+    required this.imageType,
+    required this.imageFile,
+    required this.context,
+  });
 
   @override
-  List<Object?> get props => [imageType, imageFile];
+  List<Object?> get props => [imageType, imageFile, context];
 }
