@@ -22,7 +22,8 @@ var addOrUpdateImageProvider =
             .read(imageApiServiceProvider)
             .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
 
-        if (result.error == 'auth error') {
+        if (resultImage.error == 'auth error') {
+          print('------------------ auth error berdi');
           await ref.read(accessTokenProvider.notifier).update('');
         }
 

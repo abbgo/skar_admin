@@ -33,6 +33,7 @@ Future<void> getImage(
 
       ref.read(shopImageProvider.notifier).state = File(pickedFile.path);
       ref.read(isTrueImageProvider.notifier).state = true;
+      ref.read(loadSendImageProvider.notifier).state = false;
       return;
     }
 
