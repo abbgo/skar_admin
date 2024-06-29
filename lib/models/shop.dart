@@ -1,15 +1,16 @@
 import 'package:equatable/equatable.dart';
 
 class Shop {
-  final String id, nameTM, nameRU;
-  final String? addressTM, addressRU;
+  final String nameTM, nameRU;
+  final String? id, addressTM, addressRU;
   final String? image;
   final double? latitude, longitude;
   final List<dynamic>? phones;
   final String? shopOwnerID;
+  final bool? hasShipping;
 
   const Shop({
-    required this.id,
+    this.id,
     required this.nameRU,
     required this.nameTM,
     this.latitude,
@@ -19,6 +20,7 @@ class Shop {
     this.addressRU,
     this.phones,
     this.shopOwnerID,
+    this.hasShipping,
   });
 
   factory Shop.defaultShop() {
@@ -33,6 +35,7 @@ class Shop {
       addressRU: '',
       phones: [],
       shopOwnerID: '',
+      hasShipping: false,
     );
   }
 
@@ -47,6 +50,8 @@ class Shop {
       addressTM: json['address_tm'] ?? "",
       addressRU: json['address_ru'] ?? "",
       phones: json['phones'] ?? [],
+      shopOwnerID: json['shop_owner_id'] ?? '',
+      hasShipping: json['has_shipping'] ?? false,
     );
   }
 
@@ -60,6 +65,7 @@ class Shop {
       'address_ru': addressRU,
       'phones': phones,
       'shop_owner_id': shopOwnerID,
+      'has_shipping': hasShipping,
     };
   }
 }
