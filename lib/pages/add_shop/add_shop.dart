@@ -56,6 +56,7 @@ class _AddShopPageState extends State<AddShopPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Form(
           key: addShopformKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [

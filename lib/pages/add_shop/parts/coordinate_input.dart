@@ -18,8 +18,9 @@ class CoordinateInput extends StatelessWidget {
         label: label,
         keyboardType: TextInputType.number,
         validatorFunc: (validator) {
-          var l = validator.toString().length;
-          if (l < 1) return lang.pleaseEnterThisInformation;
+          if (validator == null || validator.isEmpty) {
+            return lang.pleaseEnterThisInformation;
+          }
           return null;
         },
       ),

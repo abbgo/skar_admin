@@ -16,8 +16,9 @@ class ShopAddressTmInput extends StatelessWidget {
       label: 'Salgysy (tm) *',
       maxLines: 3,
       validatorFunc: (validator) {
-        var l = validator.toString().length;
-        if (l < 1) return lang.pleaseEnterThisInformation;
+        if (validator == null || validator.isEmpty) {
+          return lang.pleaseEnterThisInformation;
+        }
         return null;
       },
     );

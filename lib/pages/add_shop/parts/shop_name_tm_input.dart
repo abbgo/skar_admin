@@ -15,8 +15,9 @@ class ShopNameTmInput extends StatelessWidget {
       ctrl: ctrl,
       label: 'Ady (tm) *',
       validatorFunc: (validator) {
-        var l = validator.toString().length;
-        if (l < 1) return lang.pleaseEnterThisInformation;
+        if (validator == null || validator.isEmpty) {
+          return lang.pleaseEnterThisInformation;
+        }
         return null;
       },
     );
