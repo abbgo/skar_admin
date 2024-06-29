@@ -6,6 +6,7 @@ class Shop {
   final String? image;
   final double? latitude, longitude;
   final List<dynamic>? phones;
+  final String? shopOwnerID;
 
   const Shop({
     required this.id,
@@ -17,6 +18,7 @@ class Shop {
     this.addressTM,
     this.addressRU,
     this.phones,
+    this.shopOwnerID,
   });
 
   factory Shop.defaultShop() {
@@ -30,6 +32,7 @@ class Shop {
       addressTM: '',
       addressRU: '',
       phones: [],
+      shopOwnerID: '',
     );
   }
 
@@ -49,13 +52,14 @@ class Shop {
 
   Map<String, dynamic> toJson() {
     return {
-      'name_ru': nameRU,
       'name_tm': nameTM,
+      'name_ru': nameRU,
       'latitude': latitude,
       'longitude': longitude,
       'address_tm': addressTM,
       'address_ru': addressRU,
       'phones': phones,
+      'shop_owner_id': shopOwnerID,
     };
   }
 }
