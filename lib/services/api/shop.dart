@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
@@ -85,10 +86,11 @@ class ShopApiService {
 
 class ShopParams extends Equatable {
   final bool? isDeleted;
-  final int page;
+  final int? page;
+  final BuildContext? context;
 
-  const ShopParams({this.isDeleted, required this.page});
+  const ShopParams({this.isDeleted, this.page, this.context});
 
   @override
-  List<Object?> get props => [isDeleted, page];
+  List<Object?> get props => [isDeleted, page, context];
 }

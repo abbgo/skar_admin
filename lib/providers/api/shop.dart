@@ -16,7 +16,7 @@ var fetchShopsProvider =
       String accessToken = await ref.read(accessTokenProvider);
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
             accessToken: accessToken,
-            page: arg.page,
+            page: arg.page!,
             shopOwnerID: shopOwner.id,
             isDeleted: arg.isDeleted!,
           );
@@ -31,3 +31,5 @@ var fetchShopsProvider =
     return result;
   },
 );
+
+// var createShopProvider = FutureProvider.autoDispose.family<ResultShop,>(_createFn);
