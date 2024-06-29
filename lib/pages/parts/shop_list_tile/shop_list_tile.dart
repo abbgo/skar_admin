@@ -19,6 +19,7 @@ class ShopListTile extends StatelessWidget {
           children: [
             ShopListTileImage(shop: shop, cardHeight: cardHeight),
             ShopListTileData(shop: shop),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.border_color)),
           ],
         ),
       ),
