@@ -5,8 +5,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
+import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/services/api/shop.dart';
 
 class AddShopButton extends ConsumerWidget {
   const AddShopButton({
@@ -59,6 +61,12 @@ class AddShopButton extends ConsumerWidget {
                 : ["+993${phoneCtrl.text}"],
             hasShipping: hasShipping,
           );
+
+          ShopParams params = ShopParams(shop: shop);
+
+          // 37.949975, 58.378754
+
+          await ref.watch(createShopProvider(params).future);
         }
       },
       child: Text(lang.add),
