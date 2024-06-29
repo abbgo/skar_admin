@@ -46,8 +46,8 @@ class AddShopButton extends ConsumerWidget {
         if (formKey.currentState?.validate() == true && selectedImage != null) {
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
-          bool hasShipping = ref.read(hasShippingProvider);
-          String shopImagePath = ref.read(shopImagePathProvider);
+          bool hasShipping = await ref.read(hasShippingProvider);
+          String shopImagePath = await ref.read(shopImagePathProvider);
 
           final shop = Shop(
             nameTM: nameTMCtrl.text,
@@ -70,10 +70,15 @@ class AddShopButton extends ConsumerWidget {
           ResultShop resultShop =
               await ref.watch(createShopProvider(params).future);
 
-          if (resultShop.error == '') {
-            if (context.mounted) showSuccess(context);
-          }
           ref.read(loadCreateShopProvider.notifier).state = false;
+
+          if (resultShop.error == '') {
+            ref.invalidate(fetchShopsProvider);
+            if (context.mounted) {
+              showSuccess(context);
+              Navigator.pop(context);
+            }
+          }
         }
       },
       child: Text(lang.add),

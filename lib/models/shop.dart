@@ -66,6 +66,7 @@ class Shop {
       'phones': phones,
       'shop_owner_id': shopOwnerID,
       'has_shipping': hasShipping,
+      'image': image,
     };
   }
 }

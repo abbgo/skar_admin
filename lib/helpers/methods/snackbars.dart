@@ -40,7 +40,7 @@ void showUserNotFound(BuildContext context) {
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
-void showSuccess(BuildContext context) {
+showSuccess(BuildContext context) {
   var snackBar = SnackBar(
     content: Text(
       AppLocalizations.of(context)!.informationCreatedSuccessfully,
