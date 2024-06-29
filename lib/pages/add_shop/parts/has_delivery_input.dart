@@ -10,7 +10,7 @@ class HasDeliveryInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
-    bool hasDelivery = ref.watch(hasDeliveryProvider);
+    bool hasDelivery = ref.watch(hasShippingProvider);
     return Row(
       children: [
         Text('${lang.isThereDeliveryService} : '),
@@ -18,7 +18,7 @@ class HasDeliveryInput extends ConsumerWidget {
           activeColor: elevatedButtonColor,
           value: hasDelivery,
           onChanged: (value) =>
-              ref.read(hasDeliveryProvider.notifier).state = value,
+              ref.read(hasShippingProvider.notifier).state = value,
         ),
       ],
     );

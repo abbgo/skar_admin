@@ -39,20 +39,20 @@ class AddShopButton extends ConsumerWidget {
       onPressed: () async {
         File? selectedImage = ref.read(shopImageProvider);
         if (formKey.currentState?.validate() == true && selectedImage != null) {
-          bool hasDelivery = ref.read(hasDeliveryProvider);
+          bool hasDelivery = ref.read(hasShippingProvider);
           String shopImagePath = ref.read(shopImagePathProvider);
 
           final shop = Shop(
-            nameTM: nameTMCtrl.text,
-            nameRU: nameRUCtrl.text,
-            addressTM: addressTMCtrl.text,
-            addressRU: nameRUCtrl.text,
-            latitude: double.parse(latitudeCtrl.text),
-            longitude: double.parse(longitudeCtrl.text),
-            image: shopImagePath,
-            shopOwnerID: "33b9397c-fae9-4697-93b0-9a8abe11ee6a",
-            phones: ["+99362420377", "+99362587412"],
-          );
+              nameTM: nameTMCtrl.text,
+              nameRU: nameRUCtrl.text,
+              addressTM: addressTMCtrl.text,
+              addressRU: nameRUCtrl.text,
+              latitude: double.parse(latitudeCtrl.text),
+              longitude: double.parse(longitudeCtrl.text),
+              image: shopImagePath,
+              shopOwnerID: "33b9397c-fae9-4697-93b0-9a8abe11ee6a",
+              phones: ["+99362420377", "+99362587412"],
+              hasShipping: hasDelivery);
         }
       },
       child: Text(lang.add),
