@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/models/shop_owner.dart';
+import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 
 class AddShopButton extends ConsumerWidget {
@@ -39,20 +41,24 @@ class AddShopButton extends ConsumerWidget {
       onPressed: () async {
         File? selectedImage = ref.read(shopImageProvider);
         if (formKey.currentState?.validate() == true && selectedImage != null) {
-          bool hasDelivery = ref.read(hasShippingProvider);
+          ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
+          bool hasShipping = ref.read(hasShippingProvider);
           String shopImagePath = ref.read(shopImagePathProvider);
 
           final shop = Shop(
-              nameTM: nameTMCtrl.text,
-              nameRU: nameRUCtrl.text,
-              addressTM: addressTMCtrl.text,
-              addressRU: nameRUCtrl.text,
-              latitude: double.parse(latitudeCtrl.text),
-              longitude: double.parse(longitudeCtrl.text),
-              image: shopImagePath,
-              shopOwnerID: "33b9397c-fae9-4697-93b0-9a8abe11ee6a",
-              phones: ["+99362420377", "+99362587412"],
-              hasShipping: hasDelivery);
+            nameTM: nameTMCtrl.text,
+            nameRU: nameRUCtrl.text,
+            addressTM: addressTMCtrl.text,
+            addressRU: addressRUCtrl.text,
+            latitude: double.parse(latitudeCtrl.text),
+            longitude: double.parse(longitudeCtrl.text),
+            image: shopImagePath,
+            shopOwnerID: shopOwner.id,
+            phones: phone2Ctrl.text.isNotEmpty
+                ? ["+993${phoneCtrl.text}", "+993${phone2Ctrl.text}"]
+                : ["+993${phoneCtrl.text}"],
+            hasShipping: hasShipping,
+          );
         }
       },
       child: Text(lang.add),
