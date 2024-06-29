@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
@@ -32,5 +34,32 @@ var fetchShopsProvider =
   },
 );
 
-// var createShopProvider =
-//     FutureProvider.autoDispose.family<ResultShop, ShopParams>(_createFn);
+var createShopProvider =
+    FutureProvider.autoDispose.family<ResultShop, ShopParams>(
+  (ref, arg) async {
+    ResultShop result = ResultShop.defaultResult();
+
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+
+      ResultShop resultShop = await ref.read(shopApiProvider).createShop(
+            accessToken: accessToken,
+            shop: arg.shop!,
+          );
+
+      if (resultShop.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+        if (arg.context!.mounted) Navigator.pop(arg.context!);
+      }
+
+      if (resultShop.error == 'some error') {
+        if (arg.context!.mounted) showSomeErr(arg.context!);
+      }
+      result = resultShop;
+    } catch (e) {
+      result = ResultShop(error: e.toString());
+    }
+
+    return result;
+  },
+);
