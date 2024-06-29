@@ -65,19 +65,18 @@ class ShopApiService {
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        if (jsonData['shops'] == null) {
-          return const ResultShop(shops: [], error: '');
+        if (jsonData['message'] == null) {
+          return const ResultShop(message: '', error: '');
         }
 
-        var shopsList = jsonData['shops'] as List;
-        return ResultShop(
-          shops: shopsList
-              .map<Shop>((propJson) => Shop.fromJson(propJson))
-              .toList(),
-          error: '',
-        );
+        return ResultShop(message: jsonData['message'], error: '');
       }
-      return const ResultShop(shops: [], error: 'auth error');
+
+      if (response.statusCode == 400) {
+        return const ResultShop(error: 'some error');
+      }
+
+      return const ResultShop(message: '', error: 'auth error');
     } catch (e) {
       rethrow;
     }
