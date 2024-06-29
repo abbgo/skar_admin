@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
+import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
 
@@ -25,7 +26,7 @@ class ShopApiService {
     try {
       http.Response response = await http.get(
         uri,
-        headers: {'Authorization': 'Bearer $accessToken'},
+        headers: tokenHeader(accessToken),
       );
       var jsonData = json.decode(response.body);
 
@@ -58,11 +59,8 @@ class ShopApiService {
     try {
       http.Response response = await http.post(
         uri,
-        headers: {
-          'Authorization': 'Bearer $accessToken',
-          'Content-Type': 'application/json'
-        },
-        // body:
+        headers: tokenHeader(accessToken),
+        body: json.encode(shop.toJson()),
       );
       var jsonData = json.decode(response.body);
 
