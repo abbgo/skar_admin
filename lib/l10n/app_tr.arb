@@ -27,5 +27,6 @@
     "noImage":"Surat ýok",
     "imageMustBeSpecifiedDimensions":"Surat görkezilen ölçeglerde goşulmaly",
     "cancel":"Goýbolsun",
-    "add":"Goş"
+    "add":"Goş",
+    "informationCreatedSuccessfully":"Maglumat üstünlikli döredildi"
 }

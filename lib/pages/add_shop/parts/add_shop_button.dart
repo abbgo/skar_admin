@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/api/shop.dart';
@@ -43,6 +44,7 @@ class AddShopButton extends ConsumerWidget {
       onPressed: () async {
         File? selectedImage = ref.read(shopImageProvider);
         if (formKey.currentState?.validate() == true && selectedImage != null) {
+          ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = ref.read(hasShippingProvider);
           String shopImagePath = ref.read(shopImagePathProvider);
@@ -62,11 +64,16 @@ class AddShopButton extends ConsumerWidget {
             hasShipping: hasShipping,
           );
 
-          ShopParams params = ShopParams(shop: shop);
-
           // 37.949975, 58.378754
 
-          await ref.watch(createShopProvider(params).future);
+          ShopParams params = ShopParams(shop: shop);
+          ResultShop resultShop =
+              await ref.watch(createShopProvider(params).future);
+
+          if (resultShop.error == '') {
+            if (context.mounted) showSuccess(context);
+          }
+          ref.read(loadCreateShopProvider.notifier).state = false;
         }
       },
       child: Text(lang.add),

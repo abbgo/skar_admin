@@ -27,5 +27,6 @@
     "noImage":"Нет изображения",
     "imageMustBeSpecifiedDimensions":"Фотография должна быть добавлена ​​в указанных размерах",
     "cancel":"Отмена",
-    "add":"Добавлять"
+    "add":"Добавлять",
+    "informationCreatedSuccessfully":"Информация успешно создана"
 }

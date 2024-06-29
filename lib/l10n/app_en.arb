@@ -27,5 +27,6 @@
     "noImage":"No image",
     "imageMustBeSpecifiedDimensions":"Image must be added in the specified dimensions",
     "cancel":"Cancel",
-    "add":"Add"
+    "add":"Add",
+    "informationCreatedSuccessfully":"Information created successfully"
 }

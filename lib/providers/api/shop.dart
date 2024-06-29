@@ -55,6 +55,7 @@ var createShopProvider =
       if (resultShop.error == 'some error') {
         if (arg.context!.mounted) showSomeErr(arg.context!);
       }
+
       result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
