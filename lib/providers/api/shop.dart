@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
+import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
@@ -40,23 +41,27 @@ var createShopProvider =
     ResultShop result = ResultShop.defaultResult();
 
     try {
-      String accessToken = await ref.read(accessTokenProvider);
+      bool hasInternert =
+          await ref.read(checkInternetConnProvider(arg.context!).future);
 
-      ResultShop resultShop = await ref.read(shopApiProvider).createShop(
-            accessToken: accessToken,
-            shop: arg.shop!,
-          );
+      if (hasInternert) {
+        String accessToken = await ref.read(accessTokenProvider);
+        ResultShop resultShop = await ref.read(shopApiProvider).createShop(
+              accessToken: accessToken,
+              shop: arg.shop!,
+            );
 
-      if (resultShop.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-        if (arg.context!.mounted) Navigator.pop(arg.context!);
+        if (resultShop.error == 'auth error') {
+          await ref.read(accessTokenProvider.notifier).update('');
+          if (arg.context!.mounted) Navigator.pop(arg.context!);
+        }
+
+        if (resultShop.error == 'some error') {
+          if (arg.context!.mounted) showSomeErr(arg.context!);
+        }
+
+        result = resultShop;
       }
-
-      if (resultShop.error == 'some error') {
-        if (arg.context!.mounted) showSomeErr(arg.context!);
-      }
-
-      result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
     }
