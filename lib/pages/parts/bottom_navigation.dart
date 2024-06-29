@@ -68,7 +68,7 @@ class BottomNavigationPart extends ConsumerWidget {
               page: const AddShopPage(),
               text: lang.addNewShop,
             )
-          : null,
+          : const SizedBox(),
     );
   }
 }
