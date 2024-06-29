@@ -8,6 +8,33 @@ import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
 
 class ShopApiService {
+  // fetch shop -------------------------------------------------------
+  Future<ResultShop> fetchShop({
+    required String accessToken,
+    required String shopID,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/shops/$shopID');
+
+    try {
+      http.Response response = await http.get(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['shop'] == null) {
+          return ResultShop(shop: Shop.defaultShop(), error: '');
+        }
+
+        return ResultShop(shop: Shop.fromJson(jsonData['shop']), error: '');
+      }
+      return const ResultShop(shops: [], error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // fetch shops -------------------------------------------------------
   Future<ResultShop> fetchShops({
     required String accessToken,
