@@ -20,9 +20,13 @@ var addOrUpdateImageProvider =
 
       if (hasInternert) {
         String accessToken = await ref.read(accessTokenProvider);
-        ResultImage resultImage = await ref
-            .read(imageApiServiceProvider)
-            .addOrUpdateImage(arg.imageType, accessToken, arg.imageFile);
+        ResultImage resultImage =
+            await ref.read(imageApiServiceProvider).addOrUpdateImage(
+                  arg.imageType,
+                  arg.oldImage,
+                  accessToken,
+                  arg.imageFile,
+                );
 
         if (resultImage.error == 'auth error') {
           await ref.read(accessTokenProvider.notifier).update('');

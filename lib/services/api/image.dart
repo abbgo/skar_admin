@@ -10,6 +10,7 @@ import 'package:skar_admin/models/image.dart';
 class ImageApiService {
   Future<ResultImage> addOrUpdateImage(
     String imageType,
+    String oldImage,
     String accessToken,
     File imageFile,
   ) async {
@@ -21,6 +22,7 @@ class ImageApiService {
       uri,
     );
     request.headers["Authorization"] = 'Bearer $accessToken';
+    request.fields['old_path'] = oldImage;
     request.files
         .add(await http.MultipartFile.fromPath('image', imageFile.path));
 

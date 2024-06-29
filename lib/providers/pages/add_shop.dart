@@ -3,4 +3,4 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final hasDeliveryProvider = StateProvider.autoDispose<bool>((ref) => true);
 final shopImageProvider = StateProvider.autoDispose<File?>((ref) => null);
-final shopImagePathProvider = StateProvider.autoDispose<String>((ref) => '');
+final shopImagePathProvider = StateProvider<String>((ref) => '');
