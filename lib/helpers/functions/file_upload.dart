@@ -44,9 +44,10 @@ Future<void> getImageFromCamera(
       aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
     );
 
-    File file = File(croppedFile!.path);
-
-    if (context.mounted) await sendImage(ref, file, context, imageType);
+    if (croppedFile != null) {
+      File file = File(croppedFile.path);
+      if (context.mounted) await sendImage(ref, file, context, imageType);
+    }
   }
 }
 
@@ -69,9 +70,10 @@ Future<void> getImageFromFolder(
       aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
     );
 
-    File file = File(croppedFile!.path);
-
-    if (context.mounted) await sendImage(ref, file, context, imageType);
+    if (croppedFile != null) {
+      File file = File(croppedFile.path);
+      if (context.mounted) await sendImage(ref, file, context, imageType);
+    }
   }
 }
 
