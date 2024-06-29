@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/pages/add_shop/parts/has_delivery_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
@@ -11,6 +13,7 @@ import 'package:skar_admin/pages/add_shop/parts/shop_phone_2_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_phone_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/add_shop_button.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
+import 'package:skar_admin/providers/pages/add_shop.dart';
 
 class AddShopPage extends StatefulWidget {
   const AddShopPage({super.key});
@@ -52,49 +55,61 @@ class _AddShopPageState extends State<AddShopPage> {
       appBar: AppBar(
         title: Text(lang.addShopInformation),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Form(
-          key: addShopformKey,
-          child: ListView(
-            physics: const BouncingScrollPhysics(),
+      body: Consumer(
+        builder: (context, ref, child) {
+          bool loadCreateShop = ref.watch(loadCreateShopProvider);
+
+          return Stack(
             children: [
-              ShopNameTmInput(ctrl: nameTMCtrl),
-              ShopNameRuInput(ctrl: nameRUCtrl),
-              ShopAddressTmInput(ctrl: addressTMCtrl),
-              ShopAddressRuInput(ctrl: addressRUCtrl),
-              ShopPhoneInput(ctrl: phoneCtrl),
-              ShopPhone2Input(ctrl: phone2Ctrl),
-              ShopCoordinatesInput(
-                latitudeCtrl: latitudeCtrl,
-                longitudeCtrl: longitudeCtrl,
-              ),
-              const HasDeliveryInput(),
-              const ShopImageInput(),
-              const Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const CancelButton(),
-                    AddShopButton(
-                      formKey: addShopformKey,
-                      nameTMCtrl: nameTMCtrl,
-                      nameRUCtrl: nameRUCtrl,
-                      addressTMCtrl: addressTMCtrl,
-                      addressRUCtrl: addressRUCtrl,
-                      phoneCtrl: phoneCtrl,
-                      phone2Ctrl: phone2Ctrl,
-                      latitudeCtrl: latitudeCtrl,
-                      longitudeCtrl: longitudeCtrl,
-                    ),
-                  ],
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Form(
+                  key: addShopformKey,
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      ShopNameTmInput(ctrl: nameTMCtrl),
+                      ShopNameRuInput(ctrl: nameRUCtrl),
+                      ShopAddressTmInput(ctrl: addressTMCtrl),
+                      ShopAddressRuInput(ctrl: addressRUCtrl),
+                      ShopPhoneInput(ctrl: phoneCtrl),
+                      ShopPhone2Input(ctrl: phone2Ctrl),
+                      ShopCoordinatesInput(
+                        latitudeCtrl: latitudeCtrl,
+                        longitudeCtrl: longitudeCtrl,
+                      ),
+                      const HasDeliveryInput(),
+                      const ShopImageInput(),
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const CancelButton(),
+                            AddShopButton(
+                              formKey: addShopformKey,
+                              nameTMCtrl: nameTMCtrl,
+                              nameRUCtrl: nameRUCtrl,
+                              addressTMCtrl: addressTMCtrl,
+                              addressRUCtrl: addressRUCtrl,
+                              phoneCtrl: phoneCtrl,
+                              phone2Ctrl: phone2Ctrl,
+                              latitudeCtrl: latitudeCtrl,
+                              longitudeCtrl: longitudeCtrl,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              loadCreateShop ? loadProcess : const SizedBox(),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }

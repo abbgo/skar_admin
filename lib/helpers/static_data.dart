@@ -8,6 +8,11 @@ String pathUrl = dotenv.env['PATH_URL']!;
 Widget loadWidget =
     Center(child: CircularProgressIndicator(color: elevatedButtonColor));
 
+Widget loadProcess = Container(
+  color: Colors.white.withOpacity(.5),
+  child: CircularProgressIndicator(color: elevatedButtonColor),
+);
+
 Center errorMethod(Object error) {
   return Center(
     child: Text(error.toString(), textAlign: TextAlign.center),
