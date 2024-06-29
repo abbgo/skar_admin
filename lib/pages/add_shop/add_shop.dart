@@ -16,7 +16,9 @@ import 'package:skar_admin/pages/parts/cancel_button.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 
 class AddShopPage extends StatefulWidget {
-  const AddShopPage({super.key});
+  const AddShopPage({super.key, required this.forUpdateShop});
+
+  final bool forUpdateShop;
 
   @override
   State<AddShopPage> createState() => _AddShopPageState();

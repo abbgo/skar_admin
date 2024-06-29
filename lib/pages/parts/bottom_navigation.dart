@@ -65,7 +65,7 @@ class BottomNavigationPart extends ConsumerWidget {
       ),
       floatingActionButton: selectedIndex == 0
           ? FloatingButton(
-              page: const AddShopPage(),
+              page: const AddShopPage(forUpdateShop: false),
               text: lang.addNewShop,
             )
           : const SizedBox(),
