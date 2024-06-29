@@ -47,6 +47,43 @@ class ShopApiService {
       rethrow;
     }
   }
+
+  // create shops -------------------------------------------------------
+  Future<ResultShop> createShop({
+    required String accessToken,
+    required Shop shop,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/shops');
+
+    try {
+      http.Response response = await http.post(
+        uri,
+        headers: {
+          'Authorization': 'Bearer $accessToken',
+          'Content-Type': 'application/json'
+        },
+        // body:
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['shops'] == null) {
+          return const ResultShop(shops: [], error: '');
+        }
+
+        var shopsList = jsonData['shops'] as List;
+        return ResultShop(
+          shops: shopsList
+              .map<Shop>((propJson) => Shop.fromJson(propJson))
+              .toList(),
+          error: '',
+        );
+      }
+      return const ResultShop(shops: [], error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ShopParams extends Equatable {
