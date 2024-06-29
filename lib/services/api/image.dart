@@ -49,15 +49,17 @@ class ImageApiService {
 
 class ImageParams extends Equatable {
   final String imageType;
+  final String oldImage;
   final File imageFile;
   final BuildContext context;
 
   const ImageParams({
     required this.imageType,
+    required this.oldImage,
     required this.imageFile,
     required this.context,
   });
 
   @override
-  List<Object?> get props => [imageType, imageFile, context];
+  List<Object?> get props => [imageType, oldImage, imageFile, context];
 }

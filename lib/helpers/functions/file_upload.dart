@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/api/image.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
@@ -17,15 +18,21 @@ Future<void> sendImage(
   String imageType,
 ) async {
   ref.read(loadSendImageProvider.notifier).state = true;
+  String oldShopImagePath = ref.read(shopImagePathProvider);
 
   ImageParams params = ImageParams(
     imageType: 'shop',
+    oldImage: oldShopImagePath,
     imageFile: file,
     context: context,
   );
-  await ref.watch(addOrUpdateImageProvider(params).future);
+  ResultImage resultImage =
+      await ref.watch(addOrUpdateImageProvider(params).future);
 
-  ref.read(shopImageProvider.notifier).state = file;
+  if (resultImage.image != null) {
+    ref.read(shopImageProvider.notifier).state = file;
+    ref.read(shopImagePathProvider.notifier).state = resultImage.image!;
+  }
   ref.read(loadSendImageProvider.notifier).state = false;
 }
 
