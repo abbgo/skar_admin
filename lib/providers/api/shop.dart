@@ -32,4 +32,5 @@ var fetchShopsProvider =
   },
 );
 
-// var createShopProvider = FutureProvider.autoDispose.family<ResultShop,>(_createFn);
+// var createShopProvider =
+//     FutureProvider.autoDispose.family<ResultShop, ShopParams>(_createFn);
