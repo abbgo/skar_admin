@@ -14,13 +14,17 @@ var fetchShopsProvider =
     FutureProvider.autoDispose.family<ResultShop, ShopParams>(
   (ref, arg) async {
     ResultShop result = ResultShop.defaultResult();
+    String shopOwnerID = '';
     try {
-      ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
+      if (!arg.isShoppingCenter!) {
+        ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
+        shopOwnerID = shopOwner.id;
+      }
       String accessToken = await ref.read(accessTokenProvider);
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
             accessToken: accessToken,
             page: arg.page!,
-            shopOwnerID: shopOwner.id,
+            shopOwnerID: shopOwnerID,
             isDeleted: arg.isDeleted!,
             isShoppingCenter: arg.isShoppingCenter!,
           );
