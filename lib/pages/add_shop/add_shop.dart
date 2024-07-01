@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/pages/add_shop/parts/has_delivery_input.dart';
+import 'package:skar_admin/pages/add_shop/parts/has_shipping_input.dart';
+import 'package:skar_admin/pages/add_shop/parts/select_shop_parent.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
 import 'package:skar_admin/pages/add_shop/parts/shop_coordinates_input.dart';
@@ -79,11 +80,12 @@ class AddShopPageState extends ConsumerState<AddShopPage> {
                   ShopAddressRuInput(ctrl: addressRUCtrl),
                   ShopPhoneInput(ctrl: phoneCtrl),
                   ShopPhone2Input(ctrl: phone2Ctrl),
+                  const SelectShopParent(),
                   ShopCoordinatesInput(
                     latitudeCtrl: latitudeCtrl,
                     longitudeCtrl: longitudeCtrl,
                   ),
-                  const HasDeliveryInput(),
+                  const HasShippingInput(),
                   const ShopImageInput(),
                   const Divider(),
                   Padding(

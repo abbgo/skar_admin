@@ -17,36 +17,42 @@ class ShopImageInput extends ConsumerWidget {
     File? selectedImage = ref.watch(shopImageProvider);
     bool loadSendImage = ref.watch(loadSendImageProvider);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('${lang.addImageOfTheShop}: *'),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () => showSelectedImageSheet(context, 'shop', 3, 2),
-              icon: const Column(
-                children: [
-                  Icon(Icons.add_photo_alternate, size: 100),
-                  Text('3 : 2'),
-                ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${lang.addImageOfTheShop}: *',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () => showSelectedImageSheet(context, 'shop', 3, 2),
+                icon: const Column(
+                  children: [
+                    Icon(Icons.add_photo_alternate, size: 100),
+                    Text('3 : 2'),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: !loadSendImage
-                  ? selectedImage == null
-                      ? Text(lang.noImage, textAlign: TextAlign.center)
-                      : Image(
-                          image: FileImage(selectedImage),
-                          height: 100,
-                          width: 100,
-                        )
-                  : loadWidget,
-            ),
-          ],
-        ),
-      ],
+              Expanded(
+                child: !loadSendImage
+                    ? selectedImage == null
+                        ? Text(lang.noImage, textAlign: TextAlign.center)
+                        : Image(
+                            image: FileImage(selectedImage),
+                            height: 100,
+                            width: 100,
+                          )
+                    : loadWidget,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
