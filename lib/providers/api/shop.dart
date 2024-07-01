@@ -22,6 +22,7 @@ var fetchShopsProvider =
             page: arg.page!,
             shopOwnerID: shopOwner.id,
             isDeleted: arg.isDeleted!,
+            isShoppingCenter: arg.isShoppingCenter!,
           );
 
       if (resultShop.error == 'auth error') {
