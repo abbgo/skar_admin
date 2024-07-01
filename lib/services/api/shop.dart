@@ -41,6 +41,7 @@ class ShopApiService {
     required int page,
     required String shopOwnerID,
     required bool isDeleted,
+    required bool isShoppingCenter,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/shops').replace(
       queryParameters: {
@@ -48,6 +49,7 @@ class ShopApiService {
         'page': '$page',
         'shop_owner_id': shopOwnerID,
         'is_deleted': '$isDeleted',
+        'is_shopping_center': '$isShoppingCenter'
       },
     );
 
@@ -116,9 +118,16 @@ class ShopParams extends Equatable {
   final int? page;
   final BuildContext? context;
   final Shop? shop;
+  final bool? isShoppingCenter;
 
-  const ShopParams({this.isDeleted, this.page, this.context, this.shop});
+  const ShopParams({
+    this.isDeleted,
+    this.page,
+    this.context,
+    this.shop,
+    this.isShoppingCenter,
+  });
 
   @override
-  List<Object?> get props => [isDeleted, page, context, shop];
+  List<Object?> get props => [isDeleted, page, context, shop, isShoppingCenter];
 }
