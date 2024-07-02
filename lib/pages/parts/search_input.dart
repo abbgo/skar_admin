@@ -23,10 +23,6 @@ class SearchInput extends StatelessWidget {
           labelText: ' ${AppLocalizations.of(context)!.findMall} ',
         ),
         onSubmitted: onSubmitted,
-        // onSubmitted: (value) {
-        //   ref.read(shopSearchProvider.notifier).state = value;
-        //   ref.read(hasShopsProvider.notifier).state = true;
-        // },
       ),
     );
   }

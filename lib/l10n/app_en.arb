@@ -30,5 +30,7 @@
     "add":"Add",
     "informationCreatedSuccessfully":"Information created successfully",
     "noResult":"No Result !",
-    "findMall":"Find a mall"
+    "findMall":"Find a mall",
+    "ifYourStoreIsLocatedInsideMallSelectMall":"If your store is located inside a mall, select a mall",
+    "selectMall":"Select a mall"
 }

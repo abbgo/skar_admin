@@ -30,5 +30,7 @@
     "add":"Goş",
     "informationCreatedSuccessfully":"Maglumat üstünlikli döredildi",
     "noResult":"Netije ýok !",
-    "findMall":"Söwda merkezi gözle"
+    "findMall":"Söwda merkezi gözle",
+    "ifYourStoreIsLocatedInsideMallSelectMall":"Dükanyňyz söwda merkeziniň içinde ýerleşýän bolsa, söwda merkezini saýlaň",
+    "selectMall":"Söwda merkezini saýlaň"
 }

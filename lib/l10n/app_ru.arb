@@ -30,5 +30,7 @@
     "add":"Добавлять",
     "informationCreatedSuccessfully":"Информация успешно создана",
     "noResult":"Безрезультатно !",
-    "findMall":"Найти торговый центр"
+    "findMall":"Найти торговый центр",
+    "ifYourStoreIsLocatedInsideMallSelectMall":"Если ваш магазин расположен внутри торгового центра, выберите торговый центр",
+    "selectMall":"Выберите торговый центр"
 }
