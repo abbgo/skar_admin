@@ -20,7 +20,7 @@ var fetchShopsProvider =
         ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
         shopOwnerID = shopOwner.id;
       }
-      String search = ref.read(shopSearchProvider);
+      String search = ref.watch(shopSearchProvider);
       bool isTM = ref.read(langProvider) == 'tr';
 
       String accessToken = await ref.read(accessTokenProvider);
@@ -37,6 +37,8 @@ var fetchShopsProvider =
       if (resultShop.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
       }
+
+      ref.read(hasShopsProvider.notifier).state = resultShop.shops!.isNotEmpty;
       result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
