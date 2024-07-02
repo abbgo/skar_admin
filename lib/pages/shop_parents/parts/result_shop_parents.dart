@@ -24,11 +24,8 @@ class ResultShopParents extends ConsumerWidget {
                 final page = index ~/ pageSize + 1;
                 final indexInPage = index % pageSize;
 
-                ShopParams shopParams = ShopParams(
-                  page: page,
-                  isDeleted: false,
-                  isShoppingCenter: true,
-                );
+                ShopParams shopParams =
+                    ShopParams(page: page, isDeleted: false);
                 final AsyncValue<ResultShop> shops =
                     ref.watch(fetchShopsProvider(shopParams));
 

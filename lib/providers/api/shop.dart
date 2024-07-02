@@ -10,16 +10,11 @@ import 'package:skar_admin/services/api/shop.dart';
 
 final shopApiProvider = Provider<ShopApiService>((ref) => ShopApiService());
 
-var fetchShopsProvider =
+var fetchShoppingCentersProvider =
     FutureProvider.autoDispose.family<ResultShop, ShopParams>(
   (ref, arg) async {
     ResultShop result = ResultShop.defaultResult();
-    String shopOwnerID = '';
     try {
-      if (!arg.isShoppingCenter!) {
-        ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
-        shopOwnerID = shopOwner.id;
-      }
       String search = ref.watch(shopSearchProvider);
       bool isTM = ref.read(langProvider) == 'tr';
 
@@ -27,9 +22,9 @@ var fetchShopsProvider =
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
             accessToken: accessToken,
             page: arg.page!,
-            shopOwnerID: shopOwnerID,
+            shopOwnerID: '',
             isDeleted: arg.isDeleted!,
-            isShoppingCenter: arg.isShoppingCenter!,
+            isShoppingCenter: true,
             search: search,
             lang: isTM ? 'tm' : 'ru',
           );
@@ -39,6 +34,37 @@ var fetchShopsProvider =
       }
 
       ref.read(hasShopsProvider.notifier).state = resultShop.shops!.isNotEmpty;
+      result = resultShop;
+    } catch (e) {
+      result = ResultShop(error: e.toString());
+    }
+    return result;
+  },
+);
+
+var fetchShopsProvider =
+    FutureProvider.autoDispose.family<ResultShop, ShopParams>(
+  (ref, arg) async {
+    ResultShop result = ResultShop.defaultResult();
+    try {
+      ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
+      bool isTM = ref.read(langProvider) == 'tr';
+
+      String accessToken = await ref.read(accessTokenProvider);
+      ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
+            accessToken: accessToken,
+            page: arg.page!,
+            shopOwnerID: shopOwner.id,
+            isDeleted: arg.isDeleted!,
+            isShoppingCenter: false,
+            search: '',
+            lang: isTM ? 'tm' : 'ru',
+          );
+
+      if (resultShop.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+      }
+
       result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
