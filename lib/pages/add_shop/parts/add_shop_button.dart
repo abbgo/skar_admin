@@ -44,6 +44,7 @@ class AddShopButton extends ConsumerWidget {
       onPressed: () async {
         File? selectedImage = ref.read(shopImageProvider);
         if (formKey.currentState?.validate() == true && selectedImage != null) {
+          ShopParams? params;
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = await ref.read(hasShippingProvider);
@@ -64,11 +65,11 @@ class AddShopButton extends ConsumerWidget {
             hasShipping: hasShipping,
           );
 
-          // 37.949975, 58.378754
-
-          ShopParams params = ShopParams(shop: shop);
+          if (context.mounted) {
+            params = ShopParams(shop: shop, context: context);
+          }
           ResultShop resultShop =
-              await ref.watch(createShopProvider(params).future);
+              await ref.watch(createShopProvider(params!).future);
 
           ref.read(loadCreateShopProvider.notifier).state = false;
 
