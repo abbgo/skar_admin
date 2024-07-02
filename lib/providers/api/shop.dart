@@ -21,6 +21,8 @@ var fetchShopsProvider =
         shopOwnerID = shopOwner.id;
       }
       String search = ref.read(shopSearchProvider);
+      bool isTM = ref.read(langProvider) == 'tr';
+
       String accessToken = await ref.read(accessTokenProvider);
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
             accessToken: accessToken,
@@ -29,6 +31,7 @@ var fetchShopsProvider =
             isDeleted: arg.isDeleted!,
             isShoppingCenter: arg.isShoppingCenter!,
             search: search,
+            lang: isTM ? 'tm' : 'ru',
           );
 
       if (resultShop.error == 'auth error') {

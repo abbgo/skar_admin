@@ -43,6 +43,7 @@ class ShopApiService {
     required bool isDeleted,
     required bool isShoppingCenter,
     required String search,
+    required String lang,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/shops').replace(
       queryParameters: {
@@ -52,6 +53,7 @@ class ShopApiService {
         'is_deleted': '$isDeleted',
         'is_shopping_center': '$isShoppingCenter',
         'search': search,
+        'lang': lang,
       },
     );
 
