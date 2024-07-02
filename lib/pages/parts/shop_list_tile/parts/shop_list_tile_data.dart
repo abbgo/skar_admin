@@ -12,25 +12,22 @@ class ShopListTileData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 2,
-      child: GestureDetector(
-        // onTap: () => goToPage(context, ShopPage(shopID: shop.id), false),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Consumer(
-            builder: (context, ref, child) {
-              bool isTM = ref.watch(langProvider) == 'tr';
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Consumer(
+          builder: (context, ref, child) {
+            bool isTM = ref.watch(langProvider) == 'tr';
 
-              return Text(
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                isTM ? shop.nameTM : shop.nameRU,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
-            },
-          ),
+            return Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              isTM ? shop.nameTM : shop.nameRU,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          },
         ),
       ),
     );

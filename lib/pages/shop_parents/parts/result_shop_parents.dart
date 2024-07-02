@@ -5,7 +5,10 @@ import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/shop.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:skar_admin/providers/pages/shop_parents.dart';
 import 'package:skar_admin/services/api/shop.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class ResultShopParents extends ConsumerWidget {
   const ResultShopParents({super.key});
@@ -13,6 +16,8 @@ class ResultShopParents extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasShops = ref.watch(hasShopsProvider);
+    bool isTM = ref.watch(langProvider) == 'tr';
+    String selectedShoppincCenter = ref.watch(selectedShoppincCenterProvider);
 
     return !hasShops
         ? const NoResult()
@@ -41,9 +46,18 @@ class ResultShopParents extends ConsumerWidget {
                       return null;
                     }
                     Shop shop = response.shops![indexInPage];
+                    bool selected = selectedShoppincCenter == shop.id;
                     return Card(
+                      color: selected ? elevatedButtonColor : null,
                       child: ListTile(
-                        title: Text(shop.nameTM),
+                        title: Text(
+                          isTM ? shop.nameTM : shop.nameRU,
+                          style:
+                              TextStyle(color: selected ? Colors.white : null),
+                        ),
+                        onTap: () => ref
+                            .read(selectedShoppincCenterProvider.notifier)
+                            .state = shop.id!,
                       ),
                     );
                   },
