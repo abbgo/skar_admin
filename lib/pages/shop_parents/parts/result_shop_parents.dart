@@ -11,6 +11,9 @@ class ResultShopParents extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String search = ref.watch(shopSearchProvider);
+    bool hasShops = ref.watch(hasShopsProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.builder(

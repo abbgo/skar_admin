@@ -28,5 +28,6 @@
     "imageMustBeSpecifiedDimensions":"Фотография должна быть добавлена ​​в указанных размерах",
     "cancel":"Отмена",
     "add":"Добавлять",
-    "informationCreatedSuccessfully":"Информация успешно создана"
+    "informationCreatedSuccessfully":"Информация успешно создана",
+    "noResult":"Безрезультатно !"
 }

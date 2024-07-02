@@ -28,5 +28,6 @@
     "imageMustBeSpecifiedDimensions":"Surat görkezilen ölçeglerde goşulmaly",
     "cancel":"Goýbolsun",
     "add":"Goş",
-    "informationCreatedSuccessfully":"Maglumat üstünlikli döredildi"
+    "informationCreatedSuccessfully":"Maglumat üstünlikli döredildi",
+    "noResult":"Netije ýok !"
 }
