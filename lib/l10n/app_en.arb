@@ -29,5 +29,6 @@
     "cancel":"Cancel",
     "add":"Add",
     "informationCreatedSuccessfully":"Information created successfully",
-    "noResult":"No Result !"
+    "noResult":"No Result !",
+    "findMall":"Find a mall"
 }

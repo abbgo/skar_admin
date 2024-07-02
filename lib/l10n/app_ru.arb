@@ -29,5 +29,6 @@
     "cancel":"Отмена",
     "add":"Добавлять",
     "informationCreatedSuccessfully":"Информация успешно создана",
-    "noResult":"Безрезультатно !"
+    "noResult":"Безрезультатно !",
+    "findMall":"Найти торговый центр"
 }
