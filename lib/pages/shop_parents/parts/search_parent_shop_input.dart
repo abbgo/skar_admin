@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/parts/input.dart';
+import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
-class SearchParentShopInput extends StatelessWidget {
+class SearchParentShopInput extends ConsumerWidget {
   const SearchParentShopInput({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       height: 40,
-      child: TextFormField(
+      child: TextField(
         textInputAction: TextInputAction.search,
         keyboardType: TextInputType.text,
         textAlignVertical: TextAlignVertical.center,
@@ -19,6 +21,10 @@ class SearchParentShopInput extends StatelessWidget {
           border: inputBorder(),
           labelText: ' Sowda merkezi gozle ',
         ),
+        onSubmitted: (value) {
+          ref.read(shopSearchProvider.notifier).state = value;
+          ref.read(hasShopsProvider.notifier).state = true;
+        },
       ),
     );
   }
