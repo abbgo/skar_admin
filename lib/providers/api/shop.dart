@@ -74,3 +74,6 @@ var createShopProvider =
     return result;
   },
 );
+
+var shopSearchProvider = StateProvider.autoDispose<String>((ref) => '');
+var hasShopsProvider = StateProvider.autoDispose<bool>((ref) => true);

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
-import 'package:skar_admin/helpers/methods/parts/input.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/pages/shop_parents/parts/search_parent_shop_input.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
-import 'package:skar_admin/styles/colors.dart';
 
 class ShopParentsPage extends StatelessWidget {
   const ShopParentsPage({super.key});
@@ -15,20 +14,7 @@ class ShopParentsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SizedBox(
-          height: 45,
-          child: TextFormField(
-            textInputAction: TextInputAction.search,
-            keyboardType: TextInputType.text,
-            textAlignVertical: TextAlignVertical.center,
-            cursorColor: elevatedButtonColor,
-            decoration: InputDecoration(
-              focusedBorder: inputBorder(),
-              border: inputBorder(),
-              labelText: ' Sowda merkezi gozle ',
-            ),
-          ),
-        ),
+        title: const SearchParentShopInput(),
       ),
       body: Consumer(
         builder: (context, ref, child) {
