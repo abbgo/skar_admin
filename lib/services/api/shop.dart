@@ -42,6 +42,7 @@ class ShopApiService {
     required String shopOwnerID,
     required bool isDeleted,
     required bool isShoppingCenter,
+    required String search,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/shops').replace(
       queryParameters: {
@@ -49,7 +50,8 @@ class ShopApiService {
         'page': '$page',
         'shop_owner_id': shopOwnerID,
         'is_deleted': '$isDeleted',
-        'is_shopping_center': '$isShoppingCenter'
+        'is_shopping_center': '$isShoppingCenter',
+        'search': search,
       },
     );
 

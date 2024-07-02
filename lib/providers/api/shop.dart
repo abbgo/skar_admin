@@ -20,6 +20,7 @@ var fetchShopsProvider =
         ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
         shopOwnerID = shopOwner.id;
       }
+      String search = ref.read(shopSearchProvider);
       String accessToken = await ref.read(accessTokenProvider);
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
             accessToken: accessToken,
@@ -27,6 +28,7 @@ var fetchShopsProvider =
             shopOwnerID: shopOwnerID,
             isDeleted: arg.isDeleted!,
             isShoppingCenter: arg.isShoppingCenter!,
+            search: search,
           );
 
       if (resultShop.error == 'auth error') {
