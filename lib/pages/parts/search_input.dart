@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/parts/input.dart';
-import 'package:skar_admin/providers/api/shop.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/styles/colors.dart';
 
-class SearchInput extends ConsumerWidget {
+class SearchInput extends StatelessWidget {
   const SearchInput({super.key, this.onSubmitted});
 
   final void Function(String)? onSubmitted;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: TextField(
@@ -24,10 +22,11 @@ class SearchInput extends ConsumerWidget {
           border: inputBorder(),
           labelText: ' ${AppLocalizations.of(context)!.findMall} ',
         ),
-        onSubmitted: (value) {
-          ref.read(shopSearchProvider.notifier).state = value;
-          ref.read(hasShopsProvider.notifier).state = true;
-        },
+        onSubmitted: onSubmitted,
+        // onSubmitted: (value) {
+        //   ref.read(shopSearchProvider.notifier).state = value;
+        //   ref.read(hasShopsProvider.notifier).state = true;
+        // },
       ),
     );
   }
