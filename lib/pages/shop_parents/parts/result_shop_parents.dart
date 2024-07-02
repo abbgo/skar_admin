@@ -11,13 +11,26 @@ import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ResultShopParents extends ConsumerWidget {
-  const ResultShopParents({super.key});
+  const ResultShopParents({
+    super.key,
+    required this.latitudeCtrl,
+    required this.longitudeCtrl,
+  });
+
+  final TextEditingController latitudeCtrl;
+  final TextEditingController longitudeCtrl;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasShops = ref.watch(hasShopsProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
     String selectedShoppincCenter = ref.watch(selectedShoppincCenterProvider);
+
+    Future<void> setCordinates(Shop shop) async {
+      ref.read(selectedShoppincCenterProvider.notifier).state = shop.id!;
+      latitudeCtrl.text = shop.latitude.toString();
+      longitudeCtrl.text = shop.longitude.toString();
+    }
 
     return !hasShops
         ? const NoResult()
@@ -55,9 +68,10 @@ class ResultShopParents extends ConsumerWidget {
                           style:
                               TextStyle(color: selected ? Colors.white : null),
                         ),
-                        onTap: () => ref
-                            .read(selectedShoppincCenterProvider.notifier)
-                            .state = shop.id!,
+                        onTap: () async {
+                          await setCordinates(shop);
+                          if (context.mounted) Navigator.pop(context);
+                        },
                       ),
                     );
                   },

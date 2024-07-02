@@ -4,7 +4,14 @@ import 'package:skar_admin/pages/shop_parents/shop_parents.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectShopParent extends StatelessWidget {
-  const SelectShopParent({super.key});
+  const SelectShopParent({
+    super.key,
+    required this.latitudeCtrl,
+    required this.longitudeCtrl,
+  });
+
+  final TextEditingController latitudeCtrl;
+  final TextEditingController longitudeCtrl;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +29,13 @@ class SelectShopParent extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () =>
-                  goToPage(context, const ShopParentsPage(), false),
+              onPressed: () => goToPage(
+                  context,
+                  ShopParentsPage(
+                    latitudeCtrl: latitudeCtrl,
+                    longitudeCtrl: longitudeCtrl,
+                  ),
+                  false),
               child: Text(lang.selectMall),
             ),
           )

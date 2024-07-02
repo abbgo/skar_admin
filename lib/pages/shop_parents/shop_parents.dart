@@ -5,7 +5,14 @@ import 'package:skar_admin/pages/parts/search_input.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 
 class ShopParentsPage extends StatelessWidget {
-  const ShopParentsPage({super.key});
+  const ShopParentsPage({
+    super.key,
+    required this.latitudeCtrl,
+    required this.longitudeCtrl,
+  });
+
+  final TextEditingController latitudeCtrl;
+  final TextEditingController longitudeCtrl;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,10 @@ class ShopParentsPage extends StatelessWidget {
           },
         ),
       ),
-      body: const ResultShopParents(),
+      body: ResultShopParents(
+        latitudeCtrl: latitudeCtrl,
+        longitudeCtrl: longitudeCtrl,
+      ),
     );
   }
 }

@@ -80,7 +80,10 @@ class AddShopPageState extends ConsumerState<AddShopPage> {
                   ShopAddressRuInput(ctrl: addressRUCtrl),
                   ShopPhoneInput(ctrl: phoneCtrl),
                   ShopPhone2Input(ctrl: phone2Ctrl),
-                  const SelectShopParent(),
+                  SelectShopParent(
+                    latitudeCtrl: latitudeCtrl,
+                    longitudeCtrl: longitudeCtrl,
+                  ),
                   ShopCoordinatesInput(
                     latitudeCtrl: latitudeCtrl,
                     longitudeCtrl: longitudeCtrl,
