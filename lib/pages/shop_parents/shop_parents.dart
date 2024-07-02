@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/pages/shop_parents/parts/result_shop_parents.dart';
-import 'package:skar_admin/pages/shop_parents/parts/search_parent_shop_input.dart';
+import 'package:skar_admin/pages/shop_parents/parts/search_input.dart';
 
 class ShopParentsPage extends StatelessWidget {
   const ShopParentsPage({super.key});
@@ -9,7 +9,7 @@ class ShopParentsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const SearchParentShopInput(),
+        title: const SearchInput(),
       ),
       body: const ResultShopParents(),
     );

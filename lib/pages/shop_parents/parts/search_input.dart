@@ -5,8 +5,10 @@ import 'package:skar_admin/providers/api/shop.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/styles/colors.dart';
 
-class SearchParentShopInput extends ConsumerWidget {
-  const SearchParentShopInput({super.key});
+class SearchInput extends ConsumerWidget {
+  const SearchInput({super.key, this.onSubmitted});
+
+  final void Function(String)? onSubmitted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,11 +16,10 @@ class SearchParentShopInput extends ConsumerWidget {
       height: 40,
       child: TextField(
         textInputAction: TextInputAction.search,
-        cursorHeight: 15,
-        keyboardType: TextInputType.text,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: elevatedButtonColor,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.only(bottom: 5, left: 20),
           focusedBorder: inputBorder(),
           border: inputBorder(),
           labelText: ' ${AppLocalizations.of(context)!.findMall} ',
