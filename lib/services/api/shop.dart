@@ -122,14 +122,16 @@ class ShopParams extends Equatable {
   final int? page;
   final BuildContext? context;
   final Shop? shop;
+  final String? shopID;
 
   const ShopParams({
     this.isDeleted,
     this.page,
     this.context,
     this.shop,
+    this.shopID,
   });
 
   @override
-  List<Object?> get props => [isDeleted, page, context, shop];
+  List<Object?> get props => [isDeleted, page, context, shop, shopID];
 }

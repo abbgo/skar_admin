@@ -10,6 +10,29 @@ import 'package:skar_admin/services/api/shop.dart';
 
 final shopApiProvider = Provider<ShopApiService>((ref) => ShopApiService());
 
+var fetchShopProvider =
+    FutureProvider.autoDispose.family<ResultShop, ShopParams>(
+  (ref, arg) async {
+    ResultShop result = ResultShop.defaultResult();
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+      ResultShop resultShop = await ref
+          .read(shopApiProvider)
+          .fetchShop(accessToken: accessToken, shopID: arg.shopID!);
+
+      if (resultShop.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+      }
+
+      ref.read(hasShopsProvider.notifier).state = resultShop.shops!.isNotEmpty;
+      result = resultShop;
+    } catch (e) {
+      result = ResultShop(error: e.toString());
+    }
+    return result;
+  },
+);
+
 var fetchShoppingCentersProvider =
     FutureProvider.autoDispose.family<ResultShop, ShopParams>(
   (ref, arg) async {
