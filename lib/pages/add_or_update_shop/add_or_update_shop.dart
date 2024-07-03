@@ -2,31 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/pages/add_shop/parts/has_shipping_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/select_shop_parent.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_address_ru_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_address_tm_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_coordinates_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_image_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_name_ru_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_name_tm_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_phone_2_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/shop_phone_input.dart';
-import 'package:skar_admin/pages/add_shop/parts/add_shop_button.dart';
+import 'package:skar_admin/models/shop.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/has_shipping_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/select_shop_parent.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_address_ru_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_address_tm_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_coordinates_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_image_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_name_ru_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_name_tm_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_phone_2_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/shop_phone_input.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/add_shop_button.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
+import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/services/api/shop.dart';
 
-class AddShopPage extends ConsumerStatefulWidget {
-  const AddShopPage({super.key, required this.forUpdateShop});
+class AddOrUpdateShopPage extends ConsumerStatefulWidget {
+  const AddOrUpdateShopPage({super.key, required this.shopID});
 
-  final bool forUpdateShop;
+  final String shopID;
 
   @override
-  // State<AddShopPage> createState() => _AddShopPageState();
-  AddShopPageState createState() => AddShopPageState();
+  // State<AddOrUpdateShopPage> createState() => _AddOrUpdateShopPageState();
+  AddOrUpdateShopPageState createState() => AddOrUpdateShopPageState();
 }
 
-class AddShopPageState extends ConsumerState<AddShopPage> {
+class AddOrUpdateShopPageState extends ConsumerState<AddOrUpdateShopPage> {
   final GlobalKey<FormState> addShopformKey = GlobalKey<FormState>();
   final TextEditingController nameTMCtrl = TextEditingController();
   final TextEditingController nameRUCtrl = TextEditingController();
@@ -40,6 +43,24 @@ class AddShopPageState extends ConsumerState<AddShopPage> {
   @override
   void initState() {
     super.initState();
+    if (widget.shopID != '') {
+      fetchShopByID(widget.shopID);
+    }
+  }
+
+  Future<void> fetchShopByID(String shopID) async {
+    ShopParams params = ShopParams(shopID: shopID);
+    ResultShop resultShop = await ref.watch(fetchShopProvider(params).future);
+    Shop shop = resultShop.shop!;
+
+    nameTMCtrl.text = shop.nameTM;
+    nameRUCtrl.text = shop.nameRU;
+    addressTMCtrl.text = shop.addressTM!;
+    addressRUCtrl.text = shop.addressRU!;
+    phoneCtrl.text = shop.phones![0];
+    phone2Ctrl.text = shop.phones![1];
+    latitudeCtrl.text = shop.latitude!.toString();
+    longitudeCtrl.text = shop.longitude!.toString();
   }
 
   @override
