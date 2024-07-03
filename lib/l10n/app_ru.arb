@@ -29,6 +29,7 @@
     "cancel":"Отмена",
     "add":"Добавлять",
     "informationCreatedSuccessfully":"Информация успешно создана",
+    "informationChangedSuccessfully":"Информация успешно изменена",
     "noResult":"Безрезультатно !",
     "findMall":"Найти торговый центр",
     "ifYourStoreIsLocatedInsideMallSelectMall":"Если ваш магазин расположен внутри торгового центра, выберите торговый центр",

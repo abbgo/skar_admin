@@ -82,7 +82,12 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           if (resultShop.error == '') {
             ref.invalidate(fetchShopsProvider);
             if (context.mounted) {
-              showSuccess(context);
+              showSuccess(
+                context,
+                shopID == null
+                    ? lang.informationCreatedSuccessfully
+                    : lang.informationChangedSuccessfully,
+              );
               Navigator.pop(context);
             }
           }
