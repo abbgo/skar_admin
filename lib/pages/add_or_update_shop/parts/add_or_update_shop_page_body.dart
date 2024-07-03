@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/pages/add_or_update_shop/parts/add_shop_button.dart';
+import 'package:skar_admin/pages/add_or_update_shop/parts/add_or_update_shop_button.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/has_shipping_input.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/select_shop_parent.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/shop_address_ru_input.dart';
@@ -76,7 +76,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const CancelButton(),
-                      AddShopButton(
+                      AddOrUpdateShopButton(
                         formKey: addShopformKey,
                         nameTMCtrl: nameTMCtrl,
                         nameRUCtrl: nameRUCtrl,

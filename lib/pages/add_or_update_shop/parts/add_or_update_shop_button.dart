@@ -11,8 +11,8 @@ import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
-class AddShopButton extends ConsumerWidget {
-  const AddShopButton({
+class AddOrUpdateShopButton extends ConsumerWidget {
+  const AddOrUpdateShopButton({
     super.key,
     required this.formKey,
     required this.nameTMCtrl,
