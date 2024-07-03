@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,6 +21,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
     required this.phone2Ctrl,
     required this.latitudeCtrl,
     required this.longitudeCtrl,
+    this.shopID,
   });
 
   final GlobalKey<FormState> formKey;
@@ -35,6 +34,8 @@ class AddOrUpdateShopButton extends ConsumerWidget {
   final TextEditingController latitudeCtrl;
   final TextEditingController longitudeCtrl;
 
+  final String? shopID;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
@@ -42,15 +43,16 @@ class AddOrUpdateShopButton extends ConsumerWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
       onPressed: () async {
-        File? selectedImage = ref.read(shopImageProvider);
-        if (formKey.currentState?.validate() == true && selectedImage != null) {
+        String shopImagePath = await ref.read(shopImagePathProvider);
+        if (formKey.currentState?.validate() == true &&
+            shopImagePath.isNotEmpty) {
           ShopParams? params;
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = await ref.read(hasShippingProvider);
-          String shopImagePath = await ref.read(shopImagePathProvider);
 
           final shop = Shop(
+            id: shopID,
             nameTM: nameTMCtrl.text,
             nameRU: nameRUCtrl.text,
             addressTM: addressTMCtrl.text,
@@ -68,8 +70,9 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           if (context.mounted) {
             params = ShopParams(shop: shop, context: context);
           }
-          ResultShop resultShop =
-              await ref.watch(createShopProvider(params!).future);
+          ResultShop resultShop = shopID == null
+              ? await ref.watch(createShopProvider(params!).future)
+              : await ref.watch(updateShopProvider(params!).future);
 
           ref.read(loadCreateShopProvider.notifier).state = false;
 

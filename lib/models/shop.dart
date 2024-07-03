@@ -57,6 +57,7 @@ class Shop {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'name_tm': nameTM,
       'name_ru': nameRU,
       'latitude': latitude,
