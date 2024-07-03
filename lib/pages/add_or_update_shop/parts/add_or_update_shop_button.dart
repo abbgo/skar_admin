@@ -8,6 +8,7 @@ import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class AddOrUpdateShopButton extends ConsumerWidget {
   const AddOrUpdateShopButton({
@@ -41,7 +42,9 @@ class AddOrUpdateShopButton extends ConsumerWidget {
     var lang = AppLocalizations.of(context)!;
 
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: shopID == null ? Colors.green : elevatedButtonColor,
+      ),
       onPressed: () async {
         String shopImagePath = await ref.read(shopImagePathProvider);
         if (formKey.currentState?.validate() == true &&
@@ -85,7 +88,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           }
         }
       },
-      child: Text(lang.add),
+      child: Text(shopID == null ? lang.add : lang.change),
     );
   }
 }

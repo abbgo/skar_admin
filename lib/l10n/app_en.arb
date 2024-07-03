@@ -32,5 +32,6 @@
     "noResult":"No Result !",
     "findMall":"Find a mall",
     "ifYourStoreIsLocatedInsideMallSelectMall":"If your store is located inside a mall, select a mall",
-    "selectMall":"Select a mall"
+    "selectMall":"Select a mall",
+    "change":"Change"
 }
