@@ -28,6 +28,9 @@ var fetchShopProvider =
       if (resultShop.shop != null) {
         ref.read(hasShippingProvider.notifier).state =
             resultShop.shop!.hasShipping!;
+
+        ref.read(shopImagePathProvider.notifier).state =
+            resultShop.shop!.image!;
       }
 
       result = resultShop;
