@@ -8,7 +8,6 @@ class InputPart extends StatelessWidget {
     required this.ctrl,
     this.validatorFunc,
     required this.label,
-    this.autofocus,
     this.keyboardType,
     this.maxLines,
   });
@@ -16,7 +15,6 @@ class InputPart extends StatelessWidget {
   final TextEditingController ctrl;
   final String? Function(String?)? validatorFunc;
   final String label;
-  final bool? autofocus;
   final TextInputType? keyboardType;
   final int? maxLines;
 
@@ -27,19 +25,26 @@ class InputPart extends StatelessWidget {
         maxHeight: maxLines == null ? 100 : 150,
         minHeight: maxLines == null ? 100 : 150,
       ),
-      child: TextFormField(
-        maxLines: maxLines ?? 1,
-        controller: ctrl,
-        keyboardType: keyboardType ?? TextInputType.text,
-        autofocus: autofocus ?? false,
-        textAlignVertical: TextAlignVertical.center,
-        cursorColor: elevatedButtonColor,
-        decoration: InputDecoration(
-          focusedBorder: inputBorder(),
-          border: inputBorder(),
-          labelText: ' $label ',
+      child: FocusScope(
+        onFocusChange: (hasFocus) {
+          if (!hasFocus) {
+            FocusScope.of(context).requestFocus(FocusNode());
+          }
+        },
+        child: TextFormField(
+          autofocus: false,
+          maxLines: maxLines ?? 1,
+          controller: ctrl,
+          keyboardType: keyboardType ?? TextInputType.text,
+          textAlignVertical: TextAlignVertical.center,
+          cursorColor: elevatedButtonColor,
+          decoration: InputDecoration(
+            focusedBorder: inputBorder(),
+            border: inputBorder(),
+            labelText: ' $label ',
+          ),
+          validator: validatorFunc,
         ),
-        validator: validatorFunc,
       ),
     );
   }
