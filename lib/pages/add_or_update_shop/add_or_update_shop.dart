@@ -46,24 +46,12 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
 
-    AddOrUpdateShopPageBody addOrUpdateShopPageBody = AddOrUpdateShopPageBody(
-      addShopformKey: addShopformKey,
-      nameTMCtrl: nameTMCtrl,
-      nameRUCtrl: nameRUCtrl,
-      addressTMCtrl: addressTMCtrl,
-      addressRUCtrl: addressRUCtrl,
-      phoneCtrl: phoneCtrl,
-      phone2Ctrl: phone2Ctrl,
-      latitudeCtrl: latitudeCtrl,
-      longitudeCtrl: longitudeCtrl,
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.addShopInformation),
       ),
       body: widget.shopID == ''
-          ? addOrUpdateShopPageBody
+          ? addOrUpdateShopPageBody(null)
           : Consumer(
               builder: (context, ref, child) {
                 ShopParams params = ShopParams(shopID: widget.shopID);
@@ -93,13 +81,28 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
                     latitudeCtrl.text = shop.latitude!.toString();
                     longitudeCtrl.text = shop.longitude!.toString();
 
-                    return addOrUpdateShopPageBody;
+                    return addOrUpdateShopPageBody(shop.image);
                   },
                   error: (error, stackTrace) => errorMethod(error),
                   loading: () => loadWidget,
                 );
               },
             ),
+    );
+  }
+
+  AddOrUpdateShopPageBody addOrUpdateShopPageBody(String? oldImage) {
+    return AddOrUpdateShopPageBody(
+      addShopformKey: addShopformKey,
+      nameTMCtrl: nameTMCtrl,
+      nameRUCtrl: nameRUCtrl,
+      addressTMCtrl: addressTMCtrl,
+      addressRUCtrl: addressRUCtrl,
+      phoneCtrl: phoneCtrl,
+      phone2Ctrl: phone2Ctrl,
+      latitudeCtrl: latitudeCtrl,
+      longitudeCtrl: longitudeCtrl,
+      oldImage: oldImage,
     );
   }
 }

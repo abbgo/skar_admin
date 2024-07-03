@@ -3,13 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/pages/add_shop.dart';
+import 'package:skar_admin/helpers/methods/parts/image.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShopImageInput extends ConsumerWidget {
-  const ShopImageInput({super.key});
+  const ShopImageInput({super.key, this.oldImage});
+
+  final String? oldImage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +44,13 @@ class ShopImageInput extends ConsumerWidget {
               Expanded(
                 child: !loadSendImage
                     ? selectedImage == null
-                        ? Text(lang.noImage, textAlign: TextAlign.center)
+                        ? oldImage == null
+                            ? Text(lang.noImage, textAlign: TextAlign.center)
+                            : SizedBox(
+                                height: 100,
+                                width: 100,
+                                child: showCachImageMethod(oldImage!),
+                              )
                         : Image(
                             image: FileImage(selectedImage),
                             height: 100,

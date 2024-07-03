@@ -27,6 +27,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
     required this.phone2Ctrl,
     required this.latitudeCtrl,
     required this.longitudeCtrl,
+    this.oldImage,
   });
 
   final GlobalKey<FormState> addShopformKey;
@@ -38,6 +39,8 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
   final TextEditingController phone2Ctrl;
   final TextEditingController latitudeCtrl;
   final TextEditingController longitudeCtrl;
+
+  final String? oldImage;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +68,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                   longitudeCtrl: longitudeCtrl,
                 ),
                 const HasShippingInput(),
-                const ShopImageInput(),
+                ShopImageInput(oldImage: oldImage),
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
