@@ -10,7 +10,8 @@ class HasShippingInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
-    bool hasDelivery = ref.watch(hasShippingProvider);
+    bool hasShipping = ref.watch(hasShippingProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -21,7 +22,7 @@ class HasShippingInput extends ConsumerWidget {
           ),
           Switch.adaptive(
             activeColor: elevatedButtonColor,
-            value: hasDelivery,
+            value: hasShipping,
             onChanged: (value) =>
                 ref.read(hasShippingProvider.notifier).state = value,
           ),

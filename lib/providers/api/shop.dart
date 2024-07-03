@@ -6,6 +6,7 @@ import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:skar_admin/providers/pages/add_shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
 final shopApiProvider = Provider<ShopApiService>((ref) => ShopApiService());
@@ -22,6 +23,11 @@ var fetchShopProvider =
 
       if (resultShop.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
+      }
+
+      if (resultShop.shop != null) {
+        ref.read(hasShippingProvider.notifier).state =
+            resultShop.shop!.hasShipping!;
       }
 
       result = resultShop;

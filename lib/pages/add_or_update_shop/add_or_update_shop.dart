@@ -86,8 +86,10 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
                     addressRUCtrl.text = shop.addressRU!;
                     phoneCtrl.text =
                         shop.phones![0].substring(shop.phones![0].length - 8);
-                    phone2Ctrl.text =
-                        shop.phones![1].substring(shop.phones![1].length - 8);
+                    if (shop.phones!.length > 1) {
+                      phone2Ctrl.text =
+                          shop.phones![1].substring(shop.phones![1].length - 8);
+                    }
                     latitudeCtrl.text = shop.latitude!.toString();
                     longitudeCtrl.text = shop.longitude!.toString();
 
