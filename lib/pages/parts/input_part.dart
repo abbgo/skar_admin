@@ -25,26 +25,19 @@ class InputPart extends StatelessWidget {
         maxHeight: maxLines == null ? 100 : 150,
         minHeight: maxLines == null ? 100 : 150,
       ),
-      child: FocusScope(
-        onFocusChange: (hasFocus) {
-          if (!hasFocus) {
-            FocusScope.of(context).requestFocus(FocusNode());
-          }
-        },
-        child: TextFormField(
-          autofocus: false,
-          maxLines: maxLines ?? 1,
-          controller: ctrl,
-          keyboardType: keyboardType ?? TextInputType.text,
-          textAlignVertical: TextAlignVertical.center,
-          cursorColor: elevatedButtonColor,
-          decoration: InputDecoration(
-            focusedBorder: inputBorder(),
-            border: inputBorder(),
-            labelText: ' $label ',
-          ),
-          validator: validatorFunc,
+      child: TextFormField(
+        autofocus: false,
+        maxLines: maxLines ?? 1,
+        controller: ctrl,
+        keyboardType: keyboardType ?? TextInputType.text,
+        textAlignVertical: TextAlignVertical.center,
+        cursorColor: elevatedButtonColor,
+        decoration: InputDecoration(
+          focusedBorder: inputBorder(),
+          border: inputBorder(),
+          labelText: ' $label ',
         ),
+        validator: validatorFunc,
       ),
     );
   }
