@@ -52,8 +52,10 @@ class ProductListTileData extends StatelessWidget {
                       ],
                     ),
                     Icon(
-                      product.isVisible ? Icons.visibility : Icons.videocam_off,
-                      color: product.isVisible ? Colors.green : Colors.red,
+                      product.isVisible!
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: product.isVisible! ? Colors.green : Colors.red,
                     ),
                   ],
                 ),

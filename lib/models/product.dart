@@ -4,7 +4,7 @@ class Product {
   final String id, nameTM, nameRU;
   final num? price, oldPrice;
   final String? image;
-  final bool isVisible;
+  final bool? isVisible;
 
   Product({
     required this.id,
@@ -24,7 +24,7 @@ class Product {
       price: null,
       oldPrice: null,
       image: null,
-      isVisible: true,
+      isVisible: false,
     );
   }
 
@@ -36,7 +36,7 @@ class Product {
       price: json['price'] ?? 0.0,
       oldPrice: json['old_price'] ?? 0.0,
       image: json['image'] ?? '',
-      isVisible: json['is_visible'],
+      isVisible: json['is_visible'] ?? false,
     );
   }
 }
