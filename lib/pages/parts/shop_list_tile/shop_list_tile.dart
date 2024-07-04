@@ -18,7 +18,7 @@ class ShopListTile extends StatelessWidget {
       child: Card(
         child: Row(
           children: [
-            ShopListTileImage(shop: shop, cardHeight: cardHeight),
+            ShopListTileImage(imagePath: shop.image!, cardHeight: cardHeight),
             ShopListTileData(shop: shop),
             PopUpMenus(shopID: shop.id!),
           ],

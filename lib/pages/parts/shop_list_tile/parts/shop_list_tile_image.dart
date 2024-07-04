@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/methods/parts/image.dart';
-import 'package:skar_admin/models/shop.dart';
 
 class ShopListTileImage extends StatelessWidget {
   const ShopListTileImage(
-      {super.key, required this.shop, required this.cardHeight});
+      {super.key, required this.imagePath, required this.cardHeight});
 
-  final Shop shop;
   final double cardHeight;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class ShopListTileImage extends StatelessWidget {
             topLeft: Radius.circular(10),
             bottomLeft: Radius.circular(10),
           ),
-          child: showCachImageMethod(shop.image!),
+          child: showCachImageMethod(imagePath),
         ),
       ),
     );
