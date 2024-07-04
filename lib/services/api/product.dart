@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/product.dart';
@@ -51,4 +53,23 @@ class ProductApiService {
       rethrow;
     }
   }
+}
+
+class ProductParams extends Equatable {
+  final bool? isDeleted;
+  final int? page;
+  final BuildContext? context;
+  final Product? product;
+  final String? shopID;
+
+  const ProductParams({
+    this.isDeleted,
+    this.page,
+    this.context,
+    this.product,
+    this.shopID,
+  });
+
+  @override
+  List<Object?> get props => [isDeleted, page, context, product, shopID];
 }
