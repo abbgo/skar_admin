@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/methods/parts/image.dart';
 
-class ShopListTileImage extends StatelessWidget {
-  const ShopListTileImage(
+class ListTileImage extends StatelessWidget {
+  const ListTileImage(
       {super.key, required this.imagePath, required this.cardHeight});
 
   final double cardHeight;
