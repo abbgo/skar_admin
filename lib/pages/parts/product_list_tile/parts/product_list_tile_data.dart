@@ -32,17 +32,28 @@ class ProductListTileData extends StatelessWidget {
                   ),
                 ),
                 Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '${product.price} man',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '${product.price} man',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 15),
+                        Text(
+                          product.oldPrice != null
+                              ? '${product.oldPrice} man'
+                              : '',
+                          style: const TextStyle(
+                              decoration: TextDecoration.lineThrough),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 15),
-                    Text(
-                      product.oldPrice != null ? '${product.oldPrice} man' : '',
-                      style: const TextStyle(
-                          decoration: TextDecoration.lineThrough),
+                    Icon(
+                      product.isVisible ? Icons.visibility : Icons.videocam_off,
+                      color: product.isVisible ? Colors.green : Colors.red,
                     ),
                   ],
                 ),
