@@ -36,5 +36,6 @@
     "change":"Change",
     "viewProducts":"View products",
     "moveToTrash":"Move to trash",
-    "trash":"Trash"
+    "trash":"Trash",
+    "products":"Products"
 }

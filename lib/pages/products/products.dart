@@ -6,6 +6,7 @@ import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/product_list_tile.dart';
 import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/services/api/product.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductsPage extends ConsumerWidget {
   const ProductsPage({super.key, required this.shopID});
@@ -15,6 +16,10 @@ class ProductsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.products),
+        centerTitle: false,
+      ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
