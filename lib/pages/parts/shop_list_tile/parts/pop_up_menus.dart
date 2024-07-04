@@ -3,6 +3,7 @@ import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
+import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class PopUpMenus extends StatelessWidget {
@@ -35,7 +36,11 @@ class PopUpMenus extends StatelessWidget {
         }
 
         if (value == texts[1]) {
-          // haryt gorulyan git
+          goToPage(
+            context,
+            const ProductsPage(),
+            false,
+          );
           return;
         }
 

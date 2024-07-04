@@ -21,16 +21,6 @@ class ShopListTile extends StatelessWidget {
             ShopListTileImage(shop: shop, cardHeight: cardHeight),
             ShopListTileData(shop: shop),
             PopUpMenus(shopID: shop.id!),
-            // IconButton(
-            //   onPressed: () {},
-            //   // onPressed: () => goToPage(
-            //   //   context,
-            //   //   AddOrUpdateShopPage(shopID: shop.id!),
-            //   //   false,
-            //   // ),
-            //   icon: const Icon(Icons.more_vert, color: Colors.white, size: 20),
-            //   style: IconButton.styleFrom(backgroundColor: elevatedButtonColor),
-            // ),
           ],
         ),
       ),
