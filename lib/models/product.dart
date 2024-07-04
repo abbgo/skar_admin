@@ -2,15 +2,30 @@ import 'package:equatable/equatable.dart';
 
 class Product {
   final String id, nameTM, nameRU;
+  final num? price, oldPrice;
+  final String? image;
+  final bool isVisible;
 
   Product({
     required this.id,
     required this.nameTM,
     required this.nameRU,
+    this.price,
+    this.oldPrice,
+    this.image,
+    required this.isVisible,
   });
 
   factory Product.defaultProduct() {
-    return Product(id: '', nameRU: '', nameTM: '');
+    return Product(
+      id: '',
+      nameRU: '',
+      nameTM: '',
+      price: null,
+      oldPrice: null,
+      image: null,
+      isVisible: true,
+    );
   }
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -18,6 +33,10 @@ class Product {
       id: json['id'],
       nameTM: json['name_tm'],
       nameRU: json['name_ru'],
+      price: json['price'] ?? 0.0,
+      oldPrice: json['old_price'] ?? 0.0,
+      image: json['image'] ?? '',
+      isVisible: json['is_visible'],
     );
   }
 }
