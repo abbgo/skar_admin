@@ -20,7 +20,7 @@ class ShopListTile extends StatelessWidget {
           children: [
             ShopListTileImage(shop: shop, cardHeight: cardHeight),
             ShopListTileData(shop: shop),
-            const PopUpMenus(),
+            PopUpMenus(shopID: shop.id!),
             // IconButton(
             //   onPressed: () {},
             //   // onPressed: () => goToPage(

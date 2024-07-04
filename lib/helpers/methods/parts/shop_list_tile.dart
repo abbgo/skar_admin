@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-PopupMenuItem<dynamic> popUpMenuMethod() {
+PopupMenuItem<dynamic> popUpMenuMethod(
+  String text,
+  IconData icon,
+  Color iconColor,
+) {
   return PopupMenuItem(
+    value: text,
     child: ListTile(
-      title: Text('Uytegt'),
-      leading: Icon(Icons.edit),
+      title: Text(text),
+      leading: Icon(icon, color: iconColor),
     ),
   );
 }

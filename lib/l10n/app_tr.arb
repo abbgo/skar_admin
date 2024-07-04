@@ -34,5 +34,7 @@
     "findMall":"Söwda merkezi gözle",
     "ifYourStoreIsLocatedInsideMallSelectMall":"Dükanyňyz söwda merkeziniň içinde ýerleşýän bolsa, söwda merkezini saýlaň",
     "selectMall":"Söwda merkezini saýlaň",
-    "change":"Üýtget"
+    "change":"Üýtget",
+    "viewProducts":"Harytlary gör",
+    "moveToTrash":"Zibile sal"
 }
