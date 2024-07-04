@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/parts/list_tile_image.dart';
+import 'package:skar_admin/pages/parts/product_list_tile/parts/product_list_tile_data.dart';
 
 class ProductListTile extends StatelessWidget {
   const ProductListTile({super.key, required this.product});
@@ -20,7 +21,7 @@ class ProductListTile extends StatelessWidget {
               imagePath: product.image!,
               cardHeight: cardHeight,
             ),
-            // ShopListTileData(shop: shop),
+            ProductListTileData(product: product),
             // PopUpMenus(shopID: shop.id!),
           ],
         ),
