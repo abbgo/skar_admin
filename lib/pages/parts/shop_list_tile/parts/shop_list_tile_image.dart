@@ -13,17 +13,14 @@ class ShopListTileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
-      child: GestureDetector(
-        // onTap: () => goToPage(context, ShopPage(shopID: shop.id), false),
-        child: SizedBox(
-          height: cardHeight,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-            ),
-            child: showCachImageMethod(shop.image!),
+      child: SizedBox(
+        height: cardHeight,
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
           ),
+          child: showCachImageMethod(shop.image!),
         ),
       ),
     );
