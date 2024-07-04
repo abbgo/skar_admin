@@ -38,7 +38,7 @@ class PopUpMenus extends StatelessWidget {
         if (value == texts[1]) {
           goToPage(
             context,
-            const ProductsPage(),
+            ProductsPage(shopID: shopID),
             false,
           );
           return;

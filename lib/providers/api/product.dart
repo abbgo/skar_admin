@@ -19,7 +19,7 @@ var fetchProductsProvider =
                 page: arg.page!,
                 isDeleted: arg.isDeleted!,
                 search: '',
-                shopID: '',
+                shopID: arg.shopID!,
                 lang: '',
               );
 

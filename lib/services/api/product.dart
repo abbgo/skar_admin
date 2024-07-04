@@ -17,7 +17,7 @@ class ProductApiService {
     required String search,
     required String lang,
   }) async {
-    Uri uri = Uri.parse('$apiUrl/back/shops').replace(
+    Uri uri = Uri.parse('$apiUrl/back/products').replace(
       queryParameters: {
         'limit': '10',
         'page': '$page',
