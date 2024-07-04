@@ -18,14 +18,35 @@ class ProductListTileData extends StatelessWidget {
           builder: (context, ref, child) {
             bool isTM = ref.watch(langProvider) == 'tr';
 
-            return Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              isTM ? product.nameTM : product.nameRU,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  isTM ? product.nameTM : product.nameRU,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '${product.price} man',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(width: 15),
+                    Text(
+                      product.oldPrice != null ? '${product.oldPrice} man' : '',
+                      style: const TextStyle(
+                          decoration: TextDecoration.lineThrough),
+                    ),
+                  ],
+                ),
+              ],
             );
           },
         ),

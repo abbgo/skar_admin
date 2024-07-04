@@ -7,7 +7,7 @@ class ProductListTile extends StatelessWidget {
   const ProductListTile({super.key, required this.product});
 
   final Product product;
-  static const double cardHeight = 110.0;
+  static const double cardHeight = 120.0;
 
   @override
   Widget build(BuildContext context) {
