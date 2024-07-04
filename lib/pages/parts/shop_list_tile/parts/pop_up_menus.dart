@@ -23,7 +23,7 @@ class PopUpMenus extends StatelessWidget {
       itemBuilder: (context) => [
         popUpMenuMethod(texts[0], Icons.edit, elevatedButtonColor),
         popUpMenuMethod(texts[1], Icons.local_mall, Colors.green),
-        popUpMenuMethod(texts[2], Icons.delete, Colors.red),
+        popUpMenuMethod(texts[2], Icons.auto_delete, Colors.red),
       ],
       onSelected: (value) {
         if (value == texts[0]) {

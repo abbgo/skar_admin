@@ -8,7 +8,6 @@
     "someErrorOccurred":"Käbir ýalňyşlyk ýüze çykdy",
     "userNotFound":"Ulanyjy tapylmady",
     "myShops":"Dükanlarym",
-    "myProducts":"Harytlarym",
     "profile":"Profile",
     "no":"Ýok",
     "yes":"Hawa",
@@ -36,5 +35,6 @@
     "selectMall":"Söwda merkezini saýlaň",
     "change":"Üýtget",
     "viewProducts":"Harytlary gör",
-    "moveToTrash":"Zibile sal"
+    "moveToTrash":"Zibile sal",
+    "trash":"Zibil"
 }

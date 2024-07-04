@@ -4,9 +4,9 @@ import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
 import 'package:skar_admin/pages/parts/floating_button.dart';
-import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
+import 'package:skar_admin/pages/trash/trash.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -20,7 +20,7 @@ class BottomNavigationPart extends ConsumerWidget {
 
     List<Widget> pages = [
       const ShopsPage(),
-      const ProductsPage(),
+      const TrashPage(),
       const ProfilePage(),
     ];
 
@@ -50,8 +50,8 @@ class BottomNavigationPart extends ConsumerWidget {
             const Icon(Icons.storefront_rounded, size: 24),
           ),
           bottomNavigationBarItemMethod(
-            lang.myProducts,
-            const Icon(Icons.local_mall, size: 24),
+            lang.trash,
+            const Icon(Icons.auto_delete, size: 24),
           ),
           bottomNavigationBarItemMethod(
             lang.profile,
