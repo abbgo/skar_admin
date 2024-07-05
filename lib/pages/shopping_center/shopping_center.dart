@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skar_admin/pages/shop_parents/parts/result_shop_parents.dart';
+import 'package:skar_admin/pages/shopping_center/parts/result_shopping_centers.dart';
 import 'package:skar_admin/pages/parts/search_input.dart';
-import 'package:skar_admin/providers/api/shop.dart';
+import 'package:skar_admin/providers/pages/shopping_center.dart';
 
-class ShopParentsPage extends StatelessWidget {
-  const ShopParentsPage({
+class ShoppingCenterPage extends StatelessWidget {
+  const ShoppingCenterPage({
     super.key,
     required this.latitudeCtrl,
     required this.longitudeCtrl,
@@ -22,14 +22,14 @@ class ShopParentsPage extends StatelessWidget {
           builder: (context, ref, child) {
             return SearchInput(
               onSubmitted: (value) {
-                ref.read(shopSearchProvider.notifier).state = value;
-                ref.read(hasShopsProvider.notifier).state = true;
+                ref.read(shoppingCenterSearchProvider.notifier).state = value;
+                ref.read(hasShoppingCenterProvider.notifier).state = true;
               },
             );
           },
         ),
       ),
-      body: ResultShopParents(
+      body: ResultShoppingCenters(
         latitudeCtrl: latitudeCtrl,
         longitudeCtrl: longitudeCtrl,
       ),

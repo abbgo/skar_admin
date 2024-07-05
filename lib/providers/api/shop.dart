@@ -7,6 +7,8 @@ import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
+import 'package:skar_admin/providers/pages/shopping_center.dart';
+import 'package:skar_admin/providers/pages/shops.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
 final shopApiProvider = Provider<ShopApiService>((ref) => ShopApiService());
@@ -46,7 +48,7 @@ var fetchShoppingCentersProvider =
   (ref, arg) async {
     ResultShop result = ResultShop.defaultResult();
     try {
-      String search = ref.watch(shopSearchProvider);
+      String search = ref.watch(shoppingCenterSearchProvider);
       bool isTM = ref.read(langProvider) == 'tr';
 
       String accessToken = await ref.read(accessTokenProvider);
@@ -64,7 +66,8 @@ var fetchShoppingCentersProvider =
         await ref.read(accessTokenProvider.notifier).update('');
       }
 
-      ref.read(hasShopsProvider.notifier).state = resultShop.shops!.isNotEmpty;
+      ref.read(hasShoppingCenterProvider.notifier).state =
+          resultShop.shops!.isNotEmpty;
       result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
@@ -175,6 +178,3 @@ var updateShopProvider =
     return result;
   },
 );
-
-var shopSearchProvider = StateProvider.autoDispose<String>((ref) => '');
-var hasShopsProvider = StateProvider.autoDispose<bool>((ref) => true);

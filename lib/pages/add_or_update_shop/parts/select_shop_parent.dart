@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
-import 'package:skar_admin/pages/shop_parents/shop_parents.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/pages/shopping_center/shopping_center.dart';
 
 class SelectShopParent extends StatelessWidget {
   const SelectShopParent({
@@ -31,7 +31,7 @@ class SelectShopParent extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => goToPage(
                   context,
-                  ShopParentsPage(
+                  ShoppingCenterPage(
                     latitudeCtrl: latitudeCtrl,
                     longitudeCtrl: longitudeCtrl,
                   ),

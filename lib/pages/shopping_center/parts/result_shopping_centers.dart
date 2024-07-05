@@ -7,11 +7,12 @@ import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/shop_parents.dart';
+import 'package:skar_admin/providers/pages/shopping_center.dart';
 import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
-class ResultShopParents extends ConsumerWidget {
-  const ResultShopParents({
+class ResultShoppingCenters extends ConsumerWidget {
+  const ResultShoppingCenters({
     super.key,
     required this.latitudeCtrl,
     required this.longitudeCtrl,
@@ -22,7 +23,7 @@ class ResultShopParents extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool hasShops = ref.watch(hasShopsProvider);
+    bool hasShops = ref.watch(hasShoppingCenterProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
     String selectedShoppincCenter = ref.watch(selectedShoppincCenterProvider);
 

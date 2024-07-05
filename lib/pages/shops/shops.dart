@@ -6,6 +6,7 @@ import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/pages/parts/shop_list_tile/shop_list_tile.dart';
 import 'package:skar_admin/providers/api/shop.dart';
+import 'package:skar_admin/providers/pages/shops.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
 class ShopsPage extends ConsumerWidget {
