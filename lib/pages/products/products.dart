@@ -55,7 +55,7 @@ class ProductsPage extends ConsumerWidget {
         },
       ),
       floatingActionButton: FloatingButton(
-        page: const AddOrUpdateProduct(),
+        page: AddOrUpdateProduct(shopID: shopID),
         text: lang.addNewProduct,
       ),
     );

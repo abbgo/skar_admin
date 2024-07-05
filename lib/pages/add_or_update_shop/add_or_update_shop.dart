@@ -18,7 +18,7 @@ class AddOrUpdateShopPage extends StatefulWidget {
 }
 
 class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
-  final GlobalKey<FormState> addShopformKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> shopFormKey = GlobalKey<FormState>();
   final TextEditingController nameTMCtrl = TextEditingController();
   final TextEditingController nameRUCtrl = TextEditingController();
   final TextEditingController addressTMCtrl = TextEditingController();
@@ -96,7 +96,7 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
     String? shopID,
   ) {
     return AddOrUpdateShopPageBody(
-      addShopformKey: addShopformKey,
+      shopFormKey: shopFormKey,
       nameTMCtrl: nameTMCtrl,
       nameRUCtrl: nameRUCtrl,
       addressTMCtrl: addressTMCtrl,

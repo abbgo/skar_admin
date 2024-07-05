@@ -18,7 +18,7 @@ import 'package:skar_admin/providers/pages/add_shop.dart';
 class AddOrUpdateShopPageBody extends StatelessWidget {
   const AddOrUpdateShopPageBody({
     super.key,
-    required this.addShopformKey,
+    required this.shopFormKey,
     required this.nameTMCtrl,
     required this.nameRUCtrl,
     required this.addressTMCtrl,
@@ -31,7 +31,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
     this.shopID,
   });
 
-  final GlobalKey<FormState> addShopformKey;
+  final GlobalKey<FormState> shopFormKey;
   final TextEditingController nameTMCtrl;
   final TextEditingController nameRUCtrl;
   final TextEditingController addressTMCtrl;
@@ -51,7 +51,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Form(
-            key: addShopformKey,
+            key: shopFormKey,
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
@@ -79,7 +79,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                     children: [
                       const CancelButton(),
                       AddOrUpdateShopButton(
-                        formKey: addShopformKey,
+                        formKey: shopFormKey,
                         nameTMCtrl: nameTMCtrl,
                         nameRUCtrl: nameRUCtrl,
                         addressTMCtrl: addressTMCtrl,
