@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/product.dart';
+import 'package:skar_admin/pages/add_or_update_product/add_or_update_product.dart';
+import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/product_list_tile.dart';
 import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/services/api/product.dart';
@@ -15,9 +17,11 @@ class ProductsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.products),
+        title: Text(lang.products),
         centerTitle: false,
       ),
       body: ListView.builder(
@@ -49,6 +53,10 @@ class ProductsPage extends ConsumerWidget {
             loading: () => null,
           );
         },
+      ),
+      floatingActionButton: FloatingButton(
+        page: const AddOrUpdateProduct(),
+        text: lang.addNewProduct,
       ),
     );
   }
