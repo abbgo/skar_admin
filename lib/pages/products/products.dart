@@ -46,6 +46,7 @@ class ProductsPage extends ConsumerWidget {
               if (indexInPage >= response.products!.length) {
                 return null;
               }
+
               Product product = response.products![indexInPage];
               return ProductListTile(product: product);
             },
