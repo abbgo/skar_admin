@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/pages/add_shop.dart';
 import 'package:skar_admin/helpers/methods/parts/image.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

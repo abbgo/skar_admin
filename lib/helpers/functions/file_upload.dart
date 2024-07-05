@@ -7,7 +7,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/api/image.dart';
-import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/services/api/image.dart';
 

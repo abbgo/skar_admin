@@ -13,7 +13,7 @@ import 'package:skar_admin/pages/add_or_update_shop/parts/shop_name_tm_input.dar
 import 'package:skar_admin/pages/add_or_update_shop/parts/shop_phone_2_input.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/shop_phone_input.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
-import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 
 class AddOrUpdateShopPageBody extends StatelessWidget {
   const AddOrUpdateShopPageBody({

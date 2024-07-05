@@ -6,7 +6,7 @@ import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
-import 'package:skar_admin/providers/pages/add_shop.dart';
+import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
