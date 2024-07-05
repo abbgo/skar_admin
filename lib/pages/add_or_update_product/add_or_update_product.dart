@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_page_body.dart';
 
 class AddOrUpdateProductPage extends StatefulWidget {
   const AddOrUpdateProductPage({super.key, required this.shopID});
@@ -34,7 +35,18 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
       appBar: AppBar(
         title: Text(lang.addProductInformation),
       ),
-      body: const Center(child: Text('Add or Update Product')),
+      body: addOrUpdateProductPageBody(),
+    );
+  }
+
+  AddOrUpdateProductPageBody addOrUpdateProductPageBody() {
+    return AddOrUpdateProductPageBody(
+      nameTMCtrl: nameTMCtrl,
+      nameRUCtrl: nameRUCtrl,
+      productFormKey: productFormKey,
+      priceCtrl: priceCtrl,
+      oldPriceCtrl: oldPriceCtrl,
+      shopID: widget.shopID,
     );
   }
 }
