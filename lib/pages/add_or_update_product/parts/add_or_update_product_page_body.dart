@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_ru_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_tm_input.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/product_old_price_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_price_input.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
@@ -39,6 +40,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                 ProductNameTmInput(ctrl: nameTMCtrl),
                 ProductNameRuInput(ctrl: nameRUCtrl),
                 ProductPriceInput(ctrl: priceCtrl),
+                ProductOldPriceInput(ctrl: oldPriceCtrl),
               ],
             ),
           ),
