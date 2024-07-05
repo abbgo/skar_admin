@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/product_name_ru_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_tm_input.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
@@ -35,6 +36,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               children: [
                 ProductNameTmInput(ctrl: nameTMCtrl),
+                ProductNameRuInput(ctrl: nameRUCtrl),
               ],
             ),
           ),
