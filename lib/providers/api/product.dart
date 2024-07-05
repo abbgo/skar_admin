@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 
 final productApiProvider =
@@ -26,6 +27,9 @@ var fetchProductsProvider =
       if (resultProduct.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
       }
+
+      ref.read(hasProductsProvider.notifier).state =
+          resultProduct.products!.isNotEmpty;
 
       result = resultProduct;
     } catch (e) {
