@@ -39,8 +39,12 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
               children: [
                 ProductNameTmInput(ctrl: nameTMCtrl),
                 ProductNameRuInput(ctrl: nameRUCtrl),
-                ProductPriceInput(ctrl: priceCtrl),
-                ProductOldPriceInput(ctrl: oldPriceCtrl),
+                Row(
+                  children: [
+                    ProductPriceInput(ctrl: priceCtrl),
+                    ProductOldPriceInput(ctrl: oldPriceCtrl),
+                  ],
+                ),
               ],
             ),
           ),
