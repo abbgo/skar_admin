@@ -18,14 +18,26 @@ class ShopListTileData extends StatelessWidget {
           builder: (context, ref, child) {
             bool isTM = ref.watch(langProvider) == 'tr';
 
-            return Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              isTM ? shop.nameTM : shop.nameRU,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  isTM ? shop.nameTM : shop.nameRU,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Image.asset(
+                  shop.hasShipping!
+                      ? 'assets/icons/has_shipping.png'
+                      : 'assets/icons/no_shipping.png',
+                  height: 25,
+                )
+              ],
             );
           },
         ),
