@@ -9,10 +9,12 @@ class ProductPriceInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InputPart(
-      ctrl: ctrl,
-      label: 'Bahasy *',
-      validatorFunc: (validator) => textInputValidate(validator, context),
+    return Expanded(
+      child: InputPart(
+        ctrl: ctrl,
+        label: ' Bahasy * ',
+        validatorFunc: (validator) => textInputValidate(validator, context),
+      ),
     );
   }
 }

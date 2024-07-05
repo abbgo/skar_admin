@@ -42,6 +42,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                 Row(
                   children: [
                     ProductPriceInput(ctrl: priceCtrl),
+                    const SizedBox(width: 20),
                     ProductOldPriceInput(ctrl: oldPriceCtrl),
                   ],
                 ),

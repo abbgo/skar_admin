@@ -8,10 +8,12 @@ class ProductOldPriceInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InputPart(
-      ctrl: ctrl,
-      label: 'Kone Bahasy *',
-      validatorFunc: null,
+    return Expanded(
+      child: InputPart(
+        ctrl: ctrl,
+        label: ' Kone Bahasy ',
+        validatorFunc: null,
+      ),
     );
   }
 }
