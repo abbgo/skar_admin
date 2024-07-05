@@ -11,19 +11,19 @@ class SelectProductBrend extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(vertical: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(
-                '${lang.enterTheProductBrand} *',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.travel_explore),
-              ),
-            ],
+          Text(
+            '${lang.enterTheProductBrand} :',
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(lang.selectBrand),
+            ),
+          )
         ],
       ),
     );
