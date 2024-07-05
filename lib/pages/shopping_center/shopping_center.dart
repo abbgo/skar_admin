@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/pages/shopping_center/parts/result_shopping_centers.dart';
 import 'package:skar_admin/pages/parts/search_input.dart';
 import 'package:skar_admin/providers/pages/shopping_center.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShoppingCenterPage extends StatelessWidget {
   const ShoppingCenterPage({
@@ -21,6 +22,7 @@ class ShoppingCenterPage extends StatelessWidget {
         title: Consumer(
           builder: (context, ref, child) {
             return SearchInput(
+              label: AppLocalizations.of(context)!.findMall,
               onSubmitted: (value) {
                 ref.read(shoppingCenterSearchProvider.notifier).state = value;
                 ref.read(hasShoppingCenterProvider.notifier).state = true;
