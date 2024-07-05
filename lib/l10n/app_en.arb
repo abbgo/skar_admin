@@ -19,6 +19,7 @@
     "locationPermission":"Allow the location to use the app",
     "allow":"Allow",
     "enterTheCoordinatesOfTheShop":"Enter the coordinates of the shop",
+    "enterTheProductBrand":"Enter the product brand",
     "isThereDeliveryService":"Is there a delivery service ?",
     "galery":"Galery",
     "camera":"Camera",
