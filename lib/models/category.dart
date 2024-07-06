@@ -26,8 +26,14 @@ class Category {
       id: json['id'],
       nameTM: json['name_tm'],
       nameRU: json['name_ru'],
-      parentCategoryID: json['parent_category_id'],
-      childCategories: json['child_categories'],
+      parentCategoryID: json['parent_category_id'] ?? '',
+      childCategories: json['child_categories'] == null
+          ? []
+          : List<Category>.from(
+              json['child_categories'].map(
+                (productJson) => Category.fromJson(productJson),
+              ),
+            ),
     );
   }
 }
