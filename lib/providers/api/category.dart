@@ -10,10 +10,10 @@ var fetchCategoriesProvider = FutureProvider.autoDispose<ResultCategory>(
     ResultCategory result = ResultCategory.defaultResult();
 
     try {
-      ResultCategory resultBrend =
+      ResultCategory resultCategory =
           await ref.read(categoryApiProvider).fetchCategories();
 
-      result = resultBrend;
+      result = resultCategory;
     } catch (e) {
       result = ResultCategory(error: e.toString());
     }

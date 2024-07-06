@@ -14,7 +14,7 @@ class CategoryApiService {
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        if (jsonData['brends'] == null) {
+        if (jsonData['categories'] == null) {
           return const ResultCategory(categories: [], error: '');
         }
 
@@ -26,7 +26,7 @@ class CategoryApiService {
           error: '',
         );
       }
-      return const ResultCategory(categories: [], error: 'auth error');
+      return ResultCategory.defaultResult();
     } catch (e) {
       rethrow;
     }
