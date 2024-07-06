@@ -44,19 +44,5 @@ class ShowParentShop extends ConsumerWidget {
     }
 
     return showWidget;
-
-    // return selectedShop == SelectedShop.defaultSelectedShop() &&
-    //         parentShop == null
-    //     ? const SizedBox()
-    //     : Padding(
-    //         padding: const EdgeInsets.only(bottom: 10),
-    //         child: Text(
-    //           isTM ? selectedShop.nameTM : selectedShop.nameRU,
-    //           style: const TextStyle(
-    //             color: Colors.green,
-    //             fontWeight: FontWeight.bold,
-    //           ),
-    //         ),
-    //       );
   }
 }

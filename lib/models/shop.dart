@@ -79,12 +79,13 @@ class Shop {
 }
 
 class SelectedShop {
-  final String nameTM, nameRU;
+  final String id, nameTM, nameRU;
 
-  const SelectedShop({required this.nameRU, required this.nameTM});
+  const SelectedShop(
+      {required this.id, required this.nameRU, required this.nameTM});
 
   factory SelectedShop.defaultSelectedShop() {
-    return const SelectedShop(nameRU: '', nameTM: '');
+    return const SelectedShop(id: '', nameRU: '', nameTM: '');
   }
 }
 
