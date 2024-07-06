@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class Brend {
   final String id, name, image;
 
@@ -10,4 +12,19 @@ class Brend {
   factory Brend.fromJson(Map<String, dynamic> json) {
     return Brend(id: json['id'], name: json['name'], image: json['image']);
   }
+}
+
+class ResultBrend extends Equatable {
+  final List<Brend>? brends;
+  final Brend? brend;
+  final String error;
+
+  const ResultBrend({this.brends, this.brend, required this.error});
+
+  factory ResultBrend.defaultResult() {
+    return const ResultBrend(brends: null, brend: null, error: '');
+  }
+
+  @override
+  List<Object?> get props => [brends, brend, error];
 }
