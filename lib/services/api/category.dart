@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:http/http.dart' as http;
+import 'package:skar_admin/models/category.dart';
 
 class CategoryApiService {
   // fetch categroies --------------------------------------------
-  Future<ResultBrend> fetchCategories() async {
+  Future<ResultCategory> fetchCategories() async {
     Uri uri = Uri.parse('$apiUrl/categories');
 
     try {
@@ -16,18 +17,18 @@ class CategoryApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['brends'] == null) {
-          return const ResultBrend(brends: [], error: '');
+          return const ResultCategory(categories: [], error: '');
         }
 
-        var brendsList = jsonData['brends'] as List;
-        return ResultBrend(
-          brends: brendsList
-              .map<Brend>((propJson) => Brend.fromJson(propJson))
+        var categoriesList = jsonData['categories'] as List;
+        return ResultCategory(
+          categories: categoriesList
+              .map<Category>((propJson) => Category.fromJson(propJson))
               .toList(),
           error: '',
         );
       }
-      return const ResultBrend(brends: [], error: 'auth error');
+      return const ResultCategory(categories: [], error: 'auth error');
     } catch (e) {
       rethrow;
     }
