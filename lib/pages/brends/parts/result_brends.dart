@@ -15,7 +15,7 @@ class ResultBrends extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasBrend = ref.watch(hasBrendProvider);
-    String selectedBrend = ref.watch(selectedBrendProvider);
+    Brend selectedBrend = ref.watch(selectedBrendProvider);
 
     return !hasBrend
         ? const NoResult()
@@ -45,7 +45,7 @@ class ResultBrends extends ConsumerWidget {
                     }
 
                     Brend brend = response.brends![indexInPage];
-                    bool selected = selectedBrend == brend.id;
+                    bool selected = selectedBrend == brend;
 
                     return Card(
                       color: selected ? elevatedButtonColor : null,
@@ -57,7 +57,7 @@ class ResultBrends extends ConsumerWidget {
                         ),
                         onTap: () async {
                           ref.read(selectedBrendProvider.notifier).state =
-                              brend.id;
+                              brend;
                           if (context.mounted) Navigator.pop(context);
                         },
                       ),
