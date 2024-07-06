@@ -31,7 +31,7 @@ class BrendApiService {
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        if (jsonData['products'] == null) {
+        if (jsonData['brends'] == null) {
           return const ResultBrend(brends: [], error: '');
         }
 
