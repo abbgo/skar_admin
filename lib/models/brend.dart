@@ -16,15 +16,14 @@ class Brend {
 
 class ResultBrend extends Equatable {
   final List<Brend>? brends;
-  final Brend? brend;
   final String error;
 
-  const ResultBrend({this.brends, this.brend, required this.error});
+  const ResultBrend({this.brends, required this.error});
 
   factory ResultBrend.defaultResult() {
-    return const ResultBrend(brends: null, brend: null, error: '');
+    return const ResultBrend(brends: null, error: '');
   }
 
   @override
-  List<Object?> get props => [brends, brend, error];
+  List<Object?> get props => [brends, error];
 }

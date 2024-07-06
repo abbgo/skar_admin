@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class Category {
   final String id, nameTM, nameRU;
   final String? parentCategoryID;
@@ -36,4 +38,18 @@ class Category {
             ),
     );
   }
+}
+
+class ResultCategory extends Equatable {
+  final List<Category>? categories;
+  final String error;
+
+  const ResultCategory({this.categories, required this.error});
+
+  factory ResultCategory.defaultResult() {
+    return const ResultCategory(categories: null, error: '');
+  }
+
+  @override
+  List<Object?> get props => [categories, error];
 }
