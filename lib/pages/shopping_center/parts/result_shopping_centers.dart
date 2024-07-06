@@ -24,10 +24,13 @@ class ResultShoppingCenters extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasShoppingCenters = ref.watch(hasShoppingCenterProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
-    String selectedShoppincCenter = ref.watch(selectedShoppincCenterProvider);
+    SelectedShop selectedShoppincCenter =
+        ref.watch(selectedShoppincCenterProvider);
 
     Future<void> setCordinates(Shop shop) async {
-      ref.read(selectedShoppincCenterProvider.notifier).state = shop.id!;
+      ref.read(selectedShoppincCenterProvider.notifier).state =
+          SelectedShop(nameTM: shop.nameTM, nameRU: shop.nameRU);
+
       latitudeCtrl.text = shop.latitude.toString();
       longitudeCtrl.text = shop.longitude.toString();
     }
@@ -59,7 +62,9 @@ class ResultShoppingCenters extends ConsumerWidget {
                       return null;
                     }
                     Shop shop = response.shops![indexInPage];
-                    bool selected = selectedShoppincCenter == shop.id;
+                    bool selected = selectedShoppincCenter ==
+                        SelectedShop(nameRU: shop.nameRU, nameTM: shop.nameTM);
+
                     return Card(
                       color: selected ? elevatedButtonColor : null,
                       child: ListTile(
