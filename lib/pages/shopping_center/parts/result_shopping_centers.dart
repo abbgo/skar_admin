@@ -6,7 +6,6 @@ import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
-import 'package:skar_admin/providers/pages/shop_parents.dart';
 import 'package:skar_admin/providers/pages/shopping_center.dart';
 import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';

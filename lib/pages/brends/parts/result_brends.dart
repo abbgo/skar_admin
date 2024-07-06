@@ -7,6 +7,7 @@ import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/brend.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/services/api/brend.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class ResultBrends extends ConsumerWidget {
   const ResultBrends({super.key});
@@ -14,6 +15,7 @@ class ResultBrends extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasBrend = ref.watch(hasBrendProvider);
+    String selectedBrend = ref.watch(selectedBrendProvider);
 
     return !hasBrend
         ? const NoResult()
@@ -43,9 +45,21 @@ class ResultBrends extends ConsumerWidget {
                     }
 
                     Brend brend = response.brends![indexInPage];
+                    bool selected = selectedBrend == brend.id;
+
                     return Card(
+                      color: selected ? elevatedButtonColor : null,
                       child: ListTile(
-                        title: Text(brend.name),
+                        title: Text(
+                          brend.name,
+                          style:
+                              TextStyle(color: selected ? Colors.white : null),
+                        ),
+                        onTap: () async {
+                          ref.read(selectedBrendProvider.notifier).state =
+                              brend.id;
+                          if (context.mounted) Navigator.pop(context);
+                        },
                       ),
                     );
                   },
