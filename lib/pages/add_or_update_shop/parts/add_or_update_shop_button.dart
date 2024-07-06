@@ -7,6 +7,7 @@ import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
+import 'package:skar_admin/providers/pages/shopping_center.dart';
 import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -53,6 +54,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = await ref.read(hasShippingProvider);
+          SelectedShop parentShop = ref.read(selectedShoppincCenterProvider);
 
           final shop = Shop(
             id: shopID,
@@ -68,6 +70,9 @@ class AddOrUpdateShopButton extends ConsumerWidget {
                 ? ["+993${phoneCtrl.text}", "+993${phone2Ctrl.text}"]
                 : ["+993${phoneCtrl.text}"],
             hasShipping: hasShipping,
+            parentShopID: parentShop != SelectedShop.defaultSelectedShop()
+                ? parentShop.id
+                : null,
           );
 
           if (context.mounted) {

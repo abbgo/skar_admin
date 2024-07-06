@@ -36,12 +36,13 @@ class SelectShopParent extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () => goToPage(
-                  context,
-                  ShoppingCenterPage(
-                    latitudeCtrl: latitudeCtrl,
-                    longitudeCtrl: longitudeCtrl,
-                  ),
-                  false),
+                context,
+                ShoppingCenterPage(
+                  latitudeCtrl: latitudeCtrl,
+                  longitudeCtrl: longitudeCtrl,
+                ),
+                false,
+              ),
               child: Text(lang.selectMall),
             ),
           )
