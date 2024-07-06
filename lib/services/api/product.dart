@@ -58,18 +58,16 @@ class ProductApiService {
 class ProductParams extends Equatable {
   final bool? isDeleted;
   final int? page;
-  final BuildContext? context;
   final Product? product;
   final String? shopID;
 
   const ProductParams({
     this.isDeleted,
     this.page,
-    this.context,
     this.product,
     this.shopID,
   });
 
   @override
-  List<Object?> get props => [isDeleted, page, context, product, shopID];
+  List<Object?> get props => [isDeleted, page, product, shopID];
 }
