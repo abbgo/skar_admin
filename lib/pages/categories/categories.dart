@@ -30,7 +30,13 @@ class CategoriesPage extends ConsumerWidget {
               itemCount: categories.length,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return Card(child: Text(categories[index].nameTM));
+                return Card(
+                  child: CheckboxListTile.adaptive(
+                    value: false,
+                    onChanged: (value) {},
+                    title: Text(categories[index].nameTM),
+                  ),
+                );
               },
             );
           },
