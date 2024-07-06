@@ -23,7 +23,7 @@ class ResultShoppingCenters extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool hasShops = ref.watch(hasShoppingCenterProvider);
+    bool hasShoppingCenters = ref.watch(hasShoppingCenterProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
     String selectedShoppincCenter = ref.watch(selectedShoppincCenterProvider);
 
@@ -33,7 +33,7 @@ class ResultShoppingCenters extends ConsumerWidget {
       longitudeCtrl.text = shop.longitude.toString();
     }
 
-    return !hasShops
+    return !hasShoppingCenters
         ? const NoResult()
         : Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
