@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/brend.dart';
@@ -12,10 +11,8 @@ class BrendApiService {
   Future<ResultBrend> fetchBrends({
     required String accessToken,
     required int page,
-    required String shopID,
     required bool isDeleted,
     required String search,
-    required String lang,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/brends').replace(
       queryParameters: {
@@ -23,7 +20,6 @@ class BrendApiService {
         'page': '$page',
         'is_deleted': '$isDeleted',
         'search': search,
-        'lang': lang,
       },
     );
 
