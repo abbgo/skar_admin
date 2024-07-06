@@ -55,7 +55,9 @@ class Shop {
       phones: json['phones'] ?? [],
       shopOwnerID: json['shop_owner_id'] ?? '',
       hasShipping: json['has_shipping'] ?? false,
-      parentShop: json['parent_shop'] ?? Shop.defaultShop(),
+      parentShop: json['parent_shop'] == null
+          ? Shop.defaultShop()
+          : Shop.fromJson(json['parent_shop']),
     );
   }
 
