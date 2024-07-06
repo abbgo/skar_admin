@@ -9,6 +9,7 @@ class Shop {
   final String? shopOwnerID;
   final bool? hasShipping;
   final Shop? parentShop;
+  final String? parentShopID;
 
   const Shop({
     this.id,
@@ -23,6 +24,7 @@ class Shop {
     this.shopOwnerID,
     this.hasShipping,
     this.parentShop,
+    this.parentShopID,
   });
 
   factory Shop.defaultShop() {
@@ -39,6 +41,7 @@ class Shop {
       shopOwnerID: '',
       hasShipping: false,
       parentShop: null,
+      parentShopID: null,
     );
   }
 
@@ -74,6 +77,7 @@ class Shop {
       'shop_owner_id': shopOwnerID,
       'has_shipping': hasShipping,
       'image': image,
+      'parent_shop_id': parentShopID,
     };
   }
 }
