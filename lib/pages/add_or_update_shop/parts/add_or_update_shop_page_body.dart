@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/add_or_update_shop_button.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/has_shipping_input.dart';
 import 'package:skar_admin/pages/add_or_update_shop/parts/select_shop_parent.dart';
@@ -29,6 +30,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
     required this.longitudeCtrl,
     this.oldImage,
     this.shopID,
+    this.parentShop,
   });
 
   final GlobalKey<FormState> shopFormKey;
@@ -43,6 +45,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
 
   final String? oldImage;
   final String? shopID;
+  final Shop? parentShop;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                 SelectShopParent(
                   latitudeCtrl: latitudeCtrl,
                   longitudeCtrl: longitudeCtrl,
+                  parentShop: parentShop,
                 ),
                 ShopCoordinatesInput(
                   latitudeCtrl: latitudeCtrl,
