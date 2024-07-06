@@ -6,6 +6,7 @@ import 'package:skar_admin/pages/add_or_update_product/parts/product_name_tm_inp
 import 'package:skar_admin/pages/add_or_update_product/parts/product_old_price_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_price_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/select_product_brend.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/select_product_categories.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
 class AddOrUpdateProductPageBody extends StatelessWidget {
@@ -48,6 +49,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                   ],
                 ),
                 const SelectProductBrend(),
+                const SelectProductCategories(),
               ],
             ),
           ),
