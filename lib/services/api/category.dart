@@ -10,9 +10,7 @@ class CategoryApiService {
     Uri uri = Uri.parse('$apiUrl/categories');
 
     try {
-      http.Response response = await http.get(
-        uri,
-      );
+      http.Response response = await http.get(uri);
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
