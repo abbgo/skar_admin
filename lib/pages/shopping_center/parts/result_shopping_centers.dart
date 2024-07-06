@@ -29,7 +29,7 @@ class ResultShoppingCenters extends ConsumerWidget {
 
     Future<void> setCordinates(Shop shop) async {
       ref.read(selectedShoppincCenterProvider.notifier).state =
-          SelectedShop(nameTM: shop.nameTM, nameRU: shop.nameRU);
+          SelectedShop(id: shop.id!, nameTM: shop.nameTM, nameRU: shop.nameRU);
 
       latitudeCtrl.text = shop.latitude.toString();
       longitudeCtrl.text = shop.longitude.toString();
@@ -63,7 +63,11 @@ class ResultShoppingCenters extends ConsumerWidget {
                     }
                     Shop shop = response.shops![indexInPage];
                     bool selected = selectedShoppincCenter ==
-                        SelectedShop(nameRU: shop.nameRU, nameTM: shop.nameTM);
+                        SelectedShop(
+                          id: shop.id!,
+                          nameRU: shop.nameRU,
+                          nameTM: shop.nameTM,
+                        );
 
                     return Card(
                       color: selected ? elevatedButtonColor : null,
