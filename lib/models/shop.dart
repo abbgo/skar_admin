@@ -72,6 +72,16 @@ class Shop {
   }
 }
 
+class SelectedShop {
+  final String nameTM, nameRU;
+
+  const SelectedShop({required this.nameRU, required this.nameTM});
+
+  factory SelectedShop.defaultSelectedShop() {
+    return const SelectedShop(nameRU: '', nameTM: '');
+  }
+}
+
 class ResultShop extends Equatable {
   final List<Shop>? shops;
   final Shop? shop;
