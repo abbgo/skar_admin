@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
-import 'package:skar_admin/models/brend.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/show_brend.dart';
 import 'package:skar_admin/pages/brends/brends.dart';
-import 'package:skar_admin/providers/pages/brend.dart';
 
 class SelectProductBrend extends StatelessWidget {
   const SelectProductBrend({super.key});
@@ -25,22 +23,7 @@ class SelectProductBrend extends StatelessWidget {
                 '${lang.enterTheProductBrand} : ',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Consumer(
-                builder: (context, ref, child) {
-                  Brend selectedBrend = ref.watch(selectedBrendProvider);
-
-                  return Text(
-                    selectedBrend.name,
-                    softWrap: true,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  );
-                },
-              )
+              const ShowBrend(),
             ],
           ),
           SizedBox(
