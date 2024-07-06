@@ -42,5 +42,6 @@
     "moveToTrash":"Переместить в корзину",
     "trash":"Корзина",
     "products":"Продукты",
-    "searchBrand":"Поиск бренда"
+    "searchBrand":"Поиск бренда",
+    "searchCategory":"Поиск категори"
 }
