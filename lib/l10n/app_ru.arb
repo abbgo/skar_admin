@@ -51,5 +51,6 @@
     "address":"Адрес",
     "price":"Цена",
     "oldPrice":"Старая цена",
-    "productTypes":"Типы продукции (цвета)"
+    "productTypes":"Типы продукции (цвета)",
+    "addProductType":"Добавить тип продукта"
 }

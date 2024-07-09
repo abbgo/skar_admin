@@ -12,9 +12,9 @@ class AddColorPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(centerTitle: false, title: Text(lang.productTypes)),
-      floatingActionButton: const FloatingButton(
-        page: AddOrUpdateShopPage(shopID: ''),
-        text: 'Gosnus gos',
+      floatingActionButton: FloatingButton(
+        page: const AddOrUpdateShopPage(shopID: ''),
+        text: lang.addProductType,
       ),
     );
   }

@@ -51,5 +51,6 @@
     "address":"Salgysy",
     "price":"Bahasy",
     "oldPrice":"Köne bahasy",
-    "productTypes":"Haryt görnüşleri (reňkleri)"
+    "productTypes":"Haryt görnüşleri (reňkleri)",
+    "addProductType":"Haryt görnüşini goş"
 }
