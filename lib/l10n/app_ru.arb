@@ -43,5 +43,6 @@
     "trash":"Корзина",
     "products":"Продукты",
     "searchBrand":"Поиск бренда",
-    "searchCategory":"Поиск категори"
+    "searchCategory":"Поиск категори",
+    "displayProduct":"Показать продукт"
 }

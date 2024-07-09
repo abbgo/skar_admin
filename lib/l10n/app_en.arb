@@ -43,5 +43,6 @@
     "trash":"Trash",
     "products":"Products",
     "searchBrand":"Search brand",
-    "searchCategory":"Search category"
+    "searchCategory":"Search category",
+    "displayProduct":"Display the product"
 }

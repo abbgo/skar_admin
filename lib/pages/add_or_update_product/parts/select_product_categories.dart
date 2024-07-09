@@ -17,7 +17,7 @@ class SelectProductCategories extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${lang.enterTheCategoriesOfProduct} : ',
+            '${lang.enterTheCategoriesOfProduct} * : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const ShowSelectedCategories(),
