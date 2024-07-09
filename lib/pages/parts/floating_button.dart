@@ -12,7 +12,14 @@ class FloatingButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(elevation: 5),
       onPressed: () => goToPage(context, page, false),
-      child: Text(text),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.add),
+          const SizedBox(width: 10),
+          Text(text),
+        ],
+      ),
     );
   }
 }
