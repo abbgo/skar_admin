@@ -47,5 +47,6 @@
     "displayProduct":"Display the product",
     "addProductColors":"Add product types (colors)",
     "addProductTypes":"Add product types",
-    "name":"Name"
+    "name":"Name",
+    "address":"Address"
 }

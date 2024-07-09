@@ -47,5 +47,6 @@
     "displayProduct":"Показать продукт",
     "addProductColors":"Добавьте типы продуктов (цвета)",
     "addProductTypes":"Добавьте типы продуктов",
-    "name":"Имя"
+    "name":"Имя",
+    "address":"Адрес"
 }
