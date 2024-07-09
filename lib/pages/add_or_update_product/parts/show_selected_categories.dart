@@ -10,12 +10,15 @@ class ShowSelectedCategories extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     List<Category> selectedCategories = ref.watch(selectedCategoriesProvider);
 
-    return ListView.builder(
-      itemCount: selectedCategories.length,
-      itemBuilder: (context, index) {
-        Category category = selectedCategories[index];
-        return Text(category.nameTM);
-      },
-    );
+    return selectedCategories.isNotEmpty
+        ? ListView.builder(
+            shrinkWrap: true,
+            itemCount: selectedCategories.length,
+            itemBuilder: (context, index) {
+              Category category = selectedCategories[index];
+              return Text(category.nameTM);
+            },
+          )
+        : const SizedBox();
   }
 }
