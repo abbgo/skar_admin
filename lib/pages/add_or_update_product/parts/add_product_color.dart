@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
+import 'package:skar_admin/pages/add_color/add_color.dart';
 
 class AddProductColor extends StatelessWidget {
   const AddProductColor({super.key});
@@ -20,7 +22,7 @@ class AddProductColor extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => goToPage(context, const AddColorPage(), false),
               child: Text(lang.addProductTypes),
             ),
           ),
