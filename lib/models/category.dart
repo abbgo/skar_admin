@@ -4,6 +4,7 @@ class Category {
   final String id, nameTM, nameRU;
   final String? parentCategoryID;
   final List<Category>? childCategories;
+  bool isChecked = false;
 
   Category({
     required this.id,
