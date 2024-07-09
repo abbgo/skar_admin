@@ -17,6 +17,13 @@ class AddProductColor extends StatelessWidget {
             '${lang.addProductColors} * : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(lang.addProductTypes),
+            ),
+          ),
         ],
       ),
     );

@@ -45,5 +45,6 @@
     "searchBrand":"Marka gözle",
     "searchCategory":"Kategoriýa gözle",
     "displayProduct":"Harydy görkez",
-    "addProductColors":"Harydyň görnüşlerini ( reňklerini ) goşuň"
+    "addProductColors":"Harydyň görnüşlerini ( reňklerini ) goşuň",
+    "addProductTypes":"Haryt görnüşlerini goş"
 }
