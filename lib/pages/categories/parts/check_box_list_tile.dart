@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/category.dart';
+import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/category.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -19,6 +20,8 @@ class _CategoryCheckBoxListTileState extends State<CategoryCheckBoxListTile> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        bool isTM = ref.watch(langProvider) == 'tr';
+
         return CheckboxListTile.adaptive(
           activeColor: elevatedButtonColor,
           value: widget.category.isChecked,
@@ -38,7 +41,7 @@ class _CategoryCheckBoxListTileState extends State<CategoryCheckBoxListTile> {
                 .read(selectedCategoriesProvider.notifier)
                 .removeCategory(widget.category);
           },
-          title: Text(widget.category.nameTM),
+          title: Text(isTM ? widget.category.nameTM : widget.category.nameRU),
         );
       },
     );
