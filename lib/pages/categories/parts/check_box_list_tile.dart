@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/category.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class CategoryCheckBoxListTile extends StatefulWidget {
   const CategoryCheckBoxListTile({super.key, required this.category});
@@ -15,6 +16,7 @@ class _CategoryCheckBoxListTileState extends State<CategoryCheckBoxListTile> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile.adaptive(
+      activeColor: elevatedButtonColor,
       value: widget.category.isChecked,
       onChanged: (value) {
         setState(() {

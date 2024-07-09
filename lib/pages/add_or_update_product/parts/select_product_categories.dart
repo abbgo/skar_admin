@@ -22,7 +22,11 @@ class SelectProductCategories extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => goToPage(context, const CategoriesPage(), false),
+              onPressed: () => goToPage(
+                context,
+                const CategoriesPage(childCategories: []),
+                false,
+              ),
               child: Text(lang.selectCategories),
             ),
           )
