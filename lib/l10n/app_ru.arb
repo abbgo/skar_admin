@@ -52,5 +52,6 @@
     "price":"Цена",
     "oldPrice":"Старая цена",
     "productTypes":"Типы продукции (цвета)",
-    "addProductType":"Добавить тип продукта"
+    "addProductType":"Добавить тип продукта",
+    "productColor":"Цвет продукта"
 }

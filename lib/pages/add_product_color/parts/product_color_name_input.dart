@@ -12,7 +12,7 @@ class ProductColorNameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return InputPart(
       ctrl: ctrl,
-      label: ' ${AppLocalizations.of(context)!.name} (tm) *',
+      label: ' ${AppLocalizations.of(context)!.productColor} *',
       validatorFunc: (validator) => textInputValidate(validator, context),
     );
   }

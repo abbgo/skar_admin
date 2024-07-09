@@ -22,11 +22,17 @@ class _AddProductColorPageState extends State<AddProductColorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          ProductColorNameInput(ctrl: nameCtrl),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Form(
+          key: productColorFormKey,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              ProductColorNameInput(ctrl: nameCtrl),
+            ],
+          ),
+        ),
       ),
     );
   }
