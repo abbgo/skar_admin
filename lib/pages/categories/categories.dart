@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/category.dart';
+import 'package:skar_admin/pages/categories/parts/category_list_tile.dart';
 import 'package:skar_admin/providers/api/category.dart';
 
 class CategoriesPage extends ConsumerWidget {
@@ -30,13 +31,8 @@ class CategoriesPage extends ConsumerWidget {
               itemCount: categories.length,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return Card(
-                  child: CheckboxListTile.adaptive(
-                    value: false,
-                    onChanged: (value) {},
-                    title: Text(categories[index].nameTM),
-                  ),
-                );
+                Category category = categories[index];
+                return CategoryListTile(category: category);
               },
             );
           },
