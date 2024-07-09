@@ -48,5 +48,6 @@
     "addProductColors":"Add product types (colors)",
     "addProductTypes":"Add product types",
     "name":"Name",
-    "address":"Address"
+    "address":"Address",
+    "price":"Price"
 }

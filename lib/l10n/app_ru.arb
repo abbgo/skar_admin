@@ -48,5 +48,6 @@
     "addProductColors":"Добавьте типы продуктов (цвета)",
     "addProductTypes":"Добавьте типы продуктов",
     "name":"Имя",
-    "address":"Адрес"
+    "address":"Адрес",
+    "price":"Цена"
 }
