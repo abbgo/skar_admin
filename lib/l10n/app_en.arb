@@ -44,5 +44,6 @@
     "products":"Products",
     "searchBrand":"Search brand",
     "searchCategory":"Search category",
-    "displayProduct":"Display the product"
+    "displayProduct":"Display the product",
+    "addProductColors":"Add product types (colors)."
 }

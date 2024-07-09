@@ -44,5 +44,6 @@
     "products":"Продукты",
     "searchBrand":"Поиск бренда",
     "searchCategory":"Поиск категори",
-    "displayProduct":"Показать продукт"
+    "displayProduct":"Показать продукт",
+    "addProductColors":"Добавьте типы продуктов (цвета)"
 }
