@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/categories/parts/categories_list.dart';
-import 'package:skar_admin/pages/categories/parts/category_list_tile.dart';
 import 'package:skar_admin/providers/api/category.dart';
 
 class CategoriesPage extends ConsumerWidget {
