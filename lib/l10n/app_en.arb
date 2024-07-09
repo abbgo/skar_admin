@@ -49,5 +49,6 @@
     "addProductTypes":"Add product types",
     "name":"Name",
     "address":"Address",
-    "price":"Price"
+    "price":"Price",
+    "oldPrice":"Old price"
 }

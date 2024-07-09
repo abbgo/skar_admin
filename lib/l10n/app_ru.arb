@@ -49,5 +49,6 @@
     "addProductTypes":"Добавьте типы продуктов",
     "name":"Имя",
     "address":"Адрес",
-    "price":"Цена"
+    "price":"Цена",
+    "oldPrice":"Старая цена"
 }

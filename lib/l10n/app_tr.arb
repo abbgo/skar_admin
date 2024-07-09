@@ -49,5 +49,6 @@
     "addProductTypes":"Haryt görnüşlerini goş",
     "name":"Ady",
     "address":"Salgysy",
-    "price":"Bahasy"
+    "price":"Bahasy",
+    "oldPrice":"Köne bahasy"
 }
