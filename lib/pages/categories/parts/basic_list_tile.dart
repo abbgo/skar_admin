@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/category.dart';
 
-class BasicListTile extends StatelessWidget {
-  const BasicListTile({super.key, required this.category});
+class CategoryBasicListTile extends StatelessWidget {
+  const CategoryBasicListTile({super.key, required this.category});
 
   final Category category;
 
