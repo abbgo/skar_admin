@@ -11,9 +11,7 @@ class SelectedCategoriesNotifier extends StateNotifier<List<Category>> {
   }
 
   Future<void> removeCategory(Category category) async {
-    if (state.contains(category)) {
-      state.remove(category);
-    }
+    state = state.where((i) => i != category).toList();
   }
 }
 
