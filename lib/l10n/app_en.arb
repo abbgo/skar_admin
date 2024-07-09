@@ -50,5 +50,6 @@
     "name":"Name",
     "address":"Address",
     "price":"Price",
-    "oldPrice":"Old price"
+    "oldPrice":"Old price",
+    "productTypes":"Product types (colors)"
 }
