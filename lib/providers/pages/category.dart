@@ -1,17 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/models/category.dart';
 
-class SelectedCategoriesNotifier extends StateNotifier<List<String>> {
+class SelectedCategoriesNotifier extends StateNotifier<List<Category>> {
   SelectedCategoriesNotifier() : super([]);
 
-  void addCategory(String categoryID) {
-    if (!state.contains(categoryID)) {
-      state = [...state, categoryID];
+  void addCategory(Category category) {
+    if (!state.contains(category)) {
+      state = [...state, category];
     }
   }
 
-  void removeCategory(String categoryID) {
-    if (state.contains(categoryID)) {
-      state.remove(categoryID);
+  void removeCategory(Category category) {
+    if (state.contains(category)) {
+      state.remove(category);
     }
   }
 }
