@@ -5,7 +5,7 @@ import 'package:skar_admin/services/api/category.dart';
 final categoryApiProvider =
     Provider<CategoryApiService>((ref) => CategoryApiService());
 
-var fetchCategoriesProvider = FutureProvider.autoDispose<ResultCategory>(
+var fetchCategoriesProvider = FutureProvider<ResultCategory>(
   (ref) async {
     ResultCategory result = ResultCategory.defaultResult();
 
