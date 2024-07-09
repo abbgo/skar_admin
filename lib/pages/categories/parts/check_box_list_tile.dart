@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/category.dart';
+import 'package:skar_admin/providers/pages/category.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class CategoryCheckBoxListTile extends StatefulWidget {
@@ -21,10 +22,21 @@ class _CategoryCheckBoxListTileState extends State<CategoryCheckBoxListTile> {
         return CheckboxListTile.adaptive(
           activeColor: elevatedButtonColor,
           value: widget.category.isChecked,
-          onChanged: (value) {
+          onChanged: (value) async {
             setState(() {
               widget.category.isChecked = value!;
             });
+
+            if (value!) {
+              await ref
+                  .read(selectedCategoriesProvider.notifier)
+                  .addCategory(widget.category);
+              return;
+            }
+
+            await ref
+                .read(selectedCategoriesProvider.notifier)
+                .removeCategory(widget.category);
           },
           title: Text(widget.category.nameTM),
         );
