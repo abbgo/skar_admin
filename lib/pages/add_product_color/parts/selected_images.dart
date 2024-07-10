@@ -38,7 +38,7 @@ class SelectedImages extends ConsumerWidget {
                       children: [
                         Image(image: FileImage(selectedImage!), height: 100),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () async {},
                           icon: const Icon(
                             Icons.delete_forever,
                             color: Colors.red,
