@@ -27,15 +27,24 @@ class SelectedImages extends ConsumerWidget {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 2,
-                    mainAxisSpacing: 10,
+                    mainAxisSpacing: 20,
                     mainAxisExtent: 100,
                   ),
                   itemBuilder: (context, index) {
                     File? selectedImage = selectedImages[index];
-                    return Image(
-                      image: FileImage(selectedImage!),
-                      height: 100,
-                      width: 100,
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image(image: FileImage(selectedImage!), height: 100),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.delete_forever,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
                     );
                   },
                 )
