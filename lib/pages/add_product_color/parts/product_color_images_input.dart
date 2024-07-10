@@ -24,7 +24,7 @@ class ProductColorImagesInput extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () =>
-                    showSelectedImageSheet(context, 'product', 8, 16, true),
+                    showSelectedImageSheet(context, 'product', 8, 16),
                 icon: const Column(
                   children: [
                     Icon(Icons.add_photo_alternate, size: 100),
