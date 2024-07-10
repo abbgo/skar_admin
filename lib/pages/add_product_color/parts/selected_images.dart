@@ -28,7 +28,7 @@ class SelectedImages extends ConsumerWidget {
                     crossAxisCount: 5,
                     crossAxisSpacing: 2,
                     mainAxisSpacing: 10,
-                    mainAxisExtent: 40,
+                    mainAxisExtent: 10,
                   ),
                   itemBuilder: (context, index) {
                     File? selectedImage = selectedImages[index];
