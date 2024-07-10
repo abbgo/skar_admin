@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/functions/file_upload.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class SelectImageBottomSheet extends StatelessWidget {
   const SelectImageBottomSheet({
@@ -9,11 +10,13 @@ class SelectImageBottomSheet extends StatelessWidget {
     required this.imageType,
     required this.ratioX,
     required this.ratioY,
+    required this.selectRmBack,
   });
 
   final String imageType;
   final double ratioX;
   final double ratioY;
+  final bool selectRmBack;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class SelectImageBottomSheet extends StatelessWidget {
                       context,
                       ratioX,
                       ratioY,
+                      selectRmBack,
                     ),
                   ),
                   ImageSourcePart(
@@ -54,12 +58,33 @@ class SelectImageBottomSheet extends StatelessWidget {
                       context,
                       ratioX,
                       ratioY,
+                      selectRmBack,
                     ),
                   ),
                 ],
               );
             },
           ),
+          selectRmBack ? const Divider() : const SizedBox(),
+          selectRmBack
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/remove_background.png',
+                      height: 30,
+                      width: 30,
+                      color: elevatedButtonColor,
+                    ),
+                    const SizedBox(width: 20),
+                    Switch.adaptive(
+                      activeColor: elevatedButtonColor,
+                      value: true,
+                      onChanged: (value) {},
+                    ),
+                  ],
+                )
+              : const SizedBox(),
         ],
       ),
     );

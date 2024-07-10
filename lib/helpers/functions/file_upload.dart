@@ -11,7 +11,7 @@ import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/services/api/image.dart';
 
-Future<void> sendImage(
+Future<void> addOrUpdateImage(
   WidgetRef ref,
   File file,
   BuildContext context,
@@ -21,7 +21,7 @@ Future<void> sendImage(
   String oldShopImagePath = ref.read(shopImagePathProvider);
 
   ImageParams params = ImageParams(
-    imageType: 'shop',
+    imageType: imageType,
     oldImage: oldShopImagePath,
     imageFile: file,
     context: context,
@@ -42,6 +42,7 @@ Future<void> getImageFromCamera(
   BuildContext context,
   double ratioX,
   double ratioY,
+  bool selectRmBack,
 ) async {
   XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
 
@@ -53,7 +54,9 @@ Future<void> getImageFromCamera(
 
     if (croppedFile != null) {
       File file = File(croppedFile.path);
-      if (context.mounted) await sendImage(ref, file, context, imageType);
+      if (context.mounted) {
+        await addOrUpdateImage(ref, file, context, imageType);
+      }
     }
   }
 }
@@ -64,6 +67,7 @@ Future<void> getImageFromFolder(
   BuildContext context,
   double ratioX,
   double ratioY,
+  bool selectRmBack,
 ) async {
   FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
     type: FileType.custom,
@@ -79,7 +83,9 @@ Future<void> getImageFromFolder(
 
     if (croppedFile != null) {
       File file = File(croppedFile.path);
-      if (context.mounted) await sendImage(ref, file, context, imageType);
+      if (context.mounted) {
+        await addOrUpdateImage(ref, file, context, imageType);
+      }
     }
   }
 }
