@@ -6,7 +6,7 @@ showSelectedImageSheet(
   String imageType,
   double ratioX,
   double ratioY,
-  bool selectRmBack,
+  bool showRmBack,
 ) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
@@ -15,7 +15,7 @@ showSelectedImageSheet(
       imageType: imageType,
       ratioX: ratioX,
       ratioY: ratioY,
-      selectRmBack: selectRmBack,
+      showRmBack: showRmBack,
     ),
   );
 }

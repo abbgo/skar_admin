@@ -32,11 +32,11 @@ class ProductColorImagesInput extends ConsumerWidget {
             children: [
               IconButton(
                 onPressed: () =>
-                    showSelectedImageSheet(context, 'product', 16, 8, true),
+                    showSelectedImageSheet(context, 'product', 8, 16, true),
                 icon: const Column(
                   children: [
                     Icon(Icons.add_photo_alternate, size: 100),
-                    Text('16 : 8'),
+                    Text('8 : 16'),
                   ],
                 ),
               ),

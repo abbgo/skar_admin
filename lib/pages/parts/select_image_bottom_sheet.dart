@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/functions/file_upload.dart';
+import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class SelectImageBottomSheet extends StatelessWidget {
@@ -10,13 +11,13 @@ class SelectImageBottomSheet extends StatelessWidget {
     required this.imageType,
     required this.ratioX,
     required this.ratioY,
-    required this.selectRmBack,
+    required this.showRmBack,
   });
 
   final String imageType;
   final double ratioX;
   final double ratioY;
-  final bool selectRmBack;
+  final bool showRmBack;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,6 @@ class SelectImageBottomSheet extends StatelessWidget {
                       context,
                       ratioX,
                       ratioY,
-                      selectRmBack,
                     ),
                   ),
                   ImageSourcePart(
@@ -58,15 +58,14 @@ class SelectImageBottomSheet extends StatelessWidget {
                       context,
                       ratioX,
                       ratioY,
-                      selectRmBack,
                     ),
                   ),
                 ],
               );
             },
           ),
-          selectRmBack ? const Divider() : const SizedBox(),
-          selectRmBack
+          showRmBack ? const Divider() : const SizedBox(),
+          showRmBack
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -77,10 +76,19 @@ class SelectImageBottomSheet extends StatelessWidget {
                       color: elevatedButtonColor,
                     ),
                     const SizedBox(width: 20),
-                    Switch.adaptive(
-                      activeColor: elevatedButtonColor,
-                      value: true,
-                      onChanged: (value) {},
+                    Consumer(
+                      builder: (context, ref, child) {
+                        var isRemoveBackground =
+                            ref.watch(removeBackgroundProvider);
+
+                        return Switch.adaptive(
+                          activeColor: elevatedButtonColor,
+                          value: isRemoveBackground,
+                          onChanged: (value) => ref
+                              .read(removeBackgroundProvider.notifier)
+                              .state = value,
+                        );
+                      },
                     ),
                   ],
                 )

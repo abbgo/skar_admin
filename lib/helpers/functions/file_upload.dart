@@ -7,6 +7,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/api/image.dart';
+import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:skar_admin/services/api/image.dart';
@@ -18,7 +19,9 @@ Future<void> addOrUpdateImage(
   String imageType,
 ) async {
   ref.read(loadSendImageProvider.notifier).state = true;
-  String oldShopImagePath = ref.read(shopImagePathProvider);
+  String oldShopImagePath = imageType == 'product'
+      ? ref.read(productImagePathProvider)
+      : ref.read(shopImagePathProvider);
 
   ImageParams params = ImageParams(
     imageType: imageType,
@@ -30,8 +33,13 @@ Future<void> addOrUpdateImage(
       await ref.watch(addOrUpdateImageProvider(params).future);
 
   if (resultImage.image != null) {
-    ref.read(shopImageProvider.notifier).state = file;
-    ref.read(shopImagePathProvider.notifier).state = resultImage.image!;
+    if (imageType == 'product') {
+      ref.read(productImageProvider.notifier).state = file;
+      ref.read(productImagePathProvider.notifier).state = resultImage.image!;
+    } else {
+      ref.read(shopImageProvider.notifier).state = file;
+      ref.read(shopImagePathProvider.notifier).state = resultImage.image!;
+    }
   }
   ref.read(loadSendImageProvider.notifier).state = false;
 }
@@ -42,7 +50,6 @@ Future<void> getImageFromCamera(
   BuildContext context,
   double ratioX,
   double ratioY,
-  bool selectRmBack,
 ) async {
   XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
 
@@ -67,7 +74,6 @@ Future<void> getImageFromFolder(
   BuildContext context,
   double ratioX,
   double ratioY,
-  bool selectRmBack,
 ) async {
   FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
     type: FileType.custom,
