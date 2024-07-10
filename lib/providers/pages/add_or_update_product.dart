@@ -8,7 +8,6 @@ final loadCreateProductProvider =
 final visibleProductProvider = StateProvider<bool>((ref) => true);
 final productImageProvider = StateProvider.autoDispose<File?>((ref) => null);
 
-// final productImagePathProvider = StateProvider<String>((ref) => '');
 class SelectedProductImagesNotifier extends StateNotifier<List<String>> {
   SelectedProductImagesNotifier() : super([]);
 
@@ -18,6 +17,11 @@ class SelectedProductImagesNotifier extends StateNotifier<List<String>> {
     }
   }
 }
+
+var productImagePathsProvider =
+    StateNotifierProvider<SelectedProductImagesNotifier, List<String>>(
+  (ref) => SelectedProductImagesNotifier(),
+);
 
 class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
   SelectedDimensionsNotifier() : super([]);
