@@ -2,15 +2,16 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/dimension.dart';
+import 'package:skar_admin/models/image.dart';
 
 final loadCreateProductProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 final visibleProductProvider = StateProvider<bool>((ref) => true);
 
-class SelectedProductImagesNotifier extends StateNotifier<List<File?>> {
+class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {
   SelectedProductImagesNotifier() : super([]);
 
-  Future<void> addImage(File? image) async {
+  Future<void> addImage(SelectedImage image) async {
     if (!state.contains(image)) {
       state = [...state, image];
     }
@@ -18,23 +19,8 @@ class SelectedProductImagesNotifier extends StateNotifier<List<File?>> {
 }
 
 var productImagesProvider =
-    StateNotifierProvider<SelectedProductImagesNotifier, List<File?>>(
+    StateNotifierProvider<SelectedProductImagesNotifier, List<SelectedImage>>(
   (ref) => SelectedProductImagesNotifier(),
-);
-
-class SelectedProductImagesPathNotifier extends StateNotifier<List<String>> {
-  SelectedProductImagesPathNotifier() : super([]);
-
-  Future<void> addImage(String image) async {
-    if (!state.contains(image)) {
-      state = [...state, image];
-    }
-  }
-}
-
-var productImagePathsProvider =
-    StateNotifierProvider<SelectedProductImagesPathNotifier, List<String>>(
-  (ref) => SelectedProductImagesPathNotifier(),
 );
 
 class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
