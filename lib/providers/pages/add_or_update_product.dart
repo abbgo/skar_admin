@@ -19,7 +19,7 @@ class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
   }
 }
 
-var selectedDimensionsProvider = StateNotifierProvider.autoDispose<
-    SelectedDimensionsNotifier, List<Dimension>>(
+var selectedDimensionsProvider =
+    StateNotifierProvider<SelectedDimensionsNotifier, List<Dimension>>(
   (ref) => SelectedDimensionsNotifier(),
 );
