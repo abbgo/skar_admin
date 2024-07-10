@@ -26,14 +26,14 @@ class DimensionGroup {
   }
 }
 
-class ResultDimensionGroups extends Equatable {
+class ResultDimensionGroup extends Equatable {
   final List<DimensionGroup>? dimensionGroups;
   final String error;
 
-  const ResultDimensionGroups({this.dimensionGroups, required this.error});
+  const ResultDimensionGroup({this.dimensionGroups, required this.error});
 
-  factory ResultDimensionGroups.defaultResult() {
-    return const ResultDimensionGroups(dimensionGroups: null, error: '');
+  factory ResultDimensionGroup.defaultResult() {
+    return const ResultDimensionGroup(dimensionGroups: null, error: '');
   }
 
   @override
