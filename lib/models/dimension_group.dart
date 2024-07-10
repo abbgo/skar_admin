@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:skar_admin/models/dimension.dart';
 
 class DimensionGroup {
@@ -23,4 +24,18 @@ class DimensionGroup {
             ),
     );
   }
+}
+
+class ResultDimensionGroups extends Equatable {
+  final List<DimensionGroup>? dimensionGroups;
+  final String error;
+
+  const ResultDimensionGroups({this.dimensionGroups, required this.error});
+
+  factory ResultDimensionGroups.defaultResult() {
+    return const ResultDimensionGroups(dimensionGroups: null, error: '');
+  }
+
+  @override
+  List<Object?> get props => [dimensionGroups, error];
 }
