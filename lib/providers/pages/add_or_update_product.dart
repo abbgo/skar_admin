@@ -6,7 +6,6 @@ import 'package:skar_admin/models/dimension.dart';
 final loadCreateProductProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 final visibleProductProvider = StateProvider<bool>((ref) => true);
-// final productImageProvider = StateProvider.autoDispose<File?>((ref) => null);
 
 class SelectedProductImagesNotifier extends StateNotifier<List<File?>> {
   SelectedProductImagesNotifier() : super([]);

@@ -33,7 +33,7 @@ Future<void> addOrUpdateImage(
 
   if (resultImage.image != null) {
     if (imageType == 'product') {
-      ref.read(productImageProvider.notifier).state = file;
+      ref.read(productImagesProvider.notifier).addImage(file);
       ref.read(productImagePathsProvider.notifier).addImage(resultImage.image!);
     } else {
       ref.read(shopImageProvider.notifier).state = file;
