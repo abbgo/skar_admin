@@ -6,10 +6,25 @@ import 'package:skar_admin/models/dimension.dart';
 final loadCreateProductProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 final visibleProductProvider = StateProvider<bool>((ref) => true);
-final productImageProvider = StateProvider.autoDispose<File?>((ref) => null);
+// final productImageProvider = StateProvider.autoDispose<File?>((ref) => null);
 
-class SelectedProductImagesNotifier extends StateNotifier<List<String>> {
+class SelectedProductImagesNotifier extends StateNotifier<List<File?>> {
   SelectedProductImagesNotifier() : super([]);
+
+  Future<void> addImage(File? image) async {
+    if (!state.contains(image)) {
+      state = [...state, image];
+    }
+  }
+}
+
+var productImagesProvider =
+    StateNotifierProvider<SelectedProductImagesNotifier, List<File?>>(
+  (ref) => SelectedProductImagesNotifier(),
+);
+
+class SelectedProductImagesPathNotifier extends StateNotifier<List<String>> {
+  SelectedProductImagesPathNotifier() : super([]);
 
   Future<void> addImage(String image) async {
     if (!state.contains(image)) {
@@ -19,8 +34,8 @@ class SelectedProductImagesNotifier extends StateNotifier<List<String>> {
 }
 
 var productImagePathsProvider =
-    StateNotifierProvider<SelectedProductImagesNotifier, List<String>>(
-  (ref) => SelectedProductImagesNotifier(),
+    StateNotifierProvider<SelectedProductImagesPathNotifier, List<String>>(
+  (ref) => SelectedProductImagesPathNotifier(),
 );
 
 class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
