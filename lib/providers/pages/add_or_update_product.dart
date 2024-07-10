@@ -18,3 +18,8 @@ class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
     state = state.where((i) => i != dimension).toList();
   }
 }
+
+var selectedDimensionsProvider = StateNotifierProvider.autoDispose<
+    SelectedDimensionsNotifier, List<Dimension>>(
+  (ref) => SelectedDimensionsNotifier(),
+);
