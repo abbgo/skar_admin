@@ -34,7 +34,7 @@ class Category {
           ? []
           : List<Category>.from(
               json['child_categories'].map(
-                (productJson) => Category.fromJson(productJson),
+                (categoryJson) => Category.fromJson(categoryJson),
               ),
             ),
     );
