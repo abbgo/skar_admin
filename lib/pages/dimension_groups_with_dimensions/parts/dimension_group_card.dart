@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/dimension_group.dart';
+import 'package:skar_admin/pages/dimension_groups_with_dimensions/parts/dimension_button.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class DimensionGroupCard extends StatelessWidget {
@@ -31,12 +32,8 @@ class DimensionGroupCard extends StatelessWidget {
                   mainAxisExtent: 40,
                 ),
                 itemCount: dimensions.length,
-                itemBuilder: (context, index) {
-                  return ElevatedButton(
-                    onPressed: () {},
-                    child: Text(dimensions[index].dimension),
-                  );
-                },
+                itemBuilder: (context, index) =>
+                    DimensionButton(d: dimensions[index]),
               ),
             ),
           ],
