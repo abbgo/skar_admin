@@ -50,11 +50,11 @@ class BrendApiService {
   }
 }
 
-class BrendParams extends Equatable {
+class DefaultParams extends Equatable {
   final bool? isDeleted;
   final int? page;
 
-  const BrendParams({this.isDeleted, this.page});
+  const DefaultParams({this.isDeleted, this.page});
 
   @override
   List<Object?> get props => [isDeleted, page];

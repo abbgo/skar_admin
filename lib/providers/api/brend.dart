@@ -7,7 +7,7 @@ import 'package:skar_admin/services/api/brend.dart';
 final brendApiProvider = Provider<BrendApiService>((ref) => BrendApiService());
 
 var fetchBrendsProvider =
-    FutureProvider.autoDispose.family<ResultBrend, BrendParams>(
+    FutureProvider.autoDispose.family<ResultBrend, DefaultParams>(
   (ref, arg) async {
     ResultBrend result = ResultBrend.defaultResult();
 
