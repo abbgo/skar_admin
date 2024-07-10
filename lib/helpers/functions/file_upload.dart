@@ -19,9 +19,8 @@ Future<void> addOrUpdateImage(
   String imageType,
 ) async {
   ref.read(loadSendImageProvider.notifier).state = true;
-  String oldShopImagePath = imageType == 'product'
-      ? ref.read(productImagePathProvider)
-      : ref.read(shopImagePathProvider);
+  String oldShopImagePath =
+      imageType == 'product' ? '' : ref.read(shopImagePathProvider);
 
   ImageParams params = ImageParams(
     imageType: imageType,
@@ -35,7 +34,7 @@ Future<void> addOrUpdateImage(
   if (resultImage.image != null) {
     if (imageType == 'product') {
       ref.read(productImageProvider.notifier).state = file;
-      ref.read(productImagePathProvider.notifier).state = resultImage.image!;
+      ref.read(productImagePathsProvider.notifier).addImage(resultImage.image!);
     } else {
       ref.read(shopImageProvider.notifier).state = file;
       ref.read(shopImagePathProvider.notifier).state = resultImage.image!;
