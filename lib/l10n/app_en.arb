@@ -54,5 +54,6 @@
     "productTypes":"Product types (colors)",
     "addProductType":"Add product type",
     "productColor":"Product color",
-    "selectProductColorDimensions":"Select product color dimensions"
+    "selectProductColorDimensions":"Select product color dimensions",
+    "addProductColorImages":"Add pictures of product color"
 }

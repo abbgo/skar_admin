@@ -54,5 +54,6 @@
     "productTypes":"Типы продукции (цвета)",
     "addProductType":"Добавить тип продукта",
     "productColor":"Цвет продукта",
-    "selectProductColorDimensions":"Выберите размеры цвета продукта"
+    "selectProductColorDimensions":"Выберите размеры цвета продукта",
+    "addProductColorImages":"Добавьте фотографии цвета товара"
 }
