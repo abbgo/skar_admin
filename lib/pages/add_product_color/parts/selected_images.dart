@@ -25,10 +25,10 @@ class SelectedImages extends ConsumerWidget {
                   itemCount: selectedImages.length,
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
+                    crossAxisCount: 2,
                     crossAxisSpacing: 2,
                     mainAxisSpacing: 10,
-                    mainAxisExtent: 10,
+                    mainAxisExtent: 100,
                   ),
                   itemBuilder: (context, index) {
                     File? selectedImage = selectedImages[index];
