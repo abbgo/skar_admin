@@ -35,14 +35,17 @@ class SelectShopParent extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => goToPage(
-                context,
-                ShoppingCenterPage(
-                  latitudeCtrl: latitudeCtrl,
-                  longitudeCtrl: longitudeCtrl,
-                ),
-                false,
-              ),
+              onPressed: () {
+                FocusManager.instance.primaryFocus!.unfocus();
+                goToPage(
+                  context,
+                  ShoppingCenterPage(
+                    latitudeCtrl: latitudeCtrl,
+                    longitudeCtrl: longitudeCtrl,
+                  ),
+                  false,
+                );
+              },
               child: Text(lang.selectMall),
             ),
           )
