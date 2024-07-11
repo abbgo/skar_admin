@@ -1,10 +1,26 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/image.dart';
+import 'package:skar_admin/models/product_color.dart';
 
 final loadCreateProductProvider =
     StateProvider.autoDispose<bool>((ref) => false);
 final visibleProductProvider = StateProvider<bool>((ref) => true);
+
+class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
+  ProductColorsNotifier() : super([]);
+
+  Future<void> addProductColor(ProductColor productColor) async {
+    if (!state.contains(productColor)) {
+      state = [...state, productColor];
+    }
+  }
+}
+
+var productColorsProvider =
+    StateNotifierProvider<ProductColorsNotifier, List<ProductColor>>(
+  (ref) => ProductColorsNotifier(),
+);
 
 class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {
   SelectedProductImagesNotifier() : super([]);

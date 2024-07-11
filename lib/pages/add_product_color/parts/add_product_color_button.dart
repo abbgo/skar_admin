@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/image.dart';
+import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
 class AddProductColorButton extends ConsumerWidget {
@@ -22,6 +23,8 @@ class AddProductColorButton extends ConsumerWidget {
         backgroundColor: Colors.green,
       ),
       onPressed: () async {
+        List<ProductColor> productColors = [];
+
         List<Dimension> selectedDimensions =
             await ref.read(selectedDimensionsProvider);
 
