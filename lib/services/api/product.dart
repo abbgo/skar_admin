@@ -53,6 +53,37 @@ class ProductApiService {
       rethrow;
     }
   }
+
+  // create product -------------------------------------------------------
+  Future<ResultShop> createProduct(
+      {required String accessToken, required Product product}) async {
+    Uri uri = Uri.parse('$apiUrl/back/shops');
+
+    try {
+      http.Response response = await http.post(
+        uri,
+        headers: tokenHeader(accessToken),
+        body: json.encode(shop.toJson()),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['message'] == null) {
+          return const ResultShop(message: '', error: '');
+        }
+
+        return ResultShop(message: jsonData['message'], error: '');
+      }
+
+      if (response.statusCode == 400) {
+        return const ResultShop(error: 'some error');
+      }
+
+      return const ResultShop(message: '', error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ProductParams extends Equatable {
