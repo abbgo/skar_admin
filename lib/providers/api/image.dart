@@ -46,3 +46,36 @@ var addOrUpdateImageProvider =
     return result;
   },
 );
+
+var deleteImageProvider =
+    FutureProvider.autoDispose.family<ResultImage, ImageParams>(
+  (ref, arg) async {
+    ResultImage result = ResultImage.defaultResult();
+
+    try {
+      bool hasInternert =
+          await ref.read(checkInternetConnProvider(arg.context).future);
+
+      if (hasInternert) {
+        String accessToken = await ref.read(accessTokenProvider);
+        ResultImage resultImage = await ref
+            .read(imageApiServiceProvider)
+            .deleteImage(accessToken, arg.oldImage);
+
+        if (resultImage.error == 'auth error') {
+          await ref.read(accessTokenProvider.notifier).update('');
+          if (arg.context.mounted) Navigator.pop(arg.context);
+        }
+
+        if (resultImage.error == 'some error') {
+          if (arg.context.mounted) showSomeErr(arg.context);
+        }
+
+        result = resultImage;
+      }
+    } catch (e) {
+      result = ResultImage(error: e.toString());
+    }
+    return result;
+  },
+);

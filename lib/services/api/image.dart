@@ -11,7 +11,9 @@ import 'package:skar_admin/models/image.dart';
 class ImageApiService {
   // delete image --------------------------------------------------------------
   Future<ResultImage> deleteImage(
-      {required String accessToken, required String imagePath}) async {
+    String accessToken,
+    String imagePath,
+  ) async {
     Uri uri = Uri.parse('$apiUrl/back/image');
 
     try {
