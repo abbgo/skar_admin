@@ -51,6 +51,22 @@ class Product {
       isVisible: json['is_visible'] ?? false,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name_tm': nameTM,
+      'name_ru': nameRU,
+      'price': price,
+      'old_price': oldPrice,
+      'brend_id': brendID,
+      'shop_id': shopID,
+      'categories': categoryIDs,
+      'product_colors': productColors,
+      'is_visible': isVisible,
+      'image': image,
+    };
+  }
 }
 
 class ResultProduct extends Equatable {
