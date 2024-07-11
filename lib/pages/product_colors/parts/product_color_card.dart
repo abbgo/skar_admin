@@ -19,6 +19,25 @@ class ProductColorCard extends StatelessWidget {
           collapsedTextColor: Colors.white,
           title: Text(productColor.name),
           children: [
+            const Text('Saylanan olcegler: '),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 2,
+                  mainAxisSpacing: 10,
+                  mainAxisExtent: 40,
+                ),
+                itemCount: productColor.dimensions.length,
+                itemBuilder: (context, index) => DimensionButton(
+                  d: Dimension.defaultDimension(),
+                  showedDimension: productColor.dimensions[index],
+                ),
+              ),
+            ),
+            const Text('Saylanan suratlar: '),
             Padding(
               padding: const EdgeInsets.all(8),
               child: GridView.builder(

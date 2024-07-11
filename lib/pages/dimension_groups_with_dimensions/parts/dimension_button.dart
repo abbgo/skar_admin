@@ -46,7 +46,7 @@ class DimensionButton extends ConsumerWidget {
                     .addDimension(d);
               },
         child: Text(
-          d.dimension,
+          showedDimension != '' ? showedDimension : d.dimension,
           style: TextStyle(
             color: showedDimension != ''
                 ? null
