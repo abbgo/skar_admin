@@ -5,13 +5,18 @@ import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class DimensionButton extends ConsumerWidget {
-  const DimensionButton({super.key, required this.d});
+  const DimensionButton(
+      {super.key, required this.d, required this.showedDimension});
 
   final Dimension d;
+  final String showedDimension;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Dimension> selectedDimensions = ref.watch(selectedDimensionsProvider);
+    List<Dimension> selectedDimensions = [];
+    if (showedDimension == '') {
+      selectedDimensions = ref.watch(selectedDimensionsProvider);
+    }
 
     return Container(
       decoration: BoxDecoration(
@@ -20,23 +25,34 @@ class DimensionButton extends ConsumerWidget {
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor:
-              !selectedDimensions.contains(d) ? Colors.white : null,
+          backgroundColor: showedDimension != ''
+              ? null
+              : !selectedDimensions.contains(d)
+                  ? Colors.white
+                  : null,
         ),
-        onPressed: () async {
-          if (selectedDimensions.contains(d)) {
-            await ref
-                .read(selectedDimensionsProvider.notifier)
-                .removeDimension(d);
-            return;
-          }
+        onPressed: showedDimension != ''
+            ? () {}
+            : () async {
+                if (selectedDimensions.contains(d)) {
+                  await ref
+                      .read(selectedDimensionsProvider.notifier)
+                      .removeDimension(d);
+                  return;
+                }
 
-          await ref.read(selectedDimensionsProvider.notifier).addDimension(d);
-        },
+                await ref
+                    .read(selectedDimensionsProvider.notifier)
+                    .addDimension(d);
+              },
         child: Text(
           d.dimension,
           style: TextStyle(
-            color: !selectedDimensions.contains(d) ? elevatedButtonColor : null,
+            color: showedDimension != ''
+                ? null
+                : !selectedDimensions.contains(d)
+                    ? elevatedButtonColor
+                    : null,
           ),
         ),
       ),
