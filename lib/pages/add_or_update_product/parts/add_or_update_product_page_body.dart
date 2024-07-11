@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_button.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_product_color.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_ru_input.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_tm_input.dart';
@@ -9,6 +10,7 @@ import 'package:skar_admin/pages/add_or_update_product/parts/product_price_input
 import 'package:skar_admin/pages/add_or_update_product/parts/select_product_brend.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/select_product_categories.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/visibility_input.dart';
+import 'package:skar_admin/pages/parts/cancel_button.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
 class AddOrUpdateProductPageBody extends StatelessWidget {
@@ -54,6 +56,17 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                 const SelectProductCategories(),
                 const VisibilityInput(),
                 const AddProductColor(),
+                const Divider(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CancelButton(),
+                      AddOrUpdateProductButton(),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
