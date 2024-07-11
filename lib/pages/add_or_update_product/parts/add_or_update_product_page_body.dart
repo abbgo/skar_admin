@@ -57,13 +57,20 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                 const VisibilityInput(),
                 const AddProductColor(),
                 const Divider(),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      CancelButton(),
-                      AddOrUpdateProductButton(),
+                      const CancelButton(),
+                      AddOrUpdateProductButton(
+                        formKey: productFormKey,
+                        nameTMCtrl: nameTMCtrl,
+                        nameRUCtrl: nameRUCtrl,
+                        priceCtrl: priceCtrl,
+                        oldPriceCtrl: oldPriceCtrl,
+                        shopID: shopID,
+                      ),
                     ],
                   ),
                 ),
