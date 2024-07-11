@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/pages/dimension_groups_with_dimensions/parts/dimension_button.dart';
+import 'package:skar_admin/pages/product_colors/parts/selected_dimensions.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductColorCard extends StatelessWidget {
@@ -19,22 +20,8 @@ class ProductColorCard extends StatelessWidget {
           title: Text(productColor.name),
           children: [
             const Text('Saylanan olcegler: '),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 2,
-                  mainAxisSpacing: 10,
-                  mainAxisExtent: 40,
-                ),
-                itemCount: productColor.selectedDimensions.length,
-                itemBuilder: (context, index) => DimensionButton(
-                  d: productColor.selectedDimensions[index],
-                  forOnlyShow: true,
-                ),
-              ),
+            SelectedDimensions(
+              selectedDimensions: productColor.selectedDimensions,
             ),
             const Text('Saylanan suratlar: '),
             Padding(
