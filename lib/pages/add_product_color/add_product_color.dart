@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/add_product_color/parts/add_product_color_button.dart';
 import 'package:skar_admin/pages/add_product_color/parts/product_color_images_input.dart';
 import 'package:skar_admin/pages/add_product_color/parts/product_color_name_input.dart';
 import 'package:skar_admin/pages/add_product_color/parts/select_product_dimension.dart';
+import 'package:skar_admin/pages/parts/cancel_button.dart';
 
 class AddProductColorPage extends StatefulWidget {
   const AddProductColorPage({super.key});
@@ -34,6 +36,17 @@ class _AddProductColorPageState extends State<AddProductColorPage> {
               ProductColorNameInput(ctrl: nameCtrl),
               const SelectProductDimension(),
               const ProductColorImagesInput(),
+              const Divider(),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CancelButton(),
+                    AddProductColorButton(),
+                  ],
+                ),
+              )
             ],
           ),
         ),
