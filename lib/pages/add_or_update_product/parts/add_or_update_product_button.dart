@@ -67,7 +67,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
                 ? num.parse(oldPriceCtrl.text)
                 : 0.0,
             shopID: shopID,
-            brendID: brend.id,
+            brendID: brend.id == '' ? null : brend.id,
             isVisible: isVisible,
             categoryIDs: categoryIDs,
             productColors: productColors,
