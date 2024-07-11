@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:equatable/equatable.dart';
 
 class ResultImage extends Equatable {
@@ -25,5 +24,16 @@ class SelectedImage {
 
   factory SelectedImage.defaultResult() {
     return const SelectedImage(path: '', image: null);
+  }
+}
+
+class ProductColorImage {
+  final String name;
+  final int orderNumber;
+
+  const ProductColorImage({required this.name, required this.orderNumber});
+
+  Map<String, dynamic> toJson() {
+    return {'name': name, 'order_number': orderNumber};
   }
 }
