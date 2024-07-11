@@ -60,6 +60,7 @@ class AddProductColorButton extends ConsumerWidget {
               .read(productColorsProvider.notifier)
               .addProductColor(productColor);
 
+          if (context.mounted) Navigator.pop(context);
           return;
         }
 
