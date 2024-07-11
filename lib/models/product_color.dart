@@ -13,6 +13,10 @@ class ProductColor {
     required this.images,
   });
 
+  factory ProductColor.defaultProductColor() {
+    return ProductColor(name: '', orderNumber: 0, dimensions: [], images: []);
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'name': name,

@@ -23,7 +23,7 @@ class AddProductColorButton extends ConsumerWidget {
         backgroundColor: Colors.green,
       ),
       onPressed: () async {
-        List<ProductColor> productColors = [];
+        ProductColor productColor = ProductColor.defaultProductColor();
 
         List<Dimension> selectedDimensions =
             await ref.read(selectedDimensionsProvider);
