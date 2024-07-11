@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
+import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/models/category.dart';
+import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
+import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/category.dart';
+import 'package:skar_admin/services/api/product.dart';
 
 class AddOrUpdateProductButton extends ConsumerWidget {
   const AddOrUpdateProductButton({
@@ -36,13 +40,42 @@ class AddOrUpdateProductButton extends ConsumerWidget {
       ),
       onPressed: () async {
         List<Category> selectedCategories =
-            ref.read(selectedCategoriesProvider);
+            await ref.read(selectedCategoriesProvider);
 
-        List<ProductColor> productColors = ref.read(productColorsProvider);
+        List<ProductColor> productColors =
+            await ref.read(productColorsProvider);
 
         if (formKey.currentState?.validate() == true &&
             selectedCategories.isNotEmpty &&
             productColors.isNotEmpty) {
+          ProductParams? params;
+          ref.read(loadCreateProductProvider.notifier).state = true;
+          bool isVisible = await ref.read(visibleProductProvider);
+          Brend brend = ref.read(selectedBrendProvider);
+
+          List<String> categoryIDs = [];
+          for (var category in selectedCategories) {
+            categoryIDs.add(category.id);
+          }
+
+          final product = Product(
+            nameTM: nameTMCtrl.text,
+            nameRU: nameRUCtrl.text,
+            price: num.parse(priceCtrl.text),
+            oldPrice: oldPriceCtrl.text.isNotEmpty
+                ? num.parse(oldPriceCtrl.text)
+                : 0.0,
+            shopID: shopID,
+            brendID: brend.id,
+            isVisible: isVisible,
+            categoryIDs: categoryIDs,
+            productColors: productColors,
+          );
+
+          if (context.mounted) {
+            params = ProductParams(product: product, context: context);
+          }
+
           return;
         }
 

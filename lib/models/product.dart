@@ -1,30 +1,42 @@
 import 'package:equatable/equatable.dart';
+import 'package:skar_admin/models/product_color.dart';
 
 class Product {
-  final String id, nameTM, nameRU;
+  final String? id, shopID, brendID;
+  final String nameTM, nameRU;
   final num? price, oldPrice;
   final String? image;
   final bool? isVisible;
+  final List<String>? categoryIDs;
+  final List<ProductColor>? productColors;
 
   Product({
-    required this.id,
+    this.id,
+    this.shopID,
+    this.brendID,
     required this.nameTM,
     required this.nameRU,
     this.price,
     this.oldPrice,
     this.image,
-    required this.isVisible,
+    this.isVisible,
+    this.categoryIDs,
+    this.productColors,
   });
 
   factory Product.defaultProduct() {
     return Product(
-      id: '',
+      id: null,
+      shopID: null,
+      brendID: null,
       nameRU: '',
       nameTM: '',
       price: null,
       oldPrice: null,
       image: null,
       isVisible: false,
+      categoryIDs: null,
+      productColors: null,
     );
   }
 
