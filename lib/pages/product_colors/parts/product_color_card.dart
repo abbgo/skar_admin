@@ -18,6 +18,7 @@ class ProductColorCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: ExpansionTile(
+          collapsedIconColor: Colors.white,
           collapsedBackgroundColor: elevatedButtonColor,
           collapsedTextColor: Colors.white,
           title: Text(productColor.name),
@@ -40,10 +41,7 @@ class ProductColorCard extends StatelessWidget {
 }
 
 class TtitleWidget extends StatelessWidget {
-  const TtitleWidget({
-    super.key,
-    required this.text,
-  });
+  const TtitleWidget({super.key, required this.text});
 
   final String text;
 
