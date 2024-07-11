@@ -36,8 +36,8 @@ class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {
   }
 }
 
-var productImagesProvider =
-    StateNotifierProvider<SelectedProductImagesNotifier, List<SelectedImage>>(
+var productImagesProvider = StateNotifierProvider.autoDispose<
+    SelectedProductImagesNotifier, List<SelectedImage>>(
   (ref) => SelectedProductImagesNotifier(),
 );
 
