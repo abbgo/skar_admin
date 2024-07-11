@@ -54,6 +54,8 @@ class AddProductColorButton extends ConsumerWidget {
             orderNumber: productColors.length + 1,
             dimensions: dimensionIDs,
             images: images,
+            selectedDimensions: selectedDimensions,
+            selectedImages: selectedImages,
           );
 
           await ref
