@@ -26,7 +26,7 @@ class DimensionGroupCard extends StatelessWidget {
               child: GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
+                  crossAxisCount: 4,
                   crossAxisSpacing: 2,
                   mainAxisSpacing: 10,
                   mainAxisExtent: 40,
