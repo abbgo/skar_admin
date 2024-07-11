@@ -3,39 +3,38 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/models/image.dart';
 
 class ImageApiService {
   // delete image --------------------------------------------------------------
-  Future<ResultShop> deleteImage({
-    required String accessToken,
-    required Shop shop,
-  }) async {
-    Uri uri = Uri.parse('$apiUrl/back/shops');
+  Future<ResultImage> deleteImage(
+      {required String accessToken, required String imagePath}) async {
+    Uri uri = Uri.parse('$apiUrl/back/image');
 
     try {
-      http.Response response = await http.post(
+      http.Response response = await http.delete(
         uri,
         headers: tokenHeader(accessToken),
-        body: json.encode(shop.toJson()),
+        body: json.encode({"image": imagePath}),
       );
       var jsonData = json.decode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['message'] == null) {
-          return const ResultShop(message: '', error: '');
+          return const ResultImage(message: '', error: '');
         }
 
-        return ResultShop(message: jsonData['message'], error: '');
+        return ResultImage(message: jsonData['message'], error: '');
       }
 
       if (response.statusCode == 400) {
-        return const ResultShop(error: 'some error');
+        return const ResultImage(error: 'some error');
       }
 
-      return const ResultShop(message: '', error: 'auth error');
+      return const ResultImage(message: '', error: 'auth error');
     } catch (e) {
       rethrow;
     }
