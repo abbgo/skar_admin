@@ -14,6 +14,10 @@ class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {
       state = [...state, image];
     }
   }
+
+  Future<void> removeImage(SelectedImage image) async {
+    state = state.where((i) => i != image).toList();
+  }
 }
 
 var productImagesProvider =

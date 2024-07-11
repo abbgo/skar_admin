@@ -22,10 +22,10 @@ var addOrUpdateImageProvider =
         String accessToken = await ref.read(accessTokenProvider);
         ResultImage resultImage =
             await ref.read(imageApiServiceProvider).addOrUpdateImage(
-                  arg.imageType,
-                  arg.oldImage,
+                  arg.imageType!,
+                  arg.oldImage!,
                   accessToken,
-                  arg.imageFile,
+                  arg.imageFile!,
                 );
 
         if (resultImage.error == 'auth error') {
@@ -60,7 +60,7 @@ var deleteImageProvider =
         String accessToken = await ref.read(accessTokenProvider);
         ResultImage resultImage = await ref
             .read(imageApiServiceProvider)
-            .deleteImage(accessToken, arg.oldImage);
+            .deleteImage(accessToken, arg.oldImage!);
 
         if (resultImage.error == 'auth error') {
           await ref.read(accessTokenProvider.notifier).update('');

@@ -85,15 +85,15 @@ class ImageApiService {
 }
 
 class ImageParams extends Equatable {
-  final String imageType;
-  final String oldImage;
-  final File imageFile;
+  final String? imageType;
+  final String? oldImage;
+  final File? imageFile;
   final BuildContext context;
 
   const ImageParams({
-    required this.imageType,
-    required this.oldImage,
-    required this.imageFile,
+    this.imageType,
+    this.oldImage,
+    this.imageFile,
     required this.context,
   });
 

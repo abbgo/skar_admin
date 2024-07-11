@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/image.dart';
+import 'package:skar_admin/providers/api/image.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/parts/file_upload.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/services/api/image.dart';
 
 class SelectedImages extends ConsumerWidget {
   const SelectedImages({super.key});
@@ -40,7 +42,16 @@ class SelectedImages extends ConsumerWidget {
                           height: 100,
                         ),
                         IconButton(
-                          onPressed: () async {},
+                          onPressed: () async {
+                            ImageParams params = ImageParams(
+                              oldImage: selectedImage.path,
+                              context: context,
+                            );
+                            await ref.watch(deleteImageProvider(params).future);
+                            await ref
+                                .read(productImagesProvider.notifier)
+                                .removeImage(selectedImage);
+                          },
                           icon: const Icon(
                             Icons.delete_forever,
                             color: Colors.red,
