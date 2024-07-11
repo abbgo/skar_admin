@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
+import 'package:skar_admin/notifiers/internet_connection.dart';
 import 'package:skar_admin/pages/login/login.dart';
 import 'package:skar_admin/pages/parts/bottom_navigation.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
