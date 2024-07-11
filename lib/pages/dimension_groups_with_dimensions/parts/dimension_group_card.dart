@@ -33,7 +33,7 @@ class DimensionGroupCard extends StatelessWidget {
                 ),
                 itemCount: dimensions.length,
                 itemBuilder: (context, index) =>
-                    DimensionButton(d: dimensions[index], showedDimension: ''),
+                    DimensionButton(d: dimensions[index], forOnlyShow: false),
               ),
             ),
           ],

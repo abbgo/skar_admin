@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/pages/dimension_groups_with_dimensions/parts/dimension_button.dart';
 import 'package:skar_admin/styles/colors.dart';
@@ -30,10 +29,10 @@ class ProductColorCard extends StatelessWidget {
                   mainAxisSpacing: 10,
                   mainAxisExtent: 40,
                 ),
-                itemCount: productColor.dimensions.length,
+                itemCount: productColor.selectedDimensions.length,
                 itemBuilder: (context, index) => DimensionButton(
-                  d: Dimension.defaultDimension(),
-                  showedDimension: productColor.dimensions[index],
+                  d: productColor.selectedDimensions[index],
+                  forOnlyShow: true,
                 ),
               ),
             ),
@@ -50,8 +49,8 @@ class ProductColorCard extends StatelessWidget {
                 ),
                 itemCount: productColor.dimensions.length,
                 itemBuilder: (context, index) => DimensionButton(
-                  d: Dimension.defaultDimension(),
-                  showedDimension: productColor.dimensions[index],
+                  d: productColor.selectedDimensions[index],
+                  forOnlyShow: true,
                 ),
               ),
             ),

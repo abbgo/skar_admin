@@ -6,15 +6,15 @@ import 'package:skar_admin/styles/colors.dart';
 
 class DimensionButton extends ConsumerWidget {
   const DimensionButton(
-      {super.key, required this.d, required this.showedDimension});
+      {super.key, required this.d, required this.forOnlyShow});
 
   final Dimension d;
-  final String showedDimension;
+  final bool forOnlyShow;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Dimension> selectedDimensions = [];
-    if (showedDimension == '') {
+    if (!forOnlyShow) {
       selectedDimensions = ref.watch(selectedDimensionsProvider);
     }
 
@@ -25,13 +25,13 @@ class DimensionButton extends ConsumerWidget {
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: showedDimension != ''
+          backgroundColor: forOnlyShow
               ? null
               : !selectedDimensions.contains(d)
                   ? Colors.white
                   : null,
         ),
-        onPressed: showedDimension != ''
+        onPressed: forOnlyShow
             ? () {}
             : () async {
                 if (selectedDimensions.contains(d)) {
@@ -46,9 +46,9 @@ class DimensionButton extends ConsumerWidget {
                     .addDimension(d);
               },
         child: Text(
-          showedDimension != '' ? showedDimension : d.dimension,
+          d.dimension,
           style: TextStyle(
-            color: showedDimension != ''
+            color: forOnlyShow
                 ? null
                 : !selectedDimensions.contains(d)
                     ? elevatedButtonColor
