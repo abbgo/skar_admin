@@ -6,6 +6,7 @@ import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/models/product_color.dart';
+import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/category.dart';
@@ -74,6 +75,19 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
           if (context.mounted) {
             params = ProductParams(product: product, context: context);
+          }
+
+          ResultProduct resultProduct =
+              await ref.watch(createProductProvider(params!).future);
+
+          ref.read(loadCreateProductProvider.notifier).state = false;
+
+          if (resultProduct.error == '') {
+            ref.invalidate(fetchProductsProvider);
+            if (context.mounted) {
+              showSuccess(context, lang.informationCreatedSuccessfully);
+              Navigator.pop(context);
+            }
           }
 
           return;

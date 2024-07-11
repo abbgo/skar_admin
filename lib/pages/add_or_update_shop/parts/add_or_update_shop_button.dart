@@ -96,7 +96,10 @@ class AddOrUpdateShopButton extends ConsumerWidget {
               Navigator.pop(context);
             }
           }
+          return;
         }
+
+        if (context.mounted) showEnterInformationWarning(context);
       },
       child: Text(shopID == null ? lang.add : lang.change),
     );
