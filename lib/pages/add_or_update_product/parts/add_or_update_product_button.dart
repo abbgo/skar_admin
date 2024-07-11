@@ -87,6 +87,10 @@ class AddOrUpdateProductButton extends ConsumerWidget {
                 .read(selectedCategoriesProvider.notifier)
                 .removeAllCategories();
 
+            await ref
+                .read(productColorsProvider.notifier)
+                .removeAllProductColors();
+
             ref.invalidate(fetchProductsProvider);
 
             if (context.mounted) {
