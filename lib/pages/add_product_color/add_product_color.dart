@@ -37,13 +37,16 @@ class _AddProductColorPageState extends State<AddProductColorPage> {
               const SelectProductDimension(),
               const ProductColorImagesInput(),
               const Divider(),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CancelButton(),
-                    AddProductColorButton(),
+                    const CancelButton(),
+                    AddProductColorButton(
+                      formKey: productColorFormKey,
+                      nameCtrl: nameCtrl,
+                    ),
                   ],
                 ),
               )

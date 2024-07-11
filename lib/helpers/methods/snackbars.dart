@@ -52,3 +52,16 @@ showSuccess(BuildContext context, String text) {
 
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
+
+void showEnterInformationWarning(BuildContext context) {
+  var snackBar = SnackBar(
+    content: Text(
+      AppLocalizations.of(context)!.pleaseEnterInformationsCompletely,
+      style: const TextStyle(color: Colors.white),
+    ),
+    duration: const Duration(seconds: 3),
+    backgroundColor: Colors.orange,
+  );
+
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
