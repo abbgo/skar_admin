@@ -56,5 +56,7 @@
     "productColor":"Harydyň reňki",
     "selectProductColorDimensions":"Haryt reňkiniň ölçeglerini saýlaň",
     "addProductColorImages":"Haryt reňkiniň suratlaryny goşuň",
-    "pleaseEnterInformationsCompletely":"Maglumatlary doly girizmegiňizi haýyş edýäris"
+    "pleaseEnterInformationsCompletely":"Maglumatlary doly girizmegiňizi haýyş edýäris",
+    "selectedDimensions":"Saýlanan ölçegler",
+    "selectedImages":"Saýlanan suratlar"
 }

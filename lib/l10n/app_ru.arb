@@ -56,5 +56,7 @@
     "productColor":"Цвет продукта",
     "selectProductColorDimensions":"Выберите размеры цвета продукта",
     "addProductColorImages":"Добавьте фотографии цвета товара",
-    "pleaseEnterInformationsCompletely":"Пожалуйста, введите информацию полностью"
+    "pleaseEnterInformationsCompletely":"Пожалуйста, введите информацию полностью",
+    "selectedDimensions":"Выбранные размеры",
+    "selectedImages":"Выбранные изображения"
 }
