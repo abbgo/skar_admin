@@ -28,12 +28,12 @@ class SelectedImage {
 }
 
 class ProductColorImage {
-  final String name;
+  final String image;
   final int orderNumber;
 
-  const ProductColorImage({required this.name, required this.orderNumber});
+  const ProductColorImage({required this.image, required this.orderNumber});
 
   Map<String, dynamic> toJson() {
-    return {'name': name, 'order_number': orderNumber};
+    return {'image': image, 'order_number': orderNumber};
   }
 }
