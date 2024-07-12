@@ -16,24 +16,37 @@ class ShowBrend extends ConsumerWidget {
     if (selectedBrend == Brend.defaultBrend() && oldBrend == null) {
       showWidget = const SizedBox();
     } else if (selectedBrend != Brend.defaultBrend()) {
-      showWidget = showBrendMethod(selectedBrend);
+      showWidget = ShowBrendPart(brend: selectedBrend);
     } else {
-      showWidget = showBrendMethod(oldBrend!);
+      showWidget = ShowBrendPart(brend: oldBrend!);
     }
 
     return showWidget;
   }
+}
 
-  Text showBrendMethod(Brend selectedBrend) {
-    return Text(
-      selectedBrend.name,
-      softWrap: true,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        color: Colors.green,
-        fontWeight: FontWeight.bold,
-      ),
+class ShowBrendPart extends StatelessWidget {
+  const ShowBrendPart({super.key, required this.brend});
+
+  final Brend brend;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          brend.name,
+          softWrap: true,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style:
+              const TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.delete_forever, color: Colors.red),
+        ),
+      ],
     );
   }
 }
