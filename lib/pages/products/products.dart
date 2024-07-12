@@ -11,6 +11,7 @@ import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/product_list_tile.dart';
 import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
+import 'package:skar_admin/providers/pages/category.dart';
 import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -64,13 +65,18 @@ class ProductsPage extends ConsumerWidget {
               },
             ),
       floatingActionButton: FloatingButton(
-        onPressed: () {
+        onPressed: () async {
+          await ref
+              .read(selectedCategoriesProvider.notifier)
+              .removeAllCategories();
           ref.read(selectedBrendProvider.notifier).state = Brend.defaultBrend();
-          goToPage(
-            context,
-            AddOrUpdateProductPage(shopID: shopID, productID: ''),
-            false,
-          );
+          if (context.mounted) {
+            goToPage(
+              context,
+              AddOrUpdateProductPage(shopID: shopID, productID: ''),
+              false,
+            );
+          }
         },
         text: lang.addNewProduct,
       ),

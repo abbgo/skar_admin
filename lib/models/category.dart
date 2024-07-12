@@ -43,7 +43,7 @@ class Category extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, nameTM, nameRU, parentCategoryID, childCategories, isChecked];
+      [id, nameTM, nameRU, parentCategoryID, childCategories];
 }
 
 class ResultCategory extends Equatable {
