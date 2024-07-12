@@ -11,26 +11,37 @@ class ShowSelectedCategories extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Widget showWidget;
     List<Category> selectedCategories = ref.watch(selectedCategoriesProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
 
-    return selectedCategories.isNotEmpty
-        ? ListView.builder(
-            shrinkWrap: true,
-            itemCount: selectedCategories.length,
-            itemBuilder: (context, index) {
-              Category category = selectedCategories[index];
-              return Text(
-                isTM
-                    ? '${index + 1}. ${category.nameTM}'
-                    : '${index + 1}. ${category.nameRU}',
-                style: const TextStyle(
-                  color: Colors.green,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
-            },
-          )
-        : const SizedBox();
+    if (selectedCategories.isEmpty && oldCategories == null) {
+      showWidget = const SizedBox();
+    } else if (selectedCategories.isNotEmpty) {
+      showWidget = showcategoriesMethod(selectedCategories, isTM);
+    } else {
+      showWidget = showcategoriesMethod(oldCategories!, isTM);
+    }
+
+    return showWidget;
+  }
+
+  ListView showcategoriesMethod(List<Category> selectedCategories, bool isTM) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: selectedCategories.length,
+      itemBuilder: (context, index) {
+        Category category = selectedCategories[index];
+        return Text(
+          isTM
+              ? '${index + 1}. ${category.nameTM}'
+              : '${index + 1}. ${category.nameRU}',
+          style: const TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.bold,
+          ),
+        );
+      },
+    );
   }
 }
