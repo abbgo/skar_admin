@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/categories/parts/categories_list.dart';
 import 'package:skar_admin/providers/api/category.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoriesPage extends ConsumerWidget {
   const CategoriesPage({super.key, required this.childCategories});
@@ -12,12 +13,12 @@ class CategoriesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
     AsyncValue<ResultCategory> resultCategories =
         ref.watch(fetchCategoriesProvider);
 
     return Scaffold(
-      appBar:
-          AppBar(title: const Text('Kategoriya saylan'), centerTitle: false),
+      appBar: AppBar(title: Text(lang.selectCategories), centerTitle: false),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: childCategories.isEmpty
