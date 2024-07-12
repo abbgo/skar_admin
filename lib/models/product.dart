@@ -62,7 +62,7 @@ class Product {
                 (productColorJson) => ProductColor.fromJson(productColorJson),
               ),
             ),
-      brend: Brend.fromJson(json['brend']),
+      brend: json['brend'] == null ? null : Brend.fromJson(json['brend']),
     );
   }
 
