@@ -48,7 +48,16 @@ class Product {
       price: json['price'] ?? 0.0,
       oldPrice: json['old_price'] ?? 0.0,
       image: json['image'] ?? '',
+      brendID: json['brend_id'] ?? '',
+      categoryIDs: json['categories'] ?? [],
       isVisible: json['is_visible'] ?? false,
+      productColors: json['product_colors'] == null
+          ? []
+          : List<ProductColor>.from(
+              json['product_colors'].map(
+                (productJson) => ProductColor.fromJson(productJson),
+              ),
+            ),
     );
   }
 

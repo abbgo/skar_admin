@@ -26,12 +26,12 @@ class ProductColorCard extends StatelessWidget {
           children: [
             TtitleWidget(text: lang.selectedDimensions),
             SelectedDimensions(
-              selectedDimensions: productColor.selectedDimensions,
+              selectedDimensions: productColor.selectedDimensions!,
             ),
             const Divider(),
             TtitleWidget(text: lang.selectedImages),
             SelectedProductColorImages(
-              selectedImages: productColor.selectedImages,
+              selectedImages: productColor.selectedImages!,
             ),
           ],
         ),

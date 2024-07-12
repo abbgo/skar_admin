@@ -6,16 +6,16 @@ class ProductColor {
   final int orderNumber;
   final List<String> dimensions;
   final List<ProductColorImage> images;
-  final List<Dimension> selectedDimensions;
-  final List<SelectedImage> selectedImages;
+  final List<Dimension>? selectedDimensions;
+  final List<SelectedImage>? selectedImages;
 
   ProductColor({
     required this.name,
     required this.orderNumber,
     required this.dimensions,
     required this.images,
-    required this.selectedDimensions,
-    required this.selectedImages,
+    this.selectedDimensions,
+    this.selectedImages,
   });
 
   factory ProductColor.defaultProductColor() {
@@ -26,6 +26,19 @@ class ProductColor {
       images: [],
       selectedDimensions: [],
       selectedImages: [],
+    );
+  }
+
+  factory ProductColor.fromJson(Map<String, dynamic> json) {
+    return ProductColor(
+      name: json['name'],
+      orderNumber: json['order_number'],
+      dimensions: json['dimensions'],
+      images: List<ProductColorImage>.from(
+        json['images'].map(
+          (productJson) => ProductColorImage.fromJson(productJson),
+        ),
+      ),
     );
   }
 
