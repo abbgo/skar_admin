@@ -27,14 +27,11 @@ class ShowBrend extends ConsumerWidget {
         ),
       );
     } else {
-      showWidget = Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Text(
-          oldBrend!.name,
-          style: const TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.bold,
-          ),
+      showWidget = Text(
+        oldBrend!.name,
+        style: const TextStyle(
+          color: Colors.green,
+          fontWeight: FontWeight.bold,
         ),
       );
     }
