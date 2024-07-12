@@ -11,7 +11,7 @@ class CategoriesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Category> selectedCategories = ref.watch(selectedCategoriesProvider);
+    List<Category> selectedCategories = ref.read(selectedCategoriesProvider);
 
     return ListView.builder(
       itemCount: categories.length,
