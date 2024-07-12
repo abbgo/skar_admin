@@ -42,9 +42,14 @@ class ShowBrendPart extends StatelessWidget {
           style:
               const TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.delete_forever, color: Colors.red),
+        Consumer(
+          builder: (context, ref, child) {
+            return IconButton(
+              onPressed: () => ref.read(selectedBrendProvider.notifier).state =
+                  Brend.defaultBrend(),
+              icon: const Icon(Icons.delete_forever, color: Colors.red),
+            );
+          },
         ),
       ],
     );

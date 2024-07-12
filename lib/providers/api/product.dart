@@ -5,6 +5,7 @@ import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
+import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 
@@ -94,6 +95,11 @@ var fetchProductProvider =
       if (resultProduct.product != null) {
         ref.read(visibleProductProvider.notifier).state =
             resultProduct.product!.isVisible!;
+
+        if (resultProduct.product!.brend != null) {
+          ref.read(selectedBrendProvider.notifier).state =
+              resultProduct.product!.brend!;
+        }
 
         await ref
             .read(productColorsProvider.notifier)
