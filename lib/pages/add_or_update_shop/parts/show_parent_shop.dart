@@ -20,29 +20,41 @@ class ShowParentShop extends ConsumerWidget {
         parentShop == null) {
       showWidget = const SizedBox();
     } else if (selectedShop != SelectedShop.defaultSelectedShop()) {
-      showWidget = Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Text(
-          isTM ? selectedShop.nameTM : selectedShop.nameRU,
-          style: const TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      );
+      showWidget = showParentShopMethod(isTM, selectedShop, null);
     } else {
-      showWidget = Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Text(
-          isTM ? parentShop!.nameTM : parentShop!.nameRU,
-          style: const TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      );
+      showWidget = showParentShopMethod(isTM, null, parentShop);
     }
 
     return showWidget;
+  }
+
+  Padding showParentShopMethod(
+    bool isTM,
+    SelectedShop? selectedShop,
+    Shop? parentShop,
+  ) {
+    String text;
+    if (selectedShop != null) {
+      if (isTM) {
+        text = selectedShop.nameTM;
+      } else {
+        text = selectedShop.nameRU;
+      }
+    } else {
+      if (isTM) {
+        text = parentShop!.nameTM;
+      } else {
+        text = parentShop!.nameRU;
+      }
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Text(
+        text,
+        style:
+            const TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }
