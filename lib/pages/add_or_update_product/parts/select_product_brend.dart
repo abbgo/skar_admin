@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
+import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/show_brend.dart';
 import 'package:skar_admin/pages/brends/brends.dart';
 
 class SelectProductBrend extends StatelessWidget {
-  const SelectProductBrend({super.key});
+  const SelectProductBrend({super.key, this.brend});
+
+  final Brend? brend;
 
   @override
   Widget build(BuildContext context) {
