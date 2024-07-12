@@ -16,26 +16,24 @@ class ShowBrend extends ConsumerWidget {
     if (selectedBrend == Brend.defaultBrend() && oldBrend == null) {
       showWidget = const SizedBox();
     } else if (selectedBrend != Brend.defaultBrend()) {
-      showWidget = Text(
-        selectedBrend.name,
-        softWrap: true,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: Colors.green,
-          fontWeight: FontWeight.bold,
-        ),
-      );
+      showWidget = showBrendMethod(selectedBrend);
     } else {
-      showWidget = Text(
-        oldBrend!.name,
-        style: const TextStyle(
-          color: Colors.green,
-          fontWeight: FontWeight.bold,
-        ),
-      );
+      showWidget = showBrendMethod(oldBrend!);
     }
 
     return showWidget;
+  }
+
+  Text showBrendMethod(Brend selectedBrend) {
+    return Text(
+      selectedBrend.name,
+      softWrap: true,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: const TextStyle(
+        color: Colors.green,
+        fontWeight: FontWeight.bold,
+      ),
+    );
   }
 }
