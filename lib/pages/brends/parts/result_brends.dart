@@ -45,7 +45,7 @@ class ResultBrends extends ConsumerWidget {
                     }
 
                     Brend brend = response.brends![indexInPage];
-                    bool selected = selectedBrend == brend;
+                    bool selected = selectedBrend.id == brend.id;
 
                     return Card(
                       color: selected ? elevatedButtonColor : null,
