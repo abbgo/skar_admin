@@ -53,7 +53,7 @@ class ProductsPage extends ConsumerWidget {
                     }
 
                     Product product = response.products![indexInPage];
-                    return ProductListTile(product: product);
+                    return ProductListTile(product: product, shopID: shopID);
                   },
                   error: (error, stackTrace) => errorMethod(error),
                   loading: () => null,
