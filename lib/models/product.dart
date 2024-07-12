@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:skar_admin/models/brend.dart';
+import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/models/product_color.dart';
 
 class Product {
@@ -11,6 +12,7 @@ class Product {
   final List<dynamic>? categoryIDs;
   final List<ProductColor>? productColors;
   final Brend? brend;
+  final List<Category>? categories;
 
   Product({
     this.id,
@@ -25,6 +27,7 @@ class Product {
     this.categoryIDs,
     this.productColors,
     this.brend,
+    this.categories,
   });
 
   factory Product.defaultProduct() {
@@ -41,6 +44,7 @@ class Product {
       categoryIDs: null,
       productColors: null,
       brend: null,
+      categories: null,
     );
   }
 
@@ -53,7 +57,6 @@ class Product {
       oldPrice: json['old_price'] ?? 0.0,
       image: json['image'] ?? '',
       brendID: json['brend_id'] ?? '',
-      categoryIDs: json['categories'] ?? [],
       isVisible: json['is_visible'] ?? false,
       productColors: json['product_colors'] == null
           ? []
@@ -63,6 +66,13 @@ class Product {
               ),
             ),
       brend: json['brend'] == null ? null : Brend.fromJson(json['brend']),
+      categories: json['categories'] == null
+          ? []
+          : List<Category>.from(
+              json['categories'].map(
+                (categoryJson) => Category.fromJson(categoryJson),
+              ),
+            ),
     );
   }
 
