@@ -32,7 +32,10 @@ class ShopCoordinatesInput extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               IconButton(
-                onPressed: () => goToPage(context, const MapPage(), false),
+                onPressed: () {
+                  FocusManager.instance.primaryFocus!.unfocus();
+                  goToPage(context, const MapPage(), false);
+                },
                 icon: const Icon(Icons.travel_explore),
               ),
             ],
