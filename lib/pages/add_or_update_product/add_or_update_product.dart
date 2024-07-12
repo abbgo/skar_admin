@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_page_body.dart';
 
 class AddOrUpdateProductPage extends StatefulWidget {
@@ -40,7 +41,13 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
       appBar: AppBar(
         title: Text(lang.addProductInformation),
       ),
-      body: addOrUpdateProductPageBody(null),
+      body: widget.productID == ''
+          ? addOrUpdateProductPageBody(null)
+          : Consumer(
+              builder: (context, ref, child) {
+                return const Text('harytlaryn maglumatlary');
+              },
+            ),
     );
   }
 
