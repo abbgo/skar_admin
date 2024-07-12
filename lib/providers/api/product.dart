@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 
@@ -83,22 +84,22 @@ var fetchProductProvider =
     try {
       String accessToken = await ref.read(accessTokenProvider);
       ResultProduct resultProduct = await ref
-          .read(shopApiProvider)
-          .fetchShop(accessToken: accessToken, shopID: arg.shopID!);
+          .read(productApiProvider)
+          .fetchProduct(accessToken: accessToken, productID: arg.productID!);
 
-      if (ResultProduct.error == 'auth error') {
+      if (resultProduct.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
       }
 
-      if (resultShop.shop != null) {
-        ref.read(hasShippingProvider.notifier).state =
-            resultShop.shop!.hasShipping!;
+      if (resultProduct.product != null) {
+        ref.read(visibleProductProvider.notifier).state =
+            resultProduct.product!.isVisible!;
 
-        ref.read(shopImagePathProvider.notifier).state =
+        ref.read(productColorsProvider.notifier).state =
             resultShop.shop!.image!;
       }
 
-      result = resultShop;
+      result = resultProduct;
     } catch (e) {
       result = ResultProduct(error: e.toString());
     }
