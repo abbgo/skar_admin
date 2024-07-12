@@ -13,6 +13,7 @@ class ProductOldPriceInput extends StatelessWidget {
       child: InputPart(
         ctrl: ctrl,
         label: ' ${AppLocalizations.of(context)!.oldPrice} ',
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
         validatorFunc: null,
       ),
     );

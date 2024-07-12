@@ -14,6 +14,7 @@ class ProductPriceInput extends StatelessWidget {
       child: InputPart(
         ctrl: ctrl,
         label: ' ${AppLocalizations.of(context)!.price} * ',
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
         validatorFunc: (validator) => textInputValidate(validator, context),
       ),
     );
