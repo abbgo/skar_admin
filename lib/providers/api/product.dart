@@ -95,8 +95,9 @@ var fetchProductProvider =
         ref.read(visibleProductProvider.notifier).state =
             resultProduct.product!.isVisible!;
 
-        ref.read(productColorsProvider.notifier).state =
-            resultShop.shop!.image!;
+        await ref
+            .read(productColorsProvider.notifier)
+            .setProductColors(resultProduct.product!.productColors!);
       }
 
       result = resultProduct;
