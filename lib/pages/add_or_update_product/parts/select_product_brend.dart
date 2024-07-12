@@ -29,7 +29,10 @@ class SelectProductBrend extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => goToPage(context, const BrendsPage(), false),
+              onPressed: () {
+                FocusManager.instance.primaryFocus!.unfocus();
+                goToPage(context, const BrendsPage(), false);
+              },
               child: Text(lang.selectBrand),
             ),
           )
