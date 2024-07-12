@@ -6,8 +6,13 @@ import 'package:skar_admin/pages/add_or_update_product/add_or_update_product.dar
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductPopUpMenu extends StatelessWidget {
-  const ProductPopUpMenu({super.key, required this.productID});
+  const ProductPopUpMenu({
+    super.key,
+    required this.shopID,
+    required this.productID,
+  });
 
+  final String shopID;
   final String productID;
 
   @override
@@ -26,7 +31,7 @@ class ProductPopUpMenu extends StatelessWidget {
         if (value == texts[0]) {
           goToPage(
             context,
-            AddOrUpdateProductPage(shopID: '', productID: productID),
+            AddOrUpdateProductPage(shopID: shopID, productID: productID),
             false,
           );
           return;
