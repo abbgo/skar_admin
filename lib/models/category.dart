@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Category {
+// ignore: must_be_immutable
+class Category extends Equatable {
   final String id, nameTM, nameRU;
   final String? parentCategoryID;
   final List<Category>? childCategories;
@@ -39,6 +40,10 @@ class Category {
             ),
     );
   }
+
+  @override
+  List<Object?> get props =>
+      [id, nameTM, nameRU, parentCategoryID, childCategories, isChecked];
 }
 
 class ResultCategory extends Equatable {
