@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/add_or_update_product/add_or_update_product.dart';
 import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/product_list_tile.dart';
 import 'package:skar_admin/providers/api/product.dart';
+import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -61,7 +64,14 @@ class ProductsPage extends ConsumerWidget {
               },
             ),
       floatingActionButton: FloatingButton(
-        page: AddOrUpdateProductPage(shopID: shopID, productID: ''),
+        onPressed: () {
+          ref.read(selectedBrendProvider.notifier).state = Brend.defaultBrend();
+          goToPage(
+            context,
+            AddOrUpdateProductPage(shopID: shopID, productID: ''),
+            false,
+          );
+        },
         text: lang.addNewProduct,
       ),
     );

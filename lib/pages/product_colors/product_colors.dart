@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/pages/add_product_color/add_product_color.dart';
 import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -15,7 +16,7 @@ class ProductColorsPage extends StatelessWidget {
       appBar: AppBar(centerTitle: false, title: Text(lang.productTypes)),
       body: const ProductColorsBody(),
       floatingActionButton: FloatingButton(
-        page: const AddProductColorPage(),
+        onPressed: () => goToPage(context, const AddProductColorPage(), false),
         text: lang.addProductType,
       ),
     );
