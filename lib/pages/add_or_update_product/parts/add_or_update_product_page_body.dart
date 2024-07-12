@@ -59,7 +59,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                   ],
                 ),
                 SelectProductBrend(oldBrend: oldBrend),
-                const SelectProductCategories(),
+                SelectProductCategories(oldCategories: oldCategories),
                 const VisibilityInput(),
                 const AddProductColor(),
                 const Divider(),
