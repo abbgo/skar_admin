@@ -22,8 +22,10 @@ class AddProductColor extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () =>
-                  goToPage(context, const ProductColorsPage(), false),
+              onPressed: () {
+                FocusManager.instance.primaryFocus!.unfocus();
+                goToPage(context, const ProductColorsPage(), false);
+              },
               child: Text(lang.addProductTypes),
             ),
           ),
