@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
-import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
+import 'package:skar_admin/pages/add_or_update_product/add_or_update_product.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductPopUpMenu extends StatelessWidget {
@@ -26,7 +26,7 @@ class ProductPopUpMenu extends StatelessWidget {
         if (value == texts[0]) {
           goToPage(
             context,
-            const AddOrUpdateShopPage(shopID: ''),
+            AddOrUpdateProductPage(shopID: '', productID: productID),
             false,
           );
           return;

@@ -3,9 +3,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_page_body.dart';
 
 class AddOrUpdateProductPage extends StatefulWidget {
-  const AddOrUpdateProductPage({super.key, required this.shopID});
+  const AddOrUpdateProductPage({
+    super.key,
+    required this.shopID,
+    required this.productID,
+  });
 
   final String shopID;
+  final String productID;
 
   @override
   State<AddOrUpdateProductPage> createState() => _AddOrUpdateProductPageState();
