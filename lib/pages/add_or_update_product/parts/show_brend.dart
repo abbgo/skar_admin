@@ -10,7 +10,7 @@ class ShowBrend extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Brend selectedBrend = ref.watch(selectedBrendProvider);
 
-    return selectedBrend == Brend.defaultBrend()
+    return selectedBrend.id == ''
         ? const SizedBox()
         : ShowBrendPart(brend: selectedBrend);
   }
