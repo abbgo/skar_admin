@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/image.dart';
 
-class ProductColor {
+class ProductColor extends Equatable {
   final String name;
   final int orderNumber;
   final List<dynamic> dimensions;
@@ -9,7 +10,7 @@ class ProductColor {
   final List<Dimension>? selectedDimensions;
   final List<SelectedImage>? selectedImages;
 
-  ProductColor({
+  const ProductColor({
     required this.name,
     required this.orderNumber,
     required this.dimensions,
@@ -19,7 +20,7 @@ class ProductColor {
   });
 
   factory ProductColor.defaultProductColor() {
-    return ProductColor(
+    return const ProductColor(
       name: '',
       orderNumber: 0,
       dimensions: [],
@@ -51,4 +52,14 @@ class ProductColor {
       'dimensions': dimensions,
     };
   }
+
+  @override
+  List<Object?> get props => [
+        name,
+        orderNumber,
+        dimensions,
+        images,
+        selectedDimensions,
+        selectedImages
+      ];
 }
