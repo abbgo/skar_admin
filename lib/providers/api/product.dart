@@ -75,3 +75,33 @@ var createProductProvider =
     return result;
   },
 );
+
+var fetchProductProvider =
+    FutureProvider.autoDispose.family<ResultProduct, ProductParams>(
+  (ref, arg) async {
+    ResultProduct result = ResultProduct.defaultResult();
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+      ResultProduct resultProduct = await ref
+          .read(shopApiProvider)
+          .fetchShop(accessToken: accessToken, shopID: arg.shopID!);
+
+      if (ResultProduct.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+      }
+
+      if (resultShop.shop != null) {
+        ref.read(hasShippingProvider.notifier).state =
+            resultShop.shop!.hasShipping!;
+
+        ref.read(shopImagePathProvider.notifier).state =
+            resultShop.shop!.image!;
+      }
+
+      result = resultShop;
+    } catch (e) {
+      result = ResultProduct(error: e.toString());
+    }
+    return result;
+  },
+);

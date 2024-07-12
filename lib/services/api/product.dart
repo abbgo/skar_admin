@@ -125,10 +125,18 @@ class ProductParams extends Equatable {
   final Product? product;
   final String? shopID;
   final BuildContext? context;
+  final String? productID;
 
-  const ProductParams(
-      {this.isDeleted, this.page, this.product, this.shopID, this.context});
+  const ProductParams({
+    this.isDeleted,
+    this.page,
+    this.product,
+    this.shopID,
+    this.context,
+    this.productID,
+  });
 
   @override
-  List<Object?> get props => [isDeleted, page, product, shopID, context];
+  List<Object?> get props =>
+      [isDeleted, page, product, shopID, context, productID];
 }
