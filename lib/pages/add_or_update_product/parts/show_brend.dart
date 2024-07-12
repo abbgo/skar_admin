@@ -11,7 +11,7 @@ class ShowBrend extends ConsumerWidget {
     Brend selectedBrend = ref.watch(selectedBrendProvider);
 
     return Text(
-      selectedBrend.name,
+      selectedBrend.name!,
       softWrap: true,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,

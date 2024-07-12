@@ -51,7 +51,7 @@ class ResultBrends extends ConsumerWidget {
                       color: selected ? elevatedButtonColor : null,
                       child: ListTile(
                         title: Text(
-                          brend.name,
+                          brend.name!,
                           style:
                               TextStyle(color: selected ? Colors.white : null),
                         ),

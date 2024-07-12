@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/models/product_color.dart';
 
 class Product {
@@ -9,6 +10,7 @@ class Product {
   final bool? isVisible;
   final List<dynamic>? categoryIDs;
   final List<ProductColor>? productColors;
+  final Brend? brend;
 
   Product({
     this.id,
@@ -22,6 +24,7 @@ class Product {
     this.isVisible,
     this.categoryIDs,
     this.productColors,
+    this.brend,
   });
 
   factory Product.defaultProduct() {
@@ -37,6 +40,7 @@ class Product {
       isVisible: false,
       categoryIDs: null,
       productColors: null,
+      brend: null,
     );
   }
 
@@ -58,6 +62,7 @@ class Product {
                 (productColorJson) => ProductColor.fromJson(productColorJson),
               ),
             ),
+      brend: Brend.fromJson(json['brend']),
     );
   }
 
