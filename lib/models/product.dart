@@ -7,7 +7,7 @@ class Product {
   final num? price, oldPrice;
   final String? image;
   final bool? isVisible;
-  final List<String>? categoryIDs;
+  final List<dynamic>? categoryIDs;
   final List<ProductColor>? productColors;
 
   Product({
@@ -55,7 +55,7 @@ class Product {
           ? []
           : List<ProductColor>.from(
               json['product_colors'].map(
-                (productJson) => ProductColor.fromJson(productJson),
+                (productColorJson) => ProductColor.fromJson(productColorJson),
               ),
             ),
     );

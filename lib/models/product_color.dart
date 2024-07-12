@@ -4,7 +4,7 @@ import 'package:skar_admin/models/image.dart';
 class ProductColor {
   final String name;
   final int orderNumber;
-  final List<String> dimensions;
+  final List<dynamic> dimensions;
   final List<ProductColorImage> images;
   final List<Dimension>? selectedDimensions;
   final List<SelectedImage>? selectedImages;
@@ -36,7 +36,8 @@ class ProductColor {
       dimensions: json['dimensions'],
       images: List<ProductColorImage>.from(
         json['images'].map(
-          (productJson) => ProductColorImage.fromJson(productJson),
+          (productColorImageJson) =>
+              ProductColorImage.fromJson(productColorImageJson),
         ),
       ),
     );

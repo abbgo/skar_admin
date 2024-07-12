@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_page_body.dart';
+import 'package:skar_admin/pages/parts/no_result.dart';
+import 'package:skar_admin/providers/api/product.dart';
+import 'package:skar_admin/services/api/product.dart';
 
 class AddOrUpdateProductPage extends StatefulWidget {
   const AddOrUpdateProductPage({
@@ -45,7 +50,31 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
           ? addOrUpdateProductPageBody(null)
           : Consumer(
               builder: (context, ref, child) {
-                return const Text('harytlaryn maglumatlary');
+                ProductParams params =
+                    ProductParams(productID: widget.productID);
+                final AsyncValue<ResultProduct> resultProduct =
+                    ref.watch(fetchProductProvider(params));
+
+                return resultProduct.when(
+                  skipLoadingOnRefresh: true,
+                  skipLoadingOnReload: true,
+                  skipError: true,
+                  data: (response) {
+                    if (response.error != '' || response.product == null) {
+                      return const NoResult();
+                    }
+
+                    Product product = response.product!;
+                    nameTMCtrl.text = product.nameTM;
+                    nameRUCtrl.text = product.nameRU;
+                    priceCtrl.text = product.price.toString();
+                    oldPriceCtrl.text = product.oldPrice.toString();
+
+                    return addOrUpdateProductPageBody(widget.productID);
+                  },
+                  error: (error, stackTrace) => errorMethod(error),
+                  loading: () => loadWidget,
+                );
               },
             ),
     );
