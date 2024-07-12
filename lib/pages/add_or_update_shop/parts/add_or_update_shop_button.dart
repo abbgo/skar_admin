@@ -8,6 +8,7 @@ import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
 import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 import 'package:skar_admin/providers/pages/shopping_center.dart';
+import 'package:skar_admin/providers/pages/shops.dart';
 import 'package:skar_admin/services/api/shop.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -85,7 +86,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           ref.read(loadCreateShopProvider.notifier).state = false;
 
           if (resultShop.error == '') {
-            ref.invalidate(fetchShopsProvider);
+            ref.invalidate(hasShopsProvider);
             if (context.mounted) {
               showSuccess(
                 context,

@@ -85,13 +85,11 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
           if (resultProduct.error == '') {
             ref.invalidate(hasProductsProvider);
-
             if (context.mounted) {
               showSuccess(context, lang.informationCreatedSuccessfully);
               Navigator.pop(context);
             }
           }
-
           return;
         }
 
