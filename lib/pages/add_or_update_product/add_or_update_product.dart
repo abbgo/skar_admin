@@ -40,11 +40,11 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
       appBar: AppBar(
         title: Text(lang.addProductInformation),
       ),
-      body: addOrUpdateProductPageBody(),
+      body: addOrUpdateProductPageBody(null),
     );
   }
 
-  AddOrUpdateProductPageBody addOrUpdateProductPageBody() {
+  AddOrUpdateProductPageBody addOrUpdateProductPageBody(String? productID) {
     return AddOrUpdateProductPageBody(
       nameTMCtrl: nameTMCtrl,
       nameRUCtrl: nameRUCtrl,
