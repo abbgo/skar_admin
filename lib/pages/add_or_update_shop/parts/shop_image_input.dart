@@ -33,7 +33,10 @@ class ShopImageInput extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () => showSelectedImageSheet(context, 'shop', 3, 2),
+                onPressed: () {
+                  FocusManager.instance.primaryFocus!.unfocus();
+                  showSelectedImageSheet(context, 'shop', 3, 2);
+                },
                 icon: const Column(
                   children: [
                     Icon(Icons.add_photo_alternate, size: 100),
