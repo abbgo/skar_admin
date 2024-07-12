@@ -17,4 +17,8 @@ class SelectedCategoriesNotifier extends StateNotifier<List<Category>> {
   Future<void> setCategories(List<Category> categories) async {
     state = categories;
   }
+
+  Future<void> removeAllCategories() async {
+    state = [];
+  }
 }
