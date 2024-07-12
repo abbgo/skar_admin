@@ -3,5 +3,4 @@ import 'package:skar_admin/models/brend.dart';
 
 var brendSearchProvider = StateProvider.autoDispose<String>((ref) => '');
 var hasBrendProvider = StateProvider.autoDispose<bool>((ref) => true);
-var selectedBrendProvider =
-    StateProvider.autoDispose<Brend>((ref) => Brend.defaultBrend());
+var selectedBrendProvider = StateProvider<Brend>((ref) => Brend.defaultBrend());

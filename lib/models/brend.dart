@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class Brend {
-  final String? id, name, image;
+  final String id, name, image;
 
-  Brend({this.id, this.name, this.image});
+  const Brend({required this.id, required this.name, required this.image});
 
   factory Brend.defaultBrend() {
-    return Brend(id: '', name: '', image: '');
+    return const Brend(id: '', name: '', image: '');
   }
 
   factory Brend.fromJson(Map<String, dynamic> json) {

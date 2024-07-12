@@ -10,17 +10,35 @@ class ShowBrend extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Widget showWidget;
     Brend selectedBrend = ref.watch(selectedBrendProvider);
 
-    return Text(
-      selectedBrend.name!,
-      softWrap: true,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        color: Colors.green,
-        fontWeight: FontWeight.bold,
-      ),
-    );
+    if (selectedBrend == Brend.defaultBrend() && oldBrend == null) {
+      showWidget = const SizedBox();
+    } else if (selectedBrend != Brend.defaultBrend()) {
+      showWidget = Text(
+        selectedBrend.name,
+        softWrap: true,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(
+          color: Colors.green,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    } else {
+      showWidget = Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Text(
+          oldBrend!.name,
+          style: const TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
+    }
+
+    return showWidget;
   }
 }
