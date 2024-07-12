@@ -84,6 +84,39 @@ class ProductApiService {
       rethrow;
     }
   }
+
+// fetch product -------------------------------------------------------
+  Future<ResultProduct> fetchProduct({
+    required String accessToken,
+    required String productID,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/products/$productID');
+
+    try {
+      http.Response response = await http.get(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['product'] == null) {
+          return ResultProduct(product: Product.defaultProduct(), error: '');
+        }
+
+        return ResultProduct(
+          product: Product.fromJson(jsonData['product']),
+          error: '',
+        );
+      }
+      return ResultProduct(
+        product: Product.defaultProduct(),
+        error: 'auth error',
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ProductParams extends Equatable {

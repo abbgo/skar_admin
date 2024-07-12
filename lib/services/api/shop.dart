@@ -29,7 +29,7 @@ class ShopApiService {
 
         return ResultShop(shop: Shop.fromJson(jsonData['shop']), error: '');
       }
-      return const ResultShop(shops: [], error: 'auth error');
+      return ResultShop(shop: Shop.defaultShop(), error: 'auth error');
     } catch (e) {
       rethrow;
     }
