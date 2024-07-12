@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/providers/pages/map.dart';
+import 'package:skar_admin/providers/pages/shopping_center.dart';
 
 class CameraPositionNotifier extends StateNotifier<CameraPosition> {
   CameraPositionNotifier()
@@ -32,6 +34,10 @@ class MarkersNotifier extends StateNotifier<Set<Marker>> {
         }
         String latLong = '$latitude $longitude';
         await Clipboard.setData(ClipboardData(text: latLong.toString()));
+        if (ref != null) {
+          ref.read(selectedShoppincCenterProvider.notifier).state =
+              SelectedShop.defaultSelectedShop();
+        }
       },
     );
 
