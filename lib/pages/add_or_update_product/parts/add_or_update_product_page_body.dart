@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/brend.dart';
+import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_button.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_product_color.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/product_name_ru_input.dart';
@@ -24,6 +25,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
     required this.oldPriceCtrl,
     required this.shopID,
     this.oldBrend,
+    this.oldCategories,
   });
 
   final GlobalKey<FormState> productFormKey;
@@ -34,6 +36,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
 
   final String shopID;
   final Brend? oldBrend;
+  final List<Category>? oldCategories;
 
   @override
   Widget build(BuildContext context) {
