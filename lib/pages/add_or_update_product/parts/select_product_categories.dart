@@ -23,7 +23,7 @@ class SelectProductCategories extends StatelessWidget {
             '${lang.enterTheCategoriesOfProduct} * : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          const ShowSelectedCategories(),
+          ShowSelectedCategories(oldCategories: oldCategories),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(

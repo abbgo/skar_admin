@@ -5,7 +5,9 @@ import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/category.dart';
 
 class ShowSelectedCategories extends ConsumerWidget {
-  const ShowSelectedCategories({super.key});
+  const ShowSelectedCategories({super.key, this.oldCategories});
+
+  final List<Category>? oldCategories;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
