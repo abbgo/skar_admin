@@ -6,9 +6,9 @@ import 'package:skar_admin/pages/add_or_update_product/parts/show_brend.dart';
 import 'package:skar_admin/pages/brends/brends.dart';
 
 class SelectProductBrend extends StatelessWidget {
-  const SelectProductBrend({super.key, this.brend});
+  const SelectProductBrend({super.key, this.oldBrend});
 
-  final Brend? brend;
+  final Brend? oldBrend;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SelectProductBrend extends StatelessWidget {
                 '${lang.enterTheProductBrand} : ',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              const ShowBrend(),
+              ShowBrend(oldBrend: oldBrend),
             ],
           ),
           SizedBox(

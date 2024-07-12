@@ -55,7 +55,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                     ProductOldPriceInput(ctrl: oldPriceCtrl),
                   ],
                 ),
-                SelectProductBrend(brend: oldBrend),
+                SelectProductBrend(oldBrend: oldBrend),
                 const SelectProductCategories(),
                 const VisibilityInput(),
                 const AddProductColor(),

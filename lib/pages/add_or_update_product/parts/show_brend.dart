@@ -4,7 +4,9 @@ import 'package:skar_admin/models/brend.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 
 class ShowBrend extends ConsumerWidget {
-  const ShowBrend({super.key});
+  const ShowBrend({super.key, this.oldBrend});
+
+  final Brend? oldBrend;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
