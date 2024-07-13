@@ -48,6 +48,10 @@ class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
     state = state.where((i) => i != dimension).toList();
   }
 
+  Future<void> setDimensions(List<Dimension> dimensions) async {
+    state = dimensions;
+  }
+
   Future<void> removeAllDimensions() async {
     state = [];
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/pages/add_product_color/add_product_color.dart';
 import 'package:skar_admin/pages/product_colors/parts/selected_dimensions.dart';
 import 'package:skar_admin/pages/product_colors/parts/selected_product_color_images.dart';
+import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,13 +25,24 @@ class ProductColorCard extends StatelessWidget {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(
-                onPressed: () => goToPage(
-                  context,
-                  AddProductColorPage(productColor: productColor),
-                  false,
-                ),
-                icon: const Icon(Icons.edit),
+              Consumer(
+                builder: (context, ref, child) {
+                  return IconButton(
+                    onPressed: () async {
+                      await ref
+                          .read(selectedDimensionsProvider.notifier)
+                          .setDimensions(productColor.selectedDimensions!);
+                      if (context.mounted) {
+                        goToPage(
+                          context,
+                          AddProductColorPage(productColor: productColor),
+                          false,
+                        );
+                      }
+                    },
+                    icon: const Icon(Icons.edit),
+                  );
+                },
               ),
               IconButton(
                 onPressed: () {},
