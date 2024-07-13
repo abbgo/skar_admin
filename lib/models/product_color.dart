@@ -5,7 +5,7 @@ import 'package:skar_admin/models/image.dart';
 class ProductColor extends Equatable {
   final String name;
   final int orderNumber;
-  final List<dynamic> dimensions;
+  final List<dynamic>? dimensions;
   final List<ProductColorImage> images;
   final List<Dimension>? selectedDimensions;
   final List<SelectedImage>? selectedImages;
@@ -13,7 +13,7 @@ class ProductColor extends Equatable {
   const ProductColor({
     required this.name,
     required this.orderNumber,
-    required this.dimensions,
+    this.dimensions,
     required this.images,
     this.selectedDimensions,
     this.selectedImages,
@@ -34,7 +34,13 @@ class ProductColor extends Equatable {
     return ProductColor(
       name: json['name'],
       orderNumber: json['order_number'],
-      dimensions: json['dimensions'],
+      selectedDimensions: json['dimensions'] == null
+          ? []
+          : List<Dimension>.from(
+              json['dimensions'].map(
+                (dimensionJson) => Dimension.fromJson(dimensionJson),
+              ),
+            ),
       images: List<ProductColorImage>.from(
         json['images'].map(
           (productColorImageJson) =>

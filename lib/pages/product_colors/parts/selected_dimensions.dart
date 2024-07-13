@@ -3,9 +3,9 @@ import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/pages/dimension_groups_with_dimensions/parts/dimension_button.dart';
 
 class SelectedDimensions extends StatelessWidget {
-  const SelectedDimensions({super.key, required this.selectedDimensions});
+  const SelectedDimensions({super.key, required this.dimensions});
 
-  final List<Dimension> selectedDimensions;
+  final List<Dimension> dimensions;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class SelectedDimensions extends StatelessWidget {
           mainAxisSpacing: 10,
           mainAxisExtent: 40,
         ),
-        itemCount: selectedDimensions.length,
+        itemCount: dimensions.length,
         itemBuilder: (context, index) =>
-            DimensionButton(d: selectedDimensions[index], forOnlyShow: true),
+            DimensionButton(d: dimensions[index], forOnlyShow: true),
       ),
     );
   }
