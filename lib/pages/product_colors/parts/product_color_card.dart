@@ -24,8 +24,11 @@ class ProductColorCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                onPressed: () =>
-                    goToPage(context, const AddProductColorPage(), false),
+                onPressed: () => goToPage(
+                  context,
+                  AddProductColorPage(productColor: productColor),
+                  false,
+                ),
                 icon: const Icon(Icons.edit),
               ),
               IconButton(
