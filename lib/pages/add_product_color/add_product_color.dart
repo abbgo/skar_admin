@@ -22,8 +22,10 @@ class _AddProductColorPageState extends State<AddProductColorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:
-          AddProductColorBody(formKey: productColorFormKey, nameCtrl: nameCtrl),
+      body: addProductColorBodyMethod(),
     );
   }
+
+  AddProductColorBody addProductColorBodyMethod() =>
+      AddProductColorBody(formKey: productColorFormKey, nameCtrl: nameCtrl);
 }
