@@ -26,9 +26,6 @@ class _ProductColorsBodyState extends State<ProductColorsBody> {
                 child: ReorderableListView.builder(
                   itemBuilder: (context, index) {
                     ProductColor productColor = productColors[index];
-                    print('-----------------------------------------');
-                    print('$index -> ${productColor.name}');
-
                     return ProductColorCard(
                       productColor: productColor,
                       key: Key(productColor.name),
@@ -42,8 +39,6 @@ class _ProductColorsBodyState extends State<ProductColorsBody> {
                       if (newIndex > oldIndex) {
                         newIndex -= 1;
                       }
-                      print('========= oldIndex: $oldIndex');
-                      print('========= newIndex: $newIndex');
                       final ProductColor item =
                           productColors.removeAt(oldIndex);
                       productColors.insert(newIndex, item);
