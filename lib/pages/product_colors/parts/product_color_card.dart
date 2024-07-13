@@ -18,9 +18,18 @@ class ProductColorCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: ExpansionTile(
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.edit),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.delete_forever),
+              ),
+            ],
           ),
           collapsedIconColor: Colors.white,
           collapsedBackgroundColor: elevatedButtonColor,
