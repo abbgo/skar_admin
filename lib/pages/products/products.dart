@@ -10,6 +10,7 @@ import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/product_list_tile.dart';
 import 'package:skar_admin/providers/api/product.dart';
+import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/category.dart';
 import 'package:skar_admin/providers/pages/products.dart';
@@ -69,6 +70,9 @@ class ProductsPage extends ConsumerWidget {
           await ref
               .read(selectedCategoriesProvider.notifier)
               .removeAllCategories();
+          await ref
+              .read(productColorsProvider.notifier)
+              .removeAllProductColors();
           ref.read(selectedBrendProvider.notifier).state = Brend.defaultBrend();
           if (context.mounted) {
             goToPage(

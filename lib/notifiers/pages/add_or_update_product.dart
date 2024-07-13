@@ -15,6 +15,10 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
   Future<void> setProductColors(List<ProductColor> productColors) async {
     state = productColors;
   }
+
+  Future<void> removeAllProductColors() async {
+    state = [];
+  }
 }
 
 class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {

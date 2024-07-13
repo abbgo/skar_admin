@@ -33,6 +33,8 @@ class _ProductColorsBodyState extends State<ProductColorsBody> {
                   },
                   itemCount: productColors.length,
                   onReorder: (oldIndex, newIndex) {
+                    print('========= oldIndex: $oldIndex');
+                    print('========= newIndex: $newIndex');
                     setState(() {
                       if (newIndex > oldIndex) {
                         newIndex -= 1;
