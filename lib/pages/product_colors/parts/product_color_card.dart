@@ -29,7 +29,8 @@ class ProductColorCard extends StatelessWidget {
             const Divider(),
             TtitleWidget(text: lang.selectedImages),
             SelectedProductColorImages(
-              selectedImages: productColor.selectedImages!,
+              selectedImages: productColor.selectedImages,
+              oldImages: productColor.images,
             ),
           ],
         ),
