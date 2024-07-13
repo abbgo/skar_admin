@@ -5,24 +5,46 @@ import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/pages/product_colors/parts/product_color_card.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
-class ProductColorsBody extends ConsumerWidget {
+class ProductColorsBody extends StatefulWidget {
   const ProductColorsBody({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<ProductColor> productColors = ref.watch(productColorsProvider);
+  State<ProductColorsBody> createState() => _ProductColorsBodyState();
+}
 
-    return productColors.isEmpty
-        ? const NoResult()
-        : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: ListView.builder(
-              itemCount: productColors.length,
-              itemBuilder: (context, index) {
-                ProductColor productColor = productColors[index];
-                return ProductColorCard(productColor: productColor);
-              },
-            ),
-          );
+class _ProductColorsBodyState extends State<ProductColorsBody> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        List<ProductColor> productColors = ref.watch(productColorsProvider);
+
+        return productColors.isEmpty
+            ? const NoResult()
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: ReorderableListView.builder(
+                  itemBuilder: (context, index) {
+                    ProductColor productColor = productColors[index];
+                    return ProductColorCard(
+                      productColor: productColor,
+                      key: Key(productColor.name),
+                    );
+                  },
+                  itemCount: productColors.length,
+                  onReorder: (oldIndex, newIndex) {
+                    setState(() {
+                      if (newIndex > oldIndex) {
+                        newIndex -= 1;
+                      }
+                      final ProductColor item =
+                          productColors.removeAt(oldIndex);
+                      productColors.insert(newIndex, item);
+                    });
+                  },
+                ),
+              );
+      },
+    );
   }
 }

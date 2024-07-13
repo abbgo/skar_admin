@@ -25,14 +25,14 @@ class ProductColorCard extends StatelessWidget {
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TtitleWidget(text: lang.selectedDimensions),
-            SelectedDimensions(
-              selectedDimensions: productColor.selectedDimensions!,
-            ),
+            // SelectedDimensions(
+            //   selectedDimensions: productColor.selectedDimensions!,
+            // ),
             const Divider(),
             TtitleWidget(text: lang.selectedImages),
-            SelectedProductColorImages(
-              selectedImages: productColor.selectedImages!,
-            ),
+            // SelectedProductColorImages(
+            //   selectedImages: productColor.selectedImages!,
+            // ),
           ],
         ),
       ),
