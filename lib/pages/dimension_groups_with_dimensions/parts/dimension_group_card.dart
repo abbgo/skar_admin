@@ -17,6 +17,7 @@ class DimensionGroupCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: ExpansionTile(
+          collapsedIconColor: Colors.white,
           collapsedBackgroundColor: elevatedButtonColor,
           collapsedTextColor: Colors.white,
           title: Text(dimensionGroup.name),
