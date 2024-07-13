@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/add_or_update_product_page_body.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
@@ -48,7 +47,7 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
         title: Text(lang.addProductInformation),
       ),
       body: widget.productID == ''
-          ? addOrUpdateProductPageBody(null, null)
+          ? addOrUpdateProductPageBody(null)
           : Consumer(
               builder: (context, ref, child) {
                 ProductParams params =
@@ -71,10 +70,7 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
                     priceCtrl.text = product.price.toString();
                     oldPriceCtrl.text = product.oldPrice.toString();
 
-                    return addOrUpdateProductPageBody(
-                      widget.productID,
-                      product.categories,
-                    );
+                    return addOrUpdateProductPageBody(widget.productID);
                   },
                   error: (error, stackTrace) => errorMethod(error),
                   loading: () => loadWidget,
@@ -84,10 +80,7 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
     );
   }
 
-  AddOrUpdateProductPageBody addOrUpdateProductPageBody(
-    String? productID,
-    List<Category>? oldCategories,
-  ) {
+  AddOrUpdateProductPageBody addOrUpdateProductPageBody(String? productID) {
     return AddOrUpdateProductPageBody(
       nameTMCtrl: nameTMCtrl,
       nameRUCtrl: nameRUCtrl,
@@ -95,7 +88,6 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
       priceCtrl: priceCtrl,
       oldPriceCtrl: oldPriceCtrl,
       shopID: widget.shopID,
-      oldCategories: oldCategories,
     );
   }
 }

@@ -5,33 +5,24 @@ import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/providers/pages/category.dart';
 
 class ShowSelectedCategories extends ConsumerWidget {
-  const ShowSelectedCategories({super.key, this.oldCategories});
-
-  final List<Category>? oldCategories;
+  const ShowSelectedCategories({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Widget showWidget;
     List<Category> selectedCategories = ref.watch(selectedCategoriesProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
 
-    if (selectedCategories.isEmpty && oldCategories == null) {
-      showWidget = const SizedBox();
-    } else if (selectedCategories.isNotEmpty) {
-      showWidget = showcategoriesMethod(selectedCategories, isTM);
-    } else {
-      showWidget = showcategoriesMethod(oldCategories!, isTM);
-    }
-
-    return showWidget;
+    return selectedCategories.isEmpty
+        ? const SizedBox()
+        : showcategoriesMethod(selectedCategories, isTM);
   }
 
-  ListView showcategoriesMethod(List<Category> selectedCategories, bool isTM) {
+  ListView showcategoriesMethod(List<Category> categories, bool isTM) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: selectedCategories.length,
+      itemCount: categories.length,
       itemBuilder: (context, index) {
-        Category category = selectedCategories[index];
+        Category category = categories[index];
         return Text(
           isTM
               ? '${index + 1}. ${category.nameTM}'

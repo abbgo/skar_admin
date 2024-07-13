@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
-import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/add_or_update_product/parts/show_selected_categories.dart';
 import 'package:skar_admin/pages/categories/categories.dart';
 
 class SelectProductCategories extends StatelessWidget {
-  const SelectProductCategories({super.key, this.oldCategories});
-
-  final List<Category>? oldCategories;
+  const SelectProductCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +20,7 @@ class SelectProductCategories extends StatelessWidget {
             '${lang.enterTheCategoriesOfProduct} * : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          ShowSelectedCategories(oldCategories: oldCategories),
+          const ShowSelectedCategories(),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
