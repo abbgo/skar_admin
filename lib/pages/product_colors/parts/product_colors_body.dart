@@ -17,6 +17,7 @@ class ProductColorsBody extends ConsumerWidget {
         : Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: ReorderableListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 ProductColor productColor = productColors[index];
                 return ProductColorCard(
