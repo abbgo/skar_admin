@@ -26,19 +26,24 @@ class _ProductColorsBodyState extends State<ProductColorsBody> {
                 child: ReorderableListView.builder(
                   itemBuilder: (context, index) {
                     ProductColor productColor = productColors[index];
+                    print('-----------------------------------------');
+                    print('$index -> ${productColor.name}');
+
                     return ProductColorCard(
                       productColor: productColor,
                       key: Key(productColor.name),
                     );
                   },
                   itemCount: productColors.length,
+                  onReorderEnd: (index) =>
+                      productColors[index].copyWith(orderNumber: index + 1),
                   onReorder: (oldIndex, newIndex) {
-                    print('========= oldIndex: $oldIndex');
-                    print('========= newIndex: $newIndex');
                     setState(() {
                       if (newIndex > oldIndex) {
                         newIndex -= 1;
                       }
+                      print('========= oldIndex: $oldIndex');
+                      print('========= newIndex: $newIndex');
                       final ProductColor item =
                           productColors.removeAt(oldIndex);
                       productColors.insert(newIndex, item);

@@ -53,6 +53,20 @@ class ProductColor extends Equatable {
     };
   }
 
+  ProductColor copyWith({
+    String? name,
+    int? orderNumber,
+    List<dynamic>? dimensions,
+    List<ProductColorImage>? images,
+  }) {
+    return ProductColor(
+      name: name ?? this.name,
+      orderNumber: orderNumber ?? this.orderNumber,
+      dimensions: dimensions ?? this.dimensions,
+      images: images ?? this.images,
+    );
+  }
+
   @override
   List<Object?> get props => [
         name,
