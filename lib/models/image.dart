@@ -16,7 +16,7 @@ class ResultImage extends Equatable {
   List<Object?> get props => [image, message, error];
 }
 
-class SelectedImage {
+class SelectedImage extends Equatable {
   final String path;
   final File? image;
 
@@ -25,6 +25,9 @@ class SelectedImage {
   factory SelectedImage.defaultResult() {
     return const SelectedImage(path: '', image: null);
   }
+
+  @override
+  List<Object?> get props => [path, image];
 }
 
 class ProductColorImage {

@@ -28,9 +28,9 @@ class ProductColorCard extends StatelessWidget {
             SelectedDimensions(dimensions: productColor.selectedDimensions!),
             const Divider(),
             TtitleWidget(text: lang.selectedImages),
-            // SelectedProductColorImages(
-            //   selectedImages: productColor.selectedImages!,
-            // ),
+            SelectedProductColorImages(
+              selectedImages: productColor.selectedImages!,
+            ),
           ],
         ),
       ),
