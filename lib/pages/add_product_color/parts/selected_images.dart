@@ -9,7 +9,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/services/api/image.dart';
 
 class SelectedImages extends ConsumerWidget {
-  const SelectedImages({super.key});
+  const SelectedImages({super.key, this.oldImages});
+
+  final List<ProductColorImage>? oldImages;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

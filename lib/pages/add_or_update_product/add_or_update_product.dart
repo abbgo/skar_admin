@@ -42,6 +42,8 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
 
+    print('--------------- ${widget.productID}');
+
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.addProductInformation),
