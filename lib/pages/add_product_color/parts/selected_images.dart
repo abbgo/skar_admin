@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/parts/image.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/api/image.dart';
@@ -9,15 +10,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/services/api/image.dart';
 
 class SelectedImages extends ConsumerWidget {
-  const SelectedImages({super.key, this.oldImages});
-
-  final List<ProductColorImage>? oldImages;
+  const SelectedImages({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
-    List<SelectedImage> selectedImages = ref.watch(productImagesProvider);
+    List<ProductColorImage> selectedImages = ref.watch(productImagesProvider);
     bool loadSendImage = ref.watch(loadSendImageProvider);
 
     return Expanded(
@@ -27,18 +26,18 @@ class SelectedImages extends ConsumerWidget {
               : ReorderableListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    SelectedImage selectedImage = selectedImages[index];
+                    ProductColorImage selectedImage = selectedImages[index];
                     return Card(
-                      key: Key(selectedImage.path),
+                      key: Key(selectedImage.image),
                       child: ListTile(
-                        title: Image(
-                          image: FileImage(selectedImage.image!),
+                        title: SizedBox(
                           height: 100,
+                          child: showCachImageMethod(selectedImage.image),
                         ),
                         trailing: IconButton(
                           onPressed: () async {
                             ImageParams params = ImageParams(
-                              oldImage: selectedImage.path,
+                              oldImage: selectedImage.image,
                               context: context,
                             );
                             await ref.watch(deleteImageProvider(params).future);
@@ -60,7 +59,7 @@ class SelectedImages extends ConsumerWidget {
                     if (newIndex > oldIndex) {
                       newIndex -= 1;
                     }
-                    final SelectedImage item =
+                    final ProductColorImage item =
                         selectedImages.removeAt(oldIndex);
                     selectedImages.insert(newIndex, item);
                   },

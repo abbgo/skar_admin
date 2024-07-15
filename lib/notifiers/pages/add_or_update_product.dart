@@ -21,16 +21,17 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
   }
 }
 
-class SelectedProductImagesNotifier extends StateNotifier<List<SelectedImage>> {
+class SelectedProductImagesNotifier
+    extends StateNotifier<List<ProductColorImage>> {
   SelectedProductImagesNotifier() : super([]);
 
-  Future<void> addImage(SelectedImage image) async {
+  Future<void> addImage(ProductColorImage image) async {
     if (!state.contains(image)) {
       state = [...state, image];
     }
   }
 
-  Future<void> removeImage(SelectedImage image) async {
+  Future<void> removeImage(ProductColorImage image) async {
     state = state.where((i) => i != image).toList();
   }
 }

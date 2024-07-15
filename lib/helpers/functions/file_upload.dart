@@ -32,9 +32,10 @@ Future<void> addOrUpdateImage(
       await ref.watch(addOrUpdateImageProvider(params).future);
 
   if (resultImage.image != null) {
+    int lengthSelectedImages = ref.read(productImagesProvider).length;
     if (imageType == 'product') {
-      SelectedImage selectedImage =
-          SelectedImage(path: resultImage.image!, image: file);
+      ProductColorImage selectedImage = ProductColorImage(
+          image: resultImage.image!, orderNumber: lengthSelectedImages + 1);
       ref.read(productImagesProvider.notifier).addImage(selectedImage);
     } else {
       ref.read(shopImageProvider.notifier).state = file;

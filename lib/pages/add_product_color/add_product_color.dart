@@ -33,9 +33,6 @@ class _AddProductColorPageState extends State<AddProductColorPage> {
     );
   }
 
-  AddProductColorBody addProductColorBodyMethod() => AddProductColorBody(
-        formKey: productColorFormKey,
-        nameCtrl: nameCtrl,
-        oldImages: widget.productColor!.images,
-      );
+  AddProductColorBody addProductColorBodyMethod() =>
+      AddProductColorBody(formKey: productColorFormKey, nameCtrl: nameCtrl);
 }

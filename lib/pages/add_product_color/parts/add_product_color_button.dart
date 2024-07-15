@@ -26,12 +26,11 @@ class AddProductColorButton extends ConsumerWidget {
         List<Dimension> selectedDimensions =
             await ref.read(selectedDimensionsProvider);
 
-        List<SelectedImage> selectedImages =
-            await ref.read(productImagesProvider);
+        List<ProductColorImage> images = await ref.read(productImagesProvider);
 
         if (formKey.currentState?.validate() == true &&
             selectedDimensions.isNotEmpty &&
-            selectedImages.isNotEmpty) {
+            images.isNotEmpty) {
           List<ProductColor> productColors =
               await ref.read(productColorsProvider);
 
@@ -40,14 +39,14 @@ class AddProductColorButton extends ConsumerWidget {
             dimensionIDs.add(dimension.id);
           }
 
-          List<ProductColorImage> images = [];
-          for (int i = 0; i < selectedImages.length; i++) {
-            ProductColorImage image = ProductColorImage(
-              image: selectedImages[i].path,
-              orderNumber: (i + 1),
-            );
-            images.add(image);
-          }
+          // List<ProductColorImage> images = [];
+          // for (int i = 0; i < selectedImages.length; i++) {
+          //   ProductColorImage image = ProductColorImage(
+          //     image: selectedImages[i].path,
+          //     orderNumber: (i + 1),
+          //   );
+          //   images.add(image);
+          // }
 
           ProductColor productColor = ProductColor(
             name: nameCtrl.text,
@@ -55,7 +54,6 @@ class AddProductColorButton extends ConsumerWidget {
             dimensions: dimensionIDs,
             images: images,
             selectedDimensions: selectedDimensions,
-            selectedImages: selectedImages,
           );
 
           await ref

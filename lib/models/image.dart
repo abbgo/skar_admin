@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:equatable/equatable.dart';
 
 class ResultImage extends Equatable {
@@ -14,20 +13,6 @@ class ResultImage extends Equatable {
 
   @override
   List<Object?> get props => [image, message, error];
-}
-
-class SelectedImage extends Equatable {
-  final String path;
-  final File? image;
-
-  const SelectedImage({required this.path, this.image});
-
-  factory SelectedImage.defaultResult() {
-    return const SelectedImage(path: '', image: null);
-  }
-
-  @override
-  List<Object?> get props => [path, image];
 }
 
 class ProductColorImage {

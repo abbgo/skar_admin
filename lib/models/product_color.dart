@@ -8,7 +8,7 @@ class ProductColor extends Equatable {
   final List<dynamic>? dimensions;
   final List<ProductColorImage> images;
   final List<Dimension>? selectedDimensions;
-  final List<SelectedImage>? selectedImages;
+  // final List<SelectedImage>? selectedImages;
 
   const ProductColor({
     required this.name,
@@ -16,7 +16,7 @@ class ProductColor extends Equatable {
     this.dimensions,
     required this.images,
     this.selectedDimensions,
-    this.selectedImages,
+    // this.selectedImages,
   });
 
   factory ProductColor.defaultProductColor() {
@@ -26,7 +26,7 @@ class ProductColor extends Equatable {
       dimensions: [],
       images: [],
       selectedDimensions: [],
-      selectedImages: [],
+      // selectedImages: [],
     );
   }
 
@@ -80,6 +80,6 @@ class ProductColor extends Equatable {
         dimensions,
         images,
         selectedDimensions,
-        selectedImages
+        // selectedImages
       ];
 }

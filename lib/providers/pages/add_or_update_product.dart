@@ -14,7 +14,7 @@ var productColorsProvider =
 );
 
 var productImagesProvider = StateNotifierProvider.autoDispose<
-    SelectedProductImagesNotifier, List<SelectedImage>>(
+    SelectedProductImagesNotifier, List<ProductColorImage>>(
   (ref) => SelectedProductImagesNotifier(),
 );
 
