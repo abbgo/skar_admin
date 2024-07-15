@@ -5,6 +5,7 @@ import 'package:skar_admin/models/dimension.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddProductColorButton extends ConsumerWidget {
   const AddProductColorButton({
@@ -18,6 +19,8 @@ class AddProductColorButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,
@@ -57,7 +60,7 @@ class AddProductColorButton extends ConsumerWidget {
 
         if (context.mounted) showEnterInformationWarning(context);
       },
-      child: const Text('Haryt gornusini gos'),
+      child: Text(lang.addProductType),
     );
   }
 }
