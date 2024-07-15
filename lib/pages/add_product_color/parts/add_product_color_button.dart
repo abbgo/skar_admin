@@ -39,15 +39,6 @@ class AddProductColorButton extends ConsumerWidget {
             dimensionIDs.add(dimension.id);
           }
 
-          // List<ProductColorImage> images = [];
-          // for (int i = 0; i < selectedImages.length; i++) {
-          //   ProductColorImage image = ProductColorImage(
-          //     image: selectedImages[i].path,
-          //     orderNumber: (i + 1),
-          //   );
-          //   images.add(image);
-          // }
-
           ProductColor productColor = ProductColor(
             name: nameCtrl.text,
             orderNumber: productColors.length + 1,
