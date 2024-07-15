@@ -37,5 +37,7 @@ class _AddOrUpdateProductColorPageState
 
   AddOrUpdateProductColorBody addOrUpdateProductColorBodyMethod() =>
       AddOrUpdateProductColorBody(
-          formKey: productColorFormKey, nameCtrl: nameCtrl);
+        formKey: productColorFormKey,
+        nameCtrl: nameCtrl,
+      );
 }
