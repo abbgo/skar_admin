@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:skar_admin/pages/add_product_color/parts/add_product_color_button.dart';
-import 'package:skar_admin/pages/add_product_color/parts/product_color_images_input.dart';
-import 'package:skar_admin/pages/add_product_color/parts/product_color_name_input.dart';
-import 'package:skar_admin/pages/add_product_color/parts/select_product_dimension.dart';
+import 'package:skar_admin/pages/add_or_update_product_color/parts/add_or_update_product_color_button.dart';
+import 'package:skar_admin/pages/add_or_update_product_color/parts/product_color_images_input.dart';
+import 'package:skar_admin/pages/add_or_update_product_color/parts/product_color_name_input.dart';
+import 'package:skar_admin/pages/add_or_update_product_color/parts/select_product_dimension.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
 
 class AddProductColorBody extends StatelessWidget {
