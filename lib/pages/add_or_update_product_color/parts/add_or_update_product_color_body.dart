@@ -5,8 +5,8 @@ import 'package:skar_admin/pages/add_or_update_product_color/parts/product_color
 import 'package:skar_admin/pages/add_or_update_product_color/parts/select_product_dimension.dart';
 import 'package:skar_admin/pages/parts/cancel_button.dart';
 
-class AddProductColorBody extends StatelessWidget {
-  const AddProductColorBody(
+class AddOrUpdateProductColorBody extends StatelessWidget {
+  const AddOrUpdateProductColorBody(
       {super.key, required this.formKey, required this.nameCtrl});
 
   final GlobalKey<FormState> formKey;

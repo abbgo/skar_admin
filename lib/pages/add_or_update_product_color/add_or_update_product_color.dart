@@ -31,10 +31,11 @@ class _AddOrUpdateProductColorPageState
 
     return Scaffold(
       appBar: AppBar(),
-      body: addProductColorBodyMethod(),
+      body: addOrUpdateProductColorBodyMethod(),
     );
   }
 
-  AddProductColorBody addProductColorBodyMethod() =>
-      AddProductColorBody(formKey: productColorFormKey, nameCtrl: nameCtrl);
+  AddOrUpdateProductColorBody addOrUpdateProductColorBodyMethod() =>
+      AddOrUpdateProductColorBody(
+          formKey: productColorFormKey, nameCtrl: nameCtrl);
 }
