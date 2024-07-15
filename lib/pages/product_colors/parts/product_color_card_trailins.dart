@@ -20,6 +20,9 @@ class ProductColorCardTrailins extends ConsumerWidget {
             await ref
                 .read(selectedDimensionsProvider.notifier)
                 .setDimensions(productColor.selectedDimensions!);
+            await ref
+                .read(productImagesProvider.notifier)
+                .setImages(productColor.images);
             if (context.mounted) {
               goToPage(
                 context,
