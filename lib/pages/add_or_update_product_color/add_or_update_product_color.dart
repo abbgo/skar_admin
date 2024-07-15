@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/pages/add_or_update_product_color/parts/add_or_update_product_color_body.dart';
 
-class AddProductColorPage extends StatefulWidget {
-  const AddProductColorPage({super.key, this.productColor});
+class AddOrUpdateProductColorPage extends StatefulWidget {
+  const AddOrUpdateProductColorPage({super.key, this.productColor});
 
   final ProductColor? productColor;
 
   @override
-  State<AddProductColorPage> createState() => _AddProductColorPageState();
+  State<AddOrUpdateProductColorPage> createState() =>
+      _AddOrUpdateProductColorPageState();
 }
 
-class _AddProductColorPageState extends State<AddProductColorPage> {
+class _AddOrUpdateProductColorPageState
+    extends State<AddOrUpdateProductColorPage> {
   final GlobalKey<FormState> productColorFormKey = GlobalKey<FormState>();
   final TextEditingController nameCtrl = TextEditingController();
 

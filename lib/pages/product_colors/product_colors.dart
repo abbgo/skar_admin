@@ -26,7 +26,7 @@ class ProductColorsPage extends StatelessWidget {
                   .removeAllDimensions();
               await ref.read(productImagesProvider.notifier).removeAllImages();
               if (context.mounted) {
-                goToPage(context, const AddProductColorPage(), false);
+                goToPage(context, const AddOrUpdateProductColorPage(), false);
               }
             },
             text: lang.addProductType,

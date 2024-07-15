@@ -26,7 +26,7 @@ class ProductColorCardTrailins extends ConsumerWidget {
             if (context.mounted) {
               goToPage(
                 context,
-                AddProductColorPage(productColor: productColor),
+                AddOrUpdateProductColorPage(productColor: productColor),
                 false,
               );
             }
