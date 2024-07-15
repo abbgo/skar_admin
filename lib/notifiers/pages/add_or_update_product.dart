@@ -34,6 +34,10 @@ class SelectedProductImagesNotifier
   Future<void> removeImage(ProductColorImage image) async {
     state = state.where((i) => i != image).toList();
   }
+
+  Future<void> setImages(List<ProductColorImage> images) async {
+    state = images;
+  }
 }
 
 class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
