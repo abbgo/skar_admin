@@ -38,6 +38,10 @@ class SelectedProductImagesNotifier
   Future<void> setImages(List<ProductColorImage> images) async {
     state = images;
   }
+
+  Future<void> removeAllImages() async {
+    state = [];
+  }
 }
 
 class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
