@@ -31,7 +31,7 @@ class AddOrUpdateProductColorBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const CancelButton(),
-                  AddProductColorButton(
+                  AddOrUpdateProductColorButton(
                     formKey: formKey,
                     nameCtrl: nameCtrl,
                   ),

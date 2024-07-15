@@ -7,8 +7,8 @@ import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AddProductColorButton extends ConsumerWidget {
-  const AddProductColorButton({
+class AddOrUpdateProductColorButton extends ConsumerWidget {
+  const AddOrUpdateProductColorButton({
     super.key,
     required this.formKey,
     required this.nameCtrl,
