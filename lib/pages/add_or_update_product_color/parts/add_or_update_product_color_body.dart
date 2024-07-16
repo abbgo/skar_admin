@@ -41,6 +41,7 @@ class AddOrUpdateProductColorBody extends StatelessWidget {
                   AddOrUpdateProductColorButton(
                     formKey: formKey,
                     nameCtrl: nameCtrl,
+                    oldProductColor: productColor,
                   ),
                 ],
               ),

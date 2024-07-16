@@ -39,5 +39,6 @@ class _AddOrUpdateProductColorPageState
       AddOrUpdateProductColorBody(
         formKey: productColorFormKey,
         nameCtrl: nameCtrl,
+        productColor: widget.productColor,
       );
 }
