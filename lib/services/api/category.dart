@@ -6,9 +6,18 @@ import 'package:skar_admin/models/category.dart';
 
 class CategoryApiService {
   // fetch categroies --------------------------------------------
-  Future<ResultCategory> fetchCategories(String search, int page) async {
+  Future<ResultCategory> fetchCategories(
+    String search,
+    int page,
+    String lang,
+  ) async {
     Uri uri = Uri.parse('$apiUrl/categories').replace(
-      queryParameters: {'page': '$page', 'search': search},
+      queryParameters: {
+        'limit': '10',
+        'page': '$page',
+        'search': search,
+        'lang': lang
+      },
     );
 
     try {
