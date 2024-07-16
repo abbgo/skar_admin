@@ -74,7 +74,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                   longitudeCtrl: longitudeCtrl,
                 ),
                 const HasShippingInput(),
-                ShopImageInput(oldImage: oldImage),
+                const ShopImageInput(),
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),

@@ -51,7 +51,7 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
         title: Text(lang.addShopInformation),
       ),
       body: widget.shopID == ''
-          ? addOrUpdateShopPageBody(null, null, null)
+          ? addOrUpdateShopPageBody(null, null)
           : Consumer(
               builder: (context, ref, child) {
                 ShopParams params = ShopParams(shopID: widget.shopID);
@@ -82,7 +82,6 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
                     longitudeCtrl.text = shop.longitude!.toString();
 
                     return addOrUpdateShopPageBody(
-                      shop.image,
                       widget.shopID,
                       shop.parentShop,
                     );
@@ -96,7 +95,6 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
   }
 
   AddOrUpdateShopPageBody addOrUpdateShopPageBody(
-    String? oldImage,
     String? shopID,
     Shop? parentShop,
   ) {
@@ -110,7 +108,6 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
       phone2Ctrl: phone2Ctrl,
       latitudeCtrl: latitudeCtrl,
       longitudeCtrl: longitudeCtrl,
-      oldImage: oldImage,
       shopID: shopID,
       parentShop: parentShop,
     );

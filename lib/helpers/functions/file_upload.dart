@@ -38,7 +38,6 @@ Future<void> addOrUpdateImage(
           image: resultImage.image!, orderNumber: lengthSelectedImages + 1);
       ref.read(productImagesProvider.notifier).addImage(selectedImage);
     } else {
-      ref.read(shopImageProvider.notifier).state = file;
       ref.read(shopImagePathProvider.notifier).state = resultImage.image!;
     }
   }
