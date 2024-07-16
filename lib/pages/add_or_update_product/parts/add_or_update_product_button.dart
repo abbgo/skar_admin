@@ -53,6 +53,8 @@ class AddOrUpdateProductButton extends ConsumerWidget {
             selectedCategories.isNotEmpty &&
             productColors.isNotEmpty) {
           ProductParams? params;
+          ResultProduct resultProduct;
+
           ref.read(loadCreateProductProvider.notifier).state = true;
           bool isVisible = await ref.read(visibleProductProvider);
           Brend brend = ref.read(selectedBrendProvider);
@@ -63,6 +65,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
           }
 
           final product = Product(
+            id: productID,
             nameTM: nameTMCtrl.text,
             nameRU: nameRUCtrl.text,
             price: num.parse(priceCtrl.text),
@@ -80,15 +83,25 @@ class AddOrUpdateProductButton extends ConsumerWidget {
             params = ProductParams(product: product, context: context);
           }
 
-          ResultProduct resultProduct =
-              await ref.watch(createProductProvider(params!).future);
+          if (productID != '') {
+            resultProduct =
+                await ref.watch(updateProductProvider(params!).future);
+          } else {
+            resultProduct =
+                await ref.watch(createProductProvider(params!).future);
+          }
 
           ref.read(loadCreateProductProvider.notifier).state = false;
 
           if (resultProduct.error == '') {
             ref.invalidate(hasProductsProvider);
             if (context.mounted) {
-              showSuccess(context, lang.informationCreatedSuccessfully);
+              showSuccess(
+                context,
+                productID != ''
+                    ? lang.informationChangedSuccessfully
+                    : lang.informationCreatedSuccessfully,
+              );
               Navigator.pop(context);
             }
           }
