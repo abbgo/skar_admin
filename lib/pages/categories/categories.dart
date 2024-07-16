@@ -20,7 +20,7 @@ class CategoriesPage extends StatelessWidget {
         title: Consumer(
           builder: (context, ref, child) {
             return SearchInput(
-              label: lang.searchBrand,
+              label: lang.searchCategory,
               onSubmitted: (value) {
                 ref.read(categorySearchProvider.notifier).state = value;
                 ref.read(hasCategoriesProvider.notifier).state = true;
