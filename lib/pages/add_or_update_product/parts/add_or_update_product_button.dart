@@ -40,7 +40,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
+        backgroundColor: productID != '' ? null : Colors.green,
       ),
       onPressed: () async {
         List<Category> selectedCategories =
@@ -97,7 +97,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
         if (context.mounted) showEnterInformationWarning(context);
       },
-      child: Text(lang.add),
+      child: Text(productID != '' ? lang.change : lang.add),
     );
   }
 }
