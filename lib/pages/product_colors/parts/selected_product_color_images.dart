@@ -17,12 +17,12 @@ class SelectedProductColorImages extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 50,
-          mainAxisSpacing: 20,
-          mainAxisExtent: 100,
+          mainAxisSpacing: 100,
+          mainAxisExtent: 200,
         ),
         itemBuilder: (context, index) {
-          return SizedBox(
-            height: 100,
+          return AspectRatio(
+            aspectRatio: 3 / 4,
             child: showCachImageMethod(images![index].image),
           );
         },
