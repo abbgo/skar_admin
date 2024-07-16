@@ -27,13 +27,15 @@ class AddProductColor extends StatelessWidget {
               List<ProductColor> productColors =
                   ref.watch(productColorsProvider);
 
-              return Text(
-                '${lang.countProductTypes}: ${productColors.length}',
-                style: const TextStyle(
-                  color: Colors.green,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
+              return productColors.isNotEmpty
+                  ? Text(
+                      '${lang.countProductTypes}: ${productColors.length}',
+                      style: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : const SizedBox();
             },
           ),
           SizedBox(
