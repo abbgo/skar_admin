@@ -30,10 +30,7 @@ class CategoriesPage extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: ResultCategories(childCategories: childCategories),
-      ),
+      body: ResultCategories(childCategories: childCategories),
     );
   }
 }

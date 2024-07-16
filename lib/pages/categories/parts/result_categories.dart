@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/categories/parts/categories_list.dart';
+import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/category.dart';
+import 'package:skar_admin/providers/pages/category.dart';
+import 'package:skar_admin/services/api/brend.dart';
 
 class ResultCategories extends ConsumerWidget {
   const ResultCategories({super.key, required this.childCategories});
@@ -12,26 +16,45 @@ class ResultCategories extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<ResultCategory> resultCategories =
-        ref.watch(fetchCategoriesProvider);
+    bool hasCategories = ref.watch(hasCategoriesProvider);
 
-    return childCategories.isEmpty
-        ? Text('result categories')
-        // ? resultCategories.when(
-        //     skipLoadingOnRefresh: true,
-        //     skipLoadingOnReload: true,
-        //     skipError: true,
-        //     data: (response) {
-        //       if (response.error != '') {
-        //         return null;
-        //       }
+    return !hasCategories
+        ? const NoResult()
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: childCategories.isEmpty
+                ? ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final page = index ~/ pageSize + 1;
+                      final indexInPage = index % pageSize;
 
-        //       List<Category> categories = response.categories!;
-        //       return CategoriesList(categories: categories);
-        //     },
-        //     error: (error, stackTrace) => errorMethod(error),
-        //     loading: () => null,
-        //   )
-        : CategoriesList(categories: childCategories);
+                      DefaultParams categoryParams =
+                          DefaultParams(page: page, isDeleted: false);
+                      AsyncValue<ResultCategory> resultCategories =
+                          ref.watch(fetchCategoriesProvider(categoryParams));
+                    },
+                  )
+                : CategoriesList(categories: childCategories),
+          );
   }
 }
+
+
+
+
+// ? resultCategories.when(
+                //     skipLoadingOnRefresh: true,
+                //     skipLoadingOnReload: true,
+                //     skipError: true,
+                //     data: (response) {
+                //       if (response.error != '') {
+                //         return null;
+                //       }
+
+                //       List<Category> categories = response.categories!;
+                //       return CategoriesList(categories: categories);
+                //     },
+                //     error: (error, stackTrace) => errorMethod(error),
+                //     loading: () => null,
+                //   )
