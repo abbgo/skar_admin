@@ -54,6 +54,37 @@ class ProductApiService {
     }
   }
 
+  // update product -------------------------------------------------------
+  Future<ResultProduct> updateProduct(
+      {required String accessToken, required Product product}) async {
+    Uri uri = Uri.parse('$apiUrl/back/products');
+
+    try {
+      http.Response response = await http.put(
+        uri,
+        headers: tokenHeader(accessToken),
+        body: json.encode(product.toJson()),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['message'] == null) {
+          return const ResultProduct(message: '', error: '');
+        }
+
+        return ResultProduct(message: jsonData['message'], error: '');
+      }
+
+      if (response.statusCode == 400) {
+        return const ResultProduct(error: 'some error');
+      }
+
+      return const ResultProduct(message: '', error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // create product -------------------------------------------------------
   Future<ResultProduct> createProduct(
       {required String accessToken, required Product product}) async {
