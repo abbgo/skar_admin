@@ -4,6 +4,7 @@ import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/category.dart';
 import 'package:skar_admin/pages/categories/parts/categories_list.dart';
+import 'package:skar_admin/pages/categories/parts/category_list_tile.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
 import 'package:skar_admin/providers/api/category.dart';
 import 'package:skar_admin/providers/pages/category.dart';
@@ -17,6 +18,7 @@ class ResultCategories extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasCategories = ref.watch(hasCategoriesProvider);
+    List<Category> selectedCategories = ref.read(selectedCategoriesProvider);
 
     return !hasCategories
         ? const NoResult()
@@ -46,8 +48,14 @@ class ResultCategories extends ConsumerWidget {
                             return null;
                           }
 
-                          List<Category> categories = response.categories!;
-                          return CategoriesList(categories: categories);
+                          Category category = response.categories![indexInPage];
+                          for (var sc in selectedCategories) {
+                            if (sc.id == category.id) {
+                              category.isChecked = true;
+                            }
+                          }
+
+                          return CategoryListTile(category: category);
                         },
                         error: (error, stackTrace) => errorMethod(error),
                         loading: () => null,
@@ -58,22 +66,3 @@ class ResultCategories extends ConsumerWidget {
           );
   }
 }
-
-
-
-
-// ? resultCategories.when(
-                //     skipLoadingOnRefresh: true,
-                //     skipLoadingOnReload: true,
-                //     skipError: true,
-                //     data: (response) {
-                //       if (response.error != '') {
-                //         return null;
-                //       }
-
-                //       List<Category> categories = response.categories!;
-                //       return CategoriesList(categories: categories);
-                //     },
-                //     error: (error, stackTrace) => errorMethod(error),
-                //     loading: () => null,
-                //   )
