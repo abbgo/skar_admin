@@ -20,14 +20,17 @@ var fetchProductsProvider =
 
     try {
       String accessToken = await ref.read(accessTokenProvider);
+      String search = ref.watch(productSearchProvider);
+      bool isTM = ref.read(langProvider) == 'tr';
+
       ResultProduct resultProduct =
           await ref.read(productApiProvider).fetchProducts(
                 accessToken: accessToken,
                 page: arg.page!,
                 isDeleted: arg.isDeleted!,
-                search: '',
+                search: search,
                 shopID: arg.shopID!,
-                lang: '',
+                lang: isTM ? 'tm' : 'ru',
               );
 
       if (resultProduct.error == 'auth error') {
