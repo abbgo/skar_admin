@@ -33,6 +33,25 @@ class ResultCategories extends ConsumerWidget {
                           DefaultParams(page: page, isDeleted: false);
                       AsyncValue<ResultCategory> resultCategories =
                           ref.watch(fetchCategoriesProvider(categoryParams));
+
+                      return resultCategories.when(
+                        skipLoadingOnRefresh: true,
+                        skipLoadingOnReload: true,
+                        skipError: true,
+                        data: (response) {
+                          if (response.error != '') {
+                            return null;
+                          }
+                          if (indexInPage >= response.categories!.length) {
+                            return null;
+                          }
+
+                          List<Category> categories = response.categories!;
+                          return CategoriesList(categories: categories);
+                        },
+                        error: (error, stackTrace) => errorMethod(error),
+                        loading: () => null,
+                      );
                     },
                   )
                 : CategoriesList(categories: childCategories),
