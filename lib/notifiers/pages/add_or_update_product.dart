@@ -21,11 +21,18 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
   }
 
   Future<void> changeProductColor(ProductColor productColor) async {
-    for (var element in state) {
-      if (element.orderNumber == productColor.orderNumber) {
-        element = productColor;
-      }
-    }
+    state = [
+      for (var element in state)
+        if (element.orderNumber == productColor.orderNumber)
+          element.copyWith(
+            name: productColor.name,
+            dimensions: productColor.dimensions,
+            images: productColor.images,
+            selectedDimensions: productColor.selectedDimensions,
+          )
+        else
+          element
+    ];
   }
 }
 

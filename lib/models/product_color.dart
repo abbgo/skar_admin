@@ -61,12 +61,14 @@ class ProductColor extends Equatable {
     int? orderNumber,
     List<dynamic>? dimensions,
     List<ProductColorImage>? images,
+    final List<Dimension>? selectedDimensions,
   }) {
     return ProductColor(
       name: name ?? this.name,
       orderNumber: orderNumber ?? this.orderNumber,
       dimensions: dimensions ?? this.dimensions,
       images: images ?? this.images,
+      selectedDimensions: selectedDimensions ?? this.selectedDimensions,
     );
   }
 
