@@ -30,8 +30,8 @@ class SelectedImages extends ConsumerWidget {
                     return Card(
                       key: Key(selectedImage.image),
                       child: ListTile(
-                        title: SizedBox(
-                          height: 100,
+                        title: AspectRatio(
+                          aspectRatio: 3 / 4,
                           child: showCachImageMethod(selectedImage.image),
                         ),
                         trailing: IconButton(
