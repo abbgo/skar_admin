@@ -44,9 +44,8 @@ class ShopImageInput extends ConsumerWidget {
                 child: !loadSendImage
                     ? selectedImage.isEmpty
                         ? Text(lang.noImage, textAlign: TextAlign.center)
-                        : SizedBox(
-                            height: 100,
-                            width: 100,
+                        : AspectRatio(
+                            aspectRatio: 4 / 3,
                             child: showCachImageMethod(selectedImage),
                           )
                     : loadWidget,
