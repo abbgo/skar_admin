@@ -26,7 +26,7 @@ class AddOrUpdateProductColorButton extends ConsumerWidget {
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
+        backgroundColor: oldProductColor != null ? null : Colors.green,
       ),
       onPressed: () async {
         List<Dimension> selectedDimensions =
@@ -71,7 +71,9 @@ class AddOrUpdateProductColorButton extends ConsumerWidget {
 
         if (context.mounted) showEnterInformationWarning(context);
       },
-      child: Text(lang.addProductType),
+      child: Text(
+        oldProductColor != null ? lang.changeProductType : lang.addProductType,
+      ),
     );
   }
 }

@@ -53,6 +53,7 @@
     "oldPrice":"Old price",
     "productTypes":"Product types (colors)",
     "addProductType":"Add product type",
+    "changeProductType":"Change product type",
     "productColor":"Product color",
     "selectProductColorDimensions":"Select product color dimensions",
     "addProductColorImages":"Add pictures of product color",
