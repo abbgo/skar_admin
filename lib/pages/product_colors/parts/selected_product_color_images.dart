@@ -16,8 +16,8 @@ class SelectedProductColorImages extends StatelessWidget {
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 50,
-          mainAxisSpacing: 100,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
           mainAxisExtent: 200,
         ),
         itemBuilder: (context, index) {
