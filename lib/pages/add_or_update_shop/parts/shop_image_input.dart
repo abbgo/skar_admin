@@ -35,12 +35,12 @@ class ShopImageInput extends ConsumerWidget {
               IconButton(
                 onPressed: () {
                   FocusManager.instance.primaryFocus!.unfocus();
-                  showSelectedImageSheet(context, 'shop', 3, 2);
+                  showSelectedImageSheet(context, 'shop', 4, 3);
                 },
                 icon: const Column(
                   children: [
                     Icon(Icons.add_photo_alternate, size: 100),
-                    Text('3 : 2'),
+                    Text('4 : 3'),
                   ],
                 ),
               ),
