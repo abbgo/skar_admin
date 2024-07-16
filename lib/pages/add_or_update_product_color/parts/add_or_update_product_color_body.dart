@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/models/product_color.dart';
 import 'package:skar_admin/pages/add_or_update_product_color/parts/add_or_update_product_color_button.dart';
 import 'package:skar_admin/pages/add_or_update_product_color/parts/product_color_images_input.dart';
 import 'package:skar_admin/pages/add_or_update_product_color/parts/product_color_name_input.dart';
@@ -6,11 +7,17 @@ import 'package:skar_admin/pages/add_or_update_product_color/parts/select_produc
 import 'package:skar_admin/pages/parts/cancel_button.dart';
 
 class AddOrUpdateProductColorBody extends StatelessWidget {
-  const AddOrUpdateProductColorBody(
-      {super.key, required this.formKey, required this.nameCtrl});
+  const AddOrUpdateProductColorBody({
+    super.key,
+    required this.formKey,
+    required this.nameCtrl,
+    this.productColor,
+  });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameCtrl;
+
+  final ProductColor? productColor;
 
   @override
   Widget build(BuildContext context) {

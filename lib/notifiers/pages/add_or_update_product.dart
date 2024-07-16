@@ -19,6 +19,14 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
   Future<void> removeAllProductColors() async {
     state = [];
   }
+
+  Future<void> changeProductColor(ProductColor productColor) async {
+    for (var element in state) {
+      if (element.orderNumber == productColor.orderNumber) {
+        element = productColor;
+      }
+    }
+  }
 }
 
 class SelectedProductImagesNotifier

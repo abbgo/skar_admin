@@ -12,10 +12,13 @@ class AddOrUpdateProductColorButton extends ConsumerWidget {
     super.key,
     required this.formKey,
     required this.nameCtrl,
+    this.productColor,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameCtrl;
+
+  final ProductColor? productColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
