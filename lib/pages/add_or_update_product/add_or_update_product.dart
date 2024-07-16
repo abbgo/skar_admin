@@ -88,6 +88,7 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
       priceCtrl: priceCtrl,
       oldPriceCtrl: oldPriceCtrl,
       shopID: widget.shopID,
+      productID: widget.productID,
     );
   }
 }

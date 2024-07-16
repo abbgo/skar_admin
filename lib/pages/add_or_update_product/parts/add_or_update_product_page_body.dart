@@ -22,6 +22,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
     required this.priceCtrl,
     required this.oldPriceCtrl,
     required this.shopID,
+    required this.productID,
   });
 
   final GlobalKey<FormState> productFormKey;
@@ -31,6 +32,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
   final TextEditingController oldPriceCtrl;
 
   final String shopID;
+  final String productID;
 
   @override
   Widget build(BuildContext context) {
