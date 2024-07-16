@@ -59,5 +59,6 @@
     "addProductColorImages":"Добавьте фотографии цвета товара",
     "pleaseEnterInformationsCompletely":"Пожалуйста, введите информацию полностью",
     "selectedDimensions":"Выбранные размеры",
-    "selectedImages":"Выбранные изображения"
+    "selectedImages":"Выбранные изображения",
+    "countProductTypes":"Количество типов продукции"
 }

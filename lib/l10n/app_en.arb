@@ -59,5 +59,6 @@
     "addProductColorImages":"Add pictures of product color",
     "pleaseEnterInformationsCompletely":"Please enter the informations completely",
     "selectedDimensions":"Selected dimensions",
-    "selectedImages":"Selected images"
+    "selectedImages":"Selected images",
+    "countProductTypes":"Count of product types"
 }
