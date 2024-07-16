@@ -12,13 +12,13 @@ class AddOrUpdateProductColorButton extends ConsumerWidget {
     super.key,
     required this.formKey,
     required this.nameCtrl,
-    this.productColor,
+    this.oldProductColor,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameCtrl;
 
-  final ProductColor? productColor;
+  final ProductColor? oldProductColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,15 +47,23 @@ class AddOrUpdateProductColorButton extends ConsumerWidget {
 
           ProductColor productColor = ProductColor(
             name: nameCtrl.text,
-            orderNumber: productColors.length + 1,
+            orderNumber: oldProductColor != null
+                ? oldProductColor!.orderNumber
+                : productColors.length + 1,
             dimensions: dimensionIDs,
             images: images,
             selectedDimensions: selectedDimensions,
           );
 
-          await ref
-              .read(productColorsProvider.notifier)
-              .addProductColor(productColor);
+          if (oldProductColor != null) {
+            await ref
+                .read(productColorsProvider.notifier)
+                .changeProductColor(productColor);
+          } else {
+            await ref
+                .read(productColorsProvider.notifier)
+                .addProductColor(productColor);
+          }
 
           if (context.mounted) Navigator.pop(context);
           return;
