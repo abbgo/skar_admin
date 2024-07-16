@@ -25,12 +25,12 @@ class ProductColorImagesInput extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   FocusManager.instance.primaryFocus!.unfocus();
-                  showSelectedImageSheet(context, 'product', 8, 16);
+                  showSelectedImageSheet(context, 'product', 3, 4);
                 },
                 icon: const Column(
                   children: [
                     Icon(Icons.add_photo_alternate, size: 100),
-                    Text('8 : 16'),
+                    Text('3 : 4'),
                   ],
                 ),
               ),
