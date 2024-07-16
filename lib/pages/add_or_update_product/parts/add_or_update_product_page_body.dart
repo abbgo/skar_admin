@@ -72,6 +72,7 @@ class AddOrUpdateProductPageBody extends StatelessWidget {
                         priceCtrl: priceCtrl,
                         oldPriceCtrl: oldPriceCtrl,
                         shopID: shopID,
+                        productID: productID,
                       ),
                     ],
                   ),

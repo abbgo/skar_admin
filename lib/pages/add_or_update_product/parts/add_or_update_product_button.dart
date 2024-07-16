@@ -22,6 +22,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
     required this.priceCtrl,
     required this.oldPriceCtrl,
     required this.shopID,
+    required this.productID,
   });
 
   final GlobalKey<FormState> formKey;
@@ -31,6 +32,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
   final TextEditingController oldPriceCtrl;
 
   final String shopID;
+  final String productID;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
