@@ -44,6 +44,15 @@ class ResultProducts extends ConsumerWidget {
                   }
 
                   Product product = response.products![indexInPage];
+
+                  // // Determine if this is the last element
+                  // int lastIndex = products.maybeWhen(
+                  //   data: (response) => response.products!.length - 1,
+                  //   orElse: () => 0, // Default to 0 if products is not data
+                  // );
+                  // bool isLastElement = index == lastIndex;
+                  // print('------------------- isLastElement: $isLastElement');
+
                   return ProductListTile(product: product, shopID: shopID);
                 },
                 error: (error, stackTrace) => errorMethod(error),
