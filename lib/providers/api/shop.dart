@@ -33,6 +33,9 @@ var fetchShopProvider =
 
         ref.read(shopImagePathProvider.notifier).state =
             resultShop.shop!.image!;
+
+        ref.read(selectedShoppincCenterProvider.notifier).state =
+            resultShop.shop!.parentShop!;
       }
 
       result = resultShop;
