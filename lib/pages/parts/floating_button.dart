@@ -9,7 +9,8 @@ class FloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(elevation: 5),
+      style:
+          ElevatedButton.styleFrom(elevation: 5, backgroundColor: Colors.green),
       onPressed: onPressed,
       child: Row(
         mainAxisSize: MainAxisSize.min,
