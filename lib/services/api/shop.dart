@@ -66,7 +66,7 @@ class ShopApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['shops'] == null) {
-          return const ResultShop(shops: [], error: '');
+          return const ResultShop(shops: null, error: '');
         }
 
         var shopsList = jsonData['shops'] as List;
@@ -77,7 +77,7 @@ class ShopApiService {
           error: '',
         );
       }
-      return const ResultShop(shops: [], error: 'auth error');
+      return const ResultShop(shops: null, error: 'auth error');
     } catch (e) {
       rethrow;
     }

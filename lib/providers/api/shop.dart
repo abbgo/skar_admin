@@ -102,7 +102,10 @@ var fetchShopsProvider =
         await ref.read(accessTokenProvider.notifier).update('');
       }
 
-      ref.read(hasShopsProvider.notifier).state = resultShop.shops!.isNotEmpty;
+      if (resultShop.shops != null) {
+        ref.read(hasShopsProvider.notifier).state =
+            resultShop.shops!.isNotEmpty;
+      }
 
       result = resultShop;
     } catch (e) {
