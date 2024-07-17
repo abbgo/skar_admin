@@ -36,7 +36,7 @@ class CountOfProducts extends ConsumerWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               error: (error, stackTrace) => errorMethod(error),
-              loading: () => loadWidget,
+              loading: () => const SizedBox(),
             ),
           ],
         ),
