@@ -16,7 +16,7 @@ class ProductApiService {
     required String search,
     required String lang,
   }) async {
-    Uri uri = Uri.parse('$apiUrl/back/products').replace(
+    Uri uri = Uri.parse('$apiUrl/back/products/count').replace(
       queryParameters: {
         'shop_id': shopID,
         'is_deleted': '$isDeleted',

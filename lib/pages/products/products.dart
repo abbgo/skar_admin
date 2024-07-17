@@ -23,7 +23,7 @@ class ProductsPage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const CountOfProducts(),
+          CountOfProducts(shopID: shopID),
           ResultProducts(shopID: shopID),
         ],
       ),
