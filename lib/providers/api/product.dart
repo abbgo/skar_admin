@@ -13,6 +13,42 @@ import 'package:skar_admin/services/api/product.dart';
 final productApiProvider =
     Provider<ProductApiService>((ref) => ProductApiService());
 
+var fetchCountOfProductsProvider =
+    FutureProvider.autoDispose.family<ResultProduct, ProductParams>(
+  (ref, arg) async {
+    ResultProduct result = ResultProduct.defaultResult();
+
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+      String search = ref.watch(productSearchProvider);
+      bool isTM = ref.read(langProvider) == 'tr';
+
+      ResultProduct resultProduct =
+          await ref.read(productApiProvider).fetchCountOfProducts(
+                accessToken: accessToken,
+                isDeleted: arg.isDeleted!,
+                search: search,
+                shopID: arg.shopID!,
+                lang: isTM ? 'tm' : 'ru',
+              );
+
+      if (resultProduct.error == 'auth error') {
+        await ref.read(accessTokenProvider.notifier).update('');
+      }
+
+      // if (resultProduct.products != null) {
+      //   ref.read(hasProductsProvider.notifier).state =
+      //       resultProduct.products!.isNotEmpty;
+      // }
+
+      result = resultProduct;
+    } catch (e) {
+      result = ResultProduct(error: e.toString());
+    }
+    return result;
+  },
+);
+
 var fetchProductsProvider =
     FutureProvider.autoDispose.family<ResultProduct, ProductParams>(
   (ref, arg) async {
