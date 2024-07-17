@@ -85,17 +85,6 @@ class Shop extends Equatable {
   List<Object?> get props => [id, nameTM, nameRU];
 }
 
-// class SelectedShop {
-//   final String id, nameTM, nameRU;
-
-//   const SelectedShop(
-//       {required this.id, required this.nameRU, required this.nameTM});
-
-//   factory SelectedShop.defaultSelectedShop() {
-//     return const SelectedShop(id: '', nameRU: '', nameTM: '');
-//   }
-// }
-
 class ResultShop extends Equatable {
   final List<Shop>? shops;
   final Shop? shop;
