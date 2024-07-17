@@ -56,10 +56,6 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           bool hasShipping = await ref.read(hasShippingProvider);
           Shop parentShop = ref.read(selectedShoppincCenterProvider);
 
-          // print('------------------- ${parentShop.nameTM}');
-          // print('------------------- ${parentShop.id}');
-          // return;
-
           final shop = Shop(
             id: shopID,
             nameTM: nameTMCtrl.text,
