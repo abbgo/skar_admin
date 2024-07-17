@@ -43,9 +43,9 @@ class ProductListTileData extends StatelessWidget {
                         ),
                         const SizedBox(width: 15),
                         Text(
-                          product.oldPrice != null
-                              ? '${product.oldPrice} man'
-                              : '',
+                          product.oldPrice == null || product.oldPrice == 0
+                              ? ''
+                              : '${product.oldPrice} man',
                           style: const TextStyle(
                               decoration: TextDecoration.lineThrough),
                         ),
