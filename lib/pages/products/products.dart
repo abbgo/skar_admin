@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skar_admin/pages/products/parts/add_or_update_product_button.dart';
+import 'package:skar_admin/pages/products/parts/count_of_products.dart';
 import 'package:skar_admin/pages/products/parts/products_page_scroll_button.dart';
 import 'package:skar_admin/pages/products/parts/result_products.dart';
 import 'package:skar_admin/pages/products/parts/search_product_input.dart';
@@ -22,7 +23,7 @@ class ProductsPage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('34 sany haryt bar'),
+          const CountOfProducts(),
           ResultProducts(shopID: shopID),
         ],
       ),
