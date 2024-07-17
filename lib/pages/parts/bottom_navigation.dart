@@ -45,6 +45,7 @@ class BottomNavigationPart extends ConsumerWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [
           bottomNavigationBarItemMethod(
             lang.myShops,
