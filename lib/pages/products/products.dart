@@ -29,9 +29,11 @@ class ProductsPage extends StatelessWidget {
           },
         ),
         centerTitle: false,
+        actions: [
+          AddOrUpdateProductActionButton(shopID: shopID),
+        ],
       ),
       body: ResultProducts(shopID: shopID),
-      floatingActionButton: AddOrUpdateProductFloatButton(shopID: shopID),
     );
   }
 }

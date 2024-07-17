@@ -18,47 +18,40 @@ class ResultProducts extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasProducts = ref.watch(hasProductsProvider);
 
-    return !hasProducts
-        ? const NoResult()
-        : ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              final page = index ~/ pageSize + 1;
-              final indexInPage = index % pageSize;
+    if (!hasProducts) {
+      return const NoResult();
+    } else {
+      return ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemBuilder: (context, index) {
+          final page = index ~/ pageSize + 1;
+          final indexInPage = index % pageSize;
 
-              ProductParams productParams =
-                  ProductParams(page: page, isDeleted: false, shopID: shopID);
-              final AsyncValue<ResultProduct> products =
-                  ref.watch(fetchProductsProvider(productParams));
+          ProductParams productParams =
+              ProductParams(page: page, isDeleted: false, shopID: shopID);
+          final AsyncValue<ResultProduct> products =
+              ref.watch(fetchProductsProvider(productParams));
 
-              return products.when(
-                skipLoadingOnRefresh: true,
-                skipLoadingOnReload: true,
-                skipError: true,
-                data: (response) {
-                  if (response.error != '') {
-                    return null;
-                  }
-                  if (indexInPage >= response.products!.length) {
-                    return null;
-                  }
+          return products.when(
+            skipLoadingOnRefresh: true,
+            skipLoadingOnReload: true,
+            skipError: true,
+            data: (response) {
+              if (response.error != '') {
+                return null;
+              }
+              if (indexInPage >= response.products!.length) {
+                return null;
+              }
 
-                  Product product = response.products![indexInPage];
-
-                  // // Determine if this is the last element
-                  // int lastIndex = products.maybeWhen(
-                  //   data: (response) => response.products!.length - 1,
-                  //   orElse: () => 0, // Default to 0 if products is not data
-                  // );
-                  // bool isLastElement = index == lastIndex;
-                  // print('------------------- isLastElement: $isLastElement');
-
-                  return ProductListTile(product: product, shopID: shopID);
-                },
-                error: (error, stackTrace) => errorMethod(error),
-                loading: () => null,
-              );
+              Product product = response.products![indexInPage];
+              return ProductListTile(product: product, shopID: shopID);
             },
+            error: (error, stackTrace) => errorMethod(error),
+            loading: () => null,
           );
+        },
+      );
+    }
   }
 }
