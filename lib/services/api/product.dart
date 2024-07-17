@@ -8,6 +8,44 @@ import 'package:skar_admin/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class ProductApiService {
+  // fetch count of products -------------------------------------------------------
+  Future<ResultProduct> fetchCountOfProducts({
+    required String accessToken,
+    required String shopID,
+    required bool isDeleted,
+    required String search,
+    required String lang,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/products').replace(
+      queryParameters: {
+        'shop_id': shopID,
+        'is_deleted': '$isDeleted',
+        'search': search,
+        'lang': lang,
+      },
+    );
+
+    try {
+      http.Response response = await http.get(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['count'] == 0) {
+          return const ResultProduct(count: 0, error: '');
+        }
+
+        var count = jsonData['count'] as int;
+        return ResultProduct(count: count, error: '');
+      }
+      return const ResultProduct(count: 0, error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // fetch products -------------------------------------------------------
   Future<ResultProduct> fetchProducts({
     required String accessToken,
