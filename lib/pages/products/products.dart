@@ -19,7 +19,13 @@ class ProductsPage extends StatelessWidget {
           AddOrUpdateProductActionButton(shopID: shopID),
         ],
       ),
-      body: ResultProducts(shopID: shopID),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('34 sany haryt bar'),
+          ResultProducts(shopID: shopID),
+        ],
+      ),
       floatingActionButton: const ProductsPageScrollButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
     );
