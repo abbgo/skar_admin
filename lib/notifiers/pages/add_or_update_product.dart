@@ -7,7 +7,15 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
   ProductColorsNotifier() : super([]);
 
   Future<void> addProductColor(ProductColor productColor) async {
-    if (!state.contains(productColor)) {
+    bool hasInState = false;
+
+    for (ProductColor element in state) {
+      if (element.name == productColor.name) {
+        hasInState = true;
+      }
+    }
+
+    if (!hasInState) {
       state = [...state, productColor];
     }
   }
@@ -22,7 +30,7 @@ class ProductColorsNotifier extends StateNotifier<List<ProductColor>> {
 
   Future<void> changeProductColor(ProductColor productColor) async {
     state = [
-      for (var element in state)
+      for (ProductColor element in state)
         if (element.orderNumber == productColor.orderNumber)
           element.copyWith(
             name: productColor.name,
