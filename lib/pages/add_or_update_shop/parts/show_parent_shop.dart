@@ -13,13 +13,12 @@ class ShowParentShop extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Widget showWidget;
 
-    SelectedShop selectedShop = ref.watch(selectedShoppincCenterProvider);
+    Shop selectedShop = ref.watch(selectedShoppincCenterProvider);
     bool isTM = ref.watch(langProvider) == 'tr';
 
-    if (selectedShop == SelectedShop.defaultSelectedShop() &&
-        parentShop == null) {
+    if (selectedShop == Shop.defaultShop() && parentShop == null) {
       showWidget = const SizedBox();
-    } else if (selectedShop != SelectedShop.defaultSelectedShop()) {
+    } else if (selectedShop != Shop.defaultShop()) {
       showWidget = showParentShopMethod(isTM, selectedShop, null);
     } else {
       showWidget = showParentShopMethod(isTM, null, parentShop);
@@ -30,7 +29,7 @@ class ShowParentShop extends ConsumerWidget {
 
   Padding showParentShopMethod(
     bool isTM,
-    SelectedShop? selectedShop,
+    Shop? selectedShop,
     Shop? parentShop,
   ) {
     String text;

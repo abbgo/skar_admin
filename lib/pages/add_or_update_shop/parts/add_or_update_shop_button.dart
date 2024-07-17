@@ -54,7 +54,11 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = await ref.read(hasShippingProvider);
-          SelectedShop parentShop = ref.read(selectedShoppincCenterProvider);
+          Shop parentShop = ref.read(selectedShoppincCenterProvider);
+
+          // print('------------------- ${parentShop.nameTM}');
+          // print('------------------- ${parentShop.id}');
+          // return;
 
           final shop = Shop(
             id: shopID,
@@ -70,9 +74,8 @@ class AddOrUpdateShopButton extends ConsumerWidget {
                 ? ["+993${phoneCtrl.text}", "+993${phone2Ctrl.text}"]
                 : ["+993${phoneCtrl.text}"],
             hasShipping: hasShipping,
-            parentShopID: parentShop != SelectedShop.defaultSelectedShop()
-                ? parentShop.id
-                : null,
+            parentShopID:
+                parentShop != Shop.defaultShop() ? parentShop.id : null,
           );
 
           if (context.mounted) {

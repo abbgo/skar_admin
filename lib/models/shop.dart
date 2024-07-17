@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Shop {
+class Shop extends Equatable {
   final String nameTM, nameRU;
   final String? id, addressTM, addressRU;
   final String? image;
@@ -80,18 +80,21 @@ class Shop {
       'parent_shop_id': parentShopID,
     };
   }
+
+  @override
+  List<Object?> get props => [id, nameTM, nameRU];
 }
 
-class SelectedShop {
-  final String id, nameTM, nameRU;
+// class SelectedShop {
+//   final String id, nameTM, nameRU;
 
-  const SelectedShop(
-      {required this.id, required this.nameRU, required this.nameTM});
+//   const SelectedShop(
+//       {required this.id, required this.nameRU, required this.nameTM});
 
-  factory SelectedShop.defaultSelectedShop() {
-    return const SelectedShop(id: '', nameRU: '', nameTM: '');
-  }
-}
+//   factory SelectedShop.defaultSelectedShop() {
+//     return const SelectedShop(id: '', nameRU: '', nameTM: '');
+//   }
+// }
 
 class ResultShop extends Equatable {
   final List<Shop>? shops;

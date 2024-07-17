@@ -36,7 +36,7 @@ class MarkersNotifier extends StateNotifier<Set<Marker>> {
         await Clipboard.setData(ClipboardData(text: latLong.toString()));
         if (ref != null) {
           ref.read(selectedShoppincCenterProvider.notifier).state =
-              SelectedShop.defaultSelectedShop();
+              Shop.defaultShop();
         }
       },
     );
