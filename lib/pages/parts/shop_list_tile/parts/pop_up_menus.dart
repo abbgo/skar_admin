@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
 import 'package:skar_admin/pages/products/products.dart';
+import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/styles/colors.dart';
 
-class PopUpMenus extends StatelessWidget {
+class PopUpMenus extends ConsumerWidget {
   const PopUpMenus({super.key, required this.shopID});
 
   final String shopID;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
     List<String> texts = [lang.change, lang.viewProducts, lang.moveToTrash];
@@ -36,6 +38,7 @@ class PopUpMenus extends StatelessWidget {
         }
 
         if (value == texts[1]) {
+          ref.read(productSearchProvider.notifier).state = '';
           goToPage(
             context,
             ProductsPage(shopID: shopID),
