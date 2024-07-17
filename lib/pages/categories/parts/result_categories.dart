@@ -41,7 +41,8 @@ class ResultCategories extends ConsumerWidget {
                         skipLoadingOnReload: true,
                         skipError: true,
                         data: (response) {
-                          if (response.error != '') {
+                          if (response.error != '' ||
+                              response.categories == null) {
                             return null;
                           }
                           if (indexInPage >= response.categories!.length) {

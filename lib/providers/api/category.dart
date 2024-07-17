@@ -24,8 +24,10 @@ var fetchCategoriesProvider =
                 isTM ? 'tm' : 'ru',
               );
 
-      ref.read(hasCategoriesProvider.notifier).state =
-          resultCategory.categories!.isNotEmpty;
+      if (resultCategory.categories != null) {
+        ref.read(hasCategoriesProvider.notifier).state =
+            resultCategory.categories!.isNotEmpty;
+      }
 
       result = resultCategory;
     } catch (e) {
