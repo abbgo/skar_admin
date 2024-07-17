@@ -25,8 +25,10 @@ var fetchBrendsProvider =
         await ref.read(accessTokenProvider.notifier).update('');
       }
 
-      ref.read(hasBrendProvider.notifier).state =
-          resultBrend.brends!.isNotEmpty;
+      if (resultBrend.brends != null) {
+        ref.read(hasBrendProvider.notifier).state =
+            resultBrend.brends!.isNotEmpty;
+      }
 
       result = resultBrend;
     } catch (e) {

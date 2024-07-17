@@ -32,7 +32,7 @@ class BrendApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['brends'] == null) {
-          return const ResultBrend(brends: [], error: '');
+          return const ResultBrend(brends: null, error: '');
         }
 
         var brendsList = jsonData['brends'] as List;
@@ -43,7 +43,7 @@ class BrendApiService {
           error: '',
         );
       }
-      return const ResultBrend(brends: [], error: 'auth error');
+      return const ResultBrend(brends: null, error: 'auth error');
     } catch (e) {
       rethrow;
     }
