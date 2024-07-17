@@ -37,8 +37,10 @@ var fetchProductsProvider =
         await ref.read(accessTokenProvider.notifier).update('');
       }
 
-      ref.read(hasProductsProvider.notifier).state =
-          resultProduct.products!.isNotEmpty;
+      if (resultProduct.products != null) {
+        ref.read(hasProductsProvider.notifier).state =
+            resultProduct.products!.isNotEmpty;
+      }
 
       result = resultProduct;
     } catch (e) {

@@ -37,7 +37,7 @@ class ProductApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['products'] == null) {
-          return const ResultProduct(products: [], error: '');
+          return const ResultProduct(products: null, error: '');
         }
 
         var productsList = jsonData['products'] as List;
@@ -48,7 +48,7 @@ class ProductApiService {
           error: '',
         );
       }
-      return const ResultProduct(products: [], error: 'auth error');
+      return const ResultProduct(products: null, error: 'auth error');
     } catch (e) {
       rethrow;
     }
