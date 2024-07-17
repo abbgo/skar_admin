@@ -21,6 +21,7 @@ class ProductsPage extends StatelessWidget {
       ),
       body: ResultProducts(shopID: shopID),
       floatingActionButton: const ProductsPageScrollButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
     );
   }
 }

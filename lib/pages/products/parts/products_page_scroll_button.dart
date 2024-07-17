@@ -22,10 +22,7 @@ class ProductsPageScrollButton extends ConsumerWidget {
                 curve: Curves.fastOutSlowIn,
               );
             },
-            child: const Icon(
-              Icons.arrow_upward,
-              color: Colors.white,
-            ),
+            child: const Icon(Icons.arrow_upward, color: Colors.white),
           )
         : const SizedBox();
   }

@@ -17,11 +17,14 @@ class ResultProducts extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool hasProducts = ref.watch(hasProductsProvider);
+    ScrollController scrollController =
+        ref.watch(productsScrollControllerProvider);
 
     if (!hasProducts) {
       return const NoResult();
     } else {
       return ListView.builder(
+        controller: scrollController,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           final page = index ~/ pageSize + 1;
