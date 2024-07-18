@@ -19,7 +19,8 @@ class DimensionGroupsWithDimensions extends ConsumerWidget {
         final page = index ~/ pageSize + 1;
         final indexInPage = index % pageSize;
 
-        DefaultParams params = DefaultParams(page: page, isDeleted: false);
+        DefaultParams params =
+            DefaultParams(page: page, isDeleted: false, context: context);
         final AsyncValue<ResultDimensionGroup> dimensionGroups =
             ref.watch(fetchDimensionGroupsWithDimensionsProvider(params));
 

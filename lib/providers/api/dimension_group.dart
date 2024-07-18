@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/models/dimension_group.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/services/api/brend.dart';
@@ -22,9 +23,7 @@ var fetchDimensionGroupsWithDimensionsProvider =
             isDeleted: arg.isDeleted!,
           );
 
-      if (resultDimensionGroup.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-      }
+      await wrongToken(resultDimensionGroup.error, ref, arg.context);
 
       result = resultDimensionGroup;
     } catch (e) {
