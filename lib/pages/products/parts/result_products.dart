@@ -10,9 +10,9 @@ import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 
 class ResultProducts extends ConsumerWidget {
-  const ResultProducts({super.key, required this.shopID});
+  const ResultProducts({super.key, this.shopID});
 
-  final String shopID;
+  final String? shopID;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -52,7 +52,7 @@ class ResultProducts extends ConsumerWidget {
                     }
 
                     Product product = response.products![indexInPage];
-                    return ProductListTile(product: product, shopID: shopID);
+                    return ProductListTile(product: product, shopID: shopID!);
                   },
                   error: (error, stackTrace) => errorMethod(error),
                   loading: () => null,

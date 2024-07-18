@@ -6,9 +6,9 @@ import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/services/api/product.dart';
 
 class CountOfProducts extends ConsumerWidget {
-  const CountOfProducts({super.key, required this.shopID});
+  const CountOfProducts({super.key, this.shopID});
 
-  final String shopID;
+  final String? shopID;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
