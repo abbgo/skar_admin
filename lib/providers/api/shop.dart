@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
@@ -161,10 +160,7 @@ var updateShopProvider =
               shop: arg.shop!,
             );
 
-        if (resultShop.error == 'auth error') {
-          await ref.read(accessTokenProvider.notifier).update('');
-          if (arg.context!.mounted) Navigator.pop(arg.context!);
-        }
+        await wrongToken(resultShop.error, ref, arg.context);
 
         if (resultShop.error == 'some error') {
           if (arg.context!.mounted) showSomeErr(arg.context!);
