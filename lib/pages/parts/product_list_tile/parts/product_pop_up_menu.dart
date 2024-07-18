@@ -44,6 +44,7 @@ class ProductPopUpMenu extends ConsumerWidget {
         }
 
         if (value == texts[1]) {
+          // bu yerde haryt korzina oklanyar ( pozulyar )
           ref.read(loadDeleteProductProvider.notifier).state = true;
 
           ProductParams params =

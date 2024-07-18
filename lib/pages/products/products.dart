@@ -9,9 +9,9 @@ import 'package:skar_admin/pages/products/parts/search_product_input.dart';
 import 'package:skar_admin/providers/pages/products.dart';
 
 class ProductsPage extends StatelessWidget {
-  const ProductsPage({super.key, required this.shopID});
+  const ProductsPage({super.key, this.shopID});
 
-  final String shopID;
+  final String? shopID;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ProductsPage extends StatelessWidget {
         title: const SearchProductInput(),
         centerTitle: false,
         actions: [
-          AddOrUpdateProductActionButton(shopID: shopID),
+          AddOrUpdateProductActionButton(shopID: shopID!),
         ],
       ),
       body: Consumer(
@@ -32,8 +32,8 @@ class ProductsPage extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CountOfProducts(shopID: shopID),
-                  ResultProducts(shopID: shopID),
+                  CountOfProducts(shopID: shopID!),
+                  ResultProducts(shopID: shopID!),
                 ],
               ),
               loadDeleteProduct ? loadProcess : const SizedBox(),

@@ -8,15 +8,17 @@ class TrashedProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
 
-    return Card(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.local_mall, size: 50),
-            const SizedBox(height: 10),
-            Text(lang.trashProducts),
-          ],
+    return GestureDetector(
+      child: Card(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.local_mall, size: 50),
+              const SizedBox(height: 10),
+              Text(lang.trashProducts),
+            ],
+          ),
         ),
       ),
     );
