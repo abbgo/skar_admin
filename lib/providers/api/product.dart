@@ -120,20 +120,17 @@ var createProductProvider =
 
       if (hasInternert) {
         String accessToken = await ref.read(accessTokenProvider);
-        ResultProduct resultShop = await ref
+        ResultProduct resultProduct = await ref
             .read(productApiProvider)
             .createProduct(accessToken: accessToken, product: arg.product!);
 
-        if (resultShop.error == 'auth error') {
-          await ref.read(accessTokenProvider.notifier).update('');
-          if (arg.context!.mounted) Navigator.pop(arg.context!);
-        }
+        await wrongToken(resultProduct.error, ref, arg.context);
 
-        if (resultShop.error == 'some error') {
+        if (resultProduct.error == 'some error') {
           if (arg.context!.mounted) showSomeErr(arg.context!);
         }
 
-        result = resultShop;
+        result = resultProduct;
       }
     } catch (e) {
       result = ResultProduct(error: e.toString());
