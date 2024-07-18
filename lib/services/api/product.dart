@@ -11,14 +11,14 @@ class ProductApiService {
   // fetch count of products -------------------------------------------------------
   Future<ResultProduct> fetchCountOfProducts({
     required String accessToken,
-    required String shopID,
+    String? shopID,
     required bool isDeleted,
     required String search,
     required String lang,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/products/count').replace(
       queryParameters: {
-        'shop_id': shopID,
+        'shop_id': shopID ?? '',
         'is_deleted': '$isDeleted',
         'search': search,
         'lang': lang,
