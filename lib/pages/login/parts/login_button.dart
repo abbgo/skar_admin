@@ -35,6 +35,7 @@ class LoginButton extends ConsumerWidget {
           LoginShopOwnerParams params = LoginShopOwnerParams(
             phoneNumber: '+993${phoneNumberCtrl.text}',
             password: passwordCtrl.text,
+            context: context,
           );
           ResultLoginShopOwner result =
               await ref.read(loginShopOwnerProvider(params).future);
