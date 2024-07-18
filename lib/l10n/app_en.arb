@@ -62,5 +62,6 @@
     "selectedImages":"Selected images",
     "countProductTypes":"Count of product types",
     "trashShops":"Trash shops",
-    "trashProducts":"Trash products"
+    "trashProducts":"Trash products",
+    "countOfProducts":"Count of products"
 }

@@ -62,5 +62,6 @@
     "selectedImages":"Выбранные изображения",
     "countProductTypes":"Количество типов продукции",
     "trashShops":"Мусорные магазины",
-    "trashProducts":"Мусорные продукты"
+    "trashProducts":"Мусорные продукты",
+    "countOfProducts":"Количество продуктов"
 }

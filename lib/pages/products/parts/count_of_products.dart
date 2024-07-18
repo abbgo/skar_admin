@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/services/api/product.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CountOfProducts extends ConsumerWidget {
   const CountOfProducts({super.key, this.shopID});
@@ -12,6 +13,8 @@ class CountOfProducts extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var lang = AppLocalizations.of(context)!;
+
     ProductParams productParams =
         ProductParams(isDeleted: false, shopID: shopID, context: context);
     final AsyncValue<ResultProduct> countOfProducts =
@@ -23,9 +26,9 @@ class CountOfProducts extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            const Text(
-              'Harytlaryn sany: ',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              '${lang.countOfProducts}: ',
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             countOfProducts.when(
               skipLoadingOnRefresh: true,
