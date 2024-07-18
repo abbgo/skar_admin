@@ -54,7 +54,8 @@ class _AddOrUpdateShopPageState extends State<AddOrUpdateShopPage> {
           ? addOrUpdateShopPageBody(null)
           : Consumer(
               builder: (context, ref, child) {
-                ShopParams params = ShopParams(shopID: widget.shopID);
+                ShopParams params =
+                    ShopParams(shopID: widget.shopID, context: context);
                 final AsyncValue<ResultShop> resultShop =
                     ref.watch(fetchShopProvider(params));
 
