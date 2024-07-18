@@ -63,5 +63,7 @@
     "countProductTypes":"Count of product types",
     "trashShops":"Trash shops",
     "trashProducts":"Trash products",
-    "countOfProducts":"Count of products"
+    "countOfProducts":"Count of products",
+    "restore":"Restore",
+    "permanentlyDelete":"Permanently delete"
 }

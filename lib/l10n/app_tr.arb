@@ -63,5 +63,7 @@
     "countProductTypes":"Haryt görnüşleriniň sany",
     "trashShops":"Zibildäki dükanlar",
     "trashProducts":"Zibildäki harytlar",
-    "countOfProducts":"Harytlaryň sany"
+    "countOfProducts":"Harytlaryň sany",
+    "restore":"Täzeden dikelt",
+    "permanentlyDelete":"Hemişelik poz"
 }

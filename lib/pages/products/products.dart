@@ -35,9 +35,7 @@ class ProductsPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CountOfProducts(shopID: shopID),
-                  shopID != null
-                      ? ResultProducts(shopID: shopID!)
-                      : const Text('Pozulan harytlar'),
+                  ResultProducts(shopID: shopID),
                 ],
               ),
               loadDeleteProduct ? loadProcess : const SizedBox(),

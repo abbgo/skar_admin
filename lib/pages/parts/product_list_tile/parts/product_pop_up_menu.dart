@@ -14,52 +14,63 @@ import 'package:skar_admin/styles/colors.dart';
 class ProductPopUpMenu extends ConsumerWidget {
   const ProductPopUpMenu({
     super.key,
-    required this.shopID,
+    this.shopID,
     required this.productID,
   });
 
-  final String shopID;
+  final String? shopID;
   final String productID;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
-    List<String> texts = [lang.change, lang.moveToTrash];
+    List<String> texts = shopID != null
+        ? [lang.change, lang.moveToTrash]
+        : [lang.restore, lang.permanentlyDelete];
+
+    List<IconData> icons = shopID != null
+        ? [Icons.edit, Icons.auto_delete]
+        : [Icons.history, Icons.delete_forever];
 
     return PopupMenuButton(
       elevation: 3,
       color: elevatedButtonColor,
       itemBuilder: (context) => [
-        popUpMenuMethod(texts[0], Icons.edit),
-        popUpMenuMethod(texts[1], Icons.auto_delete),
+        popUpMenuMethod(texts[0], icons[0]),
+        popUpMenuMethod(texts[1], icons[1]),
       ],
       onSelected: (value) async {
-        if (value == texts[0]) {
-          goToPage(
-            context,
-            AddOrUpdateProductPage(shopID: shopID, productID: productID),
-            false,
-          );
-          return;
-        }
-
-        if (value == texts[1]) {
-          // bu yerde haryt korzina oklanyar ( pozulyar )
-          ref.read(loadDeleteProductProvider.notifier).state = true;
-
-          ProductParams params =
-              ProductParams(productID: productID, context: context);
-          ResultProduct resultProduct =
-              await ref.watch(deleteProductProvider(params).future);
-
-          ref.read(loadDeleteProductProvider.notifier).state = false;
-
-          if (resultProduct.error == '') {
-            ref.invalidate(fetchProductsProvider);
-            if (context.mounted) {
-              showSuccess(context, lang.informationDeletedSuccessfully);
-            }
+        if (shopID != null) {
+          // Eger haryt korzinada dal bolsa bolmaly funksiyalar
+          if (value == texts[0]) {
+            goToPage(
+              context,
+              AddOrUpdateProductPage(shopID: shopID!, productID: productID),
+              false,
+            );
+            return;
           }
+
+          if (value == texts[1]) {
+            // bu yerde haryt korzina oklanyar ( pozulyar )
+            ref.read(loadDeleteProductProvider.notifier).state = true;
+
+            ProductParams params =
+                ProductParams(productID: productID, context: context);
+            ResultProduct resultProduct =
+                await ref.watch(deleteProductProvider(params).future);
+
+            ref.read(loadDeleteProductProvider.notifier).state = false;
+
+            if (resultProduct.error == '') {
+              ref.invalidate(fetchProductsProvider);
+              if (context.mounted) {
+                showSuccess(context, lang.informationDeletedSuccessfully);
+              }
+            }
+            return;
+          }
+
           return;
         }
       },

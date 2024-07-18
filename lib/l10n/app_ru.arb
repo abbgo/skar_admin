@@ -63,5 +63,7 @@
     "countProductTypes":"Количество типов продукции",
     "trashShops":"Мусорные магазины",
     "trashProducts":"Мусорные продукты",
-    "countOfProducts":"Количество продуктов"
+    "countOfProducts":"Количество продуктов",
+    "restore":"Восстановить",
+    "permanentlyDelete":"Удалить навсегда"
 }
