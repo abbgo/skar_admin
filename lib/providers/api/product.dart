@@ -176,3 +176,34 @@ var fetchProductProvider =
     return result;
   },
 );
+
+var deleteProductProvider =
+    FutureProvider.autoDispose.family<ResultProduct, ProductParams>(
+  (ref, arg) async {
+    ResultProduct result = ResultProduct.defaultResult();
+
+    try {
+      bool hasInternert =
+          await ref.read(checkInternetConnProvider(arg.context!).future);
+
+      if (hasInternert) {
+        String accessToken = await ref.read(accessTokenProvider);
+        ResultProduct resultProduct = await ref
+            .read(productApiProvider)
+            .deleteProduct(accessToken: accessToken, productID: arg.productID!);
+
+        await wrongToken(resultProduct.error, ref, arg.context);
+
+        if (resultProduct.error == 'some error') {
+          if (arg.context!.mounted) showSomeErr(arg.context!);
+        }
+
+        result = resultProduct;
+      }
+    } catch (e) {
+      result = ResultProduct(error: e.toString());
+    }
+
+    return result;
+  },
+);

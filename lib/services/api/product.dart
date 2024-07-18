@@ -186,6 +186,36 @@ class ProductApiService {
       rethrow;
     }
   }
+
+  // delete product -------------------------------------------------------
+  Future<ResultProduct> deleteProduct(
+      {required String accessToken, required String productID}) async {
+    Uri uri = Uri.parse('$apiUrl/back/products/$productID');
+
+    try {
+      http.Response response = await http.delete(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['message'] == null) {
+          return const ResultProduct(message: '', error: '');
+        }
+
+        return ResultProduct(message: jsonData['message'], error: '');
+      }
+
+      if (response.statusCode == 400) {
+        return const ResultProduct(error: 'some error');
+      }
+
+      return const ResultProduct(message: '', error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ProductParams extends Equatable {
