@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
@@ -27,6 +28,9 @@ var fetchShopProvider =
 
       if (resultShop.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
+        if (arg.context != null && arg.context!.mounted) {
+          goToHomePage(arg.context!);
+        }
       }
 
       if (resultShop.shop != null) {
