@@ -98,9 +98,7 @@ var fetchShopsProvider =
             lang: isTM ? 'tm' : 'ru',
           );
 
-      if (resultShop.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-      }
+      await wrongToken(resultShop.error, ref, arg.context);
 
       if (resultShop.shops != null) {
         ref.read(hasShopsProvider.notifier).state =
