@@ -27,8 +27,8 @@ class ResultBrends extends ConsumerWidget {
                 final page = index ~/ pageSize + 1;
                 final indexInPage = index % pageSize;
 
-                DefaultParams brendParams =
-                    DefaultParams(page: page, isDeleted: false);
+                DefaultParams brendParams = DefaultParams(
+                    page: page, isDeleted: false, context: context);
                 final AsyncValue<ResultBrend> brends =
                     ref.watch(fetchBrendsProvider(brendParams));
 

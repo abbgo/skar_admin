@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/brend.dart';
@@ -53,9 +54,10 @@ class BrendApiService {
 class DefaultParams extends Equatable {
   final bool? isDeleted;
   final int? page;
+  final BuildContext? context;
 
-  const DefaultParams({this.isDeleted, this.page});
+  const DefaultParams({this.isDeleted, this.page, this.context});
 
   @override
-  List<Object?> get props => [isDeleted, page];
+  List<Object?> get props => [isDeleted, page, context];
 }
