@@ -94,6 +94,8 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
           if (resultProduct.error == '') {
             ref.invalidate(fetchProductsProvider);
+            ref.invalidate(fetchCountOfProductsProvider);
+
             if (context.mounted) {
               showSuccess(
                 context,
