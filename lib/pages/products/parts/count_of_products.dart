@@ -13,7 +13,7 @@ class CountOfProducts extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ProductParams productParams =
-        ProductParams(isDeleted: false, shopID: shopID);
+        ProductParams(isDeleted: false, shopID: shopID, context: context);
     final AsyncValue<ResultProduct> countOfProducts =
         ref.watch(fetchCountOfProductsProvider(productParams));
 

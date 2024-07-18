@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
@@ -32,14 +33,7 @@ var fetchCountOfProductsProvider =
                 lang: isTM ? 'tm' : 'ru',
               );
 
-      if (resultProduct.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-      }
-
-      // if (resultProduct.products != null) {
-      //   ref.read(hasProductsProvider.notifier).state =
-      //       resultProduct.products!.isNotEmpty;
-      // }
+      await wrongToken(resultProduct.error, ref, arg.context);
 
       result = resultProduct;
     } catch (e) {
