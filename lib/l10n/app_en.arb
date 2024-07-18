@@ -69,5 +69,7 @@
     "restore":"Restore",
     "permanentlyDelete":"Permanently delete",
     "areYouSureYouWantToLogOut":"Are you sure you want to log out",
-    "shouldThisInformationDeletedCompletely":"Should this information be deleted completely"
+    "shouldThisInformationDeletedCompletely":"Should this information be deleted completely",
+    "youCantDeleteThisShop":"You can't delete this shop",
+    "youCanOnlyDeleteShopThatHasNoProductInIt":"You can only delete a shop that has no product in it"
 }

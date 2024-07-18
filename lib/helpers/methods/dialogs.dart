@@ -80,3 +80,29 @@ Future<dynamic> showDeleteDialog(
     },
   );
 }
+
+Future<dynamic> showDontDeleteDialog(
+  BuildContext context,
+  AppLocalizations lang,
+) {
+  var lang = AppLocalizations.of(context)!;
+
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('${lang.youCantDeleteThisShop} !'),
+        content: Text(lang.youCanOnlyDeleteShopThatHasNoProductInIt),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              lang.no,
+              style: const TextStyle(color: Colors.black, fontSize: 18),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
