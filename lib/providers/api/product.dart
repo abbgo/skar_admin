@@ -150,9 +150,7 @@ var fetchProductProvider =
           .read(productApiProvider)
           .fetchProduct(accessToken: accessToken, productID: arg.productID!);
 
-      if (resultProduct.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-      }
+      await wrongToken(resultProduct.error, ref, arg.context);
 
       if (resultProduct.product != null) {
         ref.read(visibleProductProvider.notifier).state =

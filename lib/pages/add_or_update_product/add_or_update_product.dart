@@ -50,8 +50,8 @@ class _AddOrUpdateProductPageState extends State<AddOrUpdateProductPage> {
           ? addOrUpdateProductPageBody(null)
           : Consumer(
               builder: (context, ref, child) {
-                ProductParams params =
-                    ProductParams(productID: widget.productID);
+                ProductParams params = ProductParams(
+                    productID: widget.productID, context: context);
                 final AsyncValue<ResultProduct> resultProduct =
                     ref.watch(fetchProductProvider(params));
 
