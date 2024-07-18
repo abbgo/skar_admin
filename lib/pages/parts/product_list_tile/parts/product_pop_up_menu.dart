@@ -3,11 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/parts/product_pop_up_menu.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
-import 'package:skar_admin/helpers/methods/snackbars.dart';
-import 'package:skar_admin/models/product.dart';
-import 'package:skar_admin/providers/api/product.dart';
-import 'package:skar_admin/providers/pages/products.dart';
-import 'package:skar_admin/services/api/product.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductPopUpMenu extends ConsumerWidget {
@@ -63,23 +58,7 @@ class ProductPopUpMenu extends ConsumerWidget {
 
         if (value == texts[1]) {
           // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
-          ref.read(loadDeleteProductProvider.notifier).state = true;
-
-          ProductParams params =
-              ProductParams(productID: productID, context: context);
-          ResultProduct resultProduct =
-              await ref.watch(deletePermanentlyProductProvider(params).future);
-
-          ref.read(loadDeleteProductProvider.notifier).state = false;
-
-          if (resultProduct.error == '') {
-            ref.invalidate(fetchProductsProvider);
-            ref.invalidate(fetchCountOfProductsProvider);
-
-            if (context.mounted) {
-              showSuccess(context, lang.informationCompletelyDeleted);
-            }
-          }
+          await deletePermanentlyProduct(context, ref, productID, lang);
           return;
         }
       },
