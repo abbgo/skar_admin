@@ -129,10 +129,7 @@ var createShopProvider =
               shop: arg.shop!,
             );
 
-        if (resultShop.error == 'auth error') {
-          await ref.read(accessTokenProvider.notifier).update('');
-          if (arg.context!.mounted) Navigator.pop(arg.context!);
-        }
+        await wrongToken(resultShop.error, ref, arg.context);
 
         if (resultShop.error == 'some error') {
           if (arg.context!.mounted) showSomeErr(arg.context!);
