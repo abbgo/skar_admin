@@ -77,7 +77,29 @@ class ProductPopUpMenu extends ConsumerWidget {
         }
 
         if (value == texts[0]) {
-          // bu yerde haryt korzina oklanyar ( pozulyar )
+          // bu yerde haryt korzinadan cykarylyar
+          ref.read(loadDeleteProductProvider.notifier).state = true;
+
+          ProductParams params =
+              ProductParams(productID: productID, context: context);
+          ResultProduct resultProduct =
+              await ref.watch(restoreProductProvider(params).future);
+
+          ref.read(loadDeleteProductProvider.notifier).state = false;
+
+          if (resultProduct.error == '') {
+            ref.invalidate(fetchProductsProvider);
+            ref.invalidate(fetchCountOfProductsProvider);
+
+            if (context.mounted) {
+              showSuccess(context, lang.informationRestoredSuccessfully);
+            }
+          }
+          return;
+        }
+
+        if (value == texts[1]) {
+          // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
           ref.read(loadDeleteProductProvider.notifier).state = true;
 
           ProductParams params =
