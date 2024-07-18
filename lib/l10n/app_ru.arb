@@ -31,6 +31,7 @@
     "informationCreatedSuccessfully":"Информация успешно создана",
     "informationChangedSuccessfully":"Информация успешно изменена",
     "informationDeletedSuccessfully":"Информация успешно удалена",
+    "informationRestoredSuccessfully":"Информация успешно восстановлена",
     "noResult":"Безрезультатно !",
     "findMall":"Найти торговый центр",
     "ifYourStoreIsLocatedInsideMallSelectMall":"Если ваш магазин расположен внутри торгового центра, выберите торговый центр",

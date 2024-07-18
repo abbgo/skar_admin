@@ -75,7 +75,22 @@ class ProductPopUpMenu extends ConsumerWidget {
         }
 
         if (value == texts[0]) {
-          // harydy restore etmeli
+          // bu yerde haryt korzina oklanyar ( pozulyar )
+          ref.read(loadDeleteProductProvider.notifier).state = true;
+
+          ProductParams params =
+              ProductParams(productID: productID, context: context);
+          ResultProduct resultProduct =
+              await ref.watch(restoreProductProvider(params).future);
+
+          ref.read(loadDeleteProductProvider.notifier).state = false;
+
+          if (resultProduct.error == '') {
+            ref.invalidate(fetchProductsProvider);
+            if (context.mounted) {
+              showSuccess(context, lang.informationRestoredSuccessfully);
+            }
+          }
           return;
         }
       },
