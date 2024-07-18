@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/product.dart';
@@ -72,20 +73,21 @@ Future<void> deletePermanentlyProduct(
   String productID,
   AppLocalizations lang,
 ) async {
-  ref.read(loadDeleteProductProvider.notifier).state = true;
+  await showDeleteDialog(context);
+  // ref.read(loadDeleteProductProvider.notifier).state = true;
 
-  ProductParams params = ProductParams(productID: productID, context: context);
-  ResultProduct resultProduct =
-      await ref.watch(deletePermanentlyProductProvider(params).future);
+  // ProductParams params = ProductParams(productID: productID, context: context);
+  // ResultProduct resultProduct =
+  //     await ref.watch(deletePermanentlyProductProvider(params).future);
 
-  ref.read(loadDeleteProductProvider.notifier).state = false;
+  // ref.read(loadDeleteProductProvider.notifier).state = false;
 
-  if (resultProduct.error == '') {
-    ref.invalidate(fetchProductsProvider);
-    ref.invalidate(fetchCountOfProductsProvider);
+  // if (resultProduct.error == '') {
+  //   ref.invalidate(fetchProductsProvider);
+  //   ref.invalidate(fetchCountOfProductsProvider);
 
-    if (context.mounted) {
-      showSuccess(context, lang.informationCompletelyDeleted);
-    }
-  }
+  //   if (context.mounted) {
+  //     showSuccess(context, lang.informationCompletelyDeleted);
+  //   }
+  // }
 }
