@@ -253,7 +253,7 @@ var deletePermanentlyProductProvider =
       if (hasInternert) {
         String accessToken = await ref.read(accessTokenProvider);
         ResultProduct resultProduct =
-            await ref.read(productApiProvider).restoreProduct(
+            await ref.read(productApiProvider).deletePermanentlyProduct(
                   accessToken: accessToken,
                   productID: arg.productID!,
                 );

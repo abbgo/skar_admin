@@ -105,7 +105,7 @@ class ProductPopUpMenu extends ConsumerWidget {
           ProductParams params =
               ProductParams(productID: productID, context: context);
           ResultProduct resultProduct =
-              await ref.watch(restoreProductProvider(params).future);
+              await ref.watch(deletePermanentlyProductProvider(params).future);
 
           ref.read(loadDeleteProductProvider.notifier).state = false;
 
@@ -114,7 +114,7 @@ class ProductPopUpMenu extends ConsumerWidget {
             ref.invalidate(fetchCountOfProductsProvider);
 
             if (context.mounted) {
-              showSuccess(context, lang.informationRestoredSuccessfully);
+              showSuccess(context, lang.informationCompletelyDeleted);
             }
           }
           return;
