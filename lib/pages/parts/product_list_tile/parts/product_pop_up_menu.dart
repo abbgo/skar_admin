@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/parts/product_pop_up_menu.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -58,7 +59,7 @@ class ProductPopUpMenu extends ConsumerWidget {
 
         if (value == texts[1]) {
           // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
-          await deletePermanentlyProduct(context, ref, productID, lang);
+          await showDeleteDialog(context, ref, productID, lang);
           return;
         }
       },

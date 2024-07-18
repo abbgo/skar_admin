@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/parts/product_pop_up_menu.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -39,7 +40,12 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
   );
 }
 
-Future<dynamic> showDeleteDialog(BuildContext context) {
+Future<dynamic> showDeleteDialog(
+  BuildContext context,
+  WidgetRef ref,
+  String productID,
+  AppLocalizations lang,
+) {
   var lang = AppLocalizations.of(context)!;
 
   return showDialog(
@@ -58,11 +64,10 @@ Future<dynamic> showDeleteDialog(BuildContext context) {
           Consumer(
             builder: (context, ref, child) {
               return TextButton(
-                // onPressed: () async {
-                //   await ref.read(accessTokenProvider.notifier).update('');
-                //   if (context.mounted) Navigator.pop(context);
-                // },
-                onPressed: () {},
+                onPressed: () async {
+                  await deletePermanentlyProduct(context, ref, productID, lang);
+                  if (context.mounted) Navigator.pop(context);
+                },
                 child: Text(
                   lang.yes,
                   style: const TextStyle(color: Colors.black, fontSize: 18),
