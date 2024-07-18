@@ -15,8 +15,11 @@ class CountOfProducts extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
-    ProductParams productParams =
-        ProductParams(isDeleted: false, shopID: shopID, context: context);
+    ProductParams productParams = ProductParams(
+      isDeleted: shopID != null ? false : true,
+      shopID: shopID,
+      context: context,
+    );
     final AsyncValue<ResultProduct> countOfProducts =
         ref.watch(fetchCountOfProductsProvider(productParams));
 
