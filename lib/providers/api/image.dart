@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/image.dart';
 import 'package:skar_admin/providers/internet_connection.dart';
@@ -28,9 +28,8 @@ var addOrUpdateImageProvider =
                   arg.imageFile!,
                 );
 
-        if (resultImage.error == 'auth error') {
-          await ref.read(accessTokenProvider.notifier).update('');
-          if (arg.context.mounted) Navigator.pop(arg.context);
+        if (arg.context.mounted) {
+          await wrongToken(resultImage.error, ref, arg.context);
         }
 
         if (resultImage.error == 'some error') {
@@ -62,9 +61,8 @@ var deleteImageProvider =
             .read(imageApiServiceProvider)
             .deleteImage(accessToken, arg.oldImage!);
 
-        if (resultImage.error == 'auth error') {
-          await ref.read(accessTokenProvider.notifier).update('');
-          if (arg.context.mounted) Navigator.pop(arg.context);
+        if (arg.context.mounted) {
+          await wrongToken(resultImage.error, ref, arg.context);
         }
 
         if (resultImage.error == 'some error') {
