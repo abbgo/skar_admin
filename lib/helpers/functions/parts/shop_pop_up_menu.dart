@@ -4,6 +4,7 @@ import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
 import 'package:skar_admin/pages/products/products.dart';
 import 'package:skar_admin/providers/pages/products.dart';
+import 'package:skar_admin/providers/pages/shops.dart';
 
 goToUpdateShopPage(BuildContext context, String shopID) {
   goToPage(
@@ -24,4 +25,8 @@ Future<void> goToProductsPageOfShop(
     ProductsPage(shopID: shopID),
     false,
   );
+}
+
+Future<void> shopMoveToTrash(WidgetRef ref) async {
+  ref.read(loadDeleteShopProvider.notifier).state = true;
 }
