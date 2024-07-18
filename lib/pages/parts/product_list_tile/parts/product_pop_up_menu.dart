@@ -48,23 +48,7 @@ class ProductPopUpMenu extends ConsumerWidget {
 
           if (value == texts[1]) {
             // bu yerde haryt korzina oklanyar ( pozulyar )
-            ref.read(loadDeleteProductProvider.notifier).state = true;
-
-            ProductParams params =
-                ProductParams(productID: productID, context: context);
-            ResultProduct resultProduct =
-                await ref.watch(deleteProductProvider(params).future);
-
-            ref.read(loadDeleteProductProvider.notifier).state = false;
-
-            if (resultProduct.error == '') {
-              ref.invalidate(fetchProductsProvider);
-              ref.invalidate(fetchCountOfProductsProvider);
-
-              if (context.mounted) {
-                showSuccess(context, lang.informationDeletedSuccessfully);
-              }
-            }
+            await moveToTrash(context, ref, shopID, productID, lang);
             return;
           }
 
