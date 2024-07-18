@@ -54,7 +54,7 @@ class ResultShoppingCenters extends ConsumerWidget {
                   skipLoadingOnReload: true,
                   skipError: true,
                   data: (response) {
-                    if (response.error != '' || response.shops == null) {
+                    if (response.error != '') {
                       return null;
                     }
                     if (indexInPage >= response.shops!.length) {
