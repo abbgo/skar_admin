@@ -59,5 +59,7 @@
     "pleaseEnterInformationsCompletely":"Please enter the informations completely",
     "selectedDimensions":"Selected dimensions",
     "selectedImages":"Selected images",
-    "countProductTypes":"Count of product types"
+    "countProductTypes":"Count of product types",
+    "trashShops":"Trash shops",
+    "trashProducts":"Trash products"
 }

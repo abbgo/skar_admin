@@ -7,12 +7,16 @@ class TrashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      children: const [
-        TrashedShops(),
-        TrashedProducts(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: GridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        children: const [
+          TrashedShops(),
+          TrashedProducts(),
+        ],
+      ),
     );
   }
 }

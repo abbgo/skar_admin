@@ -59,5 +59,7 @@
     "pleaseEnterInformationsCompletely":"Пожалуйста, введите информацию полностью",
     "selectedDimensions":"Выбранные размеры",
     "selectedImages":"Выбранные изображения",
-    "countProductTypes":"Количество типов продукции"
+    "countProductTypes":"Количество типов продукции",
+    "trashShops":"Мусорные магазины",
+    "trashProducts":"Мусорные продукты"
 }
