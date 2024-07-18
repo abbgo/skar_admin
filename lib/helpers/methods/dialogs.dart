@@ -44,7 +44,6 @@ Future<dynamic> showDeleteDialog(
   BuildContext context,
   WidgetRef ref,
   String productID,
-  AppLocalizations lang,
 ) {
   var lang = AppLocalizations.of(context)!;
 
@@ -81,10 +80,7 @@ Future<dynamic> showDeleteDialog(
   );
 }
 
-Future<dynamic> showDontDeleteDialog(
-  BuildContext context,
-  AppLocalizations lang,
-) {
+Future<dynamic> showDontDeleteDialog(BuildContext context) {
   var lang = AppLocalizations.of(context)!;
 
   return showDialog(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
@@ -43,7 +44,9 @@ Future<void> shopMoveToTrash(
       await ref.watch(fetchCountOfProductsProvider(params).future);
 
   if (countOfProducts.count != 0) {
-    print('-------------- bu dukany pozup bolanok');
+    if (context.mounted) {
+      await showDontDeleteDialog(context);
+    }
   } else {
     print('-------------- bu dukany pozup bolyar');
   }
