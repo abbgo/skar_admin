@@ -17,7 +17,7 @@ goToEditProductPage(BuildContext context, String? shopID, String productID) {
   );
 }
 
-Future<void> moveToTrash(
+Future<void> productMoveToTrash(
   BuildContext context,
   WidgetRef ref,
   String? shopID,
@@ -38,6 +38,30 @@ Future<void> moveToTrash(
 
     if (context.mounted) {
       showSuccess(context, lang.informationDeletedSuccessfully);
+    }
+  }
+}
+
+Future<void> restoreProduct(
+  BuildContext context,
+  WidgetRef ref,
+  String productID,
+  AppLocalizations lang,
+) async {
+  ref.read(loadDeleteProductProvider.notifier).state = true;
+
+  ProductParams params = ProductParams(productID: productID, context: context);
+  ResultProduct resultProduct =
+      await ref.watch(restoreProductProvider(params).future);
+
+  ref.read(loadDeleteProductProvider.notifier).state = false;
+
+  if (resultProduct.error == '') {
+    ref.invalidate(fetchProductsProvider);
+    ref.invalidate(fetchCountOfProductsProvider);
+
+    if (context.mounted) {
+      showSuccess(context, lang.informationRestoredSuccessfully);
     }
   }
 }
