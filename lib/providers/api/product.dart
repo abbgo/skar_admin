@@ -63,9 +63,7 @@ var fetchProductsProvider =
                 lang: isTM ? 'tm' : 'ru',
               );
 
-      if (resultProduct.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
-      }
+      await wrongToken(resultProduct.error, ref, arg.context);
 
       if (resultProduct.products != null) {
         ref.read(hasProductsProvider.notifier).state =

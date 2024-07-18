@@ -30,8 +30,12 @@ class ResultProducts extends ConsumerWidget {
                 final page = index ~/ pageSize + 1;
                 final indexInPage = index % pageSize;
 
-                ProductParams productParams =
-                    ProductParams(page: page, isDeleted: false, shopID: shopID);
+                ProductParams productParams = ProductParams(
+                  page: page,
+                  isDeleted: false,
+                  shopID: shopID,
+                  context: context,
+                );
                 final AsyncValue<ResultProduct> products =
                     ref.watch(fetchProductsProvider(productParams));
 
