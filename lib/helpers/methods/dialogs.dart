@@ -46,7 +46,7 @@ Future<dynamic> showDeleteDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('${lang.areYouSureYouWantToLogOut} ?'),
+        title: Text('${lang.shouldThisInformationDeletedCompletely} ?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),

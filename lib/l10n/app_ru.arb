@@ -68,5 +68,6 @@
     "countOfProducts":"Количество продуктов",
     "restore":"Восстановить",
     "permanentlyDelete":"Удалить навсегда",
-    "areYouSureYouWantToLogOut":"Вы действительно хотите выйти"
+    "areYouSureYouWantToLogOut":"Вы действительно хотите выйти",
+    "shouldThisInformationDeletedCompletely":"Стоит ли полностью удалить эту информацию"
 }

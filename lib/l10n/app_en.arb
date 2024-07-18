@@ -68,5 +68,6 @@
     "countOfProducts":"Count of products",
     "restore":"Restore",
     "permanentlyDelete":"Permanently delete",
-    "areYouSureYouWantToLogOut":"Are you sure you want to log out"
+    "areYouSureYouWantToLogOut":"Are you sure you want to log out",
+    "shouldThisInformationDeletedCompletely":"Should this information be deleted completely"
 }

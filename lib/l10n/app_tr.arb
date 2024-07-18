@@ -68,5 +68,6 @@
     "countOfProducts":"Harytlaryň sany",
     "restore":"Täzeden dikelt",
     "permanentlyDelete":"Hemişelik poz",
-    "areYouSureYouWantToLogOut":"Siz hakykatdanam ulgamdan çykmakçymy"
+    "areYouSureYouWantToLogOut":"Siz hakykatdanam ulgamdan çykmakçymy",
+    "shouldThisInformationDeletedCompletely":"Bu maglumat doly pozulsynmy"
 }
