@@ -67,5 +67,6 @@
     "trashProducts":"Zibildäki harytlar",
     "countOfProducts":"Harytlaryň sany",
     "restore":"Täzeden dikelt",
-    "permanentlyDelete":"Hemişelik poz"
+    "permanentlyDelete":"Hemişelik poz",
+    "areYouSureYouWantToLogOut":"Siz hakykatdanam ulgamdan çykmakçymy"
 }

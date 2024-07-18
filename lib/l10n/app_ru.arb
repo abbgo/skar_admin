@@ -67,5 +67,6 @@
     "trashProducts":"Мусорные продукты",
     "countOfProducts":"Количество продуктов",
     "restore":"Восстановить",
-    "permanentlyDelete":"Удалить навсегда"
+    "permanentlyDelete":"Удалить навсегда",
+    "areYouSureYouWantToLogOut":"Вы действительно хотите выйти"
 }

@@ -10,7 +10,7 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Siz hakykatdanam ulgamdan cykmakcymy ?'),
+        title: Text('${lang.areYouSureYouWantToLogOut} ?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),

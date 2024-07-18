@@ -67,5 +67,6 @@
     "trashProducts":"Trash products",
     "countOfProducts":"Count of products",
     "restore":"Restore",
-    "permanentlyDelete":"Permanently delete"
+    "permanentlyDelete":"Permanently delete",
+    "areYouSureYouWantToLogOut":"Are you sure you want to log out"
 }
