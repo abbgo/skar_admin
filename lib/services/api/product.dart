@@ -50,7 +50,7 @@ class ProductApiService {
   Future<ResultProduct> fetchProducts({
     required String accessToken,
     required int page,
-    required String shopID,
+    String? shopID,
     required bool isDeleted,
     required String search,
     required String lang,

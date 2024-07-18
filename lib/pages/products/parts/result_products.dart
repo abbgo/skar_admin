@@ -32,7 +32,7 @@ class ResultProducts extends ConsumerWidget {
 
                 ProductParams productParams = ProductParams(
                   page: page,
-                  isDeleted: false,
+                  isDeleted: shopID != null ? false : true,
                   shopID: shopID,
                   context: context,
                 );

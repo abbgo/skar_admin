@@ -58,7 +58,7 @@ var fetchProductsProvider =
                 page: arg.page!,
                 isDeleted: arg.isDeleted!,
                 search: search,
-                shopID: arg.shopID!,
+                shopID: arg.shopID ?? '',
                 lang: isTM ? 'tm' : 'ru',
               );
 
