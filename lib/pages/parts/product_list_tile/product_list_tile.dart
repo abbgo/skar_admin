@@ -24,9 +24,7 @@ class ProductListTile extends StatelessWidget {
               cardHeight: cardHeight,
             ),
             ProductListTileData(product: product),
-            shopID != null
-                ? ProductPopUpMenu(productID: product.id!, shopID: shopID!)
-                : const SizedBox(),
+            ProductPopUpMenu(productID: product.id!, shopID: shopID),
           ],
         ),
       ),
