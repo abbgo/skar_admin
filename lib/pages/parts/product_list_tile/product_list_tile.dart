@@ -5,12 +5,11 @@ import 'package:skar_admin/pages/parts/product_list_tile/parts/product_list_tile
 import 'package:skar_admin/pages/parts/product_list_tile/parts/product_pop_up_menu.dart';
 
 class ProductListTile extends StatelessWidget {
-  const ProductListTile(
-      {super.key, required this.product, required this.shopID});
+  const ProductListTile({super.key, required this.product, this.shopID});
 
   final Product product;
   static const double cardHeight = 120.0;
-  final String shopID;
+  final String? shopID;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,9 @@ class ProductListTile extends StatelessWidget {
               cardHeight: cardHeight,
             ),
             ProductListTileData(product: product),
-            ProductPopUpMenu(productID: product.id!, shopID: shopID),
+            shopID != null
+                ? ProductPopUpMenu(productID: product.id!, shopID: shopID!)
+                : const SizedBox(),
           ],
         ),
       ),
