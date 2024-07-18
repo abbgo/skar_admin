@@ -16,12 +16,14 @@ final shopApiProvider = Provider<ShopApiService>((ref) => ShopApiService());
 var fetchShopProvider =
     FutureProvider.autoDispose.family<ResultShop, ShopParams>(
   (ref, arg) async {
+    print('------------ fetchShopProvider');
     ResultShop result = ResultShop.defaultResult();
     try {
       String accessToken = await ref.read(accessTokenProvider);
-      ResultShop resultShop = await ref
-          .read(shopApiProvider)
-          .fetchShop(accessToken: accessToken, shopID: arg.shopID!);
+      ResultShop resultShop = await ref.read(shopApiProvider).fetchShop(
+          accessToken:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJaG9uZV9udW1iZXIiOiIrOTkzNjI0MjAzNzYiLCJhZG1pbl9pZCI6Ijc0OGE1ZGNjLWNlNTQtNDU4OS1iOTNkLWJjNmQ0MDA1OWMzNyIsImlzX3N1cGVyX2FkbWluIjpmYWxzZSwiZXhwIjoxNzIxMjk2MTEyfQ.tew4fxH7C9OWfXwW6SuY3zpC0ZMLvvre73uDQc03kFw',
+          shopID: arg.shopID!);
 
       if (resultShop.error == 'auth error') {
         await ref.read(accessTokenProvider.notifier).update('');
