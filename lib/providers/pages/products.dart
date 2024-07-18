@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 var hasProductsProvider = StateProvider.autoDispose<bool>((ref) => true);
+
 var productSearchProvider = StateProvider<String>((ref) => '');
+
+final loadDeleteProductProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
 var productsScrollControllerProvider =
     StateProvider.autoDispose<ScrollController>((ref) {

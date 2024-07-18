@@ -6,6 +6,7 @@ import 'package:skar_admin/notifiers/pages/add_or_update_product.dart';
 
 final loadCreateProductProvider =
     StateProvider.autoDispose<bool>((ref) => false);
+
 final visibleProductProvider = StateProvider<bool>((ref) => true);
 
 var productColorsProvider =
