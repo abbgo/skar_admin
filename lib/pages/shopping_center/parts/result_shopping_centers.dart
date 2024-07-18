@@ -45,7 +45,7 @@ class ResultShoppingCenters extends ConsumerWidget {
                 final indexInPage = index % pageSize;
 
                 ShopParams shopParams =
-                    ShopParams(page: page, isDeleted: false);
+                    ShopParams(page: page, isDeleted: false, context: context);
                 final AsyncValue<ResultShop> shops =
                     ref.watch(fetchShoppingCentersProvider(shopParams));
 
@@ -54,7 +54,7 @@ class ResultShoppingCenters extends ConsumerWidget {
                   skipLoadingOnReload: true,
                   skipError: true,
                   data: (response) {
-                    if (response.error != '') {
+                    if (response.error != '' || response.shops == null) {
                       return null;
                     }
                     if (indexInPage >= response.shops!.length) {

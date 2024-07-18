@@ -64,12 +64,13 @@ var fetchShoppingCentersProvider =
             lang: isTM ? 'tm' : 'ru',
           );
 
-      if (resultShop.error == 'auth error') {
-        await ref.read(accessTokenProvider.notifier).update('');
+      await wrongToken(resultShop.error, ref, arg.context);
+
+      if (resultShop.shops != null) {
+        ref.read(hasShoppingCenterProvider.notifier).state =
+            resultShop.shops!.isNotEmpty;
       }
 
-      ref.read(hasShoppingCenterProvider.notifier).state =
-          resultShop.shops!.isNotEmpty;
       result = resultShop;
     } catch (e) {
       result = ResultShop(error: e.toString());
