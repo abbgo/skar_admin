@@ -19,28 +19,32 @@ class ProductsPage extends StatelessWidget {
       appBar: AppBar(
         title: const SearchProductInput(),
         centerTitle: false,
-        actions: [
-          AddOrUpdateProductActionButton(shopID: shopID!),
-        ],
+        actions: shopID != null
+            ? [
+                AddOrUpdateProductActionButton(shopID: shopID!),
+              ]
+            : [],
       ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          bool loadDeleteProduct = ref.watch(loadDeleteProductProvider);
+      body: shopID != null
+          ? Consumer(
+              builder: (context, ref, child) {
+                bool loadDeleteProduct = ref.watch(loadDeleteProductProvider);
 
-          return Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CountOfProducts(shopID: shopID!),
-                  ResultProducts(shopID: shopID!),
-                ],
-              ),
-              loadDeleteProduct ? loadProcess : const SizedBox(),
-            ],
-          );
-        },
-      ),
+                return Stack(
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CountOfProducts(shopID: shopID!),
+                        ResultProducts(shopID: shopID!),
+                      ],
+                    ),
+                    loadDeleteProduct ? loadProcess : const SizedBox(),
+                  ],
+                );
+              },
+            )
+          : const Text('Bu yerde pozulan harytlar bar'),
       floatingActionButton: const ProductsPageScrollButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
     );
