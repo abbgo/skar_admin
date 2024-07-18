@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/pages/shops/parts/result_shops.dart';
+import 'package:skar_admin/providers/pages/shops.dart';
 
 class ShopsPage extends ConsumerWidget {
   const ShopsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const ResultShops();
+    bool loadDeleteShop = ref.watch(loadDeleteShopProvider);
+
+    return Stack(
+      children: [
+        const ResultShops(),
+        loadDeleteShop ? loadProcess : const SizedBox(),
+      ],
+    );
   }
 }
