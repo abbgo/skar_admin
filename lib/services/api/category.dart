@@ -26,7 +26,7 @@ class CategoryApiService {
 
       if (response.statusCode == 200 && jsonData['status']) {
         if (jsonData['categories'] == null) {
-          return ResultCategory.defaultResult();
+          return const ResultCategory(categories: [], error: '');
         }
 
         var categoriesList = jsonData['categories'] as List;
@@ -37,7 +37,7 @@ class CategoryApiService {
           error: '',
         );
       }
-      return ResultCategory.defaultResult();
+      return const ResultCategory(categories: [], error: '');
     } catch (e) {
       rethrow;
     }
