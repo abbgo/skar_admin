@@ -38,7 +38,7 @@ class PopUpMenus extends ConsumerWidget {
         if (value == texts[2]) {
           // eger dukana degisli haryt yok bolsa
           // dukany korzina gos
-          await shopMoveToTrash(context, ref, shopID);
+          await shopMoveToTrash(context, ref, shopID, lang);
           return;
         }
       },

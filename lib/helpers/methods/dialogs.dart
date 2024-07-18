@@ -92,9 +92,9 @@ Future<dynamic> showDontDeleteDialog(BuildContext context) {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(
-              lang.no,
-              style: const TextStyle(color: Colors.black, fontSize: 18),
+            child: const Text(
+              'OK',
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
           ),
         ],

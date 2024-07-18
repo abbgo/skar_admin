@@ -197,6 +197,16 @@ class ShopParams extends Equatable {
     this.shopID,
   });
 
+  factory ShopParams.defaultShopParams() {
+    return const ShopParams(
+      isDeleted: null,
+      page: null,
+      context: null,
+      shop: null,
+      shopID: null,
+    );
+  }
+
   @override
   List<Object?> get props => [isDeleted, page, context, shop, shopID];
 }
