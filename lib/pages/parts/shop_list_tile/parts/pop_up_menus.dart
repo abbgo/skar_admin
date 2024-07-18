@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/parts/shop_pop_up_menu.dart';
-import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
-import 'package:skar_admin/pages/products/products.dart';
-import 'package:skar_admin/providers/pages/products.dart';
-import 'package:skar_admin/providers/pages/shops.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class PopUpMenus extends ConsumerWidget {
@@ -29,19 +24,14 @@ class PopUpMenus extends ConsumerWidget {
         popUpMenuMethod(texts[1], Icons.local_mall),
         popUpMenuMethod(texts[2], Icons.auto_delete),
       ],
-      onSelected: (value) {
+      onSelected: (value) async {
         if (value == texts[0]) {
           goToUpdateShopPage(context, shopID);
           return;
         }
 
         if (value == texts[1]) {
-          ref.read(productSearchProvider.notifier).state = '';
-          goToPage(
-            context,
-            ProductsPage(shopID: shopID),
-            false,
-          );
+          await goToProductsPageOfShop(context, ref, shopID);
           return;
         }
 
