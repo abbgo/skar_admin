@@ -73,6 +73,11 @@ class ProductPopUpMenu extends ConsumerWidget {
 
           return;
         }
+
+        if (value == texts[0]) {
+          // harydy restore etmeli
+          return;
+        }
       },
     );
   }
