@@ -44,7 +44,7 @@ class ResultProducts extends ConsumerWidget {
                   skipLoadingOnReload: true,
                   skipError: true,
                   data: (response) {
-                    if (response.error != '' || response.products == null) {
+                    if (response.error != '') {
                       return null;
                     }
                     if (indexInPage >= response.products!.length) {
