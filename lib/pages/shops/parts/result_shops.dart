@@ -10,7 +10,9 @@ import 'package:skar_admin/providers/pages/shops.dart';
 import 'package:skar_admin/services/api/shop.dart';
 
 class ResultShops extends ConsumerWidget {
-  const ResultShops({super.key});
+  const ResultShops({super.key, this.isDeleted});
+
+  final bool? isDeleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,8 +26,11 @@ class ResultShops extends ConsumerWidget {
               final page = index ~/ pageSize + 1;
               final indexInPage = index % pageSize;
 
-              ShopParams shopParams =
-                  ShopParams(page: page, isDeleted: false, context: context);
+              ShopParams shopParams = ShopParams(
+                page: page,
+                isDeleted: isDeleted ?? false,
+                context: context,
+              );
               final AsyncValue<ResultShop> shops =
                   ref.watch(fetchShopsProvider(shopParams));
 
