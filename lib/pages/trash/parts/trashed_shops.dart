@@ -11,7 +11,7 @@ class TrashedShops extends StatelessWidget {
     var lang = AppLocalizations.of(context)!;
 
     return GestureDetector(
-      onTap: () => goToPage(context, const ShopsPage(), false),
+      onTap: () => goToPage(context, const ShopsPage(isDeleted: true), false),
       child: Card(
         child: Center(
           child: Column(
