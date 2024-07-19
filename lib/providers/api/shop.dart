@@ -206,3 +206,34 @@ var deleteShopProvider =
     return result;
   },
 );
+
+var restoreShopProvider =
+    FutureProvider.autoDispose.family<ResultShop, ShopParams>(
+  (ref, arg) async {
+    ResultShop result = ResultShop.defaultResult();
+
+    try {
+      bool hasInternert =
+          await ref.read(checkInternetConnProvider(arg.context!).future);
+
+      if (hasInternert) {
+        String accessToken = await ref.read(accessTokenProvider);
+        ResultShop resultShop = await ref
+            .read(shopApiProvider)
+            .restoreShop(accessToken: accessToken, shopID: arg.shopID!);
+
+        await wrongToken(resultShop.error, ref, arg.context);
+
+        if (resultShop.error == 'some error') {
+          if (arg.context!.mounted) showSomeErr(arg.context!);
+        }
+
+        result = resultShop;
+      }
+    } catch (e) {
+      result = ResultShop(error: e.toString());
+    }
+
+    return result;
+  },
+);

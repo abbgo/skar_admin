@@ -41,20 +41,29 @@ class PopUpMenus extends ConsumerWidget {
               popUpMenuMethod(texts[2], icons[2]),
             ],
       onSelected: (value) async {
+        if (!isDeleted) {
+          if (value == texts[0]) {
+            goToUpdateShopPage(context, shopID);
+            return;
+          }
+
+          if (value == texts[1]) {
+            await goToProductsPageOfShop(context, ref, shopID);
+            return;
+          }
+
+          if (value == texts[2]) {
+            // eger dukana degisli haryt yok bolsa
+            // dukany korzina gos
+            await shopMoveToTrash(context, ref, shopID, lang);
+            return;
+          }
+          return;
+        }
+
         if (value == texts[0]) {
-          goToUpdateShopPage(context, shopID);
-          return;
-        }
-
-        if (value == texts[1]) {
-          await goToProductsPageOfShop(context, ref, shopID);
-          return;
-        }
-
-        if (value == texts[2]) {
-          // eger dukana degisli haryt yok bolsa
-          // dukany korzina gos
-          await shopMoveToTrash(context, ref, shopID, lang);
+          // bu yerde dukan korzinadan cykarylyar
+          await restoreShop(context, ref, shopID, lang);
           return;
         }
       },

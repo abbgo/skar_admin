@@ -15,6 +15,7 @@ class ShopsPage extends ConsumerWidget {
 
     return isDeleted
         ? Scaffold(
+            appBar: AppBar(),
             body: ShopsPageBody(
               isDeleted: isDeleted,
               loadDeleteShop: loadDeleteShop,

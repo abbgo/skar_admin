@@ -74,3 +74,12 @@ Future<void> shopMoveToTrash(
     }
   }
 }
+
+Future<void> restoreShop(
+  BuildContext context,
+  WidgetRef ref,
+  String shopID,
+  AppLocalizations lang,
+) async {
+  ref.read(loadDeleteShopProvider.notifier).state = true;
+}

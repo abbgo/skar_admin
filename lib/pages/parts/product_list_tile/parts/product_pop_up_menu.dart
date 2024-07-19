@@ -47,7 +47,6 @@ class ProductPopUpMenu extends ConsumerWidget {
             await productMoveToTrash(context, ref, shopID, productID, lang);
             return;
           }
-
           return;
         }
 

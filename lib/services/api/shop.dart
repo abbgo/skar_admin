@@ -149,7 +149,7 @@ class ShopApiService {
     }
   }
 
-  // create shop -------------------------------------------------------
+  // delete shop -------------------------------------------------------
   Future<ResultShop> deleteShop({
     required String accessToken,
     required String shopID,
@@ -158,6 +158,38 @@ class ShopApiService {
 
     try {
       http.Response response = await http.delete(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['message'] == null) {
+          return const ResultShop(message: '', error: '');
+        }
+
+        return ResultShop(message: jsonData['message'], error: '');
+      }
+
+      if (response.statusCode == 400) {
+        return const ResultShop(error: 'some error');
+      }
+
+      return const ResultShop(message: '', error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // restore shop -------------------------------------------------------
+  Future<ResultShop> restoreShop({
+    required String accessToken,
+    required String shopID,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/shops/$shopID/restore');
+
+    try {
+      http.Response response = await http.get(
         uri,
         headers: tokenHeader(accessToken),
       );
