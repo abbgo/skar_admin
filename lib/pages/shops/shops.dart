@@ -5,15 +5,15 @@ import 'package:skar_admin/pages/shops/parts/result_shops.dart';
 import 'package:skar_admin/providers/pages/shops.dart';
 
 class ShopsPage extends ConsumerWidget {
-  const ShopsPage({super.key, this.isDeleted});
+  const ShopsPage({super.key, required this.isDeleted});
 
-  final bool? isDeleted;
+  final bool isDeleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool loadDeleteShop = ref.watch(loadDeleteShopProvider);
 
-    return isDeleted!
+    return isDeleted
         ? Scaffold(
             body: ShopsPageBody(
               isDeleted: isDeleted,
@@ -34,7 +34,7 @@ class ShopsPageBody extends StatelessWidget {
     required this.loadDeleteShop,
   });
 
-  final bool? isDeleted;
+  final bool isDeleted;
   final bool loadDeleteShop;
 
   @override

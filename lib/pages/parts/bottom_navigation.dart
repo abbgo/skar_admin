@@ -20,7 +20,7 @@ class BottomNavigationPart extends ConsumerWidget {
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
 
     List<Widget> pages = [
-      const ShopsPage(),
+      const ShopsPage(isDeleted: false),
       const TrashPage(),
       const ProfilePage(),
     ];
