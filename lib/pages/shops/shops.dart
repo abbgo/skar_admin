@@ -13,11 +13,20 @@ class ShopsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool loadDeleteShop = ref.watch(loadDeleteShopProvider);
 
-    return Stack(
-      children: [
-        ResultShops(isDeleted: isDeleted),
-        loadDeleteShop ? loadProcess : const SizedBox(),
-      ],
-    );
+    return isDeleted!
+        ? Scaffold(
+            body: Stack(
+              children: [
+                ResultShops(isDeleted: isDeleted),
+                loadDeleteShop ? loadProcess : const SizedBox(),
+              ],
+            ),
+          )
+        : Stack(
+            children: [
+              ResultShops(isDeleted: isDeleted),
+              loadDeleteShop ? loadProcess : const SizedBox(),
+            ],
+          );
   }
 }
