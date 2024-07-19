@@ -19,16 +19,27 @@ class PopUpMenus extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
-    List<String> texts = [lang.change, lang.viewProducts, lang.moveToTrash];
+    List<String> texts = isDeleted
+        ? [lang.restore, lang.permanentlyDelete]
+        : [lang.change, lang.viewProducts, lang.moveToTrash];
+
+    List<IconData> icons = isDeleted
+        ? [Icons.history, Icons.delete_forever]
+        : [Icons.edit, Icons.local_mall, Icons.auto_delete];
 
     return PopupMenuButton(
       elevation: 3,
       color: elevatedButtonColor,
-      itemBuilder: (context) => [
-        popUpMenuMethod(texts[0], Icons.edit),
-        popUpMenuMethod(texts[1], Icons.local_mall),
-        popUpMenuMethod(texts[2], Icons.auto_delete),
-      ],
+      itemBuilder: (context) => isDeleted
+          ? [
+              popUpMenuMethod(texts[0], icons[0]),
+              popUpMenuMethod(texts[1], icons[1]),
+            ]
+          : [
+              popUpMenuMethod(texts[0], icons[0]),
+              popUpMenuMethod(texts[1], icons[1]),
+              popUpMenuMethod(texts[2], icons[2]),
+            ],
       onSelected: (value) async {
         if (value == texts[0]) {
           goToUpdateShopPage(context, shopID);
