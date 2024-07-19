@@ -15,18 +15,35 @@ class ShopsPage extends ConsumerWidget {
 
     return isDeleted!
         ? Scaffold(
-            body: Stack(
-              children: [
-                ResultShops(isDeleted: isDeleted),
-                loadDeleteShop ? loadProcess : const SizedBox(),
-              ],
+            body: ShopsPageBody(
+              isDeleted: isDeleted,
+              loadDeleteShop: loadDeleteShop,
             ),
           )
-        : Stack(
-            children: [
-              ResultShops(isDeleted: isDeleted),
-              loadDeleteShop ? loadProcess : const SizedBox(),
-            ],
+        : ShopsPageBody(
+            isDeleted: isDeleted,
+            loadDeleteShop: loadDeleteShop,
           );
+  }
+}
+
+class ShopsPageBody extends StatelessWidget {
+  const ShopsPageBody({
+    super.key,
+    required this.isDeleted,
+    required this.loadDeleteShop,
+  });
+
+  final bool? isDeleted;
+  final bool loadDeleteShop;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        ResultShops(isDeleted: isDeleted),
+        loadDeleteShop ? loadProcess : const SizedBox(),
+      ],
+    );
   }
 }
