@@ -5,7 +5,9 @@ import 'package:skar_admin/pages/shops/parts/result_shops.dart';
 import 'package:skar_admin/providers/pages/shops.dart';
 
 class ShopsPage extends ConsumerWidget {
-  const ShopsPage({super.key});
+  const ShopsPage({super.key, this.isDeleted});
+
+  final bool? isDeleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -13,7 +15,7 @@ class ShopsPage extends ConsumerWidget {
 
     return Stack(
       children: [
-        const ResultShops(),
+        ResultShops(isDeleted: isDeleted),
         loadDeleteShop ? loadProcess : const SizedBox(),
       ],
     );
