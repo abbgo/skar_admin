@@ -6,9 +6,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class PopUpMenus extends ConsumerWidget {
-  const PopUpMenus({super.key, required this.shopID});
+  const PopUpMenus({
+    super.key,
+    required this.shopID,
+    required this.isDeleted,
+  });
 
   final String shopID;
+  final bool isDeleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

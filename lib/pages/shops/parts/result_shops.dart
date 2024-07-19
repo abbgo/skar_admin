@@ -46,7 +46,7 @@ class ResultShops extends ConsumerWidget {
                     return null;
                   }
                   Shop shop = response.shops![indexInPage];
-                  return ShopListTile(shop: shop);
+                  return ShopListTile(shop: shop, isDeleted: isDeleted);
                 },
                 error: (error, stackTrace) => errorMethod(error),
                 loading: () => null,
