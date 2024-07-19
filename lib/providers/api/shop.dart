@@ -100,8 +100,11 @@ var fetchShopsProvider =
       await wrongToken(resultShop.error, ref, arg.context);
 
       if (resultShop.shops != null) {
-        ref.read(hasShopsProvider.notifier).state =
-            resultShop.shops!.isNotEmpty;
+        arg.isDeleted!
+            ? ref.read(hasDeletedShopsProvider.notifier).state =
+                resultShop.shops!.isNotEmpty
+            : ref.read(hasShopsProvider.notifier).state =
+                resultShop.shops!.isNotEmpty;
       }
 
       result = resultShop;
@@ -112,39 +115,39 @@ var fetchShopsProvider =
   },
 );
 
-var fetchDeletedShopsProvider =
-    FutureProvider.autoDispose.family<ResultShop, ShopParams>(
-  (ref, arg) async {
-    ResultShop result = ResultShop.defaultResult();
-    try {
-      ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
-      bool isTM = ref.read(langProvider) == 'tr';
+// var fetchDeletedShopsProvider =
+//     FutureProvider.autoDispose.family<ResultShop, ShopParams>(
+//   (ref, arg) async {
+//     ResultShop result = ResultShop.defaultResult();
+//     try {
+//       ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
+//       bool isTM = ref.read(langProvider) == 'tr';
 
-      String accessToken = await ref.read(accessTokenProvider);
-      ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
-            accessToken: accessToken,
-            page: arg.page!,
-            shopOwnerID: shopOwner.id,
-            isDeleted: arg.isDeleted!,
-            isShoppingCenter: false,
-            search: '',
-            lang: isTM ? 'tm' : 'ru',
-          );
+//       String accessToken = await ref.read(accessTokenProvider);
+//       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
+//             accessToken: accessToken,
+//             page: arg.page!,
+//             shopOwnerID: shopOwner.id,
+//             isDeleted: arg.isDeleted!,
+//             isShoppingCenter: false,
+//             search: '',
+//             lang: isTM ? 'tm' : 'ru',
+//           );
 
-      await wrongToken(resultShop.error, ref, arg.context);
+//       await wrongToken(resultShop.error, ref, arg.context);
 
-      if (resultShop.shops != null) {
-        ref.read(hasShopsProvider.notifier).state =
-            resultShop.shops!.isNotEmpty;
-      }
+//       if (resultShop.shops != null) {
+//         ref.read(hasShopsProvider.notifier).state =
+//             resultShop.shops!.isNotEmpty;
+//       }
 
-      result = resultShop;
-    } catch (e) {
-      result = ResultShop(error: e.toString());
-    }
-    return result;
-  },
-);
+//       result = resultShop;
+//     } catch (e) {
+//       result = ResultShop(error: e.toString());
+//     }
+//     return result;
+//   },
+// );
 
 var createShopProvider =
     FutureProvider.autoDispose.family<ResultShop, ShopParams>(

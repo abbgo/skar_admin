@@ -89,7 +89,7 @@ Future<void> restoreShop(
   ref.read(loadDeleteShopProvider.notifier).state = false;
 
   if (resultShop.error == '') {
-    ref.invalidate(fetchDeletedShopsProvider);
+    ref.invalidate(fetchShopsProvider);
 
     if (context.mounted) {
       showSuccess(context, lang.informationRestoredSuccessfully);

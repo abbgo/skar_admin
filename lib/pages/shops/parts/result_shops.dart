@@ -16,7 +16,9 @@ class ResultShops extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool hasShops = ref.watch(hasShopsProvider);
+    bool hasShops = isDeleted
+        ? ref.watch(hasDeletedShopsProvider)
+        : ref.watch(hasShopsProvider);
 
     return !hasShops
         ? const NoResult()
@@ -31,9 +33,8 @@ class ResultShops extends ConsumerWidget {
                 isDeleted: isDeleted,
                 context: context,
               );
-              final AsyncValue<ResultShop> shops = isDeleted
-                  ? ref.watch(fetchDeletedShopsProvider(shopParams))
-                  : ref.watch(fetchShopsProvider(shopParams));
+              final AsyncValue<ResultShop> shops =
+                  ref.watch(fetchShopsProvider(shopParams));
 
               return shops.when(
                 skipLoadingOnRefresh: true,
