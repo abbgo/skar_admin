@@ -96,3 +96,25 @@ Future<void> restoreShop(
     }
   }
 }
+
+Future<void> deletePermanentlyShop(
+  BuildContext context,
+  WidgetRef ref,
+  String shopID,
+  AppLocalizations lang,
+) async {
+  ref.read(loadDeleteShopProvider.notifier).state = true;
+
+  ShopParams params = ShopParams(shopID: shopID, context: context);
+  ResultShop resultShop = await ref.watch(restoreShopProvider(params).future);
+
+  ref.read(loadDeleteShopProvider.notifier).state = false;
+
+  if (resultShop.error == '') {
+    ref.invalidate(fetchShopsProvider);
+
+    if (context.mounted) {
+      showSuccess(context, lang.informationRestoredSuccessfully);
+    }
+  }
+}

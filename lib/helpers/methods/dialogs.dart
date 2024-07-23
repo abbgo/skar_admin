@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/parts/product_pop_up_menu.dart';
+import 'package:skar_admin/helpers/functions/parts/shop_pop_up_menu.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -65,12 +66,22 @@ Future<dynamic> showDeleteDialog(
             builder: (context, ref, child) {
               return TextButton(
                 onPressed: () async {
-                  await deletePermanentlyProduct(
-                    context,
-                    ref,
-                    productID!,
-                    lang,
-                  );
+                  if (productID != null) {
+                    await deletePermanentlyProduct(
+                      context,
+                      ref,
+                      productID,
+                      lang,
+                    );
+                  } else {
+                    await deletePermanentlyShop(
+                      context,
+                      ref,
+                      shopID!,
+                      lang,
+                    );
+                  }
+
                   if (context.mounted) Navigator.pop(context);
                 },
                 child: Text(
