@@ -212,6 +212,38 @@ class ShopApiService {
       rethrow;
     }
   }
+
+// delete permanently shop -------------------------------------------------------
+  Future<ResultShop> deletePermanentlyShop({
+    required String accessToken,
+    required String shopID,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/shops/$shopID/delete');
+
+    try {
+      http.Response response = await http.delete(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['message'] == null) {
+          return const ResultShop(message: '', error: '');
+        }
+
+        return ResultShop(message: jsonData['message'], error: '');
+      }
+
+      if (response.statusCode == 400) {
+        return const ResultShop(error: 'some error');
+      }
+
+      return const ResultShop(message: '', error: 'auth error');
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 
 class ShopParams extends Equatable {

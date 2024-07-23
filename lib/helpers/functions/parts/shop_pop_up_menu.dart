@@ -106,7 +106,8 @@ Future<void> deletePermanentlyShop(
   ref.read(loadDeleteShopProvider.notifier).state = true;
 
   ShopParams params = ShopParams(shopID: shopID, context: context);
-  ResultShop resultShop = await ref.watch(restoreShopProvider(params).future);
+  ResultShop resultShop =
+      await ref.watch(deletePermanentlyShopProvider(params).future);
 
   ref.read(loadDeleteShopProvider.notifier).state = false;
 

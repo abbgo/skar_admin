@@ -286,9 +286,11 @@ var deletePermanentlyShopProvider =
 
       if (hasInternert) {
         String accessToken = await ref.read(accessTokenProvider);
-        ResultShop resultShop = await ref
-            .read(shopApiProvider)
-            .restoreShop(accessToken: accessToken, shopID: arg.shopID!);
+        ResultShop resultShop =
+            await ref.read(shopApiProvider).deletePermanentlyShop(
+                  accessToken: accessToken,
+                  shopID: arg.shopID!,
+                );
 
         await wrongToken(resultShop.error, ref, arg.context);
 
