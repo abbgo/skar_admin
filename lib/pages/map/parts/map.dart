@@ -36,7 +36,7 @@ class _MapState extends State<Map> {
             GoogleMap(
               markers: markers,
               initialCameraPosition: cameraPosition,
-              mapType: MapType.normal,
+              mapType: MapType.hybrid,
               myLocationButtonEnabled: false,
               zoomControlsEnabled: false,
               onMapCreated: (GoogleMapController controller) {

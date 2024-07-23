@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/parts/shop_pop_up_menu.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:skar_admin/styles/colors.dart';
@@ -64,6 +65,12 @@ class PopUpMenus extends ConsumerWidget {
         if (value == texts[0]) {
           // bu yerde dukan korzinadan cykarylyar
           await restoreShop(context, ref, shopID, lang);
+          return;
+        }
+
+        if (value == texts[1]) {
+          // bu yerde dukan korzinadan cykarylyar
+          await showDeleteDialog(context, ref, null, shopID);
           return;
         }
       },

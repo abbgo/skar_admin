@@ -58,7 +58,7 @@ class ProductPopUpMenu extends ConsumerWidget {
 
         if (value == texts[1]) {
           // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
-          await showDeleteDialog(context, ref, productID);
+          await showDeleteDialog(context, ref, productID, null);
           return;
         }
       },

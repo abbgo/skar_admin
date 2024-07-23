@@ -43,7 +43,8 @@ Future<dynamic> showLogoutDialog(BuildContext context) {
 Future<dynamic> showDeleteDialog(
   BuildContext context,
   WidgetRef ref,
-  String productID,
+  String? productID,
+  String? shopID,
 ) {
   var lang = AppLocalizations.of(context)!;
 
@@ -64,7 +65,12 @@ Future<dynamic> showDeleteDialog(
             builder: (context, ref, child) {
               return TextButton(
                 onPressed: () async {
-                  await deletePermanentlyProduct(context, ref, productID, lang);
+                  await deletePermanentlyProduct(
+                    context,
+                    ref,
+                    productID!,
+                    lang,
+                  );
                   if (context.mounted) Navigator.pop(context);
                 },
                 child: Text(
