@@ -29,6 +29,9 @@ class PopUpMenus extends ConsumerWidget {
         : [Icons.edit, Icons.local_mall, Icons.auto_delete];
 
     return PopupMenuButton(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+      ),
       elevation: 3,
       color: elevatedButtonColor,
       itemBuilder: (context) => isDeleted

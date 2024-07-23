@@ -28,6 +28,9 @@ class ProductPopUpMenu extends ConsumerWidget {
         : [Icons.history, Icons.delete_forever];
 
     return PopupMenuButton(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+      ),
       elevation: 3,
       color: elevatedButtonColor,
       itemBuilder: (context) => [
