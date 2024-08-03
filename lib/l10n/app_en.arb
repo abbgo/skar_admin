@@ -72,5 +72,7 @@
     "shouldThisInformationDeletedCompletely":"Should this information be deleted completely",
     "youCantDeleteThisShop":"You can't delete this shop",
     "youCanOnlyDeleteShopThatHasNoProductInIt":"You can only delete a shop that has no product in it",
-    "language":"Language"
+    "language":"Language",
+    "selectLanguage":"Select language"
+
 }

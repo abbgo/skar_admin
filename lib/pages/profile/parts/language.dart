@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/helpers/methods/pages/profile.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +18,7 @@ class LanguagePage extends StatelessWidget {
           String language = ref.watch(langProvider);
 
           return ListTile(
-            // onTap: () => showLanguageMethod(context),
+            onTap: () => showLanguageMethod(context),
             leading: const Icon(Icons.translate, color: Colors.white),
             title: Text(
               AppLocalizations.of(context)!.language,
