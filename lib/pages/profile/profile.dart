@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/profile/parts/language.dart';
 import 'package:skar_admin/pages/profile/parts/shop_owner_info.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -12,6 +13,7 @@ class ProfilePage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: const [
           ShopOwnerInfo(),
+          LanguagePage(),
         ],
       ),
     );

@@ -71,5 +71,6 @@
     "areYouSureYouWantToLogOut":"Siz hakykatdanam ulgamdan çykmakçymy",
     "shouldThisInformationDeletedCompletely":"Bu maglumat doly pozulsynmy",
     "youCantDeleteThisShop":"Bu dükany pozup bilmersiňiz",
-    "youCanOnlyDeleteShopThatHasNoProductInIt":"Diňe içinde harydy bolmadyk dükany pozup bilersiňiz"
+    "youCanOnlyDeleteShopThatHasNoProductInIt":"Diňe içinde harydy bolmadyk dükany pozup bilersiňiz",
+    "language":"Dil"
 }
