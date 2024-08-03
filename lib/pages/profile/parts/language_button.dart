@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/pages/parts/bottom_navigation.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:skar_admin/styles/colors.dart';
 
@@ -22,16 +23,15 @@ class LanguageButton extends ConsumerWidget {
         ),
         onPressed: () async {
           await ref.read(langProvider.notifier).update(lang);
-          // await ref.read(markersProvider.notifier).removeAllMarkers();
-          // if (context.mounted) {
-          //   Navigator.pushAndRemoveUntil(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) => const BottomNavigationPage(),
-          //     ),
-          //     (Route<dynamic> route) => false,
-          //   );
-          // }
+          if (context.mounted) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BottomNavigationPart(),
+              ),
+              (Route<dynamic> route) => false,
+            );
+          }
         },
         child: Text(
           text,

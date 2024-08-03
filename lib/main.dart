@@ -23,11 +23,13 @@ void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    String language = ref.watch(langProvider);
+
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       home: const StartPage(),
       themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
-      locale: const Locale('tr'),
+      locale: Locale(language),
     );
   }
 }
