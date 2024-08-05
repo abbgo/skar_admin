@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class ComplaintProduct {
   final String id, nameTM, nameRU, image;
   final int complaintCount;
@@ -29,4 +31,18 @@ class ComplaintProduct {
       complaintCount: json['complaint_count'],
     );
   }
+}
+
+class ResultComplaintProduct extends Equatable {
+  final List<ComplaintProduct>? complaintProducts;
+  final String error;
+
+  const ResultComplaintProduct({this.complaintProducts, required this.error});
+
+  factory ResultComplaintProduct.defaultResult() {
+    return const ResultComplaintProduct(complaintProducts: null, error: '');
+  }
+
+  @override
+  List<Object?> get props => [complaintProducts, error];
 }
