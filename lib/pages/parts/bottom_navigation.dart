@@ -48,7 +48,7 @@ class BottomNavigationPart extends ConsumerWidget {
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [
           bottomNavigationBarItemMethod(
-            lang.statistics,
+            lang.analysis,
             const Icon(Icons.analytics, size: 24),
           ),
           bottomNavigationBarItemMethod(

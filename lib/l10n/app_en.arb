@@ -74,6 +74,6 @@
     "youCanOnlyDeleteShopThatHasNoProductInIt":"You can only delete a shop that has no product in it",
     "language":"Language",
     "selectLanguage":"Select language",
-    "statistics":"Statistics",
+    "analysis":"Analysis",
     "productComplaints":"Product complaints"
 }
