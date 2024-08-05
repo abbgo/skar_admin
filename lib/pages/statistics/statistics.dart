@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skar_admin/pages/statistics/parts/product_complaints.dart';
+import 'package:skar_admin/pages/statistics/parts/product_complaints_button.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({super.key});
@@ -12,7 +12,7 @@ class StatisticsPage extends StatelessWidget {
         crossAxisCount: 4,
         crossAxisSpacing: 10,
         children: const [
-          ProductComplaints(),
+          ProductComplaintsButton(),
         ],
       ),
     );
