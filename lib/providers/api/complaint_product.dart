@@ -2,13 +2,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:skar_admin/providers/pages/complaint_product.dart';
 import 'package:skar_admin/services/api/complaint_product.dart';
 
 final complaintProductApiProvider =
     Provider<ComplaintProductApiService>((ref) => ComplaintProductApiService());
 
-var fetchBrendsProvider =
-    FutureProvider.autoDispose.family<ResultComplaintProduct, DefaultParams>(
+var fetchComplaintProductsProvider = FutureProvider.autoDispose
+    .family<ResultComplaintProduct, ComplaintProductParams>(
   (ref, arg) async {
     ResultComplaintProduct result = ResultComplaintProduct.defaultResult();
 
@@ -18,16 +19,15 @@ var fetchBrendsProvider =
           await ref.read(complaintProductApiProvider).fetchComplaintProducts(
                 accessToken: accessToken,
                 page: arg.page!,
-                isDeleted: arg.isDeleted!,
-                search: search,
+                shopOwnerID: arg.shopOwnerID!,
               );
 
       await wrongToken(resultBrend.error, ref, arg.context);
 
-      // if (resultBrend.brends != null) {
-      //   ref.read(hasBrendProvider.notifier).state =
-      //       resultBrend.brends!.isNotEmpty;
-      // }
+      if (resultBrend.complaintProducts != null) {
+        ref.read(hasComplaintProductsProvider.notifier).state =
+            resultBrend.complaintProducts!.isNotEmpty;
+      }
 
       result = resultBrend;
     } catch (e) {
