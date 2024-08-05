@@ -1,18 +1,22 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/complaint_product.dart';
 
 class ComplaintProductApiService {
   // fetch complaint products --------------------------------------------------
-  Future<ResultBrend> fetchComplaintProducts({
+  Future<ResultComplaintProduct> fetchComplaintProducts({
     required String accessToken,
     required int page,
     required String shopOwnerID,
   }) async {
-    Uri uri = Uri.parse('$apiUrl/back/complaint-products/$shopOwnerID').replace(
+    Uri uri = Uri.parse('$apiUrl/back/complaint-products').replace(
       queryParameters: {
         'limit': '10',
         'page': '$page',
-        'shop_owner_id': shopOwnerID
+        'shop_owner_id': shopOwnerID,
       },
     );
 
@@ -21,22 +25,27 @@ class ComplaintProductApiService {
         uri,
         headers: tokenHeader(accessToken),
       );
-      var jsonData = json.decode(response.body);
+      var jsonData = jsonDecode(response.body);
 
       if (response.statusCode == 200 && jsonData['status']) {
-        if (jsonData['brends'] == null) {
-          return const ResultBrend(brends: [], error: '');
+        if (jsonData['complaint_products'] == null) {
+          return const ResultComplaintProduct(complaintProducts: [], error: '');
         }
 
-        var brendsList = jsonData['brends'] as List;
-        return ResultBrend(
-          brends: brendsList
-              .map<Brend>((propJson) => Brend.fromJson(propJson))
+        var dataList = jsonData['complaint_products'] as List;
+        return ResultComplaintProduct(
+          complaintProducts: dataList
+              .map<ComplaintProduct>(
+                (propJson) => ComplaintProduct.fromJson(propJson),
+              )
               .toList(),
           error: '',
         );
       }
-      return const ResultBrend(brends: [], error: 'auth error');
+      return const ResultComplaintProduct(
+        complaintProducts: [],
+        error: 'auth error',
+      );
     } catch (e) {
       rethrow;
     }
