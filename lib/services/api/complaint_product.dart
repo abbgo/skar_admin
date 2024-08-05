@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
@@ -52,15 +50,4 @@ class ComplaintProductApiService {
       rethrow;
     }
   }
-}
-
-class ComplaintProductParams extends Equatable {
-  final int? page;
-  final BuildContext? context;
-  final String? shopOwnerID;
-
-  const ComplaintProductParams({this.page, this.context, this.shopOwnerID});
-
-  @override
-  List<Object?> get props => [page, context, shopOwnerID];
 }
