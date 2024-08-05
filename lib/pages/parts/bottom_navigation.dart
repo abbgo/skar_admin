@@ -29,7 +29,7 @@ class BottomNavigationPart extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: selectedIndex == 2
+      appBar: selectedIndex == 3
           ? AppBar(
               actions: [
                 IconButton(
@@ -69,7 +69,7 @@ class BottomNavigationPart extends ConsumerWidget {
           ref.read(selectedBottomIndexProvider.notifier).state = value;
         },
       ),
-      floatingActionButton: selectedIndex == 0
+      floatingActionButton: selectedIndex == 1
           ? FloatingButton(
               onPressed: () => goToPage(
                 context,

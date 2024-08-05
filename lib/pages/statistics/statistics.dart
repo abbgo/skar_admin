@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/statistics/parts/product_complaints.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Statistikalar'));
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: GridView.count(
+        crossAxisCount: 4,
+        crossAxisSpacing: 10,
+        children: const [
+          ProductComplaints(),
+        ],
+      ),
+    );
   }
 }
