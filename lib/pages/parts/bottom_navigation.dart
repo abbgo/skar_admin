@@ -7,6 +7,7 @@ import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
 import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
+import 'package:skar_admin/pages/statistics/statistics.dart';
 import 'package:skar_admin/pages/trash/trash.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ class BottomNavigationPart extends ConsumerWidget {
     int selectedIndex = ref.watch(selectedBottomIndexProvider);
 
     List<Widget> pages = [
+      const StatisticsPage(),
       const ShopsPage(isDeleted: false),
       const TrashPage(),
       const ProfilePage(),
@@ -31,9 +33,7 @@ class BottomNavigationPart extends ConsumerWidget {
           ? AppBar(
               actions: [
                 IconButton(
-                  onPressed: () {
-                    showLogoutDialog(context);
-                  },
+                  onPressed: () => showLogoutDialog(context),
                   icon: const Icon(Icons.logout),
                 ),
               ],
@@ -47,6 +47,10 @@ class BottomNavigationPart extends ConsumerWidget {
         backgroundColor: Colors.white,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [
+          bottomNavigationBarItemMethod(
+            lang.statistics,
+            const Icon(Icons.analytics, size: 24),
+          ),
           bottomNavigationBarItemMethod(
             lang.myShops,
             const Icon(Icons.storefront_rounded, size: 24),

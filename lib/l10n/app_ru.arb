@@ -73,5 +73,6 @@
     "youCantDeleteThisShop":"Вы не можете удалить этот магазин",
     "youCanOnlyDeleteShopThatHasNoProductInIt":"Вы можете удалить только магазин, в котором нет товара",
     "language":"Язук",
-    "selectLanguage":"Выберите язык"
+    "selectLanguage":"Выберите язык",
+    "statistics":"Статистика"
 }
