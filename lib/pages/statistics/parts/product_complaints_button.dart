@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/helpers/methods/navigation.dart';
+import 'package:skar_admin/pages/product_complaints/product_complaints.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductComplaintsButton extends StatelessWidget {
@@ -7,7 +9,7 @@ class ProductComplaintsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => goToPage(context, const ProductComplaintsPage(), false),
       child: Card(
         elevation: 6,
         color: elevatedButtonColor,
