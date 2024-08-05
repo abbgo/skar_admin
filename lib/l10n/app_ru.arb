@@ -74,5 +74,6 @@
     "youCanOnlyDeleteShopThatHasNoProductInIt":"Вы можете удалить только магазин, в котором нет товара",
     "language":"Язук",
     "selectLanguage":"Выберите язык",
-    "statistics":"Статистика"
+    "statistics":"Статистика",
+    "productComplaints":"Жалобы на продукцию"
 }

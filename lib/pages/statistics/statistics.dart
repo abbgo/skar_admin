@@ -9,7 +9,7 @@ class StatisticsPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: GridView.count(
-        crossAxisCount: 4,
+        crossAxisCount: 3,
         crossAxisSpacing: 10,
         children: const [
           ProductComplaintsButton(),
