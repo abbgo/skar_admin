@@ -44,7 +44,7 @@ var fetchComplaintProductsProvider =
 );
 
 var fetchfetchProductComplaintsProvider =
-    FutureProvider.autoDispose.family<ResultComplaint, DefaultParams>(
+    FutureProvider.autoDispose.family<ResultComplaint, ComplaintParams>(
   (ref, arg) async {
     ResultComplaint result = ResultComplaint.defaultResult();
 
@@ -55,14 +55,10 @@ var fetchfetchProductComplaintsProvider =
           await ref.read(complaintProductApiProvider).fetchProductComplaints(
                 accessToken: accessToken,
                 page: arg.page!,
+                productID: arg.productID!,
               );
 
       await wrongToken(resultComplaint.error, ref, arg.context);
-
-      if (resultComplaint.complaints != null) {
-        ref.read(hasComplaintProductsProvider.notifier).state =
-            resultComplaint.complaints!.isNotEmpty;
-      }
 
       result = resultComplaint;
     } catch (e) {
