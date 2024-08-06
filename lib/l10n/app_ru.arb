@@ -76,5 +76,6 @@
     "selectLanguage":"Выберите язык",
     "analysis":"Анализ",
     "productComplaints":"Жалобы на продукцию",
-    "countComplaints":"Количество жалоб"
+    "countComplaints":"Количество жалоб",
+    "seeComplaints":"Посмотреть жалобы"
 }

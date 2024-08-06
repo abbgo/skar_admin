@@ -5,10 +5,7 @@ import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductComplaintPopUpMenu extends ConsumerWidget {
-  const ProductComplaintPopUpMenu({
-    super.key,
-    required this.productID,
-  });
+  const ProductComplaintPopUpMenu({super.key, required this.productID});
 
   final String productID;
 
@@ -16,9 +13,9 @@ class ProductComplaintPopUpMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
 
-    List<String> texts = [lang.change, lang.moveToTrash];
+    List<String> texts = [lang.change, lang.seeComplaints];
 
-    List<IconData> icons = [Icons.edit, Icons.auto_delete];
+    List<IconData> icons = [Icons.edit, Icons.visibility];
 
     return PopupMenuButton(
       shape: const RoundedRectangleBorder(

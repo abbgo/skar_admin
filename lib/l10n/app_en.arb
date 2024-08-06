@@ -76,5 +76,6 @@
     "selectLanguage":"Select language",
     "analysis":"Analysis",
     "productComplaints":"Product complaints",
-    "countComplaints":"Count of complaints"
+    "countComplaints":"Count of complaints",
+    "seeComplaints":"See complaints"
 }
