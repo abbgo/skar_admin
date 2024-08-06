@@ -19,7 +19,10 @@ class ProductComplaintCard extends StatelessWidget {
             cardHeight: 120,
           ),
           ProductComplaintData(complaintProduct: complaintProduct),
-          ProductComplaintPopUpMenu(productID: complaintProduct.id),
+          ProductComplaintPopUpMenu(
+            productID: complaintProduct.id,
+            shopID: complaintProduct.shopID,
+          ),
         ],
       ),
     );

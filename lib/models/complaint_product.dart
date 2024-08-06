@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ComplaintProduct {
-  final String id, nameTM, nameRU, image;
+  final String id, nameTM, nameRU, image, shopID;
   final int complaintCount;
 
   const ComplaintProduct({
@@ -10,6 +10,7 @@ class ComplaintProduct {
     required this.nameRU,
     required this.image,
     required this.complaintCount,
+    required this.shopID,
   });
 
   factory ComplaintProduct.defaultComplaintProduct() {
@@ -19,6 +20,7 @@ class ComplaintProduct {
       nameRU: '',
       image: '',
       complaintCount: 0,
+      shopID: '',
     );
   }
 
@@ -29,6 +31,7 @@ class ComplaintProduct {
       nameRU: json['name_ru'],
       image: json['image'],
       complaintCount: json['complaint_count'],
+      shopID: json['shop_id'],
     );
   }
 }
