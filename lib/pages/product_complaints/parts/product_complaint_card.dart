@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 import 'package:skar_admin/pages/parts/list_tile_image.dart';
 import 'package:skar_admin/pages/product_complaints/parts/product_complaint_data.dart';
+import 'package:skar_admin/pages/product_complaints/parts/product_complaint_pop_up_menu.dart';
 
 class ProductComplaintCard extends StatelessWidget {
   const ProductComplaintCard({super.key, required this.complaintProduct});
@@ -18,8 +19,7 @@ class ProductComplaintCard extends StatelessWidget {
             cardHeight: 120,
           ),
           ProductComplaintData(complaintProduct: complaintProduct),
-          // ProductListTileData(product: product),
-          // ProductPopUpMenu(productID: product.id!, shopID: shopID),
+          ProductComplaintPopUpMenu(productID: complaintProduct.id),
         ],
       ),
     );
