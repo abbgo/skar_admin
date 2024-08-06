@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductComplaintData extends StatelessWidget {
   const ProductComplaintData({super.key, required this.complaintProduct});
@@ -10,6 +11,8 @@ class ProductComplaintData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+
     return Expanded(
       flex: 2,
       child: Padding(
@@ -31,34 +34,10 @@ class ProductComplaintData extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Row(
-                //       mainAxisSize: MainAxisSize.min,
-                //       children: [
-                //         Text(
-                //           '${product.price} man',
-                //           style: const TextStyle(fontWeight: FontWeight.bold),
-                //         ),
-                //         const SizedBox(width: 15),
-                //         Text(
-                //           product.oldPrice == null || product.oldPrice == 0
-                //               ? ''
-                //               : '${product.oldPrice} man',
-                //           style: const TextStyle(
-                //               decoration: TextDecoration.lineThrough),
-                //         ),
-                //       ],
-                //     ),
-                //     Icon(
-                //       product.isVisible!
-                //           ? Icons.visibility
-                //           : Icons.visibility_off,
-                //       color: product.isVisible! ? Colors.green : Colors.red,
-                //     ),
-                //   ],
-                // ),
+                Text(
+                  '${lang.countComplaints}: ${complaintProduct.complaintCount}',
+                  style: const TextStyle(fontSize: 16, color: Colors.red),
+                ),
               ],
             );
           },
