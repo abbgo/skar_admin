@@ -5,6 +5,7 @@ import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/static_data.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 import 'package:skar_admin/pages/parts/no_result.dart';
+import 'package:skar_admin/pages/product_complaints/parts/product_complaint_card.dart';
 import 'package:skar_admin/providers/api/complaint_product.dart';
 import 'package:skar_admin/providers/pages/complaint_product.dart';
 import 'package:skar_admin/services/api/brend.dart';
@@ -51,7 +52,7 @@ class ProductComplaintsPage extends ConsumerWidget {
                     ComplaintProduct cp =
                         response.complaintProducts![indexInPage];
 
-                    return Text(cp.nameTM);
+                    return ProductComplaintCard(complaintProduct: cp);
                   },
                   error: (error, stackTrace) => errorMethod(error),
                   loading: () => null,
