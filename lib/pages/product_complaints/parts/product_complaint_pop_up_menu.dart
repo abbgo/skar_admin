@@ -43,7 +43,7 @@ class ProductComplaintPopUpMenu extends ConsumerWidget {
         }
 
         if (value == texts[1]) {
-          goToPage(context, const ComplaintsPage(), false);
+          goToPage(context, ComplaintsPage(productID: productID), false);
         }
       },
     );
