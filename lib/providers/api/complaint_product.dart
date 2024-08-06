@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/functions/validation.dart';
+import 'package:skar_admin/models/complaint.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 import 'package:skar_admin/models/shop_owner.dart';
 import 'package:skar_admin/providers/database/shop_owner.dart';
@@ -20,23 +21,52 @@ var fetchComplaintProductsProvider =
       String accessToken = await ref.read(accessTokenProvider);
       ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
 
-      ResultComplaintProduct resultBrend =
+      ResultComplaintProduct resultComplaintProduct =
           await ref.read(complaintProductApiProvider).fetchComplaintProducts(
                 accessToken: accessToken,
                 page: arg.page!,
                 shopOwnerID: shopOwner.id,
               );
 
-      await wrongToken(resultBrend.error, ref, arg.context);
+      await wrongToken(resultComplaintProduct.error, ref, arg.context);
 
-      if (resultBrend.complaintProducts != null) {
+      if (resultComplaintProduct.complaintProducts != null) {
         ref.read(hasComplaintProductsProvider.notifier).state =
-            resultBrend.complaintProducts!.isNotEmpty;
+            resultComplaintProduct.complaintProducts!.isNotEmpty;
       }
 
-      result = resultBrend;
+      result = resultComplaintProduct;
     } catch (e) {
       result = ResultComplaintProduct(error: e.toString());
+    }
+    return result;
+  },
+);
+
+var fetchfetchProductComplaintsProvider =
+    FutureProvider.autoDispose.family<ResultComplaint, DefaultParams>(
+  (ref, arg) async {
+    ResultComplaint result = ResultComplaint.defaultResult();
+
+    try {
+      String accessToken = await ref.read(accessTokenProvider);
+
+      ResultComplaint resultComplaint =
+          await ref.read(complaintProductApiProvider).fetchProductComplaints(
+                accessToken: accessToken,
+                page: arg.page!,
+              );
+
+      await wrongToken(resultComplaint.error, ref, arg.context);
+
+      if (resultComplaint.complaints != null) {
+        ref.read(hasComplaintProductsProvider.notifier).state =
+            resultComplaint.complaints!.isNotEmpty;
+      }
+
+      result = resultComplaint;
+    } catch (e) {
+      result = ResultComplaint(error: e.toString());
     }
     return result;
   },
