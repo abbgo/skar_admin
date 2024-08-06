@@ -41,11 +41,11 @@ class ProductComplaintPopUpMenu extends ConsumerWidget {
           return;
         }
 
-        // if (value == texts[1]) {
-        //   // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
-        //   await showDeleteDialog(context, ref, productID, null);
-        //   return;
-        // }
+        if (value == texts[1]) {
+          //   // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
+          //   await showDeleteDialog(context, ref, productID, null);
+          //   return;
+        }
       },
     );
   }
