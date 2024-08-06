@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/shop_list_tile.dart';
 import 'package:skar_admin/pages/add_or_update_product/add_or_update_product.dart';
+import 'package:skar_admin/pages/complaints/complaints.dart';
 import 'package:skar_admin/styles/colors.dart';
 
 class ProductComplaintPopUpMenu extends ConsumerWidget {
@@ -42,9 +43,7 @@ class ProductComplaintPopUpMenu extends ConsumerWidget {
         }
 
         if (value == texts[1]) {
-          //   // bu yerde haryt korzinadan pozulyar ( haryt doly pozulyar )
-          //   await showDeleteDialog(context, ref, productID, null);
-          //   return;
+          goToPage(context, const ComplaintsPage(), false);
         }
       },
     );
