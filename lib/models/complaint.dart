@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class Complaint {
   final String textTM, textRU;
 
@@ -13,4 +15,18 @@ class Complaint {
       textRU: json['text_ru'],
     );
   }
+}
+
+class ResultComplaint extends Equatable {
+  final List<Complaint>? complaints;
+  final String error;
+
+  const ResultComplaint({this.complaints, required this.error});
+
+  factory ResultComplaint.defaultResult() {
+    return const ResultComplaint(complaints: null, error: '');
+  }
+
+  @override
+  List<Object?> get props => [complaints, error];
 }

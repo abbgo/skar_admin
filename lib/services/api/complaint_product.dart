@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:skar_admin/helpers/functions/static_data.dart';
 import 'package:skar_admin/helpers/static_data.dart';
+import 'package:skar_admin/models/complaint.dart';
 import 'package:skar_admin/models/complaint_product.dart';
 
 class ComplaintProductApiService {
@@ -44,6 +45,46 @@ class ComplaintProductApiService {
       }
       return const ResultComplaintProduct(
         complaintProducts: [],
+        error: 'auth error',
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // fetch product complaints --------------------------------------------------
+  Future<ResultComplaint> fetchProductComplaints({
+    required String accessToken,
+    required int page,
+    required String productID,
+  }) async {
+    Uri uri = Uri.parse('$apiUrl/back/complaint-products/$productID')
+        .replace(queryParameters: {'limit': '10', 'page': '$page'});
+
+    try {
+      http.Response response = await http.get(
+        uri,
+        headers: tokenHeader(accessToken),
+      );
+      var jsonData = jsonDecode(response.body);
+
+      if (response.statusCode == 200 && jsonData['status']) {
+        if (jsonData['product_complaints'] == null) {
+          return const ResultComplaint(complaints: [], error: '');
+        }
+
+        var dataList = jsonData['product_complaints'] as List;
+        return ResultComplaint(
+          complaints: dataList
+              .map<Complaint>(
+                (propJson) => Complaint.fromJson(propJson),
+              )
+              .toList(),
+          error: '',
+        );
+      }
+      return const ResultComplaint(
+        complaints: [],
         error: 'auth error',
       );
     } catch (e) {
