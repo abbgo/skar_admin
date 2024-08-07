@@ -17,6 +17,7 @@ class ProductComplaintCard extends StatelessWidget {
           ListTileImage(
             imagePath: complaintProduct.image,
             cardHeight: 120,
+            cardWidth: 80,
           ),
           ProductComplaintData(complaintProduct: complaintProduct),
           ProductComplaintPopUpMenu(

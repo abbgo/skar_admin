@@ -8,7 +8,7 @@ class ProductListTile extends StatelessWidget {
   const ProductListTile({super.key, required this.product, this.shopID});
 
   final Product product;
-  static const double cardHeight = 120.0;
+  static const double cardHeight = 120;
   final String? shopID;
 
   @override
@@ -22,6 +22,7 @@ class ProductListTile extends StatelessWidget {
             ListTileImage(
               imagePath: product.image!,
               cardHeight: cardHeight,
+              cardWidth: 80,
             ),
             ProductListTileData(product: product),
             ProductPopUpMenu(productID: product.id!, shopID: shopID),
