@@ -10,6 +10,7 @@ import 'package:skar_admin/providers/api/product.dart';
 import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/category.dart';
+import 'package:skar_admin/providers/pages/products.dart';
 import 'package:skar_admin/services/api/product.dart';
 
 class AddOrUpdateProductButton extends ConsumerWidget {
@@ -93,6 +94,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
           ref.read(loadCreateProductProvider.notifier).state = false;
 
           if (resultProduct.error == '') {
+            ref.read(hasProductsProvider.notifier).state = true;
             ref.invalidate(fetchProductsProvider);
             ref.invalidate(fetchCountOfProductsProvider);
 
