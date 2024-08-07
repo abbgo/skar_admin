@@ -13,7 +13,7 @@ class ShopListTile extends StatelessWidget {
 
   final Shop shop;
   final bool isDeleted;
-  static const double cardHeight = 110.0;
+  static const double cardHeight = 110;
 
   @override
   Widget build(BuildContext context) {

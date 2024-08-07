@@ -10,17 +10,15 @@ class ListTileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: SizedBox(
-        height: cardHeight,
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-          ),
-          child: showCachImageMethod(imagePath),
+    return SizedBox(
+      width: 140,
+      height: cardHeight,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(10),
+          bottomLeft: Radius.circular(10),
         ),
+        child: showCachImageMethod(imagePath),
       ),
     );
   }

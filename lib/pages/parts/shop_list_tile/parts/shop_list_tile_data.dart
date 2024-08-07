@@ -27,7 +27,7 @@ class ShopListTileData extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   isTM ? shop.nameTM : shop.nameRU,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
