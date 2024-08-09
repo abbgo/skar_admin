@@ -71,6 +71,7 @@ class ShopListTileData extends StatelessWidget {
                       style: TextStyle(
                         color: statusColor,
                         fontWeight: FontWeight.bold,
+                        fontSize: 12,
                       ),
                     ),
                   ],
