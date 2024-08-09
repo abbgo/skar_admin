@@ -58,6 +58,7 @@ class ShopListTileData extends StatelessWidget {
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Image.asset(
                       shop.hasShipping!
