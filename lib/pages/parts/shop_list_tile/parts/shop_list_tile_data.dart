@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skar_admin/styles/colors.dart';
 
 class ShopListTileData extends StatelessWidget {
   const ShopListTileData({super.key, required this.shop});
@@ -10,6 +13,28 @@ class ShopListTileData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+    String createdStatus = '';
+    Color statusColor = Colors.green;
+
+    switch (shop.createdStatus) {
+      case CreatedStatuses.wait:
+        createdStatus = lang.inReview;
+        statusColor = elevatedButtonColor;
+        break;
+      case CreatedStatuses.rejected:
+        createdStatus = lang.rejected;
+        statusColor = Colors.red;
+        break;
+      case CreatedStatuses.success:
+        createdStatus = lang.active;
+        statusColor = Colors.green;
+        break;
+      default:
+        createdStatus = lang.active;
+        statusColor = Colors.green;
+    }
+
     return Expanded(
       flex: 2,
       child: Padding(
@@ -31,12 +56,25 @@ class ShopListTileData extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Image.asset(
-                  shop.hasShipping!
-                      ? 'assets/icons/has_shipping.png'
-                      : 'assets/icons/no_shipping.png',
-                  height: 25,
-                )
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      shop.hasShipping!
+                          ? 'assets/icons/has_shipping.png'
+                          : 'assets/icons/no_shipping.png',
+                      height: 25,
+                    ),
+                    const SizedBox(width: 20),
+                    Text(
+                      createdStatus,
+                      style: TextStyle(
+                        color: statusColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             );
           },

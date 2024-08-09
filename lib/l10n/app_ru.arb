@@ -77,5 +77,8 @@
     "analysis":"Анализ",
     "productComplaints":"Жалобы на продукцию",
     "countComplaints":"Количество жалоб",
-    "seeComplaints":"Посмотреть жалобы"
+    "seeComplaints":"Посмотреть жалобы",
+    "active":"Активный",
+    "rejected":"Отклоненный",
+    "inReview":"На рассмотрении"
 }

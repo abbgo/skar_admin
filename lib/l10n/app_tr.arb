@@ -77,5 +77,8 @@
     "analysis":"Analiz",
     "productComplaints":"Haryt şikaýatlary",
     "countComplaints":"Şikaýatlaryň sany",
-    "seeComplaints":"Şikaýatlary gör"
+    "seeComplaints":"Şikaýatlary gör",
+    "active":"Aktiw",
+    "rejected":"Tassyklanmady",
+    "inReview":"Gözden geçirilýar"
 }
