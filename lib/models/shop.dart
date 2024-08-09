@@ -10,6 +10,7 @@ class Shop extends Equatable {
   final bool? hasShipping;
   final Shop? parentShop;
   final String? parentShopID;
+  final int? createdStatus;
 
   const Shop({
     this.id,
@@ -25,6 +26,7 @@ class Shop extends Equatable {
     this.hasShipping,
     this.parentShop,
     this.parentShopID,
+    this.createdStatus,
   });
 
   factory Shop.defaultShop() {
@@ -42,6 +44,7 @@ class Shop extends Equatable {
       hasShipping: false,
       parentShop: null,
       parentShopID: null,
+      createdStatus: null,
     );
   }
 
@@ -61,6 +64,7 @@ class Shop extends Equatable {
       parentShop: json['parent_shop'] == null
           ? Shop.defaultShop()
           : Shop.fromJson(json['parent_shop']),
+      createdStatus: json['created_status'] ?? 2,
     );
   }
 
@@ -78,6 +82,7 @@ class Shop extends Equatable {
       'has_shipping': hasShipping,
       'image': image,
       'parent_shop_id': parentShopID,
+      'created_status': createdStatus,
     };
   }
 
