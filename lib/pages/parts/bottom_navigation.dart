@@ -9,6 +9,7 @@ import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
 import 'package:skar_admin/pages/statistics/statistics.dart';
 import 'package:skar_admin/pages/trash/trash.dart';
+import 'package:skar_admin/providers/api/shop.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,13 +30,21 @@ class BottomNavigationPart extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: selectedIndex == 3
+      appBar: selectedIndex == 3 || selectedIndex == 1
           ? AppBar(
               actions: [
-                IconButton(
-                  onPressed: () => showLogoutDialog(context),
-                  icon: const Icon(Icons.logout),
-                ),
+                selectedIndex == 1
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: ElevatedButton(
+                          onPressed: () => ref.invalidate(fetchShopsProvider),
+                          child: const Icon(Icons.autorenew),
+                        ),
+                      )
+                    : IconButton(
+                        onPressed: () => showLogoutDialog(context),
+                        icon: const Icon(Icons.logout),
+                      ),
               ],
             )
           : null,
