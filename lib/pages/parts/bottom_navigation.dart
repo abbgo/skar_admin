@@ -4,7 +4,6 @@ import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/helpers/methods/navigation.dart';
 import 'package:skar_admin/helpers/methods/parts/bottom_navigation.dart';
 import 'package:skar_admin/pages/add_or_update_shop/add_or_update_shop.dart';
-import 'package:skar_admin/pages/parts/floating_button.dart';
 import 'package:skar_admin/pages/profile/profile.dart';
 import 'package:skar_admin/pages/shops/shops.dart';
 import 'package:skar_admin/pages/statistics/statistics.dart';
@@ -34,12 +33,32 @@ class BottomNavigationPart extends ConsumerWidget {
           ? AppBar(
               actions: [
                 selectedIndex == 1
-                    ? Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: ElevatedButton(
-                          onPressed: () => ref.invalidate(fetchShopsProvider),
-                          child: const Icon(Icons.autorenew),
-                        ),
+                    ? Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                              ),
+                              onPressed: () => goToPage(
+                                context,
+                                const AddOrUpdateShopPage(shopID: ''),
+                                false,
+                              ),
+                              child: const Icon(Icons.add),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ElevatedButton(
+                              onPressed: () =>
+                                  ref.invalidate(fetchShopsProvider),
+                              child: const Icon(Icons.autorenew),
+                            ),
+                          ),
+                        ],
                       )
                     : IconButton(
                         onPressed: () => showLogoutDialog(context),
@@ -78,16 +97,6 @@ class BottomNavigationPart extends ConsumerWidget {
           ref.read(selectedBottomIndexProvider.notifier).state = value;
         },
       ),
-      floatingActionButton: selectedIndex == 1
-          ? FloatingButton(
-              onPressed: () => goToPage(
-                context,
-                const AddOrUpdateShopPage(shopID: ''),
-                false,
-              ),
-              text: lang.addNewShop,
-            )
-          : const SizedBox(),
     );
   }
 }
