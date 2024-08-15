@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/datas/static.dart';
+import 'package:skar_admin/helpers/methods/dialogs.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -67,18 +68,23 @@ class ShopListTileData extends StatelessWidget {
                       height: 25,
                     ),
                     const SizedBox(width: 20),
-                    Text(
-                      createdStatus,
-                      style: TextStyle(
-                        color: statusColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
+                    GestureDetector(
+                      onTap: shop.rejectedReason != ''
+                          ? () => showRejectedInfoDialog(context)
+                          : null,
+                      child: Text(
+                        createdStatus,
+                        style: TextStyle(
+                          color: statusColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 2),
                     shop.rejectedReason != ''
                         ? GestureDetector(
-                            onTap: () {},
+                            onTap: () => showRejectedInfoDialog(context),
                             child: const Icon(
                               Icons.info,
                               size: 16,

@@ -119,3 +119,26 @@ Future<dynamic> showDontDeleteDialog(BuildContext context) {
     },
   );
 }
+
+Future<dynamic> showRejectedInfoDialog(BuildContext context) {
+  var lang = AppLocalizations.of(context)!;
+
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('${lang.youCantDeleteThisShop} !'),
+        content: Text(lang.youCanOnlyDeleteShopThatHasNoProductInIt),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text(
+              'OK',
+              style: TextStyle(color: Colors.black, fontSize: 18),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
