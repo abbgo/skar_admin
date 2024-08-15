@@ -44,6 +44,7 @@ class ShopApiService {
     required bool isShoppingCenter,
     required String search,
     required String lang,
+    required List<String> createdStatuses,
   }) async {
     Uri uri = Uri.parse('$apiUrl/back/shops').replace(
       queryParameters: {
@@ -54,6 +55,7 @@ class ShopApiService {
         'is_shopping_center': '$isShoppingCenter',
         'search': search,
         'lang': lang,
+        'crated_statuses': createdStatuses,
       },
     );
 
@@ -252,6 +254,7 @@ class ShopParams extends Equatable {
   final BuildContext? context;
   final Shop? shop;
   final String? shopID;
+  final List<String>? createdStatuses;
 
   const ShopParams({
     this.isDeleted,
@@ -259,6 +262,7 @@ class ShopParams extends Equatable {
     this.context,
     this.shop,
     this.shopID,
+    this.createdStatuses,
   });
 
   factory ShopParams.defaultShopParams() {
@@ -268,9 +272,11 @@ class ShopParams extends Equatable {
       context: null,
       shop: null,
       shopID: null,
+      createdStatuses: null,
     );
   }
 
   @override
-  List<Object?> get props => [isDeleted, page, context, shop, shopID];
+  List<Object?> get props =>
+      [isDeleted, page, context, shop, shopID, createdStatuses];
 }
