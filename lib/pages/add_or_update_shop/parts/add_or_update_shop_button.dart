@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/helpers/methods/snackbars.dart';
 import 'package:skar_admin/models/shop.dart';
 import 'package:skar_admin/models/shop_owner.dart';
@@ -74,7 +73,6 @@ class AddOrUpdateShopButton extends ConsumerWidget {
             hasShipping: hasShipping,
             parentShopID:
                 parentShop != Shop.defaultShop() ? parentShop.id : null,
-            createdStatus: CreatedStatuses.wait,
           );
 
           if (context.mounted) {
