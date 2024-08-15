@@ -25,7 +25,7 @@ class ProductListTileData extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   isTM ? product.nameTM : product.nameRU,
                   style: const TextStyle(
