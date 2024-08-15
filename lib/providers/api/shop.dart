@@ -54,15 +54,14 @@ var fetchShoppingCentersProvider =
 
       String accessToken = await ref.read(accessTokenProvider);
       ResultShop resultShop = await ref.read(shopApiProvider).fetchShops(
-        accessToken: accessToken,
-        page: arg.page!,
-        shopOwnerID: '',
-        isDeleted: arg.isDeleted!,
-        isShoppingCenter: true,
-        search: search,
-        lang: isTM ? 'tm' : 'ru',
-        createdStatuses: [],
-      );
+            accessToken: accessToken,
+            page: arg.page!,
+            shopOwnerID: '',
+            isDeleted: arg.isDeleted!,
+            isShoppingCenter: true,
+            search: search,
+            lang: isTM ? 'tm' : 'ru',
+          );
 
       await wrongToken(resultShop.error, ref, arg.context);
 
@@ -96,7 +95,6 @@ var fetchShopsProvider =
             isShoppingCenter: false,
             search: '',
             lang: isTM ? 'tm' : 'ru',
-            createdStatuses: arg.createdStatuses!,
           );
 
       await wrongToken(resultShop.error, ref, arg.context);
