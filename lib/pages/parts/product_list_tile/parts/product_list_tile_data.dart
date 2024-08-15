@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/models/product.dart';
 import 'package:skar_admin/pages/parts/product_list_tile/parts/product_list_tile_price.dart';
+import 'package:skar_admin/pages/parts/product_list_tile/parts/product_list_tile_statuses.dart';
 import 'package:skar_admin/providers/local_storadge/setting.dart';
 
 class ProductListTileData extends StatelessWidget {
@@ -36,14 +37,7 @@ class ProductListTileData extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ProductListTilePrice(product: product),
-                    Text(product.createdStatus!.toString()),
-                    Icon(
-                      product.isVisible!
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: product.isVisible! ? Colors.green : Colors.red,
-                      size: 20,
-                    ),
+                    ProductListTileStatuses(product: product),
                   ],
                 ),
               ],
