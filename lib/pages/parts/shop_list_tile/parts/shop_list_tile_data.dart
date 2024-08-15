@@ -75,6 +75,17 @@ class ShopListTileData extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
+                    const SizedBox(width: 2),
+                    shop.rejectedReason != ''
+                        ? GestureDetector(
+                            onTap: () {},
+                            child: const Icon(
+                              Icons.info,
+                              size: 16,
+                              color: Colors.red,
+                            ),
+                          )
+                        : const SizedBox()
                   ],
                 ),
               ],
