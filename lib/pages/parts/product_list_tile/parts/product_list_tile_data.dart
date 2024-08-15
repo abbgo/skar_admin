@@ -41,13 +41,14 @@ class ProductListTileData extends StatelessWidget {
                           '${product.price} man',
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(width: 15),
+                        const SizedBox(width: 5),
                         Text(
                           product.oldPrice == null || product.oldPrice == 0
                               ? ''
                               : '${product.oldPrice} man',
                           style: const TextStyle(
-                              decoration: TextDecoration.lineThrough),
+                            decoration: TextDecoration.lineThrough,
+                          ),
                         ),
                       ],
                     ),
@@ -56,6 +57,7 @@ class ProductListTileData extends StatelessWidget {
                           ? Icons.visibility
                           : Icons.visibility_off,
                       color: product.isVisible! ? Colors.green : Colors.red,
+                      size: 20,
                     ),
                   ],
                 ),

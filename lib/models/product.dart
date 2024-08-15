@@ -13,6 +13,7 @@ class Product {
   final List<ProductColor>? productColors;
   final Brend? brend;
   final List<Category>? categories;
+  final int? createdStatus;
 
   Product({
     this.id,
@@ -28,6 +29,7 @@ class Product {
     this.productColors,
     this.brend,
     this.categories,
+    this.createdStatus,
   });
 
   factory Product.defaultProduct() {
@@ -45,6 +47,7 @@ class Product {
       productColors: null,
       brend: null,
       categories: null,
+      createdStatus: null,
     );
   }
 
@@ -73,6 +76,7 @@ class Product {
                 (categoryJson) => Category.fromJson(categoryJson),
               ),
             ),
+      createdStatus: json['created_status'] ?? 2,
     );
   }
 
@@ -89,6 +93,7 @@ class Product {
       'product_colors': productColors,
       'is_visible': isVisible,
       'image': image,
+      'created_status': createdStatus,
     };
   }
 }
