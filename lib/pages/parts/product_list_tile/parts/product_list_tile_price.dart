@@ -8,22 +8,24 @@ class ProductListTilePrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           '${product.price} man',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
         ),
         const SizedBox(width: 5),
-        Text(
-          product.oldPrice == null || product.oldPrice == 0
-              ? ''
-              : '${product.oldPrice} man',
-          style: const TextStyle(
-            decoration: TextDecoration.lineThrough,
-          ),
-        ),
+        product.oldPrice == null || product.oldPrice == 0
+            ? const SizedBox()
+            : Text(
+                '${product.oldPrice} man',
+                style: const TextStyle(
+                  decoration: TextDecoration.lineThrough,
+                  fontSize: 12,
+                ),
+              ),
       ],
     );
   }
