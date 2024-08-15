@@ -120,15 +120,25 @@ Future<dynamic> showDontDeleteDialog(BuildContext context) {
   );
 }
 
-Future<dynamic> showRejectedInfoDialog(BuildContext context) {
+Future<dynamic> showRejectedInfoDialog(
+  BuildContext context,
+  String rejectedReason,
+) {
   var lang = AppLocalizations.of(context)!;
 
   return showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('${lang.youCantDeleteThisShop} !'),
-        content: Text(lang.youCanOnlyDeleteShopThatHasNoProductInIt),
+        title: Text(lang.reasonForRejectingShop),
+        content: Text(
+          rejectedReason,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+            fontSize: 18,
+          ),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),

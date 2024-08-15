@@ -80,6 +80,6 @@
     "seeComplaints":"See complaints",
     "active":"Active",
     "rejected":"Rejected",
-    "inReview":"In review"
-
+    "inReview":"In review",
+    "reasonForRejectingShop":"Reason for rejecting the shop"
 }

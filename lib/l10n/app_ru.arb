@@ -80,5 +80,6 @@
     "seeComplaints":"Посмотреть жалобы",
     "active":"Активный",
     "rejected":"Отклоненный",
-    "inReview":"На рассмотрении"
+    "inReview":"На рассмотрении",
+    "reasonForRejectingShop":"Причина отказа в магазине"
 }

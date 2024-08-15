@@ -70,7 +70,10 @@ class ShopListTileData extends StatelessWidget {
                     const SizedBox(width: 20),
                     GestureDetector(
                       onTap: shop.rejectedReason != ''
-                          ? () => showRejectedInfoDialog(context)
+                          ? () => showRejectedInfoDialog(
+                                context,
+                                shop.rejectedReason!,
+                              )
                           : null,
                       child: Text(
                         createdStatus,
@@ -84,7 +87,10 @@ class ShopListTileData extends StatelessWidget {
                     const SizedBox(width: 2),
                     shop.rejectedReason != ''
                         ? GestureDetector(
-                            onTap: () => showRejectedInfoDialog(context),
+                            onTap: () => showRejectedInfoDialog(
+                              context,
+                              shop.rejectedReason!,
+                            ),
                             child: const Icon(
                               Icons.info,
                               size: 16,
