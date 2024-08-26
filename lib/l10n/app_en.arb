@@ -80,5 +80,5 @@
     "active":"Active",
     "rejected":"Rejected",
     "inReview":"In review",
-    "reasonForRejectingShop":"Reason for rejecting the shop"
+    "reasonForRejecting":"Reason for rejecting"
 }

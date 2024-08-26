@@ -80,5 +80,5 @@
     "active":"Активный",
     "rejected":"Отклоненный",
     "inReview":"На рассмотрении",
-    "reasonForRejectingShop":"Причина отказа в магазине"
+    "reasonForRejecting":"Причина отказа"
 }

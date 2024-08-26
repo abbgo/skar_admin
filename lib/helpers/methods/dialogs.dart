@@ -130,7 +130,7 @@ Future<dynamic> showRejectedInfoDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(lang.reasonForRejectingShop),
+        title: Text(lang.reasonForRejecting),
         content: Text(
           rejectedReason,
           style: const TextStyle(
