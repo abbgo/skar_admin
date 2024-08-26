@@ -13,7 +13,6 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     String accessToken = ref.watch(accessTokenProvider);
-    print('-------------- accessToken: $accessToken');
 
     ref.listen(
       connectivityStatusProviders,
