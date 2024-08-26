@@ -18,6 +18,7 @@ class ProductListTile extends StatelessWidget {
       height: cardHeight,
       child: Card(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTileImage(
               imagePath: product.image!,
@@ -25,7 +26,18 @@ class ProductListTile extends StatelessWidget {
               cardWidth: 80,
             ),
             ProductListTileData(product: product),
-            ProductPopUpMenu(productID: product.id!, shopID: shopID),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 15),
+                Icon(
+                  product.isVisible! ? Icons.visibility : Icons.visibility_off,
+                  color: product.isVisible! ? Colors.green : Colors.red,
+                  size: 20,
+                ),
+                ProductPopUpMenu(productID: product.id!, shopID: shopID),
+              ],
+            ),
           ],
         ),
       ),
