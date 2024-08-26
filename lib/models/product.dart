@@ -14,6 +14,7 @@ class Product {
   final Brend? brend;
   final List<Category>? categories;
   final int? createdStatus;
+  final String? rejectedReason;
 
   Product({
     this.id,
@@ -30,6 +31,7 @@ class Product {
     this.brend,
     this.categories,
     this.createdStatus,
+    this.rejectedReason,
   });
 
   factory Product.defaultProduct() {
@@ -48,6 +50,7 @@ class Product {
       brend: null,
       categories: null,
       createdStatus: null,
+      rejectedReason: null,
     );
   }
 
@@ -77,6 +80,7 @@ class Product {
               ),
             ),
       createdStatus: json['created_status'] ?? 2,
+      rejectedReason: json['rejected_reason'] ?? '',
     );
   }
 
