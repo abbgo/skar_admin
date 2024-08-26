@@ -64,7 +64,7 @@ var fetchProductsProvider =
 
       await wrongToken(resultProduct.error, ref, arg.context);
 
-      if (resultProduct.products != null) {
+      if (search != '') {
         ref.read(hasProductsProvider.notifier).state =
             resultProduct.products!.isNotEmpty;
       }
