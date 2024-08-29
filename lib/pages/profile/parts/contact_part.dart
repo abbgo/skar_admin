@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skar_admin/helpers/methods/pages/profile.dart';
+import 'package:skar_admin/helpers/methods/pages/contact.dart';
 import 'package:skar_admin/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,7 +12,7 @@ class ContactPart extends StatelessWidget {
       elevation: 3,
       color: elevatedButtonColor,
       child: ListTile(
-        onTap: () => showLanguageMethod(context),
+        onTap: () => showContactBottomSheet(context),
         leading: const Icon(Icons.perm_phone_msg_outlined, color: Colors.white),
         title: Text(
           AppLocalizations.of(context)!.contact,
