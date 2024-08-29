@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/pages/profile/parts/contact_part.dart';
 import 'package:skar_admin/pages/profile/parts/language.dart';
 import 'package:skar_admin/pages/profile/parts/shop_owner_info.dart';
 
@@ -14,6 +15,7 @@ class ProfilePage extends StatelessWidget {
         children: const [
           ShopOwnerInfo(),
           LanguagePage(),
+          ContactPart(),
         ],
       ),
     );

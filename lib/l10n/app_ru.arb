@@ -80,5 +80,6 @@
     "active":"Активный",
     "rejected":"Отклоненный",
     "inReview":"На рассмотрении",
-    "reasonForRejecting":"Причина отказа"
+    "reasonForRejecting":"Причина отказа",
+    "contact":"Связаться"
 }

@@ -80,5 +80,6 @@
     "active":"Aktiw",
     "rejected":"Tassyklanmady",
     "inReview":"Gözden geçirilýar",
-    "reasonForRejecting":"Red edilmeginiň sebäbi"
+    "reasonForRejecting":"Red edilmeginiň sebäbi",
+    "contact":"Habarlaşmak"
 }

@@ -80,5 +80,6 @@
     "active":"Active",
     "rejected":"Rejected",
     "inReview":"In review",
-    "reasonForRejecting":"Reason for rejecting"
+    "reasonForRejecting":"Reason for rejecting",
+    "contact":"Contact"
 }
