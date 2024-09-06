@@ -23,7 +23,7 @@ class TrashedShops extends StatelessWidget {
               const Icon(Icons.storefront, size: 50, color: Colors.white),
               const SizedBox(height: 10),
               Text(
-                lang.trashShops,
+                lang.shopsInTrash,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

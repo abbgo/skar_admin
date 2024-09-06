@@ -103,7 +103,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
                 context,
                 productID != ''
                     ? lang.informationChangedSuccessfully
-                    : lang.informationCreatedSuccessfully,
+                    : lang.informationAddedSuccessfully,
               );
               Navigator.pop(context);
             }

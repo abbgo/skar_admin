@@ -91,7 +91,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
               showSuccess(
                 context,
                 shopID == null
-                    ? lang.informationCreatedSuccessfully
+                    ? lang.informationAddedSuccessfully
                     : lang.informationChangedSuccessfully,
               );
               Navigator.pop(context);

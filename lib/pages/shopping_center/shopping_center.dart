@@ -22,7 +22,7 @@ class ShoppingCenterPage extends StatelessWidget {
         title: Consumer(
           builder: (context, ref, child) {
             return SearchInput(
-              label: AppLocalizations.of(context)!.findMall,
+              label: AppLocalizations.of(context)!.searchMall,
               onSubmitted: (value) {
                 ref.read(shoppingCenterSearchProvider.notifier).state = value;
                 ref.read(hasShoppingCenterProvider.notifier).state = true;

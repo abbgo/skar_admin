@@ -16,7 +16,7 @@ class ProductColorImagesInput extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${lang.addImageOfTheShop}: *',
+            '${lang.addProductColorImages}: *',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           Row(

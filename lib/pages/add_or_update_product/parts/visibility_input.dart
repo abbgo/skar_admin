@@ -17,7 +17,7 @@ class VisibilityInput extends ConsumerWidget {
       child: Row(
         children: [
           Text(
-            '${lang.displayProduct} : ',
+            '${lang.showProduct} : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           Switch.adaptive(
