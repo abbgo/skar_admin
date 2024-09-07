@@ -19,46 +19,63 @@ class ResultProducts extends ConsumerWidget {
     bool hasProducts = ref.watch(hasProductsProvider);
     ScrollController scrollController =
         ref.watch(productsScrollControllerProvider);
+    bool loading = ref.watch(loadProductsProvider);
 
     return Expanded(
-      child: !hasProducts
-          ? const NoResult()
-          : ListView.builder(
-              controller: scrollController,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                final page = index ~/ pageSize + 1;
-                final indexInPage = index % pageSize;
+      child: Stack(
+        children: [
+          !hasProducts
+              ? const NoResult()
+              : ListView.builder(
+                  controller: scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final page = index ~/ pageSize + 1;
+                    final indexInPage = index % pageSize;
 
-                ProductParams productParams = ProductParams(
-                  page: page,
-                  isDeleted: shopID != null ? false : true,
-                  shopID: shopID,
-                  context: context,
-                );
-                final AsyncValue<ResultProduct> products =
-                    ref.watch(fetchProductsProvider(productParams));
+                    ProductParams productParams = ProductParams(
+                      page: page,
+                      isDeleted: shopID != null ? false : true,
+                      shopID: shopID,
+                      context: context,
+                    );
+                    final AsyncValue<ResultProduct> products =
+                        ref.watch(fetchProductsProvider(productParams));
 
-                return products.when(
-                  skipLoadingOnRefresh: true,
-                  skipLoadingOnReload: true,
-                  skipError: true,
-                  data: (response) {
-                    if (response.error != '') {
-                      return null;
-                    }
-                    if (indexInPage >= response.products!.length) {
-                      return null;
-                    }
+                    return products.when(
+                      skipLoadingOnRefresh: true,
+                      skipLoadingOnReload: true,
+                      skipError: true,
+                      data: (response) {
+                        if (response.error != '') {
+                          return null;
+                        }
+                        if (indexInPage >= response.products!.length) {
+                          return null;
+                        }
 
-                    Product product = response.products![indexInPage];
-                    return ProductListTile(product: product, shopID: shopID);
+                        Product product = response.products![indexInPage];
+                        return ProductListTile(
+                            product: product, shopID: shopID);
+                      },
+                      error: (error, stackTrace) => errorMethod(error),
+                      loading: () {
+                        if (!loading) {
+                          Future.delayed(
+                            const Duration(),
+                            () => ref
+                                .read(loadProductsProvider.notifier)
+                                .state = true,
+                          );
+                        }
+                        return null;
+                      },
+                    );
                   },
-                  error: (error, stackTrace) => errorMethod(error),
-                  loading: () => null,
-                );
-              },
-            ),
+                ),
+          loading ? loadWidget : const SizedBox(),
+        ],
+      ),
     );
   }
 }

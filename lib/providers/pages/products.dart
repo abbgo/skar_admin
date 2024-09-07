@@ -23,3 +23,5 @@ var productsScrollControllerProvider =
 
 var openProductdNavigateToTopButtonProvider =
     StateProvider.autoDispose<bool>((ref) => false);
+
+final loadProductsProvider = StateProvider.autoDispose<bool>((ref) => true);

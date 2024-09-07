@@ -73,6 +73,8 @@ var fetchProductsProvider =
     } catch (e) {
       result = ResultProduct(error: e.toString());
     }
+
+    ref.read(loadProductsProvider.notifier).state = false;
     return result;
   },
 );
