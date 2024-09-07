@@ -16,52 +16,68 @@ class ProductComplaintsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var lang = AppLocalizations.of(context)!;
-
     bool hasComplaintProducts = ref.watch(hasComplaintProductsProvider);
+    bool loading = ref.watch(loadComplaintProductsProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(lang.productComplaints)),
-      body: !hasComplaintProducts
-          ? const NoResult()
-          : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final page = index ~/ pageSize + 1;
-                  final indexInPage = index % pageSize;
+      body: Stack(
+        children: [
+          !hasComplaintProducts
+              ? const NoResult()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final page = index ~/ pageSize + 1;
+                      final indexInPage = index % pageSize;
 
-                  DefaultParams params = DefaultParams(
-                    page: page,
-                    isDeleted: false,
-                    context: context,
-                  );
+                      DefaultParams params = DefaultParams(
+                        page: page,
+                        isDeleted: false,
+                        context: context,
+                      );
 
-                  final AsyncValue<ResultComplaintProduct> cps =
-                      ref.watch(fetchComplaintProductsProvider(params));
+                      final AsyncValue<ResultComplaintProduct> cps =
+                          ref.watch(fetchComplaintProductsProvider(params));
 
-                  return cps.when(
-                    skipLoadingOnRefresh: true,
-                    skipLoadingOnReload: true,
-                    skipError: true,
-                    data: (response) {
-                      if (response.error != '') {
-                        return null;
-                      }
-                      if (indexInPage >= response.complaintProducts!.length) {
-                        return null;
-                      }
-                      ComplaintProduct cp =
-                          response.complaintProducts![indexInPage];
+                      return cps.when(
+                        skipLoadingOnRefresh: true,
+                        skipLoadingOnReload: true,
+                        skipError: true,
+                        data: (response) {
+                          if (response.error != '') {
+                            return null;
+                          }
+                          if (indexInPage >=
+                              response.complaintProducts!.length) {
+                            return null;
+                          }
+                          ComplaintProduct cp =
+                              response.complaintProducts![indexInPage];
 
-                      return ProductComplaintCard(complaintProduct: cp);
+                          return ProductComplaintCard(complaintProduct: cp);
+                        },
+                        error: (error, stackTrace) => errorMethod(error),
+                        loading: () {
+                          if (!loading) {
+                            Future.delayed(
+                              const Duration(),
+                              () => ref
+                                  .read(loadComplaintProductsProvider.notifier)
+                                  .state = true,
+                            );
+                          }
+                          return null;
+                        },
+                      );
                     },
-                    error: (error, stackTrace) => errorMethod(error),
-                    loading: () => null,
-                  );
-                },
-              ),
-            ),
+                  ),
+                ),
+          loading ? loadWidget : const SizedBox(),
+        ],
+      ),
     );
   }
 }

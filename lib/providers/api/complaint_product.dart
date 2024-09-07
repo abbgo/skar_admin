@@ -39,6 +39,8 @@ var fetchComplaintProductsProvider =
     } catch (e) {
       result = ResultComplaintProduct(error: e.toString());
     }
+
+    ref.read(loadComplaintProductsProvider.notifier).state = false;
     return result;
   },
 );
