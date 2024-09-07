@@ -19,41 +19,56 @@ class ResultShops extends ConsumerWidget {
     bool hasShops = isDeleted
         ? ref.watch(hasDeletedShopsProvider)
         : ref.watch(hasShopsProvider);
+    bool loading = ref.watch(loadShopsProvider);
 
-    return !hasShops
-        ? const NoResult()
-        : ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              final page = index ~/ pageSize + 1;
-              final indexInPage = index % pageSize;
+    return Stack(
+      children: [
+        !hasShops
+            ? const NoResult()
+            : ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final page = index ~/ pageSize + 1;
+                  final indexInPage = index % pageSize;
 
-              ShopParams shopParams = ShopParams(
-                page: page,
-                isDeleted: isDeleted,
-                context: context,
-              );
-              final AsyncValue<ResultShop> shops =
-                  ref.watch(fetchShopsProvider(shopParams));
+                  ShopParams shopParams = ShopParams(
+                    page: page,
+                    isDeleted: isDeleted,
+                    context: context,
+                  );
+                  final AsyncValue<ResultShop> shops =
+                      ref.watch(fetchShopsProvider(shopParams));
 
-              return shops.when(
-                skipLoadingOnRefresh: true,
-                skipLoadingOnReload: true,
-                skipError: true,
-                data: (response) {
-                  if (response.error != '') {
-                    return null;
-                  }
-                  if (indexInPage >= response.shops!.length) {
-                    return null;
-                  }
-                  Shop shop = response.shops![indexInPage];
-                  return ShopListTile(shop: shop, isDeleted: isDeleted);
+                  return shops.when(
+                    skipLoadingOnRefresh: true,
+                    skipLoadingOnReload: true,
+                    skipError: true,
+                    data: (response) {
+                      if (response.error != '') {
+                        return null;
+                      }
+                      if (indexInPage >= response.shops!.length) {
+                        return null;
+                      }
+                      Shop shop = response.shops![indexInPage];
+                      return ShopListTile(shop: shop, isDeleted: isDeleted);
+                    },
+                    error: (error, stackTrace) => errorMethod(error),
+                    loading: () {
+                      if (!loading) {
+                        Future.delayed(
+                          const Duration(),
+                          () =>
+                              ref.read(loadShopsProvider.notifier).state = true,
+                        );
+                      }
+                      return null;
+                    },
+                  );
                 },
-                error: (error, stackTrace) => errorMethod(error),
-                loading: () => null,
-              );
-            },
-          );
+              ),
+        loading ? loadWidget : const SizedBox(),
+      ],
+    );
   }
 }

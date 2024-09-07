@@ -111,6 +111,8 @@ var fetchShopsProvider =
     } catch (e) {
       result = ResultShop(error: e.toString());
     }
+
+    ref.read(loadShopsProvider.notifier).state = false;
     return result;
   },
 );
