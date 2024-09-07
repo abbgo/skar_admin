@@ -4,3 +4,5 @@ var hasComplaintProductsProvider =
     StateProvider.autoDispose<bool>((ref) => true);
 final loadComplaintProductsProvider =
     StateProvider.autoDispose<bool>((ref) => true);
+final loadProductComplaintsProvider =
+    StateProvider.autoDispose<bool>((ref) => true);

@@ -45,7 +45,7 @@ var fetchComplaintProductsProvider =
   },
 );
 
-var fetchfetchProductComplaintsProvider =
+var fetchProductComplaintsProvider =
     FutureProvider.autoDispose.family<ResultComplaint, ComplaintParams>(
   (ref, arg) async {
     ResultComplaint result = ResultComplaint.defaultResult();
@@ -66,6 +66,8 @@ var fetchfetchProductComplaintsProvider =
     } catch (e) {
       result = ResultComplaint(error: e.toString());
     }
+
+    ref.read(loadProductComplaintsProvider.notifier).state = false;
     return result;
   },
 );
