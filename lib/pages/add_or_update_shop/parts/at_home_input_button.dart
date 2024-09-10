@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/providers/pages/add_or_update_shop.dart';
 
 class AtHomeInputButton extends ConsumerWidget {
   const AtHomeInputButton({
@@ -13,9 +14,11 @@ class AtHomeInputButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    bool atHomeShop = ref.watch(atHomeShopProvider);
+
     return RadioMenuButton(
       value: value,
-      groupValue: 1,
+      groupValue: atHomeShop,
       onChanged: (value) {},
       child: Text(text),
     );
