@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skar_admin/helpers/functions/validation.dart';
 import 'package:skar_admin/pages/parts/input_part.dart';
 
 class CoordinateInput extends StatelessWidget {
