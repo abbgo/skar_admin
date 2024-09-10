@@ -51,9 +51,17 @@ class ShopCoordinatesInput extends StatelessWidget {
               }
               return Row(
                 children: [
-                  CoordinateInput(ctrl: latitudeCtrl, label: 'Latitude *'),
+                  CoordinateInput(
+                    ctrl: latitudeCtrl,
+                    label: 'Latitude *',
+                    errorString: lang.pleaseEnterInformationsCompletely,
+                  ),
                   const SizedBox(width: 20),
-                  CoordinateInput(ctrl: longitudeCtrl, label: 'Longitude *'),
+                  CoordinateInput(
+                    ctrl: longitudeCtrl,
+                    label: 'Longitude *',
+                    errorString: lang.pleaseEnterInformationsCompletely,
+                  ),
                 ],
               );
             },
