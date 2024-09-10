@@ -20,9 +20,9 @@ class AtHomeInput extends ConsumerWidget {
           ),
           Row(
             children: [
-              AtHomeInputButton(text: lang.yes, value: true),
+              AtHomeInputButton(text: lang.yes, buttonValue: true),
               const SizedBox(width: 40),
-              AtHomeInputButton(text: lang.no, value: false),
+              AtHomeInputButton(text: lang.no, buttonValue: false),
             ],
           ),
         ],
