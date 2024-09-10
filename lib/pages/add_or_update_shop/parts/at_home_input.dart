@@ -18,8 +18,13 @@ class AtHomeInput extends ConsumerWidget {
             '${lang.doYouSellThisStoreProductsInYourHome} : ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          AtHomeInputButton(text: lang.yes),
-          AtHomeInputButton(text: lang.no),
+          Row(
+            children: [
+              AtHomeInputButton(text: lang.yes, value: true),
+              const SizedBox(width: 40),
+              AtHomeInputButton(text: lang.no, value: false),
+            ],
+          ),
         ],
       ),
     );
