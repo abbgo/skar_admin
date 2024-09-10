@@ -64,8 +64,10 @@ class AddOrUpdateShopButton extends ConsumerWidget {
             nameRU: nameRUCtrl.text,
             addressTM: addressTMCtrl.text,
             addressRU: addressRUCtrl.text,
-            latitude: double.parse(latitudeCtrl.text),
-            longitude: double.parse(longitudeCtrl.text),
+            latitude:
+                latitudeCtrl.text != '' ? double.parse(latitudeCtrl.text) : 0,
+            longitude:
+                longitudeCtrl.text != '' ? double.parse(longitudeCtrl.text) : 0,
             image: shopImagePath,
             shopOwnerID: shopOwner.id,
             phones: phone2Ctrl.text.isNotEmpty
