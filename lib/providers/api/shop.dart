@@ -34,6 +34,8 @@ var fetchShopProvider =
 
         ref.read(selectedShoppincCenterProvider.notifier).state =
             resultShop.shop!.parentShop!;
+
+        ref.read(atHomeShopProvider.notifier).state = resultShop.shop!.atHome!;
       }
 
       result = resultShop;
