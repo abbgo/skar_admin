@@ -81,5 +81,6 @@
     "rejected":"Rejected",
     "inReview":"In review",
     "reasonForRejecting":"Reason for rejecting",
-    "contact":"Contact"
+    "contact":"Contact",
+    "doYouSellThisStoreProductsInYourHome":"Do you sell this store's products in your home ?"
 }

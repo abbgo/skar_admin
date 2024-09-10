@@ -81,5 +81,6 @@
     "rejected":"Отклоненный",
     "inReview":"В процессе рассмотрения",
     "reasonForRejecting":"Причина отказа",
-    "contact":"Связаться"
+    "contact":"Связаться",
+    "doYouSellThisStoreProductsInYourHome":"Вы продаете товары этого магазина дома ?"
 }

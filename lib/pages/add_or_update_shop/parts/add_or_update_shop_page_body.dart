@@ -62,6 +62,7 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                 ShopAddressRuInput(ctrl: addressRUCtrl),
                 ShopPhoneInput(ctrl: phoneCtrl),
                 ShopPhone2Input(ctrl: phone2Ctrl),
+                const AtHomeInput(),
                 SelectShopParent(
                   latitudeCtrl: latitudeCtrl,
                   longitudeCtrl: longitudeCtrl,
@@ -71,7 +72,6 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                   longitudeCtrl: longitudeCtrl,
                 ),
                 const HasShippingInput(),
-                const AtHomeInput(),
                 const ShopImageInput(),
                 const Divider(),
                 Padding(
