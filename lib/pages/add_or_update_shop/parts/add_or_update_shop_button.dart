@@ -55,7 +55,8 @@ class AddOrUpdateShopButton extends ConsumerWidget {
           ref.read(loadCreateShopProvider.notifier).state = true;
           ShopOwner shopOwner = await ref.read(getShopOwnerProvider.future);
           bool hasShipping = await ref.read(hasShippingProvider);
-          Shop parentShop = ref.read(selectedShoppincCenterProvider);
+          Shop parentShop = await ref.read(selectedShoppincCenterProvider);
+          bool atHome = await ref.read(atHomeShopProvider);
 
           final shop = Shop(
             id: shopID,
@@ -73,6 +74,7 @@ class AddOrUpdateShopButton extends ConsumerWidget {
             hasShipping: hasShipping,
             parentShopID:
                 parentShop != Shop.defaultShop() ? parentShop.id : null,
+            atHome: atHome,
           );
 
           if (context.mounted) {
