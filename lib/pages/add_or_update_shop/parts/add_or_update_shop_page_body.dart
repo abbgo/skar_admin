@@ -63,13 +63,26 @@ class AddOrUpdateShopPageBody extends StatelessWidget {
                 ShopPhoneInput(ctrl: phoneCtrl),
                 ShopPhone2Input(ctrl: phone2Ctrl),
                 const AtHomeInput(),
-                SelectShopParent(
-                  latitudeCtrl: latitudeCtrl,
-                  longitudeCtrl: longitudeCtrl,
-                ),
-                ShopCoordinatesInput(
-                  latitudeCtrl: latitudeCtrl,
-                  longitudeCtrl: longitudeCtrl,
+                Consumer(
+                  builder: (context, ref, child) {
+                    bool atHomeShop = ref.watch(atHomeShopProvider);
+
+                    return atHomeShop
+                        ? const SizedBox()
+                        : Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SelectShopParent(
+                                latitudeCtrl: latitudeCtrl,
+                                longitudeCtrl: longitudeCtrl,
+                              ),
+                              ShopCoordinatesInput(
+                                latitudeCtrl: latitudeCtrl,
+                                longitudeCtrl: longitudeCtrl,
+                              ),
+                            ],
+                          );
+                  },
                 ),
                 const HasShippingInput(),
                 const ShopImageInput(),
