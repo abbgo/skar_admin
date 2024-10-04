@@ -169,6 +169,10 @@ var fetchProductProvider =
         await ref
             .read(productColorsProvider.notifier)
             .setProductColors(resultProduct.product!.productColors!);
+
+        await ref
+            .read(productGendersProvider.notifier)
+            .setProductGenders(resultProduct.product!.genders);
       }
 
       result = resultProduct;
