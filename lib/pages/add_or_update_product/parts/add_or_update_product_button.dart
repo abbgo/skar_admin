@@ -77,6 +77,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
             isVisible: isVisible,
             categoryIDs: categoryIDs,
             productColors: productColors,
+            genders: [],
           );
 
           if (context.mounted) {
