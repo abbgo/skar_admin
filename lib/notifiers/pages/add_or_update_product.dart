@@ -88,3 +88,17 @@ class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
     state = [];
   }
 }
+
+class SelectedProductGendersNotifier extends StateNotifier<List<int>> {
+  SelectedProductGendersNotifier() : super([]);
+
+  Future<void> addGender(int gender) async {
+    if (!state.contains(gender)) {
+      state = [...state, gender];
+    }
+  }
+
+  Future<void> removeGender(int gender) async {
+    state = state.where((i) => i != gender).toList();
+  }
+}
