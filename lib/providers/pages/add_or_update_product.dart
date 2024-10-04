@@ -25,6 +25,6 @@ var selectedDimensionsProvider =
 );
 
 var productGendersProvider =
-    StateNotifierProvider<SelectedProductGendersNotifier, List<int>>(
+    StateNotifierProvider<SelectedProductGendersNotifier, List<dynamic>>(
   (ref) => SelectedProductGendersNotifier(),
 );

@@ -15,7 +15,7 @@ class Product {
   final List<Category>? categories;
   final int? createdStatus;
   final String? rejectedReason;
-  final List<int> genders;
+  final List<dynamic>? genders;
 
   Product({
     this.id,
@@ -33,7 +33,7 @@ class Product {
     this.categories,
     this.createdStatus,
     this.rejectedReason,
-    required this.genders,
+    this.genders,
   });
 
   factory Product.defaultProduct() {
@@ -53,7 +53,7 @@ class Product {
       categories: null,
       createdStatus: null,
       rejectedReason: null,
-      genders: [],
+      genders: null,
     );
   }
 
@@ -84,7 +84,7 @@ class Product {
             ),
       createdStatus: json['created_status'] ?? 2,
       rejectedReason: json['rejected_reason'] ?? '',
-      genders: json['genders'],
+      genders: json['genders'] ?? [],
     );
   }
 

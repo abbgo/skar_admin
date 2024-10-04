@@ -7,7 +7,7 @@ class GendersInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<int> productGenders = ref.watch(productGendersProvider);
+    List<dynamic> productGenders = ref.watch(productGendersProvider);
     return Text(productGenders.toString());
   }
 }

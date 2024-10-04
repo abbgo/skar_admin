@@ -89,20 +89,20 @@ class SelectedDimensionsNotifier extends StateNotifier<List<Dimension>> {
   }
 }
 
-class SelectedProductGendersNotifier extends StateNotifier<List<int>> {
+class SelectedProductGendersNotifier extends StateNotifier<List<dynamic>> {
   SelectedProductGendersNotifier() : super([]);
 
-  Future<void> addGender(int gender) async {
+  Future<void> addGender(dynamic gender) async {
     if (!state.contains(gender)) {
       state = [...state, gender];
     }
   }
 
-  Future<void> removeGender(int gender) async {
+  Future<void> removeGender(dynamic gender) async {
     state = state.where((i) => i != gender).toList();
   }
 
-  Future<void> setProductGenders(List<int> genders) async {
+  Future<void> setProductGenders(List<dynamic> genders) async {
     state = genders;
   }
 }

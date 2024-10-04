@@ -172,7 +172,7 @@ var fetchProductProvider =
 
         await ref
             .read(productGendersProvider.notifier)
-            .setProductGenders(resultProduct.product!.genders);
+            .setProductGenders(resultProduct.product!.genders!);
       }
 
       result = resultProduct;
