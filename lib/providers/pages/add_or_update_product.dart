@@ -23,3 +23,8 @@ var selectedDimensionsProvider =
     StateNotifierProvider<SelectedDimensionsNotifier, List<Dimension>>(
   (ref) => SelectedDimensionsNotifier(),
 );
+
+var productGendersProvider =
+    StateNotifierProvider<SelectedProductGendersNotifier, List<int>>(
+  (ref) => SelectedProductGendersNotifier(),
+);
