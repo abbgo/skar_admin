@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 
-class GendersInput extends StatelessWidget {
+class GendersInput extends ConsumerWidget {
   const GendersInput({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Text('JYNSY');
+  Widget build(BuildContext context, WidgetRef ref) {
+    List<int> productGenders = ref.watch(productGendersProvider);
+    return Text(productGenders.toString());
   }
 }
