@@ -11,7 +11,10 @@ class GendersInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${lang.selectProductGenders} *'),
+        Text(
+          '${lang.selectProductGenders} *',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         GenderCheckboxListTile(title: lang.male, value: 0),
         GenderCheckboxListTile(title: lang.female, value: 1),
         GenderCheckboxListTile(title: lang.child, value: 2),
