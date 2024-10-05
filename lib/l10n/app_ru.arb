@@ -82,5 +82,9 @@
     "inReview":"В процессе рассмотрения",
     "reasonForRejecting":"Причина отказа",
     "contact":"Связаться",
-    "doYouSellThisStoreProductsInYourHome":"Вы продаете товары этого магазина дома ?"
+    "doYouSellThisStoreProductsInYourHome":"Вы продаете товары этого магазина дома ?",
+    "selectProductGenders":"Выберите пол продукта",
+    "male":"Мужской",
+    "child":"Ребенок",
+    "female":"Женский"
 }

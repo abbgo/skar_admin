@@ -82,5 +82,9 @@
     "inReview":"In review",
     "reasonForRejecting":"Reason for rejecting",
     "contact":"Contact",
-    "doYouSellThisStoreProductsInYourHome":"Do you sell this store's products in your home ?"
+    "doYouSellThisStoreProductsInYourHome":"Do you sell this store's products in your home ?",
+    "selectProductGenders":"Select product genders",
+    "male":"Male",
+    "child":"Child",
+    "female":"Female"
 }

@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skar_admin/providers/pages/add_or_update_product.dart';
+import 'package:skar_admin/pages/parts/gender_checkbox_list_tile/gender_checkbox_list_tile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class GendersInput extends ConsumerWidget {
+class GendersInput extends StatelessWidget {
   const GendersInput({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<dynamic> productGenders = ref.watch(productGendersProvider);
-    return Text(productGenders.toString());
+  Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('${lang.selectProductGenders} *'),
+        GenderCheckboxListTile(title: lang.male, value: 0),
+        GenderCheckboxListTile(title: lang.female, value: 1),
+        GenderCheckboxListTile(title: lang.child, value: 2),
+      ],
+    );
   }
 }

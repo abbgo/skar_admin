@@ -82,5 +82,9 @@
     "inReview":"Gözden geçirilýar",
     "reasonForRejecting":"Red edilmeginiň sebäbi",
     "contact":"Habarlaşmak",
-    "doYouSellThisStoreProductsInYourHome":"Bu dükanyň harytlaryny öýde satýarsyňyzmy ?"
+    "doYouSellThisStoreProductsInYourHome":"Bu dükanyň harytlaryny öýde satýarsyňyzmy ?",
+    "selectProductGenders":"Haryda degişli bolan jynslary saýlaň",
+    "male":"Erkek",
+    "child":"Çaga & Bäbek",
+    "female":"Gyz-Gelin"
 }
