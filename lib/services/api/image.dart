@@ -52,10 +52,7 @@ class ImageApiService {
     Uri uri = Uri.parse('$apiUrl/back/image')
         .replace(queryParameters: {'image_type': imageType});
 
-    var request = http.MultipartRequest(
-      'POST',
-      uri,
-    );
+    var request = http.MultipartRequest('POST', uri);
     request.headers["Authorization"] = 'Bearer $accessToken';
     request.fields['old_path'] = oldImage;
     request.files

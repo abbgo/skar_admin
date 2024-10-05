@@ -57,7 +57,8 @@ class AddOrUpdateProductButton extends ConsumerWidget {
 
           ref.read(loadCreateProductProvider.notifier).state = true;
           bool isVisible = await ref.read(visibleProductProvider);
-          Brend brend = ref.read(selectedBrendProvider);
+          Brend brend = await ref.read(selectedBrendProvider);
+          List<dynamic> genders = await ref.read(productGendersProvider);
 
           List<String> categoryIDs = [];
           for (var category in selectedCategories) {
@@ -77,7 +78,7 @@ class AddOrUpdateProductButton extends ConsumerWidget {
             isVisible: isVisible,
             categoryIDs: categoryIDs,
             productColors: productColors,
-            genders: [],
+            genders: genders,
           );
 
           if (context.mounted) {
