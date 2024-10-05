@@ -15,9 +15,9 @@ class GendersInput extends StatelessWidget {
           '${lang.selectProductGenders} *',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        GenderCheckboxListTile(title: lang.male, value: 0),
-        GenderCheckboxListTile(title: lang.female, value: 1),
-        GenderCheckboxListTile(title: lang.child, value: 2),
+        GenderCheckboxListTile(title: lang.male, gender: 0),
+        GenderCheckboxListTile(title: lang.female, gender: 1),
+        GenderCheckboxListTile(title: lang.child, gender: 2),
       ],
     );
   }
