@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skar_admin/datas/static.dart';
 import 'package:skar_admin/pages/parts/gender_checkbox_list_tile/gender_checkbox_list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,9 +16,9 @@ class GendersInput extends StatelessWidget {
           '${lang.selectProductGenders} *',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        GenderCheckboxListTile(title: lang.male, gender: 0),
-        GenderCheckboxListTile(title: lang.female, gender: 1),
-        GenderCheckboxListTile(title: lang.child, gender: 2),
+        GenderCheckboxListTile(title: lang.male, gender: Genders.male),
+        GenderCheckboxListTile(title: lang.female, gender: Genders.female),
+        GenderCheckboxListTile(title: lang.child, gender: Genders.child),
       ],
     );
   }
