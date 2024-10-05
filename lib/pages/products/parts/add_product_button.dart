@@ -7,8 +7,8 @@ import 'package:skar_admin/providers/pages/add_or_update_product.dart';
 import 'package:skar_admin/providers/pages/brend.dart';
 import 'package:skar_admin/providers/pages/category.dart';
 
-class AddOrUpdateProductActionButton extends ConsumerWidget {
-  const AddOrUpdateProductActionButton({super.key, required this.shopID});
+class AddProductButton extends ConsumerWidget {
+  const AddProductButton({super.key, required this.shopID});
 
   final String shopID;
 
@@ -22,6 +22,7 @@ class AddOrUpdateProductActionButton extends ConsumerWidget {
           backgroundColor: Colors.green,
         ),
         onPressed: () async {
+          await ref.read(productGendersProvider.notifier).removeAllGenders();
           await ref
               .read(selectedCategoriesProvider.notifier)
               .removeAllCategories();

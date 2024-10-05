@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skar_admin/helpers/static_data.dart';
-import 'package:skar_admin/pages/products/parts/add_or_update_product_button.dart';
+import 'package:skar_admin/pages/products/parts/add_product_button.dart';
 import 'package:skar_admin/pages/products/parts/count_of_products.dart';
 import 'package:skar_admin/pages/products/parts/products_page_scroll_button.dart';
 import 'package:skar_admin/pages/products/parts/result_products.dart';
@@ -21,7 +21,7 @@ class ProductsPage extends StatelessWidget {
         centerTitle: false,
         actions: shopID != null
             ? [
-                AddOrUpdateProductActionButton(shopID: shopID!),
+                AddProductButton(shopID: shopID!),
               ]
             : [],
       ),

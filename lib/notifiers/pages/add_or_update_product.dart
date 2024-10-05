@@ -105,4 +105,8 @@ class SelectedProductGendersNotifier extends StateNotifier<List<dynamic>> {
   Future<void> setProductGenders(List<dynamic> genders) async {
     state = genders;
   }
+
+  Future<void> removeAllGenders() async {
+    state = [];
+  }
 }
